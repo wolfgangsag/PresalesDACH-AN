@@ -1,0 +1,10 @@
+# pack-refs with: peeled
+422091ef199e265ca889540a35aa78d10edf7492 refs/remotes/origin/add-spdx-id
+387ad6d4d70d5e499303bce055657481677b4aa6 refs/remotes/origin/master
+845a1e0fd8e278df4af864f59b9f4f8760b6112e refs/remotes/origin/tanto259-patch-varyafter
+ff733e03576c8a2455f0eff67bddfedba9694734 refs/tags/1.0.0
+9f97906c5302eaa33ebde1470fe8fa62dc39c3e6 refs/tags/2.0.0
+e0044b466a5abf4c81018e1f24b8e858965740c3 refs/tags/2.0.1
+ff5d37038d35bed7f9016efaa608027a2da857e7 refs/tags/2.1.0
+501b00bee6e7683f30830a10e812688c74eb40bf refs/tags/2.2.0
+5e8cd31d166fc16e685a522fbe2b4fa1c33109d9 refs/tags/2.3.0
