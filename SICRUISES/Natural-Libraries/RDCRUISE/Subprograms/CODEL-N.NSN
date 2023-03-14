@@ -1,0 +1,57 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Subprogram CRLIST-N.
+/**
+/** :author sagadmin
+/* TODO Enter your code here
+DEFINE DATA 
+PARAMETER USING NCCOMM-P
+PARAMETER USING NCCODE-P
+*
+LOCAL USING NCDATA-L
+LOCAL 
+*
+1 V-WORKREC (A80)
+1 V-WORKFIELD (A16) 
+1 V-SERVICENAME (A25) CONST<'Löschen Buchungsdaten'>
+*
+END-DEFINE
+* ------------------------------------------------------------------
+ON ERROR
+  INCLUDE ERRLOG-I 'V-SERVICENAME'
+  BACKOUT TRANSACTION
+  ESCAPE ROUTINE  
+END-ERROR
+* ------------------------------------------------------------------
+MOVE ALL '-' TO V-WORKFIELD
+INCLUDE STALOG-I 'V-SERVICENAME'
+MOVE P-LANG TO MSG-GROUP-PARA.MSG-LANG
+* ------------------------------------------------------------------
+*
+IF P-SELECTION.P-CONTRACT-ID = 0
+  MOVE 9921 TO MSG-GROUP-PARA.MSG-NR
+ELSE
+  F1.
+ FIND NCCONTRACT WITH NCCONTRACT.CONTRACT-ID = P-SELECTION.P-CONTRACT-ID
+    IF NO RECORD FOUND
+      MOVE 9922 TO MSG-GROUP-PARA.MSG-NR
+      ESCAPE BOTTOM (F1.)
+    END-NOREC
+    MOVE 9804 TO MSG-GROUP-PARA.MSG-NR
+    MOVE BY NAME NCCONTRACT TO P-CONTRACT-DATA
+    DELETE
+    END TRANSACTION
+  END-FIND
+END-IF
+*
+CALLNAT 'CAMSG-N' MSG-GROUP-PARA
+COMPRESS MSG-GROUP-PARA.MSG-TYPE '-' MSG-GROUP-PARA.MSG-TEXT 
+  INTO P-RESPONSE.P-RSPTXT
+MOVE MSG-GROUP-PARA.MSG-NR TO P-RESPONSE.P-RSPCODE  
+* ------------------------------------------------------------------
+* ------------------------------------------------------------------
+INCLUDE DELLOG-I 'V-SERVICENAME'  
+*
+END

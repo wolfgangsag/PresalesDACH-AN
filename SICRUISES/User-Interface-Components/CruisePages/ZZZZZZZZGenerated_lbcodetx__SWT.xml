@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?><page model="com.softwareag.cis.adapter.CruisePages+ZZZZZZZZGenerated_lbcodetx_" stylesheetfile="../cis/styles/CIS_WM.css" addstylesheetfile="../HTMLBasedGUI/bootstrap/njxmobiledemo.css" visiblevalueifundefined="true" natsource="LBVODETA" natsinglebyte="true" natkcheck="true" xmlns:njx="http://www.softwareag.com/njx/njxMapConverter" xmlns:bmobile="http://www.softwareag.com/njx/njxMobile" casaindex="1" adapterlisteners="com.softwareag.cis.adapter.TriggerEventAdapterListener" >
+
+
+            <pagebody casaindex="2" >
+
+
+
+                        <bmobile:navbar menuprop="dlmenu" casaindex="3" >
+
+
+
+                        </bmobile:navbar>
+
+
+
+                        <bmobile:container takefullwidth="true" casaindex="4" >
+
+
+
+                                    <bmobile:icon iconurl="./images/logo_sag.png" casaindex="5" >
+
+
+
+                                    </bmobile:icon>
+
+
+
+                                    <bmobile:vdist style="height:10px" casaindex="6" >
+
+
+
+                                    </bmobile:vdist>
+
+
+
+                                    <bmobile:row style="width:100%" casaindex="7" >
+
+
+
+                                                <bmobile:col styleclasses="col-lg-10 col-md-10" casaindex="8" >
+
+
+
+                                                            <bmobile:formarea legend="ContractDetails" casaindex="9" >
+
+
+
+                                                                        <bmobile:formgroup casaindex="10" >
+
+
+
+                                                                                    <bmobile:flabel styleclasses="col-lg-2" name="Customer Name" casaindex="11" >
+
+
+
+                                                                                    </bmobile:flabel>
+
+
+
+                                                                                    <bmobile:col styleclasses="col-lg-4" casaindex="12" >
+
+
+
+                                                                                                <bmobile:ffield styleclasses="form-control" placeholder="Registration Start" valueprop="cocustomer" casaindex="13" >
+
+
+
+                                                                                                </bmobile:ffield>
+
+
+
+                                                                                    </bmobile:col>
+
+
+
+                                                                                    <bmobile:flabel styleclasses="col-lg-2" name="Contract Id" casaindex="14" >
+
+
+
+                                                                                    </bmobile:flabel>
+
+
+
+                                                                                    <bmobile:col styleclasses="col-lg-4" casaindex="15" >
+
+
+
+                                                                                                <bmobile:ffield placeholder="Contract Id" valueprop="cocontractid" maxlength="20" formautocomplete="false" required="true" validationmessage="Required" casaindex="16" >
+
+
+
+                                                                                                </bmobile:ffield>
+
+
+
+                                                                                    </bmobile:col>
+
+
+
+                                                                        </bmobile:formgroup>
+
+
+
+                                                                        <bmobile:formgroup casaindex="17" >
+
+
+
+                                                                                    <bmobile:flabel styleclasses="col-lg-2" name="Price" casaindex="18" >
+
+
+
+                                                                                    </bmobile:flabel>
+
+
+
+                                                                                    <bmobile:col styleclasses="col-lg-4" casaindex="19" >
+
+
+
+                                                                                                <bmobile:ffield placeholder="Price" valueprop="coprice" maxlength="20" formautocomplete="false" required="true" validationmessage="Required" casaindex="20" >
+
+
+
+                                                                                                </bmobile:ffield>
+
+
+
+                                                                                    </bmobile:col>
+
+
+
+                                                                                    <bmobile:flabel styleclasses="col-lg-2" name="Status" casaindex="21" >
+
+
+
+                                                                                    </bmobile:flabel>
+
+
+
+                                                                                    <bmobile:col styleclasses="col-lg-4" casaindex="22" >
+
+
+
+                                                                                                <bmobile:ffield placeholder="Status" valueprop="costatus" maxlength="20" formautocomplete="false" required="true" validationmessage="Required" casaindex="23" >
+
+
+
+                                                                                                </bmobile:ffield>
+
+
+
+                                                                                    </bmobile:col>
+
+
+
+                                                                        </bmobile:formgroup>
+
+
+
+                                                                        <bmobile:formgroup casaindex="24" >
+
+
+
+                                                                                    <bmobile:flabel styleclasses="col-lg-2" name="Customer Name" casaindex="25" >
+
+
+
+                                                                                    </bmobile:flabel>
+
+
+
+                                                                                    <bmobile:col styleclasses="col-lg-4" casaindex="26" >
+
+
+
+                                                                                                <bmobile:ffield styleclasses="form-control" placeholder="Customer Name" valueprop="cocustomer" casaindex="27" >
+
+
+
+                                                                                                </bmobile:ffield>
+
+
+
+                                                                                    </bmobile:col>
+
+
+
+                                                                                    <bmobile:flabel styleclasses="col-lg-2" name="Yacht Name" casaindex="28" >
+
+
+
+                                                                                    </bmobile:flabel>
+
+
+
+                                                                                    <bmobile:col styleclasses="col-lg-4" casaindex="29" >
+
+
+
+                                                                                                <bmobile:ffield styleclasses="form-control" placeholder="Yacht Name" valueprop="coyachtname" casaindex="30" >
+
+
+
+                                                                                                </bmobile:ffield>
+
+
+
+                                                                                    </bmobile:col>
+
+
+
+                                                                        </bmobile:formgroup>
+
+
+
+                                                                        <bmobile:formgroup casaindex="31" >
+
+
+
+                                                                                    <bmobile:flabel styleclasses="col-lg-2" name="Route" casaindex="32" >
+
+
+
+                                                                                    </bmobile:flabel>
+
+
+
+                                                                                    <bmobile:col styleclasses="col-lg-4" casaindex="33" >
+
+
+
+                                                                                                <bmobile:ffield placeholder="Route" valueprop="coroute" maxlength="20" formautocomplete="false" required="true" validationmessage="Required" casaindex="34" >
+
+
+
+                                                                                                </bmobile:ffield>
+
+
+
+                                                                                    </bmobile:col>
+
+
+
+                                                                                    <bmobile:flabel styleclasses="col-lg-2" name="Cruise Date" casaindex="35" >
+
+
+
+                                                                                    </bmobile:flabel>
+
+
+
+                                                                                    <bmobile:col styleclasses="col-lg-4" casaindex="36" >
+
+
+
+                                                                                                <bmobile:ffield placeholder="Cruise Date" valueprop="codate" maxlength="30" formautocomplete="false" required="true" validationmessage="Required" casaindex="37" >
+
+
+
+                                                                                                </bmobile:ffield>
+
+
+
+                                                                                    </bmobile:col>
+
+
+
+                                                                        </bmobile:formgroup>
+
+
+
+                                                                        <bmobile:formgroup casaindex="38" >
+
+
+
+                                                                                    <bmobile:flabel styleclasses="col-lg-2" name="Date of Bookig" casaindex="39" >
+
+
+
+                                                                                    </bmobile:flabel>
+
+
+
+                                                                                    <bmobile:col styleclasses="col-lg-4" casaindex="40" >
+
+
+
+                                                                                                <bmobile:ffield placeholder="BookingdateDate" valueprop="cobookingdate" maxlength="20" formautocomplete="false" required="true" validationmessage="Required" casaindex="41" >
+
+
+
+                                                                                                </bmobile:ffield>
+
+
+
+                                                                                    </bmobile:col>
+
+
+
+                                                                                    <bmobile:flabel styleclasses="col-lg-2" name="Date of Reservation" casaindex="42" >
+
+
+
+                                                                                    </bmobile:flabel>
+
+
+
+                                                                                    <bmobile:col styleclasses="col-lg-4" casaindex="43" >
+
+
+
+                                                                                                <bmobile:ffield placeholder="ReservationDate" valueprop="coreservationdate" maxlength="20" formautocomplete="false" required="true" validationmessage="Required" casaindex="44" >
+
+
+
+                                                                                                </bmobile:ffield>
+
+
+
+                                                                                    </bmobile:col>
+
+
+
+                                                                        </bmobile:formgroup>
+
+
+
+                                                                        <bmobile:formgroup casaindex="45" >
+
+
+
+                                                                                    <bmobile:flabel styleclasses="col-lg-2" name="Date of Cancelation" casaindex="46" >
+
+
+
+                                                                                    </bmobile:flabel>
+
+
+
+                                                                                    <bmobile:col styleclasses="col-lg-4" casaindex="47" >
+
+
+
+                                                                                                <bmobile:ffield placeholder="CancelationDate" valueprop="cocancellationdate" maxlength="20" formautocomplete="false" required="true" validationmessage="Required" casaindex="48" >
+
+
+
+                                                                                                </bmobile:ffield>
+
+
+
+                                                                                    </bmobile:col>
+
+
+
+                                                                        </bmobile:formgroup>
+
+
+
+                                                                        <bmobile:formgroup casaindex="49" >
+
+
+
+                                                                                    <bmobile:col styleclasses="col-lg-10 col-lg-offset-2" casaindex="50" >
+
+
+
+                                                                                                <bmobile:button name="Cancelation" styleclasses="btn-primary" type="submit" method="onCancellation" invisiblemode="disabled" visibleprop="cancbotvisible" casaindex="51" >
+
+
+
+                                                                                                </bmobile:button>
+
+
+
+                                                                                                <bmobile:button name="Booking" styleclasses="btn-primary" type="submit" method="onBooking" invisiblemode="disabled" visibleprop="bookbotvisible" casaindex="52" >
+
+
+
+                                                                                                </bmobile:button>
+
+
+
+                                                                                    </bmobile:col>
+
+
+
+                                                                        </bmobile:formgroup>
+
+
+
+                                                            </bmobile:formarea>
+
+
+
+                                                </bmobile:col>
+
+
+
+                                    </bmobile:row>
+
+
+
+                                    <bmobile:row style="width:100%" casaindex="53" >
+
+
+
+                                                <bmobile:col styleclasses="col-lg-10 col-md-10" casaindex="54" >
+
+
+
+                                                            <bmobile:alert typeprop="alerttypeprop" shorttextprop="alertshorttextprop" longtextprop="alertlongtextprop" casaindex="55" >
+
+
+
+                                                            </bmobile:alert>
+
+
+
+                                                </bmobile:col>
+
+
+
+                                    </bmobile:row>
+
+
+
+                        </bmobile:container>
+
+
+
+            </pagebody>
+
+
+
+</page>

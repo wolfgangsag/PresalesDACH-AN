@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Generated from Software AG EntireX Web Service Plug-in Version 9.10.0.0.380 on Tue Jul 05 17:50:32 CEST 2016--><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sn0="urn:com-softwareag-entirex-rpc:CRUISE16-CULIST-N" xmlns:tns="http://namespace.softwareag.com/entirex/xml/mapping" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="customerList" targetNamespace="http://namespace.softwareag.com/entirex/xml/mapping">
+  <wsdl:types>
+    <xsd:schema targetNamespace="urn:com-softwareag-entirex-rpc:CRUISE16-CULIST-N">
+      <xsd:element name="CULIST-NResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="P-RESPONSE">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="P-RSPCODE" minOccurs="0" type="xsd:string"/>
+                  <xsd:element name="P-RSPTXT" minOccurs="0" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="P-CUSTOMER-DATAs">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="P-CUSTOMER-DATA" minOccurs="0" maxOccurs="unbounded">
+                    <xsd:complexType>
+                      <xsd:sequence>
+                        <xsd:element name="PERSON-ID" minOccurs="0" type="xsd:string"/>
+                        <xsd:element name="BIRTH-DATE" minOccurs="0" type="xsd:string"/>
+                        <xsd:element name="SEX" minOccurs="0" type="xsd:string"/>
+                        <xsd:element name="SURNAME" minOccurs="0" type="xsd:string"/>
+                        <xsd:element name="FIRST-NAME" minOccurs="0" type="xsd:string"/>
+                        <xsd:element name="ADDRESS" minOccurs="0">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="STREET-NUMBER" minOccurs="0" type="xsd:string"/>
+                              <xsd:element name="COUNTRY" minOccurs="0" type="xsd:string"/>
+                              <xsd:element name="ZIP-CODE" minOccurs="0" type="xsd:string"/>
+                              <xsd:element name="CITY" minOccurs="0" type="xsd:string"/>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="PHONE" minOccurs="0">
+                          <xsd:complexType>
+                            <xsd:sequence>
+                              <xsd:element name="AREA-CODE" minOccurs="0" type="xsd:string"/>
+                              <xsd:element name="PHONE-NUMBER" minOccurs="0" type="xsd:string"/>
+                            </xsd:sequence>
+                          </xsd:complexType>
+                        </xsd:element>
+                      </xsd:sequence>
+                    </xsd:complexType>
+                  </xsd:element>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="CULIST-N">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="P-COM">
+              <xsd:complexType>
+                <xsd:sequence>
+                  <xsd:element name="P-LANG" minOccurs="0">
+                    <xsd:simpleType>
+                      <xsd:restriction base="xsd:string">
+                        <xsd:maxLength value="1"/>
+                      </xsd:restriction>
+                    </xsd:simpleType>
+                  </xsd:element>
+                  <xsd:element name="P-USER" minOccurs="0" type="xsd:string"/>
+                  <xsd:element name="P-PASSWORD" minOccurs="0" type="xsd:string"/>
+                </xsd:sequence>
+              </xsd:complexType>
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="CULIST-NSoapIn">
+    <wsdl:part name="parameters" element="sn0:CULIST-N"/>
+  </wsdl:message>
+  <wsdl:message name="CULIST-NSoapOut">
+    <wsdl:part name="parameters" element="sn0:CULIST-NResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="CRUISE16Port">
+    <wsdl:operation name="CULIST-N">
+      <wsdl:input message="tns:CULIST-NSoapIn"/>
+      <wsdl:output message="tns:CULIST-NSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CRUISE16SOAP11Binding" type="tns:CRUISE16Port">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CULIST-N">
+      <soap:operation soapAction="CULIST-N"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CRUISE16SOAP12Binding" type="tns:CRUISE16Port">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="CULIST-N">
+      <soap12:operation soapAction="CULIST-N"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="customerList">
+    <wsdl:port name="CRUISE16SOAP11Port" binding="tns:CRUISE16SOAP11Binding">
+      <soap:address location="http://localhost:10010/wsstack/services/customerList"/>
+    </wsdl:port>
+    <wsdl:port name="CRUISE16SOAP12Port" binding="tns:CRUISE16SOAP12Binding">
+      <soap12:address location="http://localhost:10010/wsstack/services/customerList"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

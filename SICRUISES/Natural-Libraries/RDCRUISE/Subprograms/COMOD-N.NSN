@@ -1,0 +1,165 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Subprogram COMOD-N.
+/**
+/** :author sagadmin
+/* TODO Enter your code here
+/* -----------------------------------------------------------------
+DEFINE DATA 
+PARAMETER USING NCCOMM-P
+PARAMETER 
+1 P-CONTRACT-DATA            /*IN
+  2 CONTRACT-ID       (A) DYNAMIC
+  2 DATE-CANCELLATION (A) DYNAMIC
+  2 DATE-RESERVATION  (A) DYNAMIC
+  2 DATE-BOOKING      (A) DYNAMIC
+*
+LOCAL USING NCDATA-L
+*
+LOCAL
+1 V-RECCNT      (I2)
+1 V-CHECKOK     (L)
+1 V-START-DATE  (A10)
+1 V-END-DATE    (A10)
+1 V-WORKREC     (A80)
+1 V-WORKFIELD   (A16) 
+1 V-CONTRACTID  (P6)
+1 V-INTDATEBOOKING      (N8)
+1 V-INTDATERESERVATION  (N8)
+1 V-INTDATECANCELLATION (N8)
+1 V-SERVICENAME (A20)   CONST<'Update Buchungsdaten'>
+*
+END-DEFINE
+*
+*  
+* ON ERROR BLOCK ---------------------------------------------------
+* ------------------------------------------------------------------
+ON ERROR
+  INCLUDE ERRLOG-I 'V-SERVICENAME'           /* write Error Log data
+  BACKOUT TRANSACTION
+  ESCAPE ROUTINE
+END-ERROR
+* ------------------------------------------------------------------
+*
+*
+* INITIALISATIONS and START LOG  -----------------------------------
+* ------------------------------------------------------------------
+MOVE ALL '-' TO V-WORKFIELD
+INCLUDE STALOG-I 'V-SERVICENAME'             /* write Start log data
+MOVE P-LANG TO MSG-GROUP-PARA.MSG-LANG
+* ------------------------------------------------------------------
+*
+*
+* CHECK  PARAMETER INPUT -------------------------------------------
+* ------------------------------------------------------------------
+PERFORM SUB-CHECKINPUT
+* ------------------------------------------------------------------
+*
+*
+* EXECUTE FUNCTIONALLITY  IF INPUT IS OK AND UPDATE DATA FOUND -----
+* ------------------------------------------------------------------
+IF V-CHECKOK = TRUE 
+  PERFORM SUB-JOBEXECUTION
+END-IF
+* ------------------------------------------------------------------
+*
+*
+* SET RETURN VALUES and END LOG  -----------------------------------
+* ------------------------------------------------------------------
+CALLNAT 'CAMSG-N' MSG-GROUP-PARA
+COMPRESS MSG-GROUP-PARA.MSG-TYPE '-' MSG-GROUP-PARA.MSG-TEXT
+  INTO P-RESPONSE.P-RSPTXT
+MOVE MSG-GROUP-PARA.MSG-NR TO P-RESPONSE.P-RSPCODE
+INCLUDE MODLOG-I 'V-SERVICENAME'               /* write End Log data
+* ------------------------------------------------------------------
+*
+*
+*
+* SUBROUINE SUB-CHECKINPUT  ----------------------------------------
+* ------------------------------------------------------------------
+DEFINE SUBROUTINE SUB-CHECKINPUT
+*
+V-CHECKOK   := FALSE
+*
+DECIDE FOR FIRST CONDITION
+*
+  WHEN P-CONTRACT-DATA.CONTRACT-ID  = ' ' OR NOT
+      P-CONTRACT-DATA.CONTRACT-ID  IS  (P6)
+    MOVE 9922 TO MSG-GROUP-PARA.MSG-NR           /* wrong contractId
+*
+  WHEN P-CONTRACT-DATA.DATE-CANCELLATION EQ ' ' AND
+      P-CONTRACT-DATA.DATE-RESERVATION EQ ' ' AND
+      P-CONTRACT-DATA.DATE-BOOKING EQ ' ' 
+    MOVE 9935 TO MSG-GROUP-PARA.MSG-NR          /* no data to update
+*
+  WHEN P-CONTRACT-DATA.DATE-CANCELLATION NE ' ' AND
+      P-CONTRACT-DATA.DATE-CANCELLATION NE MASK(YYYYMMDD)
+    MOVE 9912 TO MSG-GROUP-PARA.MSG-NR          /* wrong date format
+*
+  WHEN  P-CONTRACT-DATA.DATE-RESERVATION NE ' ' AND
+      P-CONTRACT-DATA.DATE-RESERVATION NE MASK(YYYYMMDD)
+    MOVE 9912 TO MSG-GROUP-PARA.MSG-NR          /* wrong date format
+*
+  WHEN P-CONTRACT-DATA.DATE-BOOKING NE ' ' AND
+      P-CONTRACT-DATA.DATE-BOOKING NE MASK(YYYYMMDD)
+    MOVE 9912 TO MSG-GROUP-PARA.MSG-NR          /* wrong date format
+*
+  WHEN NONE
+    DECIDE FOR EVERY CONDITION
+      WHEN P-CONTRACT-DATA.DATE-CANCELLATION NE ' '
+        COMPUTE V-INTDATECANCELLATION =
+          VAL(P-CONTRACT-DATA.DATE-CANCELLATION)
+      WHEN P-CONTRACT-DATA.DATE-RESERVATION NE ' '
+        COMPUTE V-INTDATERESERVATION =
+          VAL(P-CONTRACT-DATA.DATE-RESERVATION)
+      WHEN P-CONTRACT-DATA.DATE-BOOKING NE ' '
+        COMPUTE V-INTDATEBOOKING =
+          VAL(P-CONTRACT-DATA.DATE-BOOKING)
+      WHEN NONE
+        IGNORE
+    END-DECIDE
+*
+    V-CHECKOK := TRUE
+*
+END-DECIDE
+END-SUBROUTINE
+* ------------------------------------------------------------------
+*
+*
+*
+* SUBROUINE SUB-JOBEXECUTION  --------------------------------------
+* ------------------------------------------------------------------
+DEFINE SUBROUTINE SUB-JOBEXECUTION
+*
+*  COMPUTE V-CONTRACTID = V-CONTRACTID / 0      /*Error-test
+COMPUTE V-CONTRACTID = VAL(P-CONTRACT-DATA.CONTRACT-ID)
+F1.
+FIND NCCONTRACT WITH NCCONTRACT.CONTRACT-ID = V-CONTRACTID
+  IF NO RECORD FOUND
+    MOVE 9922 TO MSG-GROUP-PARA.MSG-NR
+    ESCAPE BOTTOM (F1.)
+  END-NOREC
+*   
+  IF V-INTDATECANCELLATION NE 0
+    COMPUTE NCCONTRACT.DATE-CANCELLATION =
+      V-INTDATECANCELLATION
+  END-IF
+  IF V-INTDATERESERVATION NE 0
+    COMPUTE  NCCONTRACT.DATE-RESERVATION =
+      V-INTDATERESERVATION
+  END-IF
+  IF V-INTDATEBOOKING NE 0
+    COMPUTE NCCONTRACT.DATE-BOOKING =
+      V-INTDATEBOOKING
+  END-IF
+*
+  UPDATE
+  END TRANSACTION
+  MOVE 9801 TO MSG-GROUP-PARA.MSG-NR
+END-FIND
+END-SUBROUTINE
+* ------------------------------------------------------------------
+*
+END

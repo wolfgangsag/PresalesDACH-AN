@@ -1,0 +1,39 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Program CHGHARBP.
+/**
+/** <h1>Program CHGHARBP.</h1>
+/** <p>Hilfsprogram, um Hafen zu ändern</p>
+/** <p>New important statements:</p>
+/**     <ul type="square">
+/**         <li>1.</li>
+/**         <li>2.</li>
+/**     </ul>
+/** <p>Historie Änderungen</p>
+/**     <ul type="square">
+/**         <li>1. Anpassung Polizei</li>
+/**         <li>2.</li>
+/**     </ul>
+/** :author rfa
+/* TODO Enter your code here
+
+DEFINE DATA LOCAL
+1 CRUISE VIEW OF  NCCRUISE
+2 START-HARBOR (A20)
+2 DESTINATION-HARBOR (A20)
+END-DEFINE
+READ CRUISE
+IF START-HARBOR = 'Kos' 
+MOVE 'Santorini' TO START-HARBOR
+UPDATE
+END TRANSACTION
+END-IF
+IF DESTINATION-HARBOR =  'Santorini'
+MOVE'Kos' TO DESTINATION-HARBOR
+UPDATE
+END TRANSACTION
+END-IF
+END-READ
+END

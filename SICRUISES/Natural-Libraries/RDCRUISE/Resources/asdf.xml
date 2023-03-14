@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEMPLATE date="2017-11-21" environment="" name="" time="09:56:20"
+    type="DataBrowser" user="" version="1.0">
+    <DEFINITIONS>
+        <DESCRIPTION>Report for DDM NCYACHT</DESCRIPTION>
+        <RECORDLIMIT>100</RECORDLIMIT>
+        <FILTEREDBY>&gt;&gt; Physical Read &lt;&lt;</FILTEREDBY>
+        <OPTIONS>
+            <USEEDITMASK>None</USEEDITMASK>
+            <USEFIELDHEADER>None</USEFIELDHEADER>
+        </OPTIONS>
+    </DEFINITIONS>
+    <DDM dbid="012" fnr="042" name="NCYACHT" type="ada">
+        <FIELD Descriptor="D" Editmask="" Format="N" Header=""
+            Length="8.0" Level="1" Name="YACHT-ID" Type=""/>
+        <FIELD Descriptor="D" Editmask="" Format="A" Header=""
+            Length="30" Level="1" Name="YACHT-NAME" Type=""/>
+        <FIELD Descriptor="D" Editmask="" Format="A" Header=""
+            Length="30" Level="1" Name="YACHT-TYPE" Type=""/>
+        <FIELD Descriptor="" Editmask="" Format="P" Header=""
+            Length="3.2" Level="1" Name="LENGTH" Type=""/>
+        <FIELD Descriptor="" Editmask="" Format="P" Header=""
+            Length="3.2" Level="1" Name="WIDTH" Type=""/>
+        <FIELD Descriptor="" Editmask="" Format="P" Header=""
+            Length="3.2" Level="1" Name="DRAFT" Type=""/>
+        <FIELD Descriptor="" Editmask="" Format="P" Header=""
+            Length="3.0" Level="1" Name="SAIL-SURFACE" Type=""/>
+        <FIELD Descriptor="" Editmask="" Format="P" Header=""
+            Length="3.0" Level="1" Name="MOTOR" Type=""/>
+        <FIELD Descriptor="" Editmask="" Format="P" Header=""
+            Length="3.2" Level="1" Name="HEAD-ROOM" Type=""/>
+        <FIELD Descriptor="" Editmask="" Format="P" Header=""
+            Length="3.0" Level="1" Name="BUNKS" Type=""/>
+    </DDM>
+    <GENERALFIELDS>
+        <FIELD Editmask="" Format="I" Header="" Length="4" Level="1"
+            Name=".COUNTER" Type="#"/>
+        <FIELD Editmask="" Format="P" Header="" Length="10" Level="1"
+            Name="*ISN" Type="#"/>
+    </GENERALFIELDS>
+</TEMPLATE>

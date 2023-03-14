@@ -1,0 +1,110 @@
+<natpage stylesheetfile="../cis/styles/CIS_WM.css" addstylesheetfile="../HTMLBasedGUI/bootstrap/njxmobiledemo.css" visiblevalueifundefined="true" natsource="LBVODETA" natsinglebyte="true" natkcheck="true" xmlns:njx="http://www.softwareag.com/njx/njxMapConverter" xmlns:bmobile="http://www.softwareag.com/njx/njxMobile">
+    <pagebody>
+        <bmobile:navbar menuprop="dlmenu">
+        </bmobile:navbar>
+        <bmobile:container takefullwidth="true">
+            <bmobile:icon iconurl="./images/logo_sag.png">
+            </bmobile:icon>
+            <bmobile:vdist style="height:10px">
+            </bmobile:vdist>
+            <bmobile:row style="width:100%">
+                <bmobile:col styleclasses="col-lg-10 col-md-10">
+                    <bmobile:formarea legend="ContractDetails">
+                        <bmobile:formgroup>
+                            <bmobile:flabel styleclasses="col-lg-2" name="Customer Name">
+                            </bmobile:flabel>
+                            <bmobile:col styleclasses="col-lg-4">
+                                <bmobile:ffield styleclasses="form-control" placeholder="Registration Start" valueprop="cocustomer">
+                                </bmobile:ffield>
+                            </bmobile:col>
+                            <bmobile:flabel styleclasses="col-lg-2" name="Contract Id">
+                            </bmobile:flabel>
+                            <bmobile:col styleclasses="col-lg-4">
+                                <bmobile:ffield placeholder="Contract Id" valueprop="cocontractid" maxlength="20" formautocomplete="false" required="true" validationmessage="Required">
+                                </bmobile:ffield>
+                            </bmobile:col>
+                        </bmobile:formgroup>
+                        <bmobile:formgroup>
+                            <bmobile:flabel styleclasses="col-lg-2" name="Price">
+                            </bmobile:flabel>
+                            <bmobile:col styleclasses="col-lg-4">
+                                <bmobile:ffield placeholder="Price" valueprop="coprice" maxlength="20" formautocomplete="false" required="true" validationmessage="Required">
+                                </bmobile:ffield>
+                            </bmobile:col>
+                            <bmobile:flabel styleclasses="col-lg-2" name="Status">
+                            </bmobile:flabel>
+                            <bmobile:col styleclasses="col-lg-4">
+                                <bmobile:ffield placeholder="Status" valueprop="costatus" maxlength="20" formautocomplete="false" required="true" validationmessage="Required">
+                                </bmobile:ffield>
+                            </bmobile:col>
+                        </bmobile:formgroup>
+                        <bmobile:formgroup>
+                            <bmobile:flabel styleclasses="col-lg-2" name="Customer Name">
+                            </bmobile:flabel>
+                            <bmobile:col styleclasses="col-lg-4">
+                                <bmobile:ffield styleclasses="form-control" placeholder="Customer Name" valueprop="cocustomer">
+                                </bmobile:ffield>
+                            </bmobile:col>
+                            <bmobile:flabel styleclasses="col-lg-2" name="Yacht Name">
+                            </bmobile:flabel>
+                            <bmobile:col styleclasses="col-lg-4">
+                                <bmobile:ffield styleclasses="form-control" placeholder="Yacht Name" valueprop="coyachtname">
+                                </bmobile:ffield>
+                            </bmobile:col>
+                        </bmobile:formgroup>
+                        <bmobile:formgroup>
+                            <bmobile:flabel styleclasses="col-lg-2" name="Route">
+                            </bmobile:flabel>
+                            <bmobile:col styleclasses="col-lg-4">
+                                <bmobile:ffield placeholder="Route" valueprop="coroute" maxlength="20" formautocomplete="false" required="true" validationmessage="Required">
+                                </bmobile:ffield>
+                            </bmobile:col>
+                            <bmobile:flabel styleclasses="col-lg-2" name="Cruise Date">
+                            </bmobile:flabel>
+                            <bmobile:col styleclasses="col-lg-4">
+                                <bmobile:ffield placeholder="Cruise Date" valueprop="codate" maxlength="30" formautocomplete="false" required="true" validationmessage="Required">
+                                </bmobile:ffield>
+                            </bmobile:col>
+                        </bmobile:formgroup>
+                        <bmobile:formgroup>
+                            <bmobile:flabel styleclasses="col-lg-2" name="Date of Bookig">
+                            </bmobile:flabel>
+                            <bmobile:col styleclasses="col-lg-4">
+                                <bmobile:ffield placeholder="BookingdateDate" valueprop="cobookingdate" maxlength="20" formautocomplete="false" required="true" validationmessage="Required">
+                                </bmobile:ffield>
+                            </bmobile:col>
+                            <bmobile:flabel styleclasses="col-lg-2" name="Date of Reservation">
+                            </bmobile:flabel>
+                            <bmobile:col styleclasses="col-lg-4">
+                                <bmobile:ffield placeholder="ReservationDate" valueprop="coreservationdate" maxlength="20" formautocomplete="false" required="true" validationmessage="Required">
+                                </bmobile:ffield>
+                            </bmobile:col>
+                        </bmobile:formgroup>
+                        <bmobile:formgroup>
+                            <bmobile:flabel styleclasses="col-lg-2" name="Date of Cancelation">
+                            </bmobile:flabel>
+                            <bmobile:col styleclasses="col-lg-4">
+                                <bmobile:ffield placeholder="CancelationDate" valueprop="cocancellationdate" maxlength="20" formautocomplete="false" required="true" validationmessage="Required">
+                                </bmobile:ffield>
+                            </bmobile:col>
+                        </bmobile:formgroup>
+                        <bmobile:formgroup>
+                            <bmobile:col styleclasses="col-lg-10 col-lg-offset-2">
+                                <bmobile:button name="Cancelation" styleclasses="btn-primary" type="submit" method="onCancellation" invisiblemode="disabled" visibleprop="cancbotvisible">
+                                </bmobile:button>
+                                <bmobile:button name="Booking" styleclasses="btn-primary" type="submit" method="onBooking" invisiblemode="disabled" visibleprop="bookbotvisible">
+                                </bmobile:button>
+                            </bmobile:col>
+                        </bmobile:formgroup>
+                    </bmobile:formarea>
+                </bmobile:col>
+            </bmobile:row>
+            <bmobile:row style="width:100%">
+                <bmobile:col styleclasses="col-lg-10 col-md-10">
+                    <bmobile:alert typeprop="alerttypeprop" shorttextprop="alertshorttextprop" longtextprop="alertlongtextprop">
+                    </bmobile:alert>
+                </bmobile:col>
+            </bmobile:row>
+        </bmobile:container>
+    </pagebody>
+</natpage>

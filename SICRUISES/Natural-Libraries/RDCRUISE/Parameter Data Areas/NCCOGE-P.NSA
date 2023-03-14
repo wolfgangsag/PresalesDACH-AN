@@ -1,0 +1,28 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/** New Parameter Data Area NCCOGE-P.
+/**
+/** :author sagadmin
+/* TODO Enter your data definitions here
+*
+1 P-SELECTION                 /*IN
+  2 P-CONTRACT-ID (A) DYNAMIC
+*
+1 P-CONTRACT-DATA            /*OUT
+  2 CONTRACT-ID       (A) DYNAMIC
+  2 PRICE             (A) DYNAMIC
+  2 DATE-CANCELLATION (A) DYNAMIC
+  2 DATE-RESERVATION  (A) DYNAMIC
+  2 DATE-BOOKING      (A) DYNAMIC
+  2 ID-CUSTOMER       (A) DYNAMIC
+  2 ID-CRUISE         (A) DYNAMIC
+*
+1 P-CONTRACT-ADDDATA            /*OUT
+  2 CUSTOMER-NAME       (A) DYNAMIC
+  2 CRUISE-DATE         (A) DYNAMIC
+  2 CRUISE-ROUTE        (A) DYNAMIC
+  2 YACHT-NAME          (A) DYNAMIC
+END-DEFINE

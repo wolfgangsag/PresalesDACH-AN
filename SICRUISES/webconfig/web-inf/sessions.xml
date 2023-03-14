@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+  <global>
+    <last_activity_timeout>3600</last_activity_timeout>
+    <sso_login>false</sso_login>
+    <saml_login>false</saml_login>
+    <trustfile_password>C15015059B37582C42E98417DB37582C42E98417DB37582C42E98417DB37582C42E98417DŸ</trustfile_password>
+  </global>
+  <users />
+  <sessions>
+    <session id="SICRUISES" type="OS" trace="false" ssl="false" savesessionuser="true" sharesessionuser="false" javaEEAuthentication="false" webServerAuthentication="false">
+      <user id="sag" encrypted="true" pwd="C1501505906E4E838A5F9B3E2F4BCB3E52E98417DB37582C42E98417DB37582C42E98417DŸ" ucase="false" />
+      <natural_server>localhost</natural_server>
+      <natural_port>2900</natural_port>
+      <natural_program>nwo.bat</natural_program>
+      <natural_parameter>STACK=(LOGON RDCRUISE;RDCRUISP;FIN)</natural_parameter>
+      <double_click>50</double_click>
+      <pfkeys_display>0</pfkeys_display>
+      <disconnect_behavior>0</disconnect_behavior>
+      <nattimeout>60</nattimeout>
+      <screen rows="24" columns="80" showfkeynumbers="false" styleselect="true" checknumfields="true" autoskip="false" />
+      <style_sheet>natural.css</style_sheet>
+    </session>
+  </sessions>
+</settings>
+
