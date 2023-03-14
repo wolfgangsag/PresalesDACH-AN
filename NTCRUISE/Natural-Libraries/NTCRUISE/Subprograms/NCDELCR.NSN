@@ -1,0 +1,28 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+
+DEFINE DATA PARAMETER
+1 Cruise-Id-Delete (N8.0)
+LOCAL
+USING NCDEMAPL
+LOCAL
+1 #COUNTER (P10) INIT <0>
+END-DEFINE
+*
+FIND NCCRUISE CRUISE-ID = Cruise-Id-Delete
+  IF NO RECORDS FOUND
+    Cruise-Id-Delete := 0
+    ESCAPE ROUTINE
+  END-NOREC
+  DELETE
+  END TRANSACTION
+  #COUNTER := #COUNTER - 1
+  Cruise-Id-Delete := #COUNTER
+*
+END-FIND
+*
+END
+

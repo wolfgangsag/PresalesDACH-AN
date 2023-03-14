@@ -1,0 +1,17 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Program TESTMAPP.
+/**
+/** :author Administrator
+DEFINE DATA LOCAL
+1 FIELD_#1 (A20) INIT <'Test Value 1 -A20'>
+1 FIELD_#2 (A20) INIT <'Test 22222'>
+1 FIELD_#3 (A15) INIT <'Test 33333 -A15'>
+1 FIELD_#4 (A15) INIT <'Test 44444'>
+END-DEFINE
+*
+INPUT USING MAP 'TESTMAPM'
+*
+END

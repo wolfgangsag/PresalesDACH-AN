@@ -1,0 +1,34 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Program TESTRPC.
+/**
+/** :author Administrator
+DEFINE DATA LOCAL
+/*( imported data fields from Subprogram NCOMPLEX
+1 CRUISE-ID-GET (N8) INIT<2010>
+1 LOOP-COUNT (I4) INIT<10>
+1 MESSAGE (A40)
+1 CRUISE
+  2 CRUISE-ID (N8)
+  2 START-HARBOR (A20)
+  2 DESTINATION-HARBOR (A20)
+  2 START-DATE (N8)
+  2 START-TIME (N6)
+  2 END-DATE (N8)
+  2 END-TIME (N6)
+  2 PRICE-1W (P10.3)
+  2 PRICE-2W (P10.3)
+  2 PRICE-3W (P10.3)
+  2 CRUISE-STATUS (A1)
+  2 YACHT-ID (N8)
+  2 YACHT-NAME (A30)
+/*) imported data fields from Subprogram NCOMPLEX
+END-DEFINE
+
+CALLNAT "NCOMPLEX" CRUISE-ID-GET LOOP-COUNT MESSAGE CRUISE
+
+WRITE 'RESPONSE: ' CRUISE.CRUISE-ID YACHT-NAME
+
+END
