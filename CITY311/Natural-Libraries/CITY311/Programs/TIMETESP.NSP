@@ -1,0 +1,42 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Program TIMETESP.
+/**
+/** :author WOHE
+/* TODO Enter your code here
+
+DEFINE DATA LOCAL
+1 DDD (A10)
+1 TTT (A5)
+1 COMP (A16)
+1 VERG (A16) INIT <'14.11.2017 11:07'>
+1 DELITEST (A250) /*DYNAMIC
+END-DEFINE
+
+MOVE *DAT4D TO DDD
+MOVE *TIMX TO TTT
+MOVE 'Teststring' TO DELITEST
+
+IF NOT DELITEST EQ SCAN '/'
+  /*  INPUT (AD=O) DELITEST (AL=30) 'Kein Slash gefunden'
+    COMPRESS DELITEST '/' INTO DELITEST LEAVING NO
+END-IF
+    INPUT (AD=O) DELITEST (AL=30) 'Slash gefunden'
+
+ESCAPE ROUTINE
+
+COMPRESS DDD TTT INTO COMP
+
+INPUT (AD=O) COMP VERG
+
+IF COMP > VERG 
+    WRITE 'Fall1'
+ELSE 
+    WRITE 'Fall2'
+END-IF
+
+
+
+END

@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<natpage stylesheetfile="../cis/styles/CIS_WM.css" addstylesheetfile="./styles/njxmobileZD.css" natsource="cmmenua" natsinglebyte="true" natkcheck="true" xmlns:njx="http://www.softwareag.com/njx/njxMapConverter" xmlns:bmobile="http://www.softwareag.com/njx/njxMobile">
+    <njx:objects>
+    </njx:objects>
+    <pagebody pagebodystyle="background-color:#E5E5E4">
+        <bmobile:container takefullwidth="true">
+            <bmobile:row style="background-color: #125996" takefullwidth="true">
+                <bmobile:col styleclasses="col-xs-6">
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:0;padding-right:2%;">
+                    <bmobile:icon iconurl="./images/RD-flageng.png" method="onSeten" title="english">
+                    </bmobile:icon>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:0;padding-right:2%;">
+                    <bmobile:icon iconurl="./images/RD-flagger.png" method="onSetge" title="german">
+                    </bmobile:icon>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:0;padding-right:2%;">
+                    <bmobile:icon iconurl="./images/RD-flagspa.png" method="onSetsp" title="spanish">
+                    </bmobile:icon>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-lg-1 col-md-1 col-sm-1 col-xs-1" style="padding-left:0;padding-right:2%;">
+                    <bmobile:icon iconurl="./images/RD-flagpor.png" method="onSetpo" title="portuguese">
+                    </bmobile:icon>
+                </bmobile:col>
+            </bmobile:row>
+            <bmobile:row style="background-color: #125996" takefullwidth="true">
+                <bmobile:col styleclasses="col-xs-3">
+                    <bmobile:flabel style="color:#0899cc;font-style: italic;font-size:150%" nameprop="cap.datum">
+                    </bmobile:flabel>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-xs-8">
+                    <bmobile:flabel style="color:#0899cc;font-style: italic;font-size:150%" nameprop="cap.message">
+                    </bmobile:flabel>
+                </bmobile:col>
+            </bmobile:row>
+        </bmobile:container>
+        <bmobile:navbar menuprop="capmenu" takefullwidth="true">
+        </bmobile:navbar>
+        <bmobile:container takefullwidth="true">
+            <bmobile:row style="background-color:white" invisiblemode="invisible" visibleprop="cap.panelvisi_login">
+                <bmobile:col styleclasses="col-xs-12">
+                    <bmobile:imageout valueprop="cap.myloginimage" styleclasses="center-block" style="max-width:100%;height:auto;">
+                    </bmobile:imageout>
+                </bmobile:col>
+            </bmobile:row>
+            <bmobile:row style="background-color:white" invisiblemode="invisible" visibleprop="cap.panelvisi_login">
+                <bmobile:col styleclasses="col-xs-10 col-sm-10 label-as-header" style="padding-top:20%">
+                    <bmobile:flabel style="padding-left:25px;color:#0899cc;" nameprop="inc.starttown">
+                    </bmobile:flabel>
+                </bmobile:col>
+                <bmobile:col styleclasses="col-xs-10 col-sm-10 label-as-header2" style="padding-top:2%; margin-button:10%">
+                    <bmobile:flabel style="padding-left:25px;color:#0899cc;margin-button:10%" nameprop="inc.startorg">
+                    </bmobile:flabel>
+                </bmobile:col>
+            </bmobile:row>
+            <bmobile:row styleclasses="center-block" style="width:100%" invisiblemode="invisible" visibleprop="cap.panelvisi_login">
+                <bmobile:col styleclasses="col-lg-6 col-md-6 col-sm-6 col-xs-6 label-as-header">
+                    <bmobile:button nameprop="buttonstart" style="padding-left:25px;padding-right:25px;margin:20px;margin-top:40px;background-color:#0899cc;color:white;border-style:sold;border-color:white;" method="onLoginbutton">
+                    </bmobile:button>
+                </bmobile:col>
+            </bmobile:row>
+            <bmobile:panel style="background-color:#CCCCCB; border-style:none" visibleprop="cap.panelvisi_incdetails" invisiblemode="invisible">
+                <bmobile:panelheader nameprop="cap_detpanelname" style="color:white;background-color: #989898; border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px">
+                </bmobile:panelheader>
+                <bmobile:panelbody style="border-style:none">
+                    <bmobile:row styleclasses="center-block">
+                        <bmobile:col styleclasses="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <bmobile:formarea>
+                                <bmobile:formgroup>
+                                    <bmobile:col styleclasses="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <bmobile:flabel nameprop="incdet.label1">
+                                        </bmobile:flabel>
+                                        <bmobile:ffield valueprop="incdet.value1" displayonly="true">
+                                        </bmobile:ffield>
+                                    </bmobile:col>
+                                </bmobile:formgroup>
+                                <bmobile:formgroup>
+                                    <bmobile:col styleclasses="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <bmobile:flabel nameprop="incdet.label2">
+                                        </bmobile:flabel>
+                                        <bmobile:ffield valueprop="incdet.value2" displayonly="true">
+                                        </bmobile:ffield>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <bmobile:flabel nameprop="incdet.label3">
+                                        </bmobile:flabel>
+                                        <bmobile:ffield valueprop="incdet.value3" displayonly="true">
+                                        </bmobile:ffield>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <bmobile:flabel nameprop="incdet.label4">
+                                        </bmobile:flabel>
+                                        <bmobile:ffield valueprop="incdet.value4" displayonly="true">
+                                        </bmobile:ffield>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <bmobile:flabel nameprop="incdet.label5">
+                                        </bmobile:flabel>
+                                        <bmobile:ffield valueprop="incdet.value5" displayonly="true">
+                                        </bmobile:ffield>
+                                    </bmobile:col>
+                                </bmobile:formgroup>
+                                <bmobile:formgroup>
+                                    <bmobile:col styleclasses="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            							<openstreetmap longitudeprop="osLongitude" latitudeprop="osLatitude" addressprop="osAdress"  style='height:100%' withlocationmarker="true" withgeocoder="true" onclickmethod="osClickmethod" selectprop="osSelected" zoom="10">
+            							</openstreetmap>
+                                    </bmobile:col>
+                                </bmobile:formgroup>
+                                <bmobile:formgroup>
+                                    <bmobile:col styleclasses="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <bmobile:flabel nameprop="incdet.label6">
+                                        </bmobile:flabel>
+                                        <bmobile:ffield valueprop="incdet.value6" displayonly="true">
+                                        </bmobile:ffield>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <bmobile:flabel nameprop="incdet.label7">
+                                        </bmobile:flabel>
+                                        <bmobile:ffield valueprop="incdet.value7" displayonly="true">
+                                        </bmobile:ffield>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <bmobile:flabel nameprop="incdet.label8">
+                                        </bmobile:flabel>
+                                        <bmobile:ffield valueprop="incdet.value8" displayonly="true">
+                                        </bmobile:ffield>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <bmobile:flabel nameprop="incdet.label9">
+                                        </bmobile:flabel>
+                                        <bmobile:ffield valueprop="incdet.value9" displayonly="true">
+                                        </bmobile:ffield>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                        <bmobile:flabel nameprop="incdet.label10">
+                                        </bmobile:flabel>
+                                        <bmobile:ffield valueprop="incdet.value10" displayonly="true">
+                                        </bmobile:ffield>
+                                    </bmobile:col>
+                                </bmobile:formgroup>
+                                <bmobile:formgroup>
+                                    <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <bmobile:button nameprop="inccomment.openbutton" style="margin-bottom:10px;margin-top:10px;padding:8px;width:120px;background-color:#989898;color:white" method="onIncComment">
+                                        </bmobile:button>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <bmobile:button nameprop="inccomment.back2lbutton" style="margin-bottom:10px;margin-top:10px;padding:8px;width:120px;background-color:#989898;color:white" method="onIncBack2l">
+                                        </bmobile:button>
+                                    </bmobile:col>
+                                </bmobile:formgroup>
+                            </bmobile:formarea>
+                        </bmobile:col>
+                    </bmobile:row>
+                </bmobile:panelbody>
+            </bmobile:panel>
+            <bmobile:panel style="background-color:#CCCCCB; border-style:none" visibleprop="cap.panelvisi_incpics" invisiblemode="invisible" takefullwdth="true">
+                <bmobile:panelheader nameprop="cap_picpanelname" style="color:white;background-color: #989898; border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px">
+                </bmobile:panelheader>
+                <bmobile:panelbody style="border-style:none">
+                    <bmobile:row styleclasses="center-block">
+                        <bmobile:col styleclasses="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <bmobile:formarea>
+                                <bmobile:formgroup>
+                                    <bmobile:col styleclasses="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <bmobile:imageout valueprop="incdet.valuepic1" style="background-color:#CCCCCB">
+                                        </bmobile:imageout>
+                                    </bmobile:col>
+                                </bmobile:formgroup>
+                                <bmobile:formgroup>
+                                    <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <bmobile:button nameprop="inccomment.openbutton" style="margin-bottom:10px;margin-top:10px;padding:8px;width:120px;background-color:#989898;color:white" method="onIncComment">
+                                        </bmobile:button>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <bmobile:button nameprop="inccomment.back2lbutton" style="margin-bottom:10px;margin-top:10px;padding:8px;width:120px;background-color:#989898;color:white" method="onIncBack2l">
+                                        </bmobile:button>
+                                    </bmobile:col>
+                                </bmobile:formgroup>
+                            </bmobile:formarea>
+                        </bmobile:col>
+                    </bmobile:row>
+                </bmobile:panelbody>
+            </bmobile:panel>
+            <bmobile:panel style="background-color:#CCCCCB ;border-style:none" visibleprop="cap.panelvisi_inclist" invisiblemode="invisible">
+                <bmobile:panelheader nameprop="cap_inclistpanelname" style="color:white;background-color: #989898; border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px">
+                </bmobile:panelheader>
+                <bmobile:panelbody style="border-style:none">
+                    <bmobile:vdist style="height:10%">
+                    </bmobile:vdist>
+                    <bmobile:row>
+                        <bmobile:col styleclasses="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-style:none">
+                            <bmobile:simplegrid gridprop="caplines" selectprop="capl_selected" width="100%" styleclasses="table-striped" features="autoWidth:false;info:false;paging:true;searching:false;ordering:false;lengthChange:false">
+                                <bmobile:simpleheaderrow>
+                                    <bmobile:simpleheadercol name="Type" style="width:5%">
+                                    </bmobile:simpleheadercol>
+                                    <bmobile:simpleheadercol name="Creation date">
+                                    </bmobile:simpleheadercol>
+                                    <bmobile:simpleheadercol name="Priority">
+                                    </bmobile:simpleheadercol>
+                                    <bmobile:simpleheadercol name="Status">
+                                    </bmobile:simpleheadercol>
+                                    <bmobile:simpleheadercol name=" X">
+                                    </bmobile:simpleheadercol>
+                                </bmobile:simpleheaderrow>
+                                <bmobile:simplerow onclickmethod="onInlineClick" ondblclickmethod="onInlineClick">
+                                    <bmobile:simplecol colprop="caplva1">
+                                    </bmobile:simplecol>
+                                    <bmobile:simplecol colprop="caplva2">
+                                    </bmobile:simplecol>
+                                    <bmobile:simplecol colprop="caplva3">
+                                    </bmobile:simplecol>
+                                    <bmobile:simplecol colprop="caplva4">
+                                    </bmobile:simplecol>
+                                    <bmobile:simplecol colprop="caplva5" visible="FALSE">
+                                    </bmobile:simplecol>
+                                </bmobile:simplerow>
+                            </bmobile:simplegrid>
+                        </bmobile:col>
+                    </bmobile:row>
+                </bmobile:panelbody>
+            </bmobile:panel>
+            <bmobile:panel style="background-color:#CCCCCB ;border-style:none" visibleprop="cap.panelvisi_comment">
+                <bmobile:panelheader nameprop="cap_inccommentpanelname" style="color:white;background-color: #989898; border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px">
+                </bmobile:panelheader>
+                <bmobile:panelbody style="border-style:none">
+                    <bmobile:vdist style="height:10%">
+                    </bmobile:vdist>
+                    <bmobile:row>
+                        <bmobile:col styleclasses="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <bmobile:formarea>
+                                <bmobile:formgroup>
+                                    <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-5 col-xs-5">
+                                        <bmobile:flabel nameprop="inccomment.inctypelabel">
+                                        </bmobile:flabel>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-5 col-xs-5">
+                                        <bmobile:flabel nameprop="inccomment.incdatelabel">
+                                        </bmobile:flabel>
+                                    </bmobile:col>
+                                </bmobile:formgroup>
+                                <bmobile:formgroup>
+                                    <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-5 col-xs-5">
+                                        <bmobile:ffield valueprop="inccomment.inctypevalue" displayonly="true">
+                                        </bmobile:ffield>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-5 col-xs-5">
+                                        <bmobile:ffield valueprop="inccomment.incdatevalue" displayonly="true">
+                                        </bmobile:ffield>
+                                    </bmobile:col>
+                                </bmobile:formgroup>
+                                <bmobile:formgroup>
+                                    <bmobile:col styleclasses="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                        <bmobile:flabel nameprop="inccomment.comlabel">
+                                        </bmobile:flabel>
+                                        <bmobile:ftextarea valueprop="inccomment.comvalue">
+                                        </bmobile:ftextarea>
+                                    </bmobile:col>
+                                </bmobile:formgroup>
+                                <bmobile:formgroup>
+                                    <bmobile:col styleclasses="col-xs-12">
+                                        <bmobile:flabel nameprop="inccomment.enddatelabel">
+                                        </bmobile:flabel>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-xs-12">
+                                        <bmobile:dateinput2 valueprop="inccomment.enddatevalue">
+                                        </bmobile:dateinput2>
+                                    </bmobile:col>
+                                </bmobile:formgroup>
+                                <bmobile:formgroup>
+                                    <bmobile:col styleclasses="col-xs-12">
+                                        <bmobile:flabel nameprop="inccomment.textnewstatus">
+                                        </bmobile:flabel>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-xs-2">
+                                        <bmobile:checkbox valueprop="inccomment.newstatcboxv1" flush="server" flushmethod="onCommnewstat1" name="in Progress">
+                                        </bmobile:checkbox>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-xs-2">
+                                        <bmobile:checkbox valueprop="inccomment.newstatcboxv2" flush="server" flushmethod="onCommnewstat2" name="solved">
+                                        </bmobile:checkbox>
+                                    </bmobile:col>
+                                </bmobile:formgroup>
+                                <bmobile:formgroup>
+                                    <bmobile:col styleclasses="col-xs-12">
+                                        <bmobile:flabel nameprop="inccomment.textnewprio">
+                                        </bmobile:flabel>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-xs-2">
+                                        <bmobile:checkbox valueprop="inccomment.newpriocboxv1" flush="server" flushmethod="onCommnewprio1" name="low">
+                                        </bmobile:checkbox>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-xs-2">
+                                        <bmobile:checkbox valueprop="inccomment.newpriocboxv2" flush="server" flushmethod="onCommnewprio2" name="medium">
+                                        </bmobile:checkbox>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-xs-2">
+                                        <bmobile:checkbox valueprop="inccomment.newpriocboxv3" flush="server" flushmethod="onCommnewprio3" name="high">
+                                        </bmobile:checkbox>
+                                    </bmobile:col>
+                                </bmobile:formgroup>
+                                <bmobile:formgroup>
+                                    <bmobile:col styleclasses="col-xs-12">
+                                        <bmobile:flabel style="font-weight: bold" nameprop="inccomment.message">
+                                        </bmobile:flabel>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <bmobile:button nameprop="inccomment.savebutton" style="margin-bottom:10px;margin-top:10px;padding:8px;width:120px;background-color:#989898;color:white" method="onSaveInccomment">
+                                        </bmobile:button>
+                                    </bmobile:col>
+                                    <bmobile:col styleclasses="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                        <bmobile:button nameprop="inccomment.back2dbutton" style="margin-bottom:10px;margin-top:10px;padding:8px;width:120px;background-color:#989898;color:white" method="onIncBack2d">
+                                        </bmobile:button>
+                                    </bmobile:col>
+                                </bmobile:formgroup>
+                            </bmobile:formarea>
+                        </bmobile:col>
+                    </bmobile:row>
+                </bmobile:panelbody>
+            </bmobile:panel>
+        </bmobile:container>
+    </pagebody>
+</natpage>

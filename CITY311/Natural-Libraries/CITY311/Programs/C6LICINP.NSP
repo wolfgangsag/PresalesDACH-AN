@@ -1,0 +1,28 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+
+/** New Program C6LICINP.
+/**
+/** :author tst
+/* TODO Enter your code here
+DEFINE DATA LOCAL
+1 LANGUAGEKEY              (A) DYNAMIC /** :in
+1 INCIDENT                 (1:*)       /* out /** :out
+2 INC-ID                    (A) DYNAMIC /** :out
+2 INCIDENTTYPE             (A) DYNAMIC /** :out
+2 DESCRIPTION              (A) DYNAMIC /** :out
+2 DATEOPENED               (A) DYNAMIC /** :out
+2 ESTIMATEDENDDATE         (A) DYNAMIC /** :out
+2 PRIORITY                 (A) DYNAMIC /** :out
+2 INC-STATUS               (A) DYNAMIC /** :out
+/*
+1 ERRORSTATUS              (A10)       /* inout /** :inout
+*
+END-DEFINE
+*
+CALLNAT "C6LISINC" LANGUAGEKEY INCIDENT(*) ERRORSTATUS
+display incident.inc-id(*) (al=20) incident.description (*) (al=40) 
+*
+END

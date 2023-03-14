@@ -1,0 +1,95 @@
+DEFINE DATA LOCAL
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/** New Local Data Area MSGVIEWS.
+/**
+/** :author sag
+/*( imported data fields from Data Definition Module D311MSG
+1 D311MSG VIEW OF D311MSG
+  2 F-MSGTYPE (A3) 
+  2 F-MSGNR (A17)
+1 D311MSG-SU VIEW OF D311MSG
+  2 F-MSGTYPE (A3)
+  2 F-MSGNR (A17)
+  2 F-MSGID (A20)
+/*( imported data fields from Data Definition Module D311INC
+/*( imported data fields from Data Definition Module D311INC
+1 D311INC VIEW OF D311INC
+  2 INC-ID (A20)
+  2 INC-TYPE (A25)
+  2 INC-DESC (A250)
+  2 INC-OPENED (A20)
+  2 INC-EST-END (A20)
+  2 INC-PRIO (A10)
+  2 INC-STAT (A20)
+  2 INC-ASSNAME (A50)
+  2 INC-REPORTER /*
+    3 INC-REP-FNAME (A50)
+    3 INC-REP-LNAME (A50)
+    3 INC-REP-MAIL (A50)
+    3 INC-REP-PHONE (A50)
+    3 INC-REP-CALLBACK (A1)
+  2 INC-ADDRESS /*
+    3 INC-CITY (A50)
+    3 INC-STREET (A50)
+    3 INC-ZIP (A10)
+    3 INC-GPSLATI (A10)
+    3 INC-GPSLONG (A10)
+/*( imported data fields from Data Definition Module D311INC
+2 C*INC-HISTORY
+2 INC-HISTORY (1:500) /*
+  3 HIS-DAT (A20)
+  3 HIS-AUTHOR (A20)
+  3 HIS-PRIO (A10)
+  3 HIS-STAT (A20)
+  3 HIS-END (A20)
+  3 HIS-DESC (A250)
+/*) imported data fields from Data Definition Module D311INC
+  2 INC-RELATEDNEWS (A100)
+  2 INC-PHOTOBIN (A/1:191) DYNAMIC /* LOB/NB/NV
+  2 INC-AUDIOBIN (A/1:191) DYNAMIC /* LOB/NB/NV
+/*) imported data fields from Data Definition Module D311INC
+1 D311CHN VIEW OF D311CHN
+  2 CHN-ID (A20)
+  2 CHN-TITLE (A100)
+  2 CHN-DATE (A20)
+  2 CHN-SHORTCONTENTTEXT (A250)
+  2 CHN-FULLCONTENTTEXT (A16381) /* LA/NV
+  2 CHN-CONTENTPICTURE (A/1:191) DYNAMIC /* LOB/NB/NV
+  2 CHN-AUTHORNAME (A100)
+  2 CHN-AUTHOREMAIL (A100)
+/*( imported data fields from Data Definition Module D311VRE
+/*( imported data fields from Data Definition Module D311VRE
+1 D311VRE VIEW OF D311VRE
+  2 VRE-ID (A20)
+  2 VRE-VIN (A20)
+  2 VRE-DATEOPENED (A20)
+  2 VRE-ESTEND (A20)
+  2 VRE-STATUS (A20)
+  2 VRE-ISINSPECTED (A1)
+  2 VRE-ICN (A20)
+  2 VRE-IPN (A20)
+  2 VRE-RECID (A20)
+  2 VRE-XYZ (A20)
+  2 VRE-DTAA (A1)
+  2 VRE-TITPICBIN (A) DYNAMIC /* LOB/NB/NV
+  2 VRE-INSPOLBIN (A) DYNAMIC /* LOB/NB/NV
+/*) imported data fields from Data Definition Module D311VRE
+/*) imported data fields from Data Definition Module D311VRE
+/*( imported data fields from Data Definition Module D311LPL
+1 D311LPL VIEW OF D311LPL
+  2 LPL-ID (A20)
+  2 LPL-TYPE (A20)
+  2 LPL-DISABLED (A1)
+  2 LPL-VTNR (A1)
+  2 LPL-VIN (A20)
+  2 LPL-RECEIPTID (A20)
+  2 LPL-DTAA (A1)
+  2 LPL-ISPC (A1)
+  2 LPL-ISDC (A1)
+  2 LPL-STATUS (A20)
+  2 LPL-ESTEND (A20)
+/*) imported data fields from Data Definition Module D311LPL
+END-DEFINE

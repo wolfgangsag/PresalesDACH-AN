@@ -1,0 +1,23 @@
+DB: 012 FILE: 053  - UIG-CLAM                         DEFAULT SEQUENCE:   
+TYPE: ADABAS
+ 
+T L DB Name                              F Leng  S D Remark
+- - -- --------------------------------- - ----  - - ------------------------
+*      >Natural Source Header 000000
+*      :CP
+*      
+*      
+*      <Natural Source Header
+  1 AA CLAIM-NR                          A   10    D 
+  1 AB POLICY-NR                         A   10    D 
+  1 AC CUSTOMER-NR                       A   10    D 
+  1 AD CLAIM-CREATION-DATE               A   10      
+  1 AE CLAIM-CREATION-TIME               A   10      
+  1 BA CLAIM-COUNTRY                     A   25      
+  1 AF CLAIM-CITY                        A   25      
+  1 AG CLAIM-STREET                      A   25      
+  1 AL CLAIM-DAM-TYPE                    A   25      
+  1 AH CLAIM-KOORD-LAT                   A   10      
+  1 AI CLAIM-KOORD-LON                   A   10      
+  1 AK CLAIM-COMMENT                     A   50      
+******DDM OUTPUT TERMINATED******

@@ -1,0 +1,41 @@
+DEFINE DATA GLOBAL
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/** New Global Data Area MG-GLOB.
+/**
+/** :author Administrator
+/* TODO: Enter your data definitions here
+1 #G-DLM (1:*)
+2 #G-LEVEL (I4)
+2 #G-METHOD (A) DYNAMIC
+2 #G-TEXT (A) DYNAMIC
+/*
+1 #G-TOPTEXT (A50)
+1 #G-DLMMAX (N3)
+1 #G-VICON1L1 (A50)
+1 #G-VICON1L2 (A50)  
+* 1 #G-INC-ID           (A10)
+* 1 #G-CHN-ID           (A10)
+* 1 #G-PAF-ID           (A10)
+* * 1 #G-CLAIMDOCNR-A     (A10)
+* * 1 #G-CUSTNAME         (A25)
+* * 1 #G-CUSTFIRSTNAME    (A25)
+* 1 #G-BOTHOME         (A50)
+* 1 #G-BOTDATA         (A50)
+* 1 #G-BOTCLAIM        (A50)
+* 1 #G-BOTPOLY         (A50)
+* 1 #G-BOTOPEN         (A50)
+* 1 #G-BOTUPDATE       (A50)
+* 1 #G-BOTCONFIRM      (A50)
+* 1 #G-BOTRETURN       (A50)
+* 1 #G-BOTEXIT         (A50)
+* 1 #G-BOTLEER         (A50)
+* 1 #G-BOTMAP          (A50)
+* 1 #G-MELDUNG         (A50)
+* 1 #G-MAPLAT          (A50)
+* * 1 #G-MAPLON          (A50)
+* * 1 #G-MAPCITY         (A50)
+* * 1 #G-MAPSTREET       (A50)
+END-DEFINE

@@ -1,0 +1,82 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** NEW SUBPROGRAM C6PFAHNN.
+/**
+/** <h1>Subprogram C6PFAHNN.</h1>
+/** <p>Subprogram, welches von CAMENUP.</p>
+/** <p>New important statements:</p>
+/**     <ul type="square">
+/**         <li>Wurde als Ergänzung für die Polizei vorgenommen</li>
+/**         <li>Prüft gegen die Fahndungsliste INPOL, ob das KFZ zur Fahndung ausgeschrieben ist.</li>
+/**     </ul>
+/** <p>Historie Änderungen</p>
+/**     <ul type="square">
+/**         <li>1.</li>
+/**     </ul>
+/** :author rfa
+/* TODO ENTER YOUR CODE HERE
+DEFINE DATA PARAMETER
+1 INCDESCRIPTION         (A250) 
+LOCAL USING SENDMS1 
+LOCAL
+1 WORKFILENAME1  (A100)
+1 WORKFILENAME2  (A100)
+1 WORK1RECORD (A200)
+1 INCKFZKZ1 (A10)
+1 INCKFZKZ2 (A10)
+1 INCKFZKZREST (A300)
+1 INCKFZDATTIME (A16)
+1 DATEVERG    (A16)
+1 MESSAGE (A) DYNAMIC
+1 FOUND (L)
+END-DEFINE
+/*
+* ON ERROR 
+* DEFINE WORK FILE 3 'C:\NATRPClog\PPMfr\Payment\KfzPaymentLOG.txt'
+* WRITE WORK 3 'ErrorNr:' *ERROR-NR 'ErrorLine:' *ERROR-LINE 'Program:' *PROGRAM
+* CLOSE WORK 3
+* END-ERROR
+
+COMPRESS 'C:\NATRPClog\PPMfr\Payment\KfzPayment.txt' INTO WORKFILENAME1 LEAVING NO
+COMPRESS 'C:\NATRPClog\PPMfr\Payment\KfzPaymentTreffer.txt'   INTO WORKFILENAME2 LEAVING NO
+DEFINE WORK FILE 1 WORKFILENAME1
+DEFINE WORK FILE 2 WORKFILENAME2 ATTRIBUTES 'APPEND' 
+/*
+IF NOT INCDESCRIPTION EQ SCAN '-'
+    ESCAPE ROUTINE /* Weil kein Kennzeichen in Beschreibung
+END-IF
+/*
+SEPARATE INCDESCRIPTION INTO INCKFZKZ1 INCKFZKZREST IGNORE WITH DELIMITER "/"
+/*
+FOUND := FALSE
+COMPRESS *DAT4D *TIMX INTO DATEVERG /* LEAVING NO
+READ WORK 1 WORK1RECORD 
+SEPARATE WORK1RECORD INTO INCKFZKZ2 INCKFZDATTIME WITH DELIMITER "/"
+IF INCKFZKZ1 = INCKFZKZ2 AND FOUND = FALSE
+  FOUND := TRUE
+  IF INCKFZDATTIME GE DATEVERG /* Greater or equal, bzw. LT Less then
+    COMPRESS "Gültig:" INCKFZKZ2 "- aktuelle Zeit:" DATEVERG "- bezahlt bis:" INCKFZDATTIME INTO MESSAGE
+    WRITE WORK 2 VARIABLE MESSAGE
+    CLOSE WORK 2
+    COMPRESS INCDESCRIPTION "/ Kein Parkverstoß, aktuelle Zeit:" DATEVERG "/ bezahlt bis:" INCKFZDATTIME INTO SENDMSGIN /* INCDESCRIPTION
+    MOVE SENDMSGIN TO INCDESCRIPTION /* Weil Rückgabe an aufrufendes Prog
+    CALLNAT 'SENDMSG' SENDMSGIN SENDMSGRC
+  ELSE /* Zeit abgelaufen
+    COMPRESS "Abgelaufen:" INCKFZKZ2 "- aktuelle Zeit:" DATEVERG "- bezahlt bis:" INCKFZDATTIME INTO MESSAGE
+    WRITE WORK 2 VARIABLE MESSAGE
+    CLOSE WORK 2
+    COMPRESS INCDESCRIPTION "/ Parkzeit abgelaufen, aktuelle Zeit:" DATEVERG "/ bezahlt bis:" INCKFZDATTIME INTO SENDMSGIN /* INCDESCRIPTION
+    MOVE SENDMSGIN TO INCDESCRIPTION /* Weil Rückgabe an aufrufendes Prog
+    CALLNAT 'SENDMSG' SENDMSGIN SENDMSGRC        
+  END-IF
+END-IF
+END-WORK 
+IF FOUND = FALSE AND INCDESCRIPTION EQ SCAN '/'
+  COMPRESS INCDESCRIPTION " Parkverstoß, aktuelle Zeit:" DATEVERG INTO SENDMSGIN /* INCDESCRIPTION
+  MOVE SENDMSGIN TO INCDESCRIPTION /* Weil Rückgabe an aufrufendes Prog
+  CALLNAT 'SENDMSG' SENDMSGIN SENDMSGRC
+END-IF
+*
+END

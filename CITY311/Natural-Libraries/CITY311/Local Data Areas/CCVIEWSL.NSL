@@ -1,0 +1,49 @@
+DEFINE DATA LOCAL
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/** New Local Data Area CMAVIEWS.
+/**
+/** <h1>LDA CCVIEWSL.</h1>
+/** <p>Locale Data Area (LDA)</p>
+/** <p>New important statements:</p>
+/**     <ul type="square">
+/**         <li>1. Enthält Daten eines Incidents</li>
+/**     </ul>
+/** <p>Historie Änderungen</p>
+/**     <ul type="square">
+/**         <li>1.</li>
+/**     </ul>
+/** :author rfa
+/* TODO Enter your data definitions here
+1 INCV VIEW OF D311INC
+  2 INC-ID (A20)
+  2 INC-TYPE (A25)
+  2 INC-DESC (A250)
+  2 INC-OPENED (A20)
+  2 INC-EST-END (A20)
+  2 INC-PRIO (A10)
+  2 INC-STAT (A20)
+  2 INC-REPORTER /*
+    3 INC-REP-FNAME (A50)
+    3 INC-REP-LNAME (A50)
+    3 INC-REP-MAIL (A50)
+    3 INC-REP-PHONE (A50)
+    3 INC-REP-CALLBACK (A1)
+  2 INC-ADDRESS /*
+    3 INC-CITY (A50)
+    3 INC-STREET (A50)
+    3 INC-ZIP (A10)
+    3 INC-GPSLATI (A10)
+    3 INC-GPSLONG (A10)
+    2 C*INC-HISTORY
+2 INC-HISTORY (1:500) /*
+  3 HIS-DAT (A20)
+  3 HIS-AUTHOR (A20)
+  3 HIS-PRIO (A10)
+  3 HIS-STAT (A20)
+  3 HIS-END (A20)
+  3 HIS-DESC (A250)
+  2 INC-PHOTOBIN (A/1:191) DYNAMIC /* LOB/NB/NV
+END-DEFINE

@@ -1,0 +1,66 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** NEW SUBPROGRAM C6PFAHNN.
+/**
+/** <h1>Subprogram C6PFAHNN.</h1>
+/** <p>Subprogram, welches von C6REPINC gerufen wird.</p>
+/** <p>New important statements:</p>
+/**     <ul type="square">
+/**         <li>Wurde als Ergänzung für die Polizei vorgenommen</li>
+/**         <li>Prüft gegen die Fahndungsliste INPOL, ob das KFZ zur Fahndung ausgeschrieben ist.</li>
+/**     </ul>
+/** <p>Historie Änderungen</p>
+/**     <ul type="square">
+/**         <li>1.</li>
+/**     </ul>
+/** :author rfa
+/* TODO ENTER YOUR CODE HERE
+DEFINE DATA PARAMETER
+1 INPOLAKZ (A17)
+1 INCDESCRIPTION (A250)
+1 FOUNDFAHN (L)
+1 FAHNADRESS (A100)
+LOCAL USING SENDMS1 
+LOCAL
+1 WORKFILENAME1  (A100)
+1 WORKFILENAME2  (A100)
+1 WORK1RECORD (A200)
+1 INCKFZKZ1 (A10)
+1 INCKFZKZ2 (A10)
+1 INCKFZKZREST (A50)
+END-DEFINE
+/*ESCAPE ROUTINE
+/*
+COMPRESS 'C:\NATRPClog\PPMfr\INPOLAKZ\KfzFahndungsliste.txt' INTO WORKFILENAME1 LEAVING NO
+COMPRESS 'C:\NATRPClog\PPMfr\INPOLAKZ\KfzTrefferliste.txt'   INTO WORKFILENAME2 LEAVING NO
+DEFINE WORK FILE 1 WORKFILENAME1
+DEFINE WORK FILE 2 WORKFILENAME2 ATTRIBUTES 'APPEND' 
+/*
+IF NOT INCDESCRIPTION EQ SCAN '-'
+  ESCAPE ROUTINE /* Weil kein Kennzeichen in Beschreibung
+END-IF
+
+SEPARATE INCDESCRIPTION INTO INCKFZKZ1 INCKFZKZREST WITH DELIMITER "/"
+/*
+/*FOUNDFAHN := FALSE
+READ WORK 1 WORK1RECORD 
+
+SEPARATE WORK1RECORD INTO INCKFZKZ2 INCKFZKZREST WITH DELIMITER "/"
+IF INCKFZKZ1 = INCKFZKZ2
+  WRITE WORK 2 "KFZ:" INCKFZKZ2 " / " INCKFZKZREST " / " FAHNADRESS
+  CLOSE WORK 2
+  COMPRESS INCDESCRIPTION "/ Achtung:" INCKFZKZ2 "/" INCKFZKZREST INTO SENDMSGIN /* INTO INCDESCRIPTION
+ /* ESCAPE ROUTINE
+ /* MOVE INCDESCRIPTION TO SENDMSGIN 
+/*  MOVE 'TEST N-P1-123 / rfa / Achtung: N-P1-123 / Zur Fahndung ausgeschrieben in Deutschland'  TO SENDMSGIN 
+ /* MOVE 'Test' TO INCDESCRIPTION
+ /*  MOVE INCDESCRIPTION TO SENDMSGIN 
+   MOVE SENDMSGIN TO INCDESCRIPTION /* Weil Rückgabe an aufrufendes Prog
+   CALLNAT 'SENDMSG' SENDMSGIN SENDMSGRC
+   FOUNDFAHN := TRUE
+END-IF
+END-WORK 
+*
+END
