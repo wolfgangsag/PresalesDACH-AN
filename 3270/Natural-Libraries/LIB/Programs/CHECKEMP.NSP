@@ -1,0 +1,29 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+define data local using NSWEMPLO
+local
+1 #wert (a19)
+END-DEFINE
+read (20) NSWEMPLO logical by  personnel-id
+*     starting from '11100112'
+
+write (1) personnel-id name first-name city
+
+
+end-read
+
+
+
+
+*
+
+*
+* close printer 1
+* printer 1 is user controlled
+* (CLOSE MODE = USER)
+*
+close printer (1)
+end

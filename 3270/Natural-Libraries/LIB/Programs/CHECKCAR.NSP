@@ -1,0 +1,25 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+define data local using NSWVEHIC
+local
+1 make-histo view of vehicles
+  2 make (a20)
+1 #make (a20)
+1 #model (a20)
+END-DEFINE
+histogram make-histo for make
+    assign #make = make
+/*
+   read nswvehic logical by make
+/*   sorted by make model
+   
+display make model
+    end-read
+
+end-histogram
+
+
+end

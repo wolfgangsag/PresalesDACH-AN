@@ -1,0 +1,57 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* MAP2: PROTOTYPE              --- CREATED BY WNT 9.1.2 ---
+* INPUT USING MAP 'XXXXXXXX'
+*     M-COMMAND M-TITLE
+DEFINE DATA PARAMETER
+1 M-COMMAND (A001)
+1 M-TITLE (A050)
+END-DEFINE
+FORMAT PS=021 LS=081 ZP=OFF SG=OFF KD=ON  IP=OFF
+* MAP2: MAP PROFILES *****************************        200***********
+* .TTAAAMMOO   D I D I N D I D I        ?_)^&:+(                       *
+* 023080        N0NNUCN____         X        01 SYSDBA  YR             *
+************************************************************************
+INPUT          (     IP=OFF                                           /*
+                                                                       )
+ 002T 'SOFTWARE A.G.'
+ 025T '*** EMPLOYEE MANAGEMENT ***'
+ 069T *DATE  (AD=DLO CD=NE ) /*.01S008 A008 .
+/
+ 002T *PROGRAM  (AD=DLO ) /*.01S008 A008 .
+ 017T M-TITLE  (AD=DLO CD=YE ) /*.01U050 A050 .
+ 069T *TIMX  (AD=DLO ) /*.01S008 T    .
+/
+ 001T '-' (079)
+/
+/
+/
+/
+/
+/
+ 029T '1'(I)
+ 033T 'Englisch'
+/
+/
+ 029T '2'(I)
+ 033T 'Deutsch'
+/
+/
+ 029T '4'(I)
+ 033T 'Spanisch'
+/
+/
+/
+/
+/
+/
+ 033T 'Auswahl:'
+ 042T M-COMMAND  (AD=ILMFHT'_' CD=PI ) /*.99U001 A001 .
+/
+/
+* MAP2: VALIDATION *****************************************************
+* MAP2: END OF MAP *****************************************************
+END

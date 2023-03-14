@@ -1,0 +1,48 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* MAP2: PROTOTYPE              --- CREATED BY WNT 9.1.2 ---
+* INPUT USING MAP 'XXXXXXXX'
+*     M-DSCOUNTRY(*) M-SELECTION(*)
+DEFINE DATA PARAMETER
+1 M-DSCOUNTRY (A015/00001:00005)
+1 M-SELECTION (A001/00001:00005)
+END-DEFINE
+FORMAT PS=011 LS=037 ZP=OFF SG=OFF KD=ON  IP=OFF
+* MAP2: MAP PROFILES *****************************        200***********
+* .TTAAAMMOO   D I D I N D I D I        ?_)^&:+(                       *
+* 013036        N0NNUCN____         X        01 SYSDBA  YR             *
+************************************************************************
+INPUT          (     IP=OFF                                           /*
+                                                                       )
+/
+/
+ 006T 'C'(I)
+ 011T 'Country'(I)
+/
+ 006T '='
+ 008T '==============='
+/
+ 006T M-SELECTION (001)  (AD=ILAFHT'_' ) /*.99U001 A001 .
+   /**A1000050000100001000010000100001100005001001000001000H0
+ 008T M-DSCOUNTRY (001)  (AD=LO ) /*.99U015 A015 .
+   /**A1000050000100001000010000100001100005001001000001000H0
+/
+ 006T M-SELECTION (002)  (AD=ILAFHT'_' ) /*.99U001 A001 .
+ 008T M-DSCOUNTRY (002)  (AD=LO ) /*.99U015 A015 .
+/
+ 006T M-SELECTION (003)  (AD=ILAFHT'_' ) /*.99U001 A001 .
+ 008T M-DSCOUNTRY (003)  (AD=LO ) /*.99U015 A015 .
+/
+ 006T M-SELECTION (004)  (AD=ILAFHT'_' ) /*.99U001 A001 .
+ 008T M-DSCOUNTRY (004)  (AD=LO ) /*.99U015 A015 .
+/
+ 006T M-SELECTION (005)  (AD=ILAFHT'_' ) /*.99U001 A001 .
+ 008T M-DSCOUNTRY (005)  (AD=LO ) /*.99U015 A015 .
+/
+/
+* MAP2: VALIDATION *****************************************************
+* MAP2: END OF MAP *****************************************************
+END

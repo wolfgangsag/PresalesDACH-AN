@@ -1,0 +1,307 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* ---------------------------------------------------------------------*
+* Member          NSWVEEMP
+* Component       EWVDEMO
+* Created         April 2004
+* Copyright       (c) Copyright Software AG 2004. All rights reserved.
+* Remarks         Browse vehicles by employee
+*
+* ---------------------------------------------------------------------*
+*
+DEFINE DATA
+       GLOBAL USING NSW-GDA
+       LOCAL USING NSWEMPLO
+       LOCAL USING NSWVEHIC
+       LOCAL
+1 CONTROL           (C/10)
+1 M-TITLE           (A50)
+1 MSG-PAR           (A20)
+1 MESSAGE           (N4)
+1 INDICATION        (I4)
+1 MAP-TABLE
+  2 M-LAST_NAME     (A20/10)
+  2 M-CITY          (A10/10)
+  2 M-KEY           (A8/10)
+  2 M-DATE-OF-BIRTH (N6/10)
+  2 M-SURNAME       (A20/10)
+  2 M-SELECTION     (A1/10)
+1 M-KEY-INI         (A8)
+1 M-PAGE            (N3)
+1 T-PAGING          (A8/21)
+1 INDX-PAGING       (N2)
+1 I                 (N2)
+1 CL-KEY            (A8)
+1 CL-AUX            (A8)
+1 KEY-AUX           (A8)
+1 CHANGE            (L)
+1 J                 (N2)
+1 NUM-INDICATIONS   (N2)
+1 M-PRG-ERROR       (A8)
+1 M-CONFIRM         (A1)
+1 M-BIRTH           (A6)
+1 REDEFINE M-BIRTH
+  2 #M-YEAR         (N2)
+  2 #M-MONTH        (N2)
+  2 #M-DAY          (N2)
+1 REDEFINE M-BIRTH
+   2 #M-DATE-OF-BIRTH (N6)
+END-DEFINE
+*
+ON ERROR
+  INCLUDE NSWERR1C
+  ESCAPE ROUTINE
+END-ERROR
+*
+DEFINE WINDOW CONFIRM
+  SIZE 12*51
+  BASE 10/25
+  CONTROL WINDOW
+*
+SET KEY ALL
+INCLUDE NSWPFK1C
+INCLUDE NSWPFK2C
+*
+MOVE 1 TO M-PAGE
+MOVE 1 TO INDX-PAGING
+MOVE ' ' TO CL-KEY
+PERFORM FILL-PAGE
+DECIDE ON FIRST VALUE OF *LANGUAGE
+  VALUE 1
+    MOVE '        Browse Vehicles By Employee'       TO M-TITLE
+  VALUE 2
+    MOVE '  Fahrzeugdaten nach Mitarbeiter anzeigen' TO M-TITLE
+  VALUE 4
+    MOVE '    Consulta de Veh?culos por Empleado'    TO M-TITLE
+  NONE VALUE
+    IGNORE
+END-DECIDE
+*
+R1. REPEAT
+*
+  RESET CONTROL(*)
+  PERFORM PROTECT-INDICATIONS
+  IF MESSAGE EQ 0
+    MOVE 18 TO MESSAGE
+  END-IF
+*
+  INPUT WITH TEXT *MESSAGE, MSG-PAR MARK INDICATION USING MAP 'NSWVEEM&'
+*
+  DECIDE ON FIRST VALUE OF *PF-KEY
+    VALUE 'PF3'
+      ESCAPE BOTTOM
+    VALUE 'PF7'
+      RESET MESSAGE
+      PERFORM VALIDATIONS
+      IF MESSAGE NE 0
+        ESCAPE TOP
+      END-IF
+      IF CHANGE
+        MOVE 12 TO MESSAGE
+        ESCAPE TOP
+      END-IF
+      IF INDX-PAGING EQ 1
+        MOVE 7 TO MESSAGE
+        ESCAPE TOP
+      END-IF
+      M-PAGE := M-PAGE - 1
+      INDX-PAGING := INDX-PAGING - 1
+      MOVE T-PAGING(INDX-PAGING) TO CL-AUX
+      PERFORM FILL-PAGE
+      IF INDX-PAGING EQ 1
+        MOVE 7 TO  MESSAGE
+        ESCAPE TOP
+      END-IF
+    VALUE 'PF8'
+      RESET MESSAGE
+      PERFORM VALIDATIONS
+      IF MESSAGE NE 0
+        ESCAPE TOP
+      END-IF
+      IF CHANGE
+        MOVE 12 TO MESSAGE
+        ESCAPE TOP
+      END-IF
+      IF CL-AUX EQ ' '
+        MOVE 8 TO MESSAGE
+        ESCAPE TOP
+      ELSE
+        IF INDX-PAGING EQ 21
+          MOVE T-PAGING(2:21) TO T-PAGING(1:20)
+        ELSE
+          ADD 1 TO INDX-PAGING
+        END-IF
+        ADD 1 TO M-PAGE
+        PERFORM FILL-PAGE
+        IF CL-AUX EQ ' '
+          MOVE 8 TO MESSAGE
+          ESCAPE  TOP
+        END-IF
+      END-IF
+    VALUE 'ENTR'
+      RESET MESSAGE
+      PERFORM VALIDATIONS
+      IF MESSAGE NE 0
+        ESCAPE TOP
+      END-IF
+      IF CHANGE
+        PERFORM REPOSITION
+      END-IF
+      PERFORM PROCESS-COMMAND
+    NONE VALUE
+      MOVE 6 TO MESSAGE
+      ESCAPE TOP
+  END-DECIDE
+*
+END-REPEAT
+*
+* --------------------------------------------
+DEFINE SUBROUTINE FILL-PAGE
+* --------------------------------------------
+RESET MAP-TABLE CL-KEY I
+MOVE CL-AUX TO  CL-KEY
+RESET CL-AUX
+READ NSWEMPLO BY PERSONNEL-ID EQ CL-KEY
+  F5. FIND NUMBER NSWVEHIC WITH PERSONNEL-ID EQ NSWEMPLO.PERSONNEL-ID
+  IF *NUMBER(F5.) GE 1
+    ADD 1 TO I
+    IF I LE 10
+      MOVE PERSONNEL-ID TO M-KEY(I)
+      MOVE EDITED BIRTH (EM=DDMMYY) TO M-BIRTH
+      MOVE #M-DATE-OF-BIRTH TO M-DATE-OF-BIRTH(I)
+      MOVE FIRST-NAME TO M-LAST_NAME(I)
+      MOVE ADDRESS-LINE(1) TO M-CITY(I)
+      MOVE NAME TO M-SURNAME(I)
+    ELSE
+      MOVE PERSONNEL-ID TO CL-AUX
+      ESCAPE ROUTINE
+    END-IF
+    IF I EQ 1
+     MOVE PERSONNEL-ID TO T-PAGING(INDX-PAGING)
+    END-IF
+  END-IF
+END-READ
+IF M-KEY(1) EQ ' '
+  MOVE 8 TO MESSAGE                     /* END OF DATA
+END-IF
+END-SUBROUTINE
+*
+* -------------------------------------------
+DEFINE SUBROUTINE VALIDATIONS
+* -------------------------------------------
+*
+IF M-KEY-INI NE KEY-AUX
+  MOVE TRUE TO CHANGE
+END-IF
+*
+RESET NUM-INDICATIONS
+FOR J EQ 1 TO 10
+  IF M-SELECTION(J) NE ' '
+    ADD 1 TO NUM-INDICATIONS
+  END-IF
+END-FOR
+IF NUM-INDICATIONS GT 1
+  MOVE 5 TO MESSAGE
+  DECIDE ON FIRST VALUE OF *LANGUAGE
+   VALUE 1
+    MOVE 'one employee'      TO MSG-PAR
+   VALUE 2
+    MOVE 'einen Mitarbeiter' TO MSG-PAR
+   VALUE 4
+    MOVE 'un empleado'       TO MSG-PAR
+   NONE VALUE
+    IGNORE
+  END-DECIDE
+  COMPUTE INDICATION = POS(M-SELECTION(1))
+  ESCAPE ROUTINE
+END-IF
+FOR J EQ 1 TO 10
+  DECIDE ON FIRST VALUE OF *LANGUAGE
+   VALUE 1
+     IF M-SELECTION(J) NE 'V' AND M-SELECTION(J) NE ' '
+       MOVE 4 TO MESSAGE
+       MOVE '"V"' TO MSG-PAR
+       COMPUTE INDICATION = POS(M-SELECTION(J))
+       ESCAPE ROUTINE
+     END-IF
+   VALUE 2
+     IF M-SELECTION(J) NE 'Z' AND M-SELECTION(J) NE ' '
+       MOVE 4 TO MESSAGE
+       MOVE '"Z"' TO MSG-PAR
+       COMPUTE INDICATION = POS(M-SELECTION(J))
+       ESCAPE ROUTINE
+     END-IF
+   VALUE 4
+     IF M-SELECTION(J) NE 'C' AND M-SELECTION(J) NE ' '
+       MOVE 4 TO MESSAGE
+       MOVE '"C"' TO MSG-PAR
+       COMPUTE INDICATION = POS(M-SELECTION(J))
+       ESCAPE ROUTINE
+     END-IF
+   NONE VALUE
+    IGNORE
+  END-DECIDE
+END-FOR
+END-SUBROUTINE
+*
+* -----------------------------------------------
+DEFINE SUBROUTINE PROTECT-INDICATIONS
+* -----------------------------------------------
+FOR J EQ 1 TO 10
+  IF M-KEY(J) EQ ' '
+    MOVE (AD=NP) TO CONTROL(J)
+  END-IF
+END-FOR
+END-SUBROUTINE
+*
+* ------------------------------------------------
+DEFINE SUBROUTINE PROCESS-COMMAND
+* ------------------------------------------------
+FOR J EQ 1 TO 10
+  DECIDE ON FIRST VALUE OF *LANGUAGE
+   VALUE 1
+     DECIDE ON FIRST VALUE OF M-SELECTION(J)
+       VALUE 'V'
+         MOVE M-KEY(J) TO G-KEY
+         RESET M-SELECTION(*)
+         FETCH RETURN 'NSWVEECP'
+       NONE VALUE
+         IGNORE
+     END-DECIDE
+   VALUE 2
+     DECIDE ON FIRST VALUE OF M-SELECTION(J)
+       VALUE 'Z'
+         MOVE M-KEY(J) TO G-KEY
+         RESET M-SELECTION(*)
+         FETCH RETURN 'NSWVEECP'
+       NONE VALUE
+         IGNORE
+     END-DECIDE
+   VALUE 4
+     DECIDE ON FIRST VALUE OF M-SELECTION(J)
+       VALUE 'C'
+         MOVE M-KEY(J) TO G-KEY
+         RESET M-SELECTION(*)
+         FETCH RETURN 'NSWVEECP'
+       NONE VALUE
+         IGNORE
+     END-DECIDE
+   NONE VALUE
+    IGNORE
+  END-DECIDE
+END-FOR
+END-SUBROUTINE
+*
+* --------------------------------------------------
+DEFINE SUBROUTINE REPOSITION
+* --------------------------------------------------
+RESET INITIAL CHANGE
+MOVE M-KEY-INI TO CL-AUX KEY-AUX
+MOVE 1 TO M-PAGE INDX-PAGING
+PERFORM FILL-PAGE
+END-SUBROUTINE
+*
+END

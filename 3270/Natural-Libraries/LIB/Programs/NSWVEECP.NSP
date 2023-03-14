@@ -1,0 +1,123 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* ---------------------------------------------------------------------*
+* Member          NSWVEECP
+* Component       EWVDEMO
+* Created         April 2004
+* Copyright       (c) Copyright Software AG 2004. All rights reserved.
+* Remarks         View vehicles
+*
+* ---------------------------------------------------------------------*
+*
+DEFINE DATA
+       GLOBAL USING NSW-GDA
+       LOCAL USING  NSWVEHIC
+       LOCAL USING  NSWEMPLO
+       LOCAL
+1 T-CDCURR          (A3/6)
+1 T-DSCURR          (A16/6)
+1 M-TITLE           (A50)
+1 C-VEHNUMBER       (C)
+1 MSG-PAR           (A20)
+1 MESSAGE           (N4)
+1 INDICATION        (I4)
+1 M-MAP-DATA
+  2 M-KEY           (A8)
+  2 M-TNAME         (A30)
+  2 M-DAY           (N2)
+  2 M-MONTH         (N2)
+  2 M-YEAR          (N4)
+  2 M-MODELYEAR     (N4)
+  2 M-VEHCLASS      (A1)
+  2 M-COLOR         (A20)
+  2 M-CURRENCY      (A3)
+  2 M-DSCURR        (A16)
+  2 M-MAINT-COST    (N6)
+  2 M-INDICATION    (A20)
+  2 M-VEHNUMBER     (A15)
+  2 M-MODEL         (A20)
+1 M-PRG-ERROR       (A8)
+1 I                 (N2)
+1 FILLER            (L)
+1 DATE-AUX          (N8)
+1 REDEFINE DATE-AUX
+   2 YEAR-AUX       (N4)
+   2 MONTH-AUX      (N2)
+   2 DAY-AUX        (N2)
+1 VEHNUMBER-AUX     (A15)
+END-DEFINE
+*
+ON ERROR
+   INCLUDE NSWERR1C
+   ESCAPE ROUTINE
+END-ERROR
+*
+INCLUDE NSWDIV2C
+*
+SET KEY ALL
+INCLUDE NSWPFK1C
+*
+DECIDE ON FIRST VALUE OF *LANGUAGE
+  VALUE 1
+    MOVE '               View Vehicles'      TO M-TITLE
+  VALUE 2
+    MOVE '           Fahrzeugdaten anzeigen' TO M-TITLE
+  VALUE 4
+    MOVE '          Consulta de Veh?culos'   TO M-TITLE
+  NONE VALUE
+    IGNORE
+END-DECIDE
+*
+R2. READ NSWVEHIC BY PERSONNEL-ID EQ G-KEY THRU G-KEY
+  MOVE NSWVEHIC.REG-NUM TO M-VEHNUMBER
+  MOVE 19 TO MESSAGE
+  PERFORM FILL-MAP-DATA
+*
+  R1. REPEAT
+    INPUT WITH TEXT *MESSAGE, MSG-PAR MARK INDICATION USING MAP 'NSWVEEC&'
+    DECIDE ON FIRST VALUE OF *PF-KEY
+      VALUE 'ENTR'
+        ESCAPE BOTTOM  (R1.)
+      VALUE 'PF3'
+        ESCAPE BOTTOM  (R2.)
+      NONE VALUE
+        MOVE 6 TO MESSAGE
+        ESCAPE TOP
+    END-DECIDE
+  END-REPEAT
+*
+END-READ
+*
+* --------------------------------------------
+DEFINE SUBROUTINE FILL-MAP-DATA
+* --------------------------------------------
+F4. FIND(1) NSWVEHIC WITH REG-NUM EQ M-VEHNUMBER
+  MOVE NSWVEHIC.REG-NUM TO M-VEHNUMBER
+  MOVE NSWVEHIC.MAKE    TO M-INDICATION
+  MOVE NSWVEHIC.YEAR    TO M-MODELYEAR
+  MOVE NSWVEHIC.COLOR   TO M-COLOR
+  MOVE NSWVEHIC.MODEL   TO M-MODEL
+  MOVE NSWVEHIC.PERSONNEL-ID TO M-KEY
+  F5. FIND NSWEMPLO WITH PERSONNEL-ID EQ NSWVEHIC.PERSONNEL-ID
+    COMPRESS NAME FIRST-NAME   INTO M-TNAME
+  END-FIND
+  MOVE NSWVEHIC.CLASS    TO M-VEHCLASS
+  MOVE NSWVEHIC.DATE-ACQ TO DATE-AUX
+  MOVE DAY-AUX TO M-DAY
+  MOVE MONTH-AUX TO M-MONTH
+  MOVE YEAR-AUX TO M-YEAR
+  MOVE NSWVEHIC.CURR-CODE TO M-CURRENCY
+  FOR I EQ 1 TO 6
+    IF M-CURRENCY EQ T-CDCURR(I)
+      MOVE T-DSCURR(I) TO M-DSCURR
+      ESCAPE BOTTOM
+    END-IF
+  END-FOR
+  MOVE NSWVEHIC.MAINT-COST(1) TO M-MAINT-COST
+END-FIND
+END-SUBROUTINE
+*
+END

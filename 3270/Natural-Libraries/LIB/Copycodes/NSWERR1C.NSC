@@ -1,0 +1,13 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+**************************************************************************
+*  CopyCode .....: nswerr1c                                             **
+*  Descripcion ..: Error routine                                        **
+*  Created ......: April 2004                                           **
+*  Copyright ....: (c) Copyright Software AG 2004. All rights reserved. **
+**************************************************************************
+*
+INPUT USING MAP 'NSWERR1&'

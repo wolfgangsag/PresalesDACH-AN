@@ -1,0 +1,10 @@
+DEFINE DATA GLOBAL
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+1 EMPEDT-DLG (I4)
+1 EMPSEL-DLG (I4)
+1 EMPSTA-DLG (I4)
+1 +PERS-ID (A8)
+END-DEFINE

@@ -1,0 +1,256 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* ---------------------------------------------------------------------*
+* Member          NSWEHPMP
+* Component       EWVDEMO
+* Created         April 2004
+* Copyright       (c) Copyright Software AG 2004. All rights reserved.
+* Remarks         Modify vehicles
+*
+* ---------------------------------------------------------------------*
+*
+DEFINE DATA
+       GLOBAL USING NSW-GDA
+       LOCAL USING NSWEMPLO
+       LOCAL USING NSWVEHIC
+       LOCAL
+1 T-CDCURR          (A3/6)
+1 T-DSCURR          (A16/6)
+1 M-TITLE           (A50)
+1 C-VEHNUMBER       (C)
+1 MSG-PAR           (A20)
+1 MESSAGE           (N4)
+1 INDICATION        (I4)
+1 M-MAP-DATA
+  2 M-KEY           (A8)
+  2 M-TNAME         (A30)
+  2 M-DATE-ACQ      (N8)
+  2 REDEFINE M-DATE-ACQ
+    3 M-DAY         (N2)
+    3 M-MONTH       (N2)
+    3 M-YEAR        (N4)
+    3 REDEFINE M-YEAR
+      4 M-YEAR-NO   (N2)
+      4 M-YEAR-NX   (N2)
+  2 M-MODELYEAR     (N4)
+  2 M-VEHCLASS      (A1)
+  2 M-COLOR         (A20)
+  2 M-CURRENCY      (A3)
+  2 M-DSCURR        (A16)
+  2 M-MAINT-COST    (N6)
+  2 M-INDICATION    (A20)
+  2 M-VEHNUMBER     (A15)
+  2 M-MODEL         (A20)
+1 M-PRG-ERROR       (A8)
+1 I                 (N2)
+1 FILLER            (L)
+1 M-ACQDATE         (N8)
+1 REDEFINE M-ACQDATE
+  2 #M-YEAR         (N4)
+  2 #M-MONTH        (N2)
+  2 #M-DAY          (N2)
+END-DEFINE
+*
+ON ERROR
+   INCLUDE NSWERR1C
+   ESCAPE ROUTINE
+END-ERROR
+*
+INCLUDE NSWDIV2C
+*
+SET KEY ALL
+INCLUDE NSWPFK1C
+INCLUDE NSWPFK3C
+*
+DECIDE ON FIRST VALUE OF *LANGUAGE
+  VALUE 1
+    MOVE '              Modify Vehicles   '  TO M-TITLE
+  VALUE 2
+    MOVE '            Fahrzeugdaten {ndern'     TO M-TITLE
+  VALUE 4
+    MOVE '        Modificaci?n de Veh?culos' TO M-TITLE
+  NONE VALUE
+   IGNORE
+END-DECIDE
+*
+R1. REPEAT
+*
+  INPUT WITH TEXT *MESSAGE, MSG-PAR MARK INDICATION USING MAP 'NSWVEHM&'
+*
+  DECIDE ON FIRST VALUE OF *PF-KEY
+    VALUE 'ENTR'
+      IF FILLER EQ FALSE
+        RESET MESSAGE
+        PERFORM VALIDATIONS-2
+        IF MESSAGE NE 0
+           ESCAPE TOP
+        END-IF
+        PERFORM FILL-MAP-DATA
+      END-IF
+      RESET MESSAGE
+      PERFORM VALIDATIONS
+      IF MESSAGE NE 0
+        ESCAPE TOP
+      ELSE
+        MOVE 14 TO MESSAGE
+        ESCAPE TOP
+      END-IF
+    VALUE 'PF3'
+      IF FILLER
+        RESET C-VEHNUMBER M-MAP-DATA
+        RESET INITIAL FILLER
+        ESCAPE TOP
+      END-IF
+      ESCAPE BOTTOM
+    VALUE 'PF5'
+      RESET MESSAGE
+      PERFORM VALIDATIONS
+      IF MESSAGE NE 0
+        ESCAPE TOP
+      END-IF
+      PERFORM CONFIRMATION
+      MOVE 11 TO MESSAGE
+      COMPUTE INDICATION = POS(M-VEHNUMBER)
+      ESCAPE TOP
+    NONE VALUE
+      MOVE 6 TO MESSAGE
+      ESCAPE TOP
+  END-DECIDE
+*
+END-REPEAT
+* --------------------------------------------------------
+DEFINE SUBROUTINE VALIDATIONS-2
+* --------------------------------------------------------
+F1. FIND NUMBER NSWVEHIC WITH REG-NUM EQ M-VEHNUMBER
+  IF *NUMBER (F1.) EQ 0
+    REINPUT USING HELP MARK *M-VEHNUMBER
+  END-IF
+END-SUBROUTINE
+*
+* -----------------------------------------------
+DEFINE SUBROUTINE VALIDATIONS
+* -----------------------------------------------
+IF M-KEY NE ' '
+  F2. FIND NUMBER NSWEMPLO WITH PERSONNEL-ID EQ M-KEY
+  IF *NUMBER(F2.) EQ 0
+    REINPUT USING HELP MARK *M-KEY
+  END-IF
+END-IF
+*
+IF M-VEHCLASS NE ' '
+  IF M-VEHCLASS NE 'E' AND M-VEHCLASS NE 'P'
+    MOVE 2 TO MESSAGE
+    DECIDE ON FIRST VALUE OF *LANGUAGE
+     VALUE 1
+      MOVE 'vehicle class'  TO MSG-PAR
+     VALUE 2
+      MOVE 'Fahrzeugklasse' TO MSG-PAR
+     VALUE 4
+      MOVE 'clase de veh?culo'  TO MSG-PAR
+     NONE VALUE
+      IGNORE
+    END-DECIDE
+    COMPUTE INDICATION = POS(M-VEHCLASS)
+    ESCAPE ROUTINE
+  END-IF
+END-IF
+*
+RESET M-YEAR-NO
+IF M-DATE-ACQ NE 0
+  IF M-YEAR GT 50
+    MOVE 19 TO M-YEAR-NO
+  ELSE
+    MOVE 20 TO M-YEAR-NO
+  END-IF
+  IF M-DATE-ACQ NE MASK(DDMMYYYY)
+    MOVE 9 TO MESSAGE
+    COMPUTE INDICATION = POS(M-DAY)
+    ESCAPE ROUTINE
+  END-IF
+END-IF
+*
+IF M-CURRENCY NE ' '
+  IF M-CURRENCY NE 'USD' AND M-CURRENCY NE 'DM' AND
+     M-CURRENCY NE 'FRA' AND M-CURRENCY NE 'UKL' AND
+     M-CURRENCY NE 'PTA' AND M-CURRENCY NE 'DKK'
+       MOVE 2 TO MESSAGE
+       DECIDE ON FIRST VALUE OF *LANGUAGE
+        VALUE 1
+         MOVE 'currency'      TO MSG-PAR
+        VALUE 2
+         MOVE 'W{hrung' TO MSG-PAR
+        VALUE 4
+         MOVE 'divisa'       TO MSG-PAR
+        NONE VALUE
+         IGNORE
+       END-DECIDE
+       COMPUTE INDICATION = POS(M-CURRENCY)
+       ESCAPE ROUTINE
+  ELSE
+    FOR I EQ 1 TO 6
+      IF M-CURRENCY EQ T-CDCURR(I)
+        MOVE T-DSCURR(I) TO M-DSCURR
+        ESCAPE BOTTOM
+      END-IF
+    END-FOR
+  END-IF
+END-IF
+END-SUBROUTINE
+*
+* ----------------------------------------------------
+DEFINE SUBROUTINE CONFIRMATION
+* ----------------------------------------------------
+F3. FIND(1) NSWVEHIC WITH REG-NUM EQ M-VEHNUMBER
+  MOVE M-VEHNUMBER  TO NSWVEHIC.REG-NUM
+  MOVE M-INDICATION TO NSWVEHIC.MAKE
+  MOVE M-MODELYEAR  TO NSWVEHIC.YEAR
+  MOVE M-COLOR      TO NSWVEHIC.COLOR
+  MOVE M-MODEL      TO NSWVEHIC.MODEL
+  MOVE M-KEY        TO NSWVEHIC.PERSONNEL-ID
+  MOVE M-VEHCLASS   TO NSWVEHIC.CLASS
+  MOVE M-DAY        TO #M-DAY
+  MOVE M-MONTH      TO #M-MONTH
+  MOVE M-YEAR       TO #M-YEAR
+  MOVE M-ACQDATE    TO NSWVEHIC.DATE-ACQ
+  MOVE M-CURRENCY   TO NSWVEHIC.CURR-CODE
+  MOVE M-MAINT-COST     TO NSWVEHIC.MAINT-COST(1)
+  UPDATE (F3.)
+  END TRANSACTION
+END-FIND
+END-SUBROUTINE
+*
+* --------------------------------------------------
+DEFINE SUBROUTINE FILL-MAP-DATA
+* --------------------------------------------------
+MOVE (AD=P) TO C-VEHNUMBER
+MOVE TRUE TO FILLER
+F4. FIND(1) NSWVEHIC WITH REG-NUM EQ M-VEHNUMBER
+  MOVE NSWVEHIC.REG-NUM TO M-VEHNUMBER
+  MOVE NSWVEHIC.MAKE   TO M-INDICATION
+  MOVE NSWVEHIC.YEAR   TO M-MODELYEAR
+  MOVE NSWVEHIC.COLOR  TO M-COLOR
+  MOVE NSWVEHIC.MODEL  TO M-MODEL
+  MOVE NSWVEHIC.PERSONNEL-ID TO M-KEY
+  FIND(1) NSWEMPLO WITH PERSONNEL-ID = M-KEY
+    COMPRESS NAME FIRST-NAME INTO M-TNAME
+  END-FIND
+  MOVE NSWVEHIC.CLASS    TO M-VEHCLASS
+  MOVE NSWVEHIC.DATE-ACQ TO M-ACQDATE
+  MOVE #M-DAY            TO M-DAY
+  MOVE #M-MONTH          TO M-MONTH
+  MOVE #M-YEAR           TO M-YEAR
+  MOVE NSWVEHIC.CURR-CODE TO  M-CURRENCY
+  FOR I EQ 1 TO 6
+    IF M-CURRENCY EQ T-CDCURR(I)
+      MOVE T-DSCURR(I) TO M-DSCURR
+      ESCAPE BOTTOM
+    END-IF
+  END-FOR
+  MOVE NSWVEHIC.MAINT-COST(1) TO M-MAINT-COST
+END-FIND
+END-SUBROUTINE
+*
+END

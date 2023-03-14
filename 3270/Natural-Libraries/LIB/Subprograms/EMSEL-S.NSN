@@ -1,0 +1,56 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+************************************************************************
+* Name....: EMSEL-S
+* Funktion: Lesen von Mitarbeitersätzen
+*           Startwert Personnel-ID,
+*           Rückgabe der Werte über PDA
+*           15 Sätze in eine Tabelle
+*           16.Satz = Startwert fürs weiterlesen
+* Autor...: HJC - Achim Certa
+************************************************************************
+DEFINE DATA
+       PARAMETER USING EMSEL     /* Kommunikationsbereich zum JAVA !
+       LOCAL USING EMSEL-V
+LOCAL
+1 #SUCH-PERSONNEL-ID-VON (A8)
+1 #INDEX    (I2)
+END-DEFINE
+************************************************************
+FORMAT LS=200
+
+**************************************************
+*  Übernahme des Suchbegriffes
+ASSIGN #SUCH-PERSONNEL-ID-VON  = #P-PERSONNEL-ID-VON
+*
+READ (16) EMPLOY-VIEW LOGICAL BY PERSONNEL-ID
+      STARTING FROM #SUCH-PERSONNEL-ID-VON
+*
+       ASSIGN #INDEX = #INDEX + 1
+       if #index le 15
+          ASSIGN #E-PERSONNEL-ID(#INDEX) = PERSONNEL-ID
+          ASSIGN #E-NAME(#INDEX) = NAME
+          ASSIGN #E-FIRST-NAME(#INDEX) = FIRST-NAME
+          ASSIGN #E-ZIP(#INDEX) = ZIP
+          ASSIGN #E-CITY(#INDEX) = CITY
+*          DISPLAY
+*            #E-PERSONNEL-ID(#INDEX)
+*            #E-NAME(#INDEX)
+*            #E-FIRST-NAME(#INDEX)
+*            #E-ZIP(#INDEX)
+*            #E-CITY(#INDEX)
+*            #INDEX
+          end-if
+*
+          if #index = 16
+             ASSIGN #P-PERSONNEL-ID-WEITER  = PERSONNEL-ID
+*            write 'hallo'  #SUCH-PERSONNEL-ID-WEITER
+            end-if
+
+
+END-READ
+*
+END

@@ -1,0 +1,16 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP windows-1252
+* <Natural Source Header
+/* TODO: Enter your code here
+DEFINE DATA LOCAL                                                       
+1 EMPL VIEW OF EMPLOYEES                                                
+  2 NAME                                                                
+  2 FIRST-NAME                                                          
+  2 BIRTH                                                               
+END-DEFINE                                                              
+*                                                                       
+READ (10) EMPL IN DESCENDING SEQUENCE BY NAME FROM 'ZZZ'          
+  DISPLAY *ISN NAME FIRST-NAME                     
+END-READ
+END

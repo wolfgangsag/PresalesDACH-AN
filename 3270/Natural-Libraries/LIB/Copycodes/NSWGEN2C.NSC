@@ -1,0 +1,32 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+**************************************************************************
+*  CopyCode .....: nswgen2c                                             **
+*  Descripcion ..: Fill the table with the gender information           **
+*  Created ......: April 2004                                           **
+*  Copyright ....: (c) Copyright Software AG 2004. All rights reserved. **
+**************************************************************************
+*
+DECIDE ON FIRST VALUE OF *LANGUAGE
+  VALUE 1
+    MOVE 'F' TO T-CDGEND(1)
+    MOVE 'Female'  TO T-DSGEND(1)
+    MOVE 'M'  TO T-CDGEND(2)
+    MOVE 'Male'    TO T-DSGEND(2)
+  VALUE 2
+    MOVE 'F' TO T-CDGEND(1)
+    MOVE 'Weiblich'  TO T-DSGEND(1)
+    MOVE 'M'  TO T-CDGEND(2)
+    MOVE 'M{nnlich'    TO T-DSGEND(2)
+  VALUE 4
+    MOVE 'F' TO T-CDGEND(1)
+    MOVE 'Female'  TO T-DSGEND(1)
+    MOVE 'M'  TO T-CDGEND(2)
+    MOVE 'Male'  TO T-DSGEND(2)
+  NONE VALUE
+    IGNORE
+END-DECIDE
+*

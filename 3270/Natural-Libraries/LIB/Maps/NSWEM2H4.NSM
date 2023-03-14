@@ -1,0 +1,86 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* MAP2: PROTOTYPE              --- CREATED BY WNT 9.1.2 ---
+* INPUT USING MAP 'XXXXXXXX'
+*     CONTROL(*) M-KEY(*) M-KEY-INI M-PAGE M-SELECTION(*) M-TNAME(*)
+DEFINE DATA PARAMETER
+1  CONTROL (C/00001:00010)
+1 M-KEY (A008/00001:00010)
+1 M-KEY-INI (A008)
+1 M-PAGE (N03.0)
+1 M-SELECTION (A001/00001:00010)
+1 M-TNAME (A027/00001:00010)
+END-DEFINE
+FORMAT PS=019 LS=053 ZP=OFF SG=OFF KD=ON  IP=OFF
+* MAP2: MAP PROFILES *****************************        200***********
+* .TTAAAMMOO   D I D I N D I D I        ?_)^&:+(                       *
+* 021052        N0NNUCN____         X        01 SYSDBA  YR             *
+************************************************************************
+INPUT          (     IP=OFF                                           /*
+                                                                       )
+/
+/
+ 005T 'Num Pag.:'
+ 015T M-PAGE  (AD=IRO ) /*.01U003 N03.0.
+/
+/
+/
+ 005T 'C'(I)
+ 008T 'C?digo'(I)
+ 025T 'Nombre'(I)
+/
+ 005T '='(I)
+ 007T '======== ==========================='(I)
+/
+ 005T M-SELECTION (001)  (AD=YLMFHT'_' CV=CONTROL(001) ) /*.99U001 A001 .
+   /**A1000100000100001000010000100001100010001001000001000HV
+ 007T M-KEY (001)  (AD=DLO ) /*.01U008 A008 .
+   /**A1000100000100001000010000100001100010001001000001000HV
+ 016T M-TNAME (001)  (AD=DLO ) /*.01U027 A027 .
+   /**A1000100000100001000010000100001100010001001000001000HV
+/
+ 005T M-SELECTION (002)  (AD=YLMFHT'_' CV=CONTROL(002) ) /*.99U001 A001 .
+ 007T M-KEY (002)  (AD=DLO ) /*.01U008 A008 .
+ 016T M-TNAME (002)  (AD=DLO ) /*.01U027 A027 .
+/
+ 005T M-SELECTION (003)  (AD=YLMFHT'_' CV=CONTROL(003) ) /*.99U001 A001 .
+ 007T M-KEY (003)  (AD=DLO ) /*.01U008 A008 .
+ 016T M-TNAME (003)  (AD=DLO ) /*.01U027 A027 .
+/
+ 005T M-SELECTION (004)  (AD=YLMFHT'_' CV=CONTROL(004) ) /*.99U001 A001 .
+ 007T M-KEY (004)  (AD=DLO ) /*.01U008 A008 .
+ 016T M-TNAME (004)  (AD=DLO ) /*.01U027 A027 .
+/
+ 005T M-SELECTION (005)  (AD=YLMFHT'_' CV=CONTROL(005) ) /*.99U001 A001 .
+ 007T M-KEY (005)  (AD=DLO ) /*.01U008 A008 .
+ 016T M-TNAME (005)  (AD=DLO ) /*.01U027 A027 .
+/
+ 005T M-SELECTION (006)  (AD=YLMFHT'_' CV=CONTROL(006) ) /*.99U001 A001 .
+ 007T M-KEY (006)  (AD=DLO ) /*.01U008 A008 .
+ 016T M-TNAME (006)  (AD=DLO ) /*.01U027 A027 .
+/
+ 005T M-SELECTION (007)  (AD=YLMFHT'_' CV=CONTROL(007) ) /*.99U001 A001 .
+ 007T M-KEY (007)  (AD=DLO ) /*.01U008 A008 .
+ 016T M-TNAME (007)  (AD=DLO ) /*.01U027 A027 .
+/
+ 005T M-SELECTION (008)  (AD=YLMFHT'_' CV=CONTROL(008) ) /*.99U001 A001 .
+ 007T M-KEY (008)  (AD=DLO ) /*.01U008 A008 .
+ 016T M-TNAME (008)  (AD=DLO ) /*.01U027 A027 .
+/
+ 005T M-SELECTION (009)  (AD=YLMFHT'_' CV=CONTROL(009) ) /*.99U001 A001 .
+ 007T M-KEY (009)  (AD=DLO ) /*.01U008 A008 .
+ 016T M-TNAME (009)  (AD=DLO ) /*.01U027 A027 .
+/
+ 005T M-SELECTION (010)  (AD=YLMFHT'_' CV=CONTROL(010) ) /*.99U001 A001 .
+ 007T M-KEY (010)  (AD=DLO ) /*.01U008 A008 .
+ 016T M-TNAME (010)  (AD=DLO ) /*.01U027 A027 .
+/
+/
+ 005T 'C?digo desde:'
+ 019T M-KEY-INI  (AD=ILMFHT'_' ) /*.99U008 A008 .
+* MAP2: VALIDATION *****************************************************
+* MAP2: END OF MAP *****************************************************
+END

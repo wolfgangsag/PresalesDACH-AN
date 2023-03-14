@@ -1,0 +1,53 @@
+<!-- ANT_MASTER_SCRIPT (do not remove) -->
+<project name="masterdeploy" default="" basedir=".">
+        
+  <target name="help"
+          description="shows a help screen">
+    <!-- display help screen -->
+    <echo message="ANT Master deployment utility"/>
+    <echo message=" "/>
+    <echo message="  This utility performs deployment processing for NaturalONE."/>
+    <echo message=" "/>
+    <echo message="  The following targets are available:"/>
+    <echo message="    checkout                   checkout project(s)"/>
+    <echo message="    update                     update project(s)"/>
+    <echo message="    build                      build project(s)"/>
+    <echo message=" "/> 
+    <echo message="    -logfile {filename}"/>
+    <echo message="        use given file for log"/>
+    <echo message=" "/>
+  </target>
+
+    
+  <target name="-setProperties">
+    <!-- Property logic: DO NOT EDIT NOR REMOVE -->
+    <!-- ### ANT_DEPLOY_PROPERTIES_START ### -->
+    <property name="natural.ant.master.create.deployment.zip.archive" value="YES" />
+    <property name="natural.ant.master.create.deployment.kit" value="YES" />
+    <property name="natural.ant.master.deploy.file.name" value="masterdeploy.xml" />
+    <property name="natural.ant.master.copy.deployment.jar.files" value="YES" />
+    <property name="natural.ant.master.project.name" value="KSK" />
+    <property name="natural.ant.master.package.directory" value="C:\temp" />
+    <property name="natural.ant.master.application.selects" value="CCENTRAL,Natural,false,dplcruisesdev.xml;CCENTRAL,Natural,false,dplcruisestest.xml;CITY311,Ajax,false,CITY311.xml;EXXREST,Natural,false,deploy2.xml;EXXREST,Natural,false,deploylib.xml;NTCRUISE,Natural,false,depl-luw-cruises-dev.xml;SICRUISES,Ajax,false,SICRUISES.xml;" />
+    <!-- ### ANT_DEPLOY_PROPERTIES_END ###   -->
+  </target>
+    
+
+  <target name="-init" depends="-printHeader,-setProperties">
+  </target>
+
+    
+  <target name="-printHeader">
+      <echo message="*****************************************************************"/> 
+      <echo message="*  ANT Master Deployment Script:"/> 
+      <echo message="*  ${ant.file}"/> 
+      <echo message="*****************************************************************"/> 
+  </target>
+    
+  <!-- ####checkout####   special delimiter - do not remove -->
+    
+  <!-- ####update####   special delimiter - do not remove -->
+
+  <!-- ####build####   special delimiter - do not remove -->
+
+</project>

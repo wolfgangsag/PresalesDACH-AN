@@ -1,0 +1,47 @@
+DB: 012 FILE: 011  - MITARBEITER                      DEFAULT SEQUENCE:   
+TYPE: ADABAS
+ 
+T L DB Name                              F Leng  S D Remark
+- - -- --------------------------------  - ----  - - ------------------------
+*      >Natural Source Header 000000
+*      :CP
+*      
+*      
+*      :LineIncrement 10
+*      <Natural Source Header
+  1 AA PERS-NR                           A    8    D 
+       HD=PERSONNEL/ID
+*      CNNNNNNN                                      
+*      C=COUNTRY                                     
+G 1 AB NAME                                          
+  2 AC VORNAME                           A   20  N   
+  2 AE NACHNAME                          A   20    D 
+  1 AF FAMILIENSTAND                     A    1  F   
+       HD=MARITAL/STATUS
+*      M=MARRIED                                     
+*      S=SINGLE                                      
+*      D=DIVORCED                                    
+*      W=WIDOWED                                     
+  1 AG GESCHLECHT                        A    1  F   
+       HD=S/E/X
+  1 AH GEBURTSDATUM                      D    6    D 
+       HD=DATE/OF/BIRTH
+       EM=YYYY-MM-DD
+  1 AH N@BIRTH                           I    2    D 
+G 1 A1 ADDRESS-GRUPPE                                
+M 2 AI ADDRESS-ZEILE                     A   20  N   
+       HD=ADDRESS
+  2 AJ WOHNORT                           A   20  N D 
+  2 AK PLZ                               A   10  N   
+       HD=POSTAL/ADDRESS
+  2 AL LAND                              A    3  N   
+G 1 A2 TELEFONNUMMERN                                
+  2 AN VORWAHL                           A    6  N   
+       HD=AREA/CODE
+  2 AM TEL-NR                            A   15  N   
+       HD=TELEPHONE
+  1 AO ABTEILUNG                         A    6    D 
+       HD=DEPARTMENT/CODE
+  1 AP BERUF                             A   25  N D 
+       HD=CURRENT/POSITION
+******DDM OUTPUT TERMINATED******
