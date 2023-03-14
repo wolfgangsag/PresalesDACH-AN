@@ -1,0 +1,25 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+* Maskenfelder
+1 MAP-TABLE
+  2 M-LAST_NAME (A20/1:10)
+  2 M-CITY (A10/1:10)
+  2 M-KEY (A8/1:10)
+  2 M-DATE-OF-BIRTH (A8/1:10)
+  2 M-SURNAME (A20/1:10)
+  2 M-SELECTION (A1/1:10)
+* Suchbegriffe
+1 CL-KEY (A20)
+1 CL-AUX (A20)
+* Seitenpositionierung
+1 T-PAGING (A8/1:21)
+1 INDX-PAGING (N2)
+* Funktionssteuerung
+1 MESSAGE (N4)
+* Fehlermeldungszeile, aufbereitet !
+1 ERR-MESSAGE (A80)
+1 ERR-CODE (I4)
+END-DEFINE

@@ -1,0 +1,44 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP windows-1252
+* :LineIncrement 10
+* <Natural Source Header
+/************************************************************
+/* Program.: PEMP
+/* Funktion: Liste /  Detail-Infos der Mitarbeiter 
+/*           Aufruf Sub.PGM in dem via Histogramm die Daten 
+/*           ermittelt werden
+/* Autor...: A.Certa (11.2021)
+/************************************************************
+/*
+DEFINE DATA LOCAL
+1 #OUT                 (1:*)   /* :out
+  2 #OUT-PERSONNEL-ID  (A8)    
+  2 #OUT-NAME          (A20)
+  2 #OUT-FIRST-NAME    (A20)
+  2 #OUT-COUNTRY       (A3)
+  2 #OUT-DEPT          (A6)
+  2 #OUT-JOB-TITLE     (A25)
+1 #INDEX (N8.0) INIT <0>
+END-DEFINE
+FORMAT LS=132
+   
+CALLNAT 'SEMP'
+  #OUT-PERSONNEL-ID (*)
+  #OUT-NAME (*)
+  #OUT-FIRST-NAME (*)
+  #OUT-COUNTRY (*)
+  #OUT-DEPT (*)
+  #OUT-JOB-TITLE (*)
+  #INDEX   
+ EXPAND ARRAY #OUT TO (1:#INDEX) 
+/*  
+  DISPLAY  
+  #OUT-PERSONNEL-ID (1:#INDEX) 
+  #OUT-NAME (1:#INDEX)
+  #OUT-FIRST-NAME (1:#INDEX)
+  #OUT-COUNTRY (1:#INDEX)
+  #OUT-DEPT (1:#INDEX)
+  #OUT-JOB-TITLE (1:#INDEX)
+/*  
+END

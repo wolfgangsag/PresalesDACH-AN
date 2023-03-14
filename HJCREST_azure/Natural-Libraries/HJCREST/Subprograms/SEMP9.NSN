@@ -1,0 +1,52 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP windows-1252
+* :LineIncrement 10
+* <Natural Source Header
+/************************************************************
+/* Program.: SEMP
+/* Funktion: Liste / Detail-Infos der Mitarbeiter 
+/* Autor...: A.Certa (11.2021)
+/************************************************************
+/*
+DEFINE DATA PARAMETER
+1 #OUT                 (1:*)   /* :out
+  2 #OUT-PERSONNEL-ID  (A8)    
+  2 #OUT-NAME          (A20)
+  2 #OUT-FIRST-NAME    (A20)
+  2 #OUT-COUNTRY       (A3)
+  2 #OUT-DEPT          (A6)
+  2 #OUT-JOB-TITLE     (A25)
+*  
+1 #INDEX               (N8.0)   /** :out 
+*
+LOCAL
+
+LOCAL
+/*
+01 EMPLOY-VIEW VIEW OF EMPLOYEES-F009
+ 02 PERSONNEL-ID
+ 02 NAME
+ 02 FIRST-NAME
+ 02 PRIVATE-COUNTRY (1)
+ 02 DEPARTMENT
+ 02 JOB-TITLE
+ 
+END-DEFINE
+/* Achtung: Parameter MADIO im Natparm beachten...sonst Fehler 1009 zu viele DB Calls
+/* NDVPARM für NauralONE, HJCSRV für RPC Server, NATPARM für Nautral Studio 
+READ EMPLOY-VIEW LOGICAL BY PERSONNEL-ID
+   ASSIGN #INDEX = #INDEX + 1
+*
+   EXPAND ARRAY #OUT TO (1:#INDEX)
+*
+   ASSIGN #OUT-PERSONNEL-ID (#INDEX) := PERSONNEL-ID
+   ASSIGN #OUT-NAME (#INDEX) := NAME 
+   ASSIGN #OUT-FIRST-NAME (#INDEX) := FIRST-NAME 
+   ASSIGN #OUT-FIRST-NAME (#INDEX) := FIRST-NAME 
+   ASSIGN #OUT-COUNTRY (#INDEX) := PRIVATE-COUNTRY (1)
+   ASSIGN #OUT-DEPT (#INDEX) := DEPARTMENT
+   ASSIGN #OUT-JOB-TITLE (#INDEX) := JOB-TITLE 
+END-READ
+END
+

@@ -1,0 +1,45 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP windows-1252
+* :LineIncrement 10
+* <Natural Source Header
+/************************************************************
+/* Program.: PEMPREAD
+/* Funktion: Liste / Detail-Infos der Mitarbeiter 
+/*           Beispiel für den Aufbau PE/MU Felder
+/* Autor...: A.Certa (11.2021)
+/************************************************************
+/*
+DEFINE DATA LOCAL
+/*
+01 EMPLOY-VIEW VIEW OF EMP062011
+ 02 PERSONNEL-ID
+ 02 NAME
+ 02 FIRST-NAME
+ 02 COUNTRY
+ 02 DEPT
+ 02 JOB-TITLE
+ 02 CITY
+ 02 ZIP
+ 02 POST-CODE
+ 02 AREA-CODE
+ 02 ADDRESS-LINE (1:10)
+ 02 SALARY (1:10)
+
+ 
+ 
+END-DEFINE
+FORMAT LS=250 PS=65
+READ EMPLOY-VIEW LOGICAL BY PERSONNEL-ID
+*
+at top of page write 'Pers-ID  Name                 City                      Salary     Adress-Line'  (I) /
+                     '                                                         (1-5)        (1-5)'  (I) /
+                     '-----------------------------------------------------------------------------------------'  
+end-toppage
+write personnel-id name city     salary(1) 5x ADDRESS-LINE(1) /
+                             51X salary(2) 5x ADDRESS-LINE(2) /
+                             51X salary(3) 5x ADDRESS-LINE(3) /
+                             51X salary(4) 5x ADDRESS-LINE(4) /
+                             51X salary(5) 5x ADDRESS-LINE(5) / 
+END-READ
+END

@@ -1,0 +1,147 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP windows-1252
+* :LineIncrement 10
+* <Natural Source Header
+/************************************************************
+/* Program.: SEMP9_D
+/* Funktion: Detail-Info eines Mitarbeiter 
+/* Autor...: T.Straeten (01.2023)
+/************************************************************
+/*
+DEFINE DATA PARAMETER
+1 #COMMAND          (A8) /* :in
+1 #PERSONNEL-ID (A8) /* :in
+*  
+1 EMPLOYEE 
+  2 PERSONNEL-ID (A8)
+  2 FULL-NAME
+    3 FIRST-NAME (A20)
+    3 MIDDLE-I (A1)
+    3 NAME (A20)
+  2 MIDDLE-NAME (A20)
+  2 MAR-STAT (A1)
+  2 SEX (A1)
+  2 BIRTH (D)
+  2 N@BIRTH (I2)
+  2 FULL-ADDRESS
+    3 ADDRESS-LINE (A20/1:191)
+    3 CITY (A20)
+    3 ZIP (A10)
+    3 POST-CODE (A10)
+    3 COUNTRY (A3)
+  2 TELEPHONE
+    3 AREA-CODE (A6)
+    3 PHONE (A15)
+  2 DEPT (A6)
+  2 JOB-TITLE (A25)
+  2 INCOME (1:99)
+    3 CURR-CODE (A3)
+    3 SALARY (P9.0)
+    3 BONUS (P9.0/1:191)
+  2 LEAVE-DATA
+    3 LEAVE-DUE (N2.0)
+    3 LEAVE-TAKEN (N2.0)
+  2 LEAVE-BOOKED (1:99)
+    3 LEAVE-START (N8.0)
+    3 LEAVE-END (N8.0)
+  2 LANG (A3/1:191)
+*
+1 EMPLOYEES (1:*) 
+  2 PERSONNEL-ID (A8)
+  2 FULL-NAME
+    3 FIRST-NAME (A20)
+*    3 MIDDLE-I (A1)
+    3 NAME (A20)
+  2 MIDDLE-NAME (A20)
+  2 MAR-STAT (A1)
+  2 SEX (A1)
+  2 BIRTH (D)
+  2 N@BIRTH (I2)
+  2 FULL-ADDRESS
+    3 ADDRESS-LINE (A20/1:191)
+    3 CITY (A20)
+    3 ZIP (A10)
+    3 POST-CODE (A10)
+    3 COUNTRY (A3)
+  2 TELEPHONE
+    3 AREA-CODE (A6)
+    3 PHONE (A15)
+  2 DEPT (A6)
+  2 JOB-TITLE (A25)
+  2 INCOME (1:99)
+    3 CURR-CODE (A3)
+    3 SALARY (P9.0)
+    3 BONUS (P9.0/1:191)
+  2 LEAVE-DATA
+    3 LEAVE-DUE (N2.0)
+    3 LEAVE-TAKEN (N2.0)
+  2 LEAVE-BOOKED (1:99)
+    3 LEAVE-START (N8.0)
+    3 LEAVE-END (N8.0)
+  2 LANG (A3/1:191)
+LOCAL
+/*( imported data fields from Data Definition Module EMPLOYEES
+1 EMPLOYEES-VIEW VIEW OF EMPLOYEES
+  2 PERSONNEL-ID (A8)
+  2 FULL-NAME
+    3 FIRST-NAME (A20)
+*    3 MIDDLE-I (A1)
+    3 NAME (A20)
+  2 MIDDLE-NAME (A20)
+  2 MAR-STAT (A1)
+  2 SEX (A1)
+  2 BIRTH (D) (EM=YYYY-MM-DD)
+  2 N@BIRTH (I2)
+  2 FULL-ADDRESS
+    3 ADDRESS-LINE (A20/1:191)
+    3 CITY (A20)
+    3 ZIP (A10)
+    3 POST-CODE (A10)
+    3 COUNTRY (A3)
+  2 TELEPHONE
+    3 AREA-CODE (A6)
+    3 PHONE (A15)
+  2 DEPT (A6)
+  2 JOB-TITLE (A25)
+  2 INCOME (1:99)
+    3 CURR-CODE (A3)
+    3 SALARY (P9.0)
+    3 BONUS (P9.0/1:191)
+  2 LEAVE-DATA
+    3 LEAVE-DUE (N2.0)
+    3 LEAVE-TAKEN (N2.0)
+  2 LEAVE-BOOKED (1:99)
+    3 LEAVE-START (N8.0) (EM=9999/99/99)
+    3 LEAVE-END (N8.0) (EM=9999/99/99)
+  2 LANG (A3/1:191)
+/*) imported data fields from Data Definition Module EMPLOYEES
+
+1 #COUNTER (I4)
+1 #NUMBER (I4)
+
+END-DEFINE
+/* Achtung: Parameter MADIO im Natparm beachten...sonst Fehler 1009 zu viele DB Calls
+/* NDVPARM für NauralONE, HJCSRV für RPC Server, NATPARM für Nautral Studio 
+/* Weitere Anpassung ist durch den Parameter USIZE erforderlich (NAT1222) - USIZE auf 1000 gesetzt
+
+DECIDE ON FIRST VALUE OF #COMMAND
+    VALUE "READBYID"
+        FIND EMPLOYEES-VIEW WITH PERSONNEL-ID = #PERSONNEL-ID
+            MOVE BY NAME EMPLOYEES-VIEW TO EMPLOYEE
+        END-FIND
+    VALUE "READALL"
+        #COUNTER := 0
+        READ EMPLOYEES-VIEW BY ISN
+            ADD 1 TO #COUNTER
+            IF #COUNTER = 36 
+            IGNORE
+            END-IF
+            EXPAND ARRAY EMPLOYEES TO (1:#COUNTER)
+            MOVE BY NAME EMPLOYEES-VIEW TO EMPLOYEES(#COUNTER)
+        END-READ
+    NONE VALUE 
+        IGNORE
+END-DECIDE
+END
+

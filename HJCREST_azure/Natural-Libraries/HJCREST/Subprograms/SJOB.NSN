@@ -1,0 +1,37 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP windows-1252
+* :LineIncrement 10
+* <Natural Source Header
+/************************************************************
+/* Program.: SJOB
+/* Funktion: Statistik - Anzahl der Mitarbeiter je JOB
+/*           Ermitteln der Daten via Histogramm  
+/*           DB12 - File 011
+/*           Feld DEPARTMENT nach Installation der Demodaten als DE definiert
+/* Autor...: A.Certa (11.2021)
+/************************************************************
+/*
+DEFINE DATA PARAMETER
+1 #OUT                 (1:*)   /** :out
+  2 #OUT-JOB-TITLE     (A25)    /** :out
+  2 #OUT-COUNT         (N08.0) /** :out
+*  
+1 #INDEX               (N8)    /** :out 
+*
+LOCAL
+/*
+01 EMPLOY-VIEW VIEW OF EMPLOYEES
+* 01 EMPLOY-VIEW VIEW OF EMP062011
+  02 JOB-TITLE 
+END-DEFINE
+/*
+HISTOGRAM EMPLOY-VIEW JOB-TITLE
+   ASSIGN #INDEX = #INDEX + 1
+*
+   EXPAND ARRAY #OUT TO (1:#INDEX)
+*
+   ASSIGN #OUT-JOB-TITLE(#INDEX) := JOB-TITLE
+   ASSIGN #OUT-COUNT(#INDEX)      := *NUMBER
+END-HISTOGRAM
+END

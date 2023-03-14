@@ -1,0 +1,35 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP windows-1252
+* :LineIncrement 10
+* <Natural Source Header
+/************************************************************
+/* Program.: SCOUNTRY
+/* Funktion: Statistik - Anzahl der Mitarbeiter je Stadt
+/*           Ermitteln der Daten via Histogramm  
+/*           DB12 - File 011
+/* Autor...: A.Certa (11.2021)
+/************************************************************
+/*
+DEFINE DATA PARAMETER
+1 #OUT                 (1:*)   /** :out
+  2 #OUT-CITY       (A20)    /** :out
+  2 #OUT-COUNT         (N8) /** :out
+*  
+1 #INDEX               (N8)   /** :out 
+*
+LOCAL
+/*
+01 EMPLOY-VIEW VIEW OF EMPLOYEES
+  02 CITY  
+END-DEFINE
+/*
+HISTOGRAM EMPLOY-VIEW CITY
+   ASSIGN #INDEX = #INDEX + 1
+*
+   EXPAND ARRAY #OUT TO (1:#INDEX)
+*
+   ASSIGN #OUT-CITY (#INDEX) := CITY
+   ASSIGN #OUT-COUNT(#INDEX)      := *NUMBER
+END-HISTOGRAM
+END
