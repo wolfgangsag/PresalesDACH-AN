@@ -1,0 +1,21 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Subprogram DATUM__N.
+/**
+/** :author tst
+/* TODO Enter your code here
+define data
+    PARAMETER
+    01 startdatum (d)
+    01 endedatum (d)
+    01 zeit (t)
+end-define
+
+startdatum := STARTDATUM - 10
+endedatum  := STARTDATUM
+
+zeit := *timx
+
+END

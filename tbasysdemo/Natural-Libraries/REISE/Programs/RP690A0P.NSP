@@ -1,0 +1,19 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Program RP689A0P.
+/**
+/** :author tst
+/* TODO Enter your code here
+DEFINE DATA
+LOCAL USING RP690A0A
+END-DEFINE
+*
+MOVE '1' TO #APP_ID
+*
+CALLNAT 'RP690A0N' #RP690A00
+*
+write "*"
+*
+END

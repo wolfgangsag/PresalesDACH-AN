@@ -1,0 +1,31 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/** New Parameter Data Area RP689A00.
+/**
+/** :author tst
+/* TODO Enter your data definitions here
+01 #RP690A00
+  02 #IN
+    03 #FUNKTION (I2) /* 01 - Lesen Daten zu einem Abruch
+    03 #APP_ID (A16) /* eindeutiger Schlüssel des Abruf
+    03 #DATA_FEED_ID (A16) /* eindeutiger Schlüssel des Abruf
+  02 #OUT
+    03 #ABRUF_INFO (A) DYNAMIC
+    03 #DATA (*)
+      04 #KUNDE (A) DYNAMIC
+      04 #BELEGMONAT (A) DYNAMIC
+      04 #LEISTUNGSART (A) DYNAMIC
+      04 #BRUTTOUMSATZ (N10.2)
+      04 #BRUTTOUMSATZVGLWERT (N10.2)
+      04 #DIFFPROZENTWERT (N3.2)
+      04 #ANZAHL (N10)
+      04 #ANZAHLVGLWERT (N10)
+      04 #DIFFPROZENTANZAHL (N3.2)
+    03 #RETURN_CODE (I2) /* 00 - alles OK
+    /* 99 - Fehler (siehe MSG-NR / MSG-TEXT)
+    03 #MSG-NR (I4)
+    03 #MSG-TEXT (A) DYNAMIC
+END-DEFINE

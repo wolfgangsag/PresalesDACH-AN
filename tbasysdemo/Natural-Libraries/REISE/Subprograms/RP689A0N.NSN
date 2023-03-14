@@ -1,0 +1,60 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Subprogram RP690A0N.
+/**
+/** :author tst
+/* TODO Enter your code here
+DEFINE DATA PARAMETER
+01 #RP689A00
+  02 #IN
+    03 #FUNKTION (I2) /* 01 - Lesen nach Datum
+    03 #ABRUFDATUM_VON (D) /* Datum von
+    03 #ABRUFDATUM_BIS (D) /* Datum bis
+  02 #OUT
+    03 #ABRUFE (*) /* Tabelle der vorhandenen Abrufe
+      04 #ABRUFDATUM (D)
+      04 #ABRUFZEIT (T)
+      04 #APP_ID (A16) /* eindeutiger Schlüssel des Abruf
+      04 #DATA_FEED_ID (A16) /* eindeutiger Schlüssel der Daten
+      04 #ABRUF_INFO (A) DYNAMIC
+      04 #ABRUF_BETREFF (A) DYNAMIC
+    03 #RETURN_CODE (I2)
+    /* 00 - alles OK
+    /* 99 - Fehler (siehe MSG-NR / MSG-TEXT)
+    03 #MSG-NR (I4)
+    03 #MSG-TEXT (A) DYNAMIC
+END-DEFINE
+*
+EXPAND ARRAY #RP689A00.#ABRUFE TO (1:4) /*INIT<1,2,3>
+*
+#ABRUFDATUM(1:4)    := D'2021-05-07'
+#ABRUFZEIT(1:4)     := T'10:31:31'
+#APP_ID(1:4)        := 'D6158E386ED05001'/* '1'
+#DATA_FEED_ID(1:4)  := 'D6158E4042E53001'/* '1'
+#ABRUF_INFO(1:4)    := 'Konzern: 51 - Teilkonzern: 0'/*'Abruf Info 1'
+#ABRUF_BETREFF(1:4) := 'RK KZ 135 normal'/*'Abruf Betreff 1'
+
+#ABRUFDATUM(2:4)    := D'2021-05-09'
+#ABRUFZEIT(2:4)     := T'10:31:31'
+#APP_ID(2:4)        := 'D6182B1797692000'/*'2'
+#DATA_FEED_ID(2:4)  := 'D6182B23A8689000'/*'2'
+#ABRUF_INFO(2:4)    := 'Konzern: 65 - Teilkonzern: 0'/*'Abruf Info 2'
+#ABRUF_BETREFF(2:4) := 'RK KZ 107 normal'/*'Abruf Betreff 2'
+
+#ABRUFDATUM(3:4)    := D'2021-05-11'
+#ABRUFZEIT(3:4)     := T'10:31:31'
+#APP_ID(3:4)        := 'D618331BA8D6A000'/*'3'
+#DATA_FEED_ID(3:4)  := 'D6183323558D3000'/*'3'
+#ABRUF_INFO(3:4)    := 'Konzern: 65 - Teilkonzern: 0'/*'Abruf Info 3'
+#ABRUF_BETREFF(3:4) := 'RK KZ 120 sonder'/*'Abruf Betreff 3'
+
+#ABRUFDATUM(4:4)    := D'2021-05-16'
+#ABRUFZEIT(4:4)     := T'10:31:31'
+#APP_ID(4:4)        := 'D62116D11B76F001'/*'4'
+#DATA_FEED_ID(4:4)  := 'D62116DA0FD7E001'/*'4'
+#ABRUF_INFO(4:4)    := 'Konzern: 105 - Teilkonzern: 0'/*'Abruf Info 4'
+#ABRUF_BETREFF(4:4) := 'RK KZ 105 normal'/*'Abruf Betreff 4'
+
+END

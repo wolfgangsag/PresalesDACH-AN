@@ -1,0 +1,21 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Program RP689A0P.
+/**
+/** :author tst
+/* TODO Enter your code here
+DEFINE DATA
+LOCAL USING RP689A0A
+END-DEFINE
+*
+MOVE *DATX TO #ABRUFDATUM_VON
+MOVE *DATX TO #ABRUFDATUM_BIS
+*
+INPUT (AD=O) #ABRUFDATUM_BIS
+CALLNAT 'RP689A0N' #RP689A00
+*
+write "*"
+*
+END
