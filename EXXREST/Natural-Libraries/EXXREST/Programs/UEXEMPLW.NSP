@@ -1,0 +1,39 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* ----------------------------------------------------------------------
+* UEXEMPL  - list all employees sorted by department
+*
+* ----------------------------------------------------------------------
+DEFINE DATA LOCAL
+01  EMPLOYEES VIEW OF EMPLOYEES
+    02  DEPT
+    02  NAME
+    02  FIRST-NAME
+    02  PERSONNEL-ID
+    02  SEX
+    02  BIRTH
+    02  CITY
+    02  AREA-CODE
+    02  PHONE
+    02  SALARY (1:1)
+*
+01  #I          (P3)
+01  #J          (P3)
+END-DEFINE
+FORMAT  LS=133 PS=60
+INPUT #J
+FOR #I = 1 TO #J
+   WRITE   TITLE 'Employee List sorted by Departments'
+             / 'Department -' EMPLOYEES.DEPT
+             / 'Date:' *DATN 'Time:' *TIMN 'Site: DAEA, DBID=204'
+   READ  EMPLOYEES BY DEPT-PERSON
+     AT BREAK OF DEPT /4/
+        NEWPAGE
+     END-BREAK
+     DISPLAY  EMPLOYEES
+   END-READ
+END-FOR
+END

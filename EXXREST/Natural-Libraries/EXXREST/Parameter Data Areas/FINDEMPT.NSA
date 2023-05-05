@@ -1,0 +1,14 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/** New Parameter Data Area FINDEMPT.
+/**
+/** :author WOHE
+/* TODO Enter your data definitions here
+
+     01 IMAX (I4)
+    1  #EMPLOYEES (A200/1:*)
+    1  #VARIABLE (A200)
+END-DEFINE

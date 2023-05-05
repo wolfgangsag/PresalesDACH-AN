@@ -1,0 +1,44 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/*  This data area was generated via the OBJECT-BROWSE-N1 EXXREST.
+/*
+01 EXXRDA1 /* Object name
+  02 ROW (1:*)
+    03 PERSONNEL-ID (A8)
+    03 FULL-NAME
+      04 FIRST-NAME (A20)
+      04 MIDDLE-I (A1)
+      04 NAME (A20)
+    03 MAR-STAT (A1)
+    03 SEX (A1)
+    03 BIRTH (D)
+    03 N@BIRTH (I2)
+    03 FULL-ADDRESS
+      04 ADDRESS-LINE (A20/1:15)
+      04 CITY (A20)
+      04 ZIP (A10)
+      04 COUNTRY (A3)
+    03 TELEPHONE
+      04 AREA-CODE (A6)
+      04 PHONE (A15)
+    03 DEPT (A6)
+    03 JOB-TITLE (A25)
+    03 INCOME (1:10)
+      04 CURR-CODE (A3)
+      04 SALARY (P9)
+      04 BONUS (P9/1:15)
+    03 LEAVE-DATA
+      04 LEAVE-DUE (N2)
+      04 LEAVE-TAKEN (N2)
+    03 LEAVE-BOOKED (1:10)
+      04 LEAVE-START (N8)
+      04 LEAVE-END (N8)
+    03 LANG (A3/1:15)
+    03 PHONETIC-NAME (A20)
+    03 COUNT (I4)
+    03 UNIQUE-ID (P10) /* Unique Id
+
+END-DEFINE

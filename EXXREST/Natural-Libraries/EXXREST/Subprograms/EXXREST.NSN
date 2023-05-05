@@ -1,0 +1,977 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+**SAG GENERATOR: OBJECT-BROWSE-N1                         VERSION: 9.1.2
+**SAG OBJECT-NAME: EXXREST
+**SAG DDM: EMPLOYEES-DB012
+**SAG ROW-PDA-NAME: EXXRDA1
+**SAG RESTRICTED-PDA-NAME: EXXRPA1
+**SAG USE-MSG-NR: X
+**SAG KEY-PDA-NAME: EXXRKA1
+**SAG OBJECT-DESC: Object Browse
+**SAG DESCS(1): This module is used for ...
+**SAG HISTOGRAM(1): X
+**SAG PHYSICAL-KEY(1,1): PERSONNEL-ID
+**SAG HISTOGRAM(2): X
+**SAG PHYSICAL-KEY(2,1): NAME
+**SAG HISTOGRAM(3): X
+**SAG PHYSICAL-KEY(3,1): BIRTH
+**SAG HISTOGRAM(4): X
+**SAG PHYSICAL-KEY(4,1): CITY
+**SAG HISTOGRAM(5): X
+**SAG PHYSICAL-KEY(5,1): DEPT
+**SAG HISTOGRAM(6): X
+**SAG PHYSICAL-KEY(6,1): JOB-TITLE
+************************************************************************
+* Program  : EXXREST
+* System   : EXXREST
+* Title    : Object Browse Subprogram
+* Generated: Sun Apr 26 18:11:10 CEST 2020
+* Function : This module is used for ...
+*
+*
+*
+* History
+**SAG DEFINE EXIT CHANGE-HISTORY
+**SAG END-EXIT
+************************************************************************
+DEFINE DATA
+PARAMETER USING EXXRKA1  /* Search key values
+PARAMETER USING EXXRDA1  /* Returned row data
+PARAMETER USING EXXRPA1 /* Restricted data
+PARAMETER USING CDBRPDA  /* Generic browse object parameters
+PARAMETER USING CDPDA-M  /* Msg info
+**SAG DEFINE EXIT PARAMETER-DATA
+**SAG END-EXIT
+LOCAL USING CDBRLDA      /* Browse object constants
+LOCAL USING CDDBMSL      /* Database types
+LOCAL USING CDRANGEA     /* CDRANGE Parameters
+LOCAL USING CDRANGEL     /* CDRANGE constants
+LOCAL
+*
+* Constants.
+01 #ALPHA-TRUE(A1) CONST<'1'>
+01 #CURR(I1) CONST<2>
+01 #DEFAULT-KEY-INDEX(I1) INIT<1>
+01 #LOW-VALUE(I1) CONST<1>
+01 #ERROR(A1) CONST<'E'>
+01 KEY-TABLE-INDEXES
+  02 #CURRENT(I1)     CONST<1> /* Current key value
+  02 #LAST-INPUT(I1)  CONST<2> /* Previously passed in start value
+  02 #LAST-READ(I1)   CONST<3> /* Last record read in prev call
+  02 #FALLBACK-KEY(I1)CONST<4> /* Fallback key found within read look
+  02 #INPUT-KEY(I1)   CONST<5> /* Passed in start value
+  02 #LOW-KEY-VALUE(I1)  CONST<6> /* Key to begin reading by
+  02 #HIGH-KEY-VALUE(I1)    CONST<7> /* Ending key for wildcard search
+  02 #UNIQUE-KEY(I1)  CONST<8> /* Unique key we are looking for
+01 #LAST(I1)  CONST<0> /* Saved last input key location
+01 #MAX-ATTEMPTS(I1) CONST<3> /* Most number of attempts to restart
+01 #MAX-KEY-COMPONENTS(I1) CONST<1> /* Most complex key
+01 #NOT(A3) CONST<'NOT'>
+01 #SUPPORTED-KEYS(I1) CONST<6>
+01 #HIGH-VALUE(I1) CONST<2>
+01 #UNCONDITIONALLY(L) CONST<TRUE>  /* Used to REJECT always.
+01 #START-ISN (P10)
+01 KEY-TABLE(#CURRENT:#UNIQUE-KEY)
+  02 UNIQUE-ID(P10)
+  02 KEY-VALUE (B25)
+  02 REDEFINE KEY-VALUE
+    03 CHAR (A1/1:25)
+  02 REDEFINE KEY-VALUE
+    03 PERSONNEL-ID (A8)
+  02 REDEFINE KEY-VALUE
+    03 NAME (A20)
+  02 REDEFINE KEY-VALUE
+    03 BIRTH (D)
+  02 REDEFINE KEY-VALUE
+    03 CITY (A20)
+  02 REDEFINE KEY-VALUE
+    03 DEPT (A6)
+  02 REDEFINE KEY-VALUE
+    03 JOB-TITLE (A25)
+*
+* Key descriptions
+01 KEY-INFO(1:#SUPPORTED-KEYS)
+  02 LOGICAL-KEY(A32) INIT<
+    'PERSONNEL-ID',
+    'NAME',
+    'BIRTH',
+    'CITY',
+    'DEPT',
+    'JOB-TITLE'>
+  02 HISTOGRAM(L) INIT<TRUE,TRUE,TRUE,TRUE,TRUE,TRUE>
+  02 RANGE-INFO
+    03 SUPERDE(L) INIT<FALSE,FALSE,FALSE,FALSE,FALSE,FALSE>
+    03 #KEY-COMPONENTS(I1) INIT<1,1,1,1,1,1>
+    03 #FIXED-COMPONENTS(I1) INIT<0,0,0,0,0,0>
+/*
+/* For each key component, this table contains the NAT-FORMAT,
+/* DBMS format, NAT Length, Ascending/descending flag, and
+/* formatted indicator for numeric fields.
+      03#FORMAT-LEN-SEQ(A20/1:#MAX-KEY-COMPONENTS) INIT
+      (1,1)<'A,A,8.0,A,,U'>/* PERSONNEL-ID
+      (2,1)<'A,A,20.0,A,,U'>/* NAME
+      (3,1)<'D,D,0.0,A,,'>/* BIRTH
+      (4,1)<'A,A,20.0,A,,U'>/* CITY
+      (5,1)<'A,A,6.0,A,,U'>/* DEPT
+      (6,1)<'A,A,25.0,A,,U'>/* JOB-TITLE
+    03 REDEFINE #FORMAT-LEN-SEQ
+      04 DEF-STRUCT(1:#MAX-KEY-COMPONENTS)
+        05 FILLER 8X
+        05 #CHECK-DESCENDING(A1/1:12)
+*
+* Miscellaneous variables.
+01 #ATTEMPT(I1)                 /* Attempt to find start key
+01 #COMPARE-DATA(#CURRENT:#LAST-INPUT)
+  02 COMPARE
+    03 SORT-KEY(A32)
+    03 KEY-COMPONENTS(N2)
+    03 HISTOGRAM(A1)
+    03 RANGE-OPTION(N2)
+    03 LEADING-FIXED-COMPONENTS(N2)
+  02 REDEFINE COMPARE
+    03 COMPARE-VALUES(A39)
+  02 END-OF-DATA(A1)
+  02 UNIQUE-RECORD-COUNT(N5)
+01 REDEFINE #COMPARE-DATA
+  02 #SAVE(A45/#CURRENT:#LAST-INPUT)
+01 #COUNT(I4)                   /* Count used by histogram option
+01 #FALLBACK-KEY-SAVED(L)       /* Record corresponding to SKIP-COUNT
+01 #FIND-UNIQUE(L)              /* Set when looking for a specific
+*                                 /* record id during resume processing.
+01 #KEY-INDEX(I1)
+01 #MATCH-FOUND(L)              /* Matched Unique Id from table.
+01 #MU-PE(I2/1:2)               /* MU/PE index match
+01 REDEFINE #MU-PE
+  02 #MU-PE-I(I2)               /* First occurrence match
+  02 #MU-PE-J(I2)               /* Second occurrence match
+01 #ROW-INDEX(I2)               /* Current index into return array
+01 #SKIP-COUNT(I4)              /* The current record is the Nth
+/* record with the current key value
+01 #USER-MSG-LIBRARY(A8)        /* User message library
+*
+* Views.
+01 EMPLOYEES-DB012 VIEW OF EMPLOYEES-DB012
+  02 PERSONNEL-ID
+  02 FULL-NAME
+    03 FIRST-NAME
+    03 MIDDLE-I
+    03 NAME
+  02 MAR-STAT
+  02 SEX
+  02 BIRTH
+  02 N@BIRTH
+  02 REDEFINE N@BIRTH
+    03   FILLER-100(A1)
+    03   N#BIRTH (L)
+  02 FULL-ADDRESS
+    03 ADDRESS-LINE (1:15)
+    03 CITY
+    03 ZIP
+    03 COUNTRY
+  02 TELEPHONE
+    03 AREA-CODE
+    03 PHONE
+  02 DEPT
+  02 JOB-TITLE
+  02 INCOME (1:10)
+    03 CURR-CODE
+    03 SALARY
+    03 BONUS (1:15)
+  02 LEAVE-DATA
+    03 LEAVE-DUE
+    03 LEAVE-TAKEN
+  02 LEAVE-BOOKED (1:10)
+    03 LEAVE-START
+    03 LEAVE-END
+  02 LANG (1:15)
+01 H-PERSONNEL-ID VIEW OF EMPLOYEES-DB012
+  02 PERSONNEL-ID
+01 H-NAME VIEW OF EMPLOYEES-DB012
+  02 NAME
+01 H-BIRTH VIEW OF EMPLOYEES-DB012
+  02 BIRTH
+01 H-CITY VIEW OF EMPLOYEES-DB012
+  02 CITY
+01 H-DEPT VIEW OF EMPLOYEES-DB012
+  02 DEPT
+01 H-JOB-TITLE VIEW OF EMPLOYEES-DB012
+  02 JOB-TITLE
+**SAG DEFINE EXIT LOCAL-DATA
+**SAG END-EXIT
+END-DEFINE
+PROG.
+REPEAT /* Repeat loop to allow escape of program from within subroutine.
+**SAG DEFINE EXIT START-OF-PROGRAM
+**SAG END-EXIT
+*
+/* If end of data has already been reached no further processing is
+/* required
+/*
+  IF CDBRPDA.END-OF-DATA AND NOT CDBRPDA.RESTART
+    ESCAPE ROUTINE
+  END-IF
+*
+  PERFORM INITIALIZATIONS
+*
+* If we are resuming a previous scroll, we may have to skip some records
+* until we find a matching unique key.
+  ALLOW-NEW-READ.
+  REPEAT
+    NEW-READ.
+    REPEAT  /* Escape this repeat if no end of data processing.
+      PERFORM CHECK-INPUT-CRITERIA
+*
+      DECIDE ON FIRST VALUE #KEY-INDEX
+        VALUE 1
+          KEY-TABLE.PERSONNEL-ID(#INPUT-KEY) := EXXRKA1.PERSONNEL-ID
+          PERFORM ESTABLISH-START-VALUE
+          EXXRKA1.PERSONNEL-ID :=  KEY-TABLE.PERSONNEL-ID(#INPUT-KEY)
+          IF CDBRPDA.HISTOGRAM THEN
+            PERFORM H-PERSONNEL-ID
+          ELSE
+            PERFORM R-PERSONNEL-ID
+          END-IF
+        VALUE 2
+          KEY-TABLE.NAME(#INPUT-KEY) := EXXRKA1.NAME
+          PERFORM ESTABLISH-START-VALUE
+          EXXRKA1.NAME :=  KEY-TABLE.NAME(#INPUT-KEY)
+          IF CDBRPDA.HISTOGRAM THEN
+            PERFORM H-NAME
+          ELSE
+            PERFORM R-NAME
+          END-IF
+        VALUE 3
+          KEY-TABLE.BIRTH(#INPUT-KEY) := EXXRKA1.BIRTH
+          PERFORM ESTABLISH-START-VALUE
+          EXXRKA1.BIRTH :=  KEY-TABLE.BIRTH(#INPUT-KEY)
+          IF CDBRPDA.HISTOGRAM THEN
+            PERFORM H-BIRTH
+          ELSE
+            PERFORM R-BIRTH
+          END-IF
+        VALUE 4
+          KEY-TABLE.CITY(#INPUT-KEY) := EXXRKA1.CITY
+          PERFORM ESTABLISH-START-VALUE
+          EXXRKA1.CITY :=  KEY-TABLE.CITY(#INPUT-KEY)
+          IF CDBRPDA.HISTOGRAM THEN
+            PERFORM H-CITY
+          ELSE
+            PERFORM R-CITY
+          END-IF
+        VALUE 5
+          KEY-TABLE.DEPT(#INPUT-KEY) := EXXRKA1.DEPT
+          PERFORM ESTABLISH-START-VALUE
+          EXXRKA1.DEPT :=  KEY-TABLE.DEPT(#INPUT-KEY)
+          IF CDBRPDA.HISTOGRAM THEN
+            PERFORM H-DEPT
+          ELSE
+            PERFORM R-DEPT
+          END-IF
+        VALUE 6
+          KEY-TABLE.JOB-TITLE(#INPUT-KEY) := EXXRKA1.JOB-TITLE
+          PERFORM ESTABLISH-START-VALUE
+          EXXRKA1.JOB-TITLE :=  KEY-TABLE.JOB-TITLE(#INPUT-KEY)
+          IF CDBRPDA.HISTOGRAM THEN
+            PERFORM H-JOB-TITLE
+          ELSE
+            PERFORM R-JOB-TITLE
+          END-IF
+        NONE
+          ASSIGN MSG-INFO.##MSG-DATA(1) = *PROGRAM
+          ASSIGN MSG-INFO.##MSG-NR = 8102 /* Logic error in:1:
+          PERFORM SIGNAL-ERROR
+      END-DECIDE
+*
+* If we were searching for a specific record that was not found,
+* try the search again by removing the specificity.
+     IF #FIND-UNIQUE AND NOT #MATCH-FOUND AND NOT CDBRPDA.HISTOGRAM THEN
+/*
+/* The unique record was deleted, restart the call.
+        RESET #FIND-UNIQUE
+        PERFORM EXIT-READ-LOOP
+      END-IF
+*
+* We only reach this point if all file records were exhausted prior
+* to filling the return table. (ie. we reached end of file EOF)
+      ASSIGN CDBRPDA.END-OF-DATA = TRUE
+      ASSIGN CDBRPDA.ACTUAL-ROWS-RETURNED = #ROW-INDEX
+*
+* Clear remaining rows
+      IF #ROW-INDEX LT CDBRPDA.ROWS-REQUESTED THEN
+        REDUCE ARRAY EXXRDA1.ROW TO (1:#ROW-INDEX)
+      END-IF
+      PERFORM EXIT-PROGRAM
+*
+************************************************************************
+      DEFINE SUBROUTINE CHECK-INPUT-CRITERIA
+************************************************************************
+*
+      IF CDBRPDA.SORT-KEY = ' ' THEN
+        ASSIGN #KEY-INDEX = #DEFAULT-KEY-INDEX
+      ELSE
+        EXAMINE KEY-INFO.LOGICAL-KEY(*)
+          FOR CDBRPDA.SORT-KEY
+          WITH DELIMITER ' '
+          GIVING INDEX #KEY-INDEX
+        IF #KEY-INDEX = 0 THEN
+          ASSIGN MSG-INFO.##MSG-DATA(1) = CDBRPDA.SORT-KEY
+          ASSIGN MSG-INFO.##MSG-DATA(2) = *PROGRAM
+      ASSIGN MSG-INFO.##MSG-NR = 8103 /* Invalid sort-key:1:passed to:2:
+          PERFORM SIGNAL-ERROR
+        END-IF
+      END-IF
+*
+* Make sure requested options are supported by browse.
+      DECIDE FOR FIRST CONDITION
+        WHEN CDBRPDA.HISTOGRAM AND NOT KEY-INFO.HISTOGRAM(#KEY-INDEX)
+          ASSIGN MSG-INFO.##MSG-DATA(1) = CDBRPDA.SORT-KEY
+       ASSIGN MSG-INFO.##MSG-NR = 8104 /* Histogram not supported for:1:
+          PERFORM SIGNAL-ERROR
+        WHEN CDBRPDA.LEADING-FIXED-COMPONENTS GT
+            KEY-INFO.#FIXED-COMPONENTS(#KEY-INDEX) AND
+            CDBRPDA.LEADING-FIXED-COMPONENTS LE
+            KEY-INFO.#KEY-COMPONENTS(#KEY-INDEX)
+          ASSIGN KEY-INFO.#FIXED-COMPONENTS(#KEY-INDEX) =
+            CDBRPDA.LEADING-FIXED-COMPONENTS
+        WHEN NONE
+          IGNORE
+      END-DECIDE
+      END-SUBROUTINE /* CHECK-INPUT-CRITERIA
+*
+************************************************************************
+      DEFINE SUBROUTINE CHECK-FOR-RESTART
+************************************************************************
+*
+      DECIDE FOR FIRST CONDITION
+        WHEN CDBRPDA.RESTART
+          ASSIGN CDBRPDA.RESTARTED = CDBRLDA.EXPLICIT-RESTART
+        WHEN #COMPARE-DATA.COMPARE-VALUES(#LAST-INPUT) NE
+            #COMPARE-DATA.COMPARE-VALUES(#CURRENT)
+          ASSIGN CDBRPDA.RESTARTED = CDBRLDA.KEY-INFO-CHANGED
+        WHEN KEY-TABLE.KEY-VALUE(#INPUT-KEY) NE
+            KEY-TABLE.KEY-VALUE(#LAST-INPUT)
+          ASSIGN CDBRPDA.RESTARTED = CDBRLDA.START-VALUE-CHANGED
+        WHEN CDBRPDA.USE-UNIQUE-ID AND
+            KEY-TABLE.UNIQUE-ID(#INPUT-KEY) NE
+            KEY-TABLE.UNIQUE-ID(#LAST-INPUT)
+          ASSIGN CDBRPDA.RESTARTED = CDBRLDA.UNIQUE-ID-CHANGED
+        WHEN NONE
+       RESET CDBRPDA.RESTARTED /* Continue from previous browse location
+      END-DECIDE
+      END-SUBROUTINE /* CHECK-FOR-RESTART
+*
+************************************************************************
+      DEFINE SUBROUTINE ESTABLISH-START-VALUE
+************************************************************************
+*
+      PERFORM CHECK-FOR-RESTART
+      ADD 1 TO #ATTEMPT
+*
+* Determine whether to use the input start key or the next key
+* determined from the previous call.
+* If the caller changed any of the input parameters, assume a
+* new starting position. Otherwise, assume we are picking up where
+* we left off.
+      DECIDE FOR FIRST CONDITION
+        WHEN #ATTEMPT = #MAX-ATTEMPTS
+          COMPRESS #MAX-ATTEMPTS TO MSG-INFO.##MSG-DATA(1)
+/* Failed to locate start-value after:1:attempts
+          ASSIGN MSG-INFO.##MSG-NR = 8105
+          PERFORM SIGNAL-ERROR
+        WHEN #ATTEMPT = 2
+/*
+/* This means we are redoing a search do to a deleted
+/* search-for record
+          IF #FALLBACK-KEY-SAVED THEN
+/*
+/* Use the nth record in as an alternative to the deleted
+/* record to determine the new starting value.
+            ASSIGN KEY-TABLE.KEY-VALUE(#UNIQUE-KEY) =
+              KEY-TABLE.KEY-VALUE(#LOW-KEY-VALUE) =
+              KEY-TABLE.KEY-VALUE(#FALLBACK-KEY)
+            ASSIGN KEY-TABLE.UNIQUE-ID(#UNIQUE-KEY) =
+              KEY-TABLE.UNIQUE-ID(#LOW-KEY-VALUE) =
+              KEY-TABLE.UNIQUE-ID(#FALLBACK-KEY)
+            RESET #MATCH-FOUND
+            ASSIGN #FIND-UNIQUE = TRUE
+            RESET #FALLBACK-KEY-SAVED
+          END-IF
+        WHEN CDBRPDA.RESTARTED NE 0 /* Explicit or implied restart
+          IF CDBRPDA.USE-UNIQUE-ID THEN
+/*
+/* Use the NEXT-START value to determine the new starting
+/* value.
+            ASSIGN KEY-TABLE.KEY-VALUE(#UNIQUE-KEY) =
+              KEY-TABLE.KEY-VALUE(#LAST-READ) =
+              KEY-TABLE.KEY-VALUE(#INPUT-KEY)
+            ASSIGN KEY-TABLE.UNIQUE-ID(#UNIQUE-KEY) =
+              EXXRKA1.UNIQUE-ID
+            RESET #MATCH-FOUND
+            ASSIGN #FIND-UNIQUE = TRUE
+          ELSE
+/*
+/* Begin search from specified start key
+            RESET #FIND-UNIQUE
+          END-IF
+/*
+/* Derive the starting and ending read keys based on the
+/* input keys.
+          CALLNAT 'CDRANGE2'
+            KEY-TABLE.CHAR(#INPUT-KEY:#HIGH-KEY-VALUE,*)
+            KEY-INFO.RANGE-INFO(#KEY-INDEX)
+            CDRANGEA
+            MSG-INFO
+        WHEN #COMPARE-DATA.END-OF-DATA(#LAST-INPUT) = #ALPHA-TRUE
+/* Subsequent callnat was issued without changing the starting
+/* key, even though last callnat resulted in end-of-data
+          ASSIGN MSG-INFO.##MSG-DATA(1) = *PROGRAM
+/* Call made to:1:after end-of-data condition, set new start value
+          ASSIGN MSG-INFO.##MSG-NR = 8106
+          PERFORM SIGNAL-ERROR
+        WHEN NONE
+/* Continue browsing from where we left off last call, Use
+/* the NEXT-START value to determine the new starting value.
+          ASSIGN KEY-TABLE.KEY-VALUE(#UNIQUE-KEY) =
+            KEY-TABLE.KEY-VALUE(#LOW-KEY-VALUE) =
+            EXXRPA1.PREV-KEY-VAL(#LOW-VALUE)
+          ASSIGN KEY-TABLE.UNIQUE-ID(#UNIQUE-KEY) =
+            KEY-TABLE.UNIQUE-ID(#LOW-KEY-VALUE) =
+            EXXRPA1.PREV-UNIQUE-ID(#LOW-VALUE)
+          ASSIGN KEY-TABLE.KEY-VALUE(#HIGH-KEY-VALUE) =
+            EXXRPA1.PREV-KEY-VAL(#HIGH-VALUE)
+          ASSIGN KEY-TABLE.KEY-VALUE(#LAST-READ) =
+            EXXRPA1.PREV-KEY-VAL(#LAST-READ)
+          RESET #MATCH-FOUND
+          ASSIGN #FIND-UNIQUE = TRUE
+      END-DECIDE
+      IF KEY-TABLE.UNIQUE-ID(#UNIQUE-KEY) NE 0 THEN
+        DECIDE ON FIRST VALUE OF KEY-INFO.LOGICAL-KEY(#KEY-INDEX)
+          VALUE 'PERSONNEL-ID'
+            #START-ISN := KEY-TABLE.UNIQUE-ID(#UNIQUE-KEY) - 1
+          VALUE 'NAME'
+            #START-ISN := KEY-TABLE.UNIQUE-ID(#UNIQUE-KEY) - 1
+          VALUE 'BIRTH'
+            #START-ISN := KEY-TABLE.UNIQUE-ID(#UNIQUE-KEY) - 1
+          VALUE 'CITY'
+            #START-ISN := KEY-TABLE.UNIQUE-ID(#UNIQUE-KEY) - 1
+          VALUE 'DEPT'
+            #START-ISN := KEY-TABLE.UNIQUE-ID(#UNIQUE-KEY) - 1
+          VALUE 'JOB-TITLE'
+            #START-ISN := KEY-TABLE.UNIQUE-ID(#UNIQUE-KEY) - 1
+          NONE IGNORE
+        END-DECIDE
+      END-IF
+      END-SUBROUTINE /* ESTABLISH-START-KEY
+*
+************************************************************************
+      DEFINE SUBROUTINE EXIT-PROGRAM
+************************************************************************
+*
+      PERFORM FINAL-PROCESSING
+**SAG DEFINE EXIT END-OF-PROGRAM
+**SAG END-EXIT
+      ESCAPE BOTTOM(PROG.) IMMEDIATE
+      END-SUBROUTINE /* EXIT-PROGRAM
+*
+************************************************************************
+      DEFINE SUBROUTINE EXIT-READ-LOOP
+************************************************************************
+*
+      ESCAPE BOTTOM(NEW-READ.) IMMEDIATE
+      END-SUBROUTINE /* EXIT-READ-LOOP
+*
+************************************************************************
+      DEFINE SUBROUTINE FINAL-PROCESSING
+************************************************************************
+*
+      ASSIGN #COMPARE-DATA.END-OF-DATA(#CURRENT) = CDBRPDA.END-OF-DATA
+      ASSIGN EXXRPA1.PREV-KEY-VAL(#LAST) =
+        KEY-TABLE.KEY-VALUE(#INPUT-KEY)
+      ASSIGN EXXRPA1.PREV-UNIQUE-ID(#LAST) =
+        EXXRKA1.UNIQUE-ID
+/*
+/* If the key contains descending components, call routine to
+/* determine new starting/ending values.
+      IF KEY-INFO.#CHECK-DESCENDING(#KEY-INDEX,*,*) = 'D' THEN
+        ASSIGN CDRANGEA.METHOD = CDRANGEL.ASSIGN-NEXT-START-VALUES
+        ASSIGN KEY-TABLE.KEY-VALUE(#INPUT-KEY) =
+          KEY-TABLE.KEY-VALUE(#CURRENT)
+        CALLNAT 'CDRANGE2'
+          KEY-TABLE.CHAR(#INPUT-KEY:#HIGH-KEY-VALUE,*)
+          KEY-INFO.RANGE-INFO(#KEY-INDEX)
+          CDRANGEA
+          MSG-INFO
+        ASSIGN EXXRPA1.PREV-KEY-VAL(#LOW-VALUE) =
+          KEY-TABLE.KEY-VALUE(#LOW-KEY-VALUE)
+      ELSE
+        ASSIGN EXXRPA1.PREV-KEY-VAL(#LOW-VALUE) =
+          KEY-TABLE.KEY-VALUE(#CURRENT)
+      END-IF
+      ASSIGN EXXRPA1.PREV-UNIQUE-ID(#LOW-VALUE) =
+        KEY-TABLE.UNIQUE-ID(#CURRENT)
+      ASSIGN EXXRPA1.PREV-KEY-VAL(#HIGH-VALUE) =
+        KEY-TABLE.KEY-VALUE(#HIGH-KEY-VALUE)
+      ASSIGN EXXRPA1.PREV-REQ = #COMPARE-DATA.#SAVE(#CURRENT)
+*
+* Assume that restart/unique-id would not be intended for next call.
+      RESET CDBRPDA.RESTART CDBRPDA.USE-UNIQUE-ID
+      END-SUBROUTINE /* FINAL-PROCESSING
+*
+************************************************************************
+      DEFINE SUBROUTINE INITIALIZATIONS
+************************************************************************
+*
+      IF EXXRPA1.FIRST-TIME NE #NOT THEN
+        RESET EXXRPA1.RESET-STRUCTURE
+        ASSIGN EXXRPA1.FIRST-TIME = #NOT
+      END-IF
+      IF CDBRPDA.ROWS-REQUESTED LE 0 THEN
+        CDBRPDA.ROWS-REQUESTED := 20
+      END-IF
+      RESET CDBRPDA.OUTPUTS MSG-INFO
+*
+* Size the rows based on the number requested
+      RESIZE ARRAY EXXRDA1.ROW TO (1:CDBRPDA.ROWS-REQUESTED)
+*
+* Copy reserved context data from the PDA to local data structures.
+      ASSIGN #COMPARE-DATA.#SAVE(#LAST-INPUT) =
+        EXXRPA1.PREV-REQ
+      ASSIGN KEY-TABLE.KEY-VALUE(#LAST-INPUT) =
+        EXXRPA1.PREV-KEY-VAL(#LAST)
+      ASSIGN KEY-TABLE.UNIQUE-ID(#LAST-INPUT) =
+        EXXRPA1.PREV-UNIQUE-ID(#LAST)
+      ASSIGN KEY-TABLE.UNIQUE-ID(#INPUT-KEY) = EXXRKA1.UNIQUE-ID
+      MOVE BY NAME CDBRPDA TO #COMPARE-DATA.COMPARE(#CURRENT)
+      ASSIGN CDRANGEA.DATABASE-TYPE = CDDBMSL.ADABAS
+      ASSIGN CDRANGEA.RANGE-OPTION = CDBRPDA.RANGE-OPTION
+**SAG DEFINE EXIT ADDITIONAL-INITIALIZATIONS
+**SAG END-EXIT
+      END-SUBROUTINE /* INITIALIZATIONS
+*
+************************************************************************
+      DEFINE SUBROUTINE PROCESS-ROW
+************************************************************************
+*
+**SAG DEFINE EXIT BEFORE-ROW-ASSIGNMENT
+**SAG END-EXIT
+      ADD 1 TO #ROW-INDEX
+      DECIDE ON FIRST VALUE #ROW-INDEX
+        VALUE 1 : CDBRPDA.ROWS-REQUESTED
+          MOVE BY NAME EMPLOYEES-DB012 TO EXXRDA1.ROW(#ROW-INDEX)
+          ASSIGN EXXRDA1.UNIQUE-ID(#ROW-INDEX) =
+            KEY-TABLE.UNIQUE-ID(#CURRENT)
+          ASSIGN EXXRDA1.COUNT(#ROW-INDEX) = #COUNT
+**SAG DEFINE EXIT AFTER-ROW-ASSIGNMENT
+**SAG END-EXIT
+        NONE
+/*
+/* If we have exceeded the requested rows, just save the
+/* current key value and return to the caller.
+          ASSIGN CDBRPDA.ACTUAL-ROWS-RETURNED =
+            CDBRPDA.ROWS-REQUESTED
+          ASSIGN EXXRPA1.PREV-KEY-VAL(#LAST-READ) =
+            KEY-TABLE.KEY-VALUE(#CURRENT)
+          ASSIGN EXXRPA1.PREV-UNIQUE-ID(#LAST) =
+            KEY-TABLE.UNIQUE-ID(#CURRENT)
+          ASSIGN #COMPARE-DATA.UNIQUE-RECORD-COUNT(#CURRENT) =
+            #SKIP-COUNT
+          PERFORM EXIT-PROGRAM
+      END-DECIDE
+      END-SUBROUTINE /* PROCESS-ROW
+*
+************************************************************************
+      DEFINE SUBROUTINE SKIP-PREVIOUSLY-RETURNED-ROWS
+************************************************************************
+*
+* If looking for specific record, don't begin returning rows
+* until the record has been found.
+      DECIDE FOR FIRST CONDITION
+        WHEN KEY-TABLE.UNIQUE-ID(#CURRENT) =
+            KEY-TABLE.UNIQUE-ID(#UNIQUE-KEY)
+          ASSIGN #MATCH-FOUND = TRUE      /* This record matches table.
+        WHEN NONE
+/*
+/* We are still trying to match the record from the previous
+/* callnat. If we have read the expected number of records,
+/* without a match, save the current key in case we don't find
+/* the desired record.
+          IF #SKIP-COUNT =
+              #COMPARE-DATA.UNIQUE-RECORD-COUNT(#LAST-INPUT) THEN
+/*
+/* Save the first mismatch in case we don't find a match.
+            ASSIGN KEY-TABLE.KEY-VALUE(#FALLBACK-KEY) =
+              KEY-TABLE.KEY-VALUE(#CURRENT)
+            ASSIGN KEY-TABLE.UNIQUE-ID(#FALLBACK-KEY) =
+              KEY-TABLE.UNIQUE-ID(#CURRENT)
+            ASSIGN #FALLBACK-KEY-SAVED = TRUE
+          END-IF
+          IF KEY-TABLE.KEY-VALUE(#CURRENT) NE
+              KEY-TABLE.KEY-VALUE(#LAST-READ) THEN /* Record was deleted
+/*
+/* We have gone passed the key value without finding a match
+/* reassign the search values to the fallback record we found.
+            IF #FALLBACK-KEY-SAVED THEN
+              ASSIGN KEY-TABLE.KEY-VALUE(#LOW-KEY-VALUE) =
+                KEY-TABLE.KEY-VALUE(#FALLBACK-KEY)
+            END-IF
+            RESET #FIND-UNIQUE
+          END-IF
+      END-DECIDE
+      END-SUBROUTINE /* SKIP-PREVIOUSLY-RETURNED-ROWS
+*
+************************************************************************
+      DEFINE SUBROUTINE SIGNAL-ERROR
+************************************************************************
+*
+      ASSIGN MSG-INFO.##RETURN-CODE = #ERROR
+      CALLNAT 'CDUMSGU' MSG-INFO
+      ESCAPE BOTTOM(PROG.) IMMEDIATE
+      END-SUBROUTINE /* SIGNAL-ERROR
+*
+************************************************************************
+      DEFINE SUBROUTINE SIGNAL-USER-ERROR
+************************************************************************
+*
+      ASSIGN MSG-INFO.##RETURN-CODE = #ERROR
+      ASSIGN MSG-INFO.##MSG = #USER-MSG-LIBRARY
+      CALLNAT 'CDUMSGU' MSG-INFO
+      ESCAPE BOTTOM(PROG.) IMMEDIATE
+      END-SUBROUTINE /* SIGNAL-USER-ERROR
+*
+************************************************************************
+      DEFINE SUBROUTINE ACCEPTANCE-CHECKING
+************************************************************************
+*
+      ADD 1 TO #SKIP-COUNT
+*
+* If we are looking for a specific record then make sure we have
+* reached it.
+      IF #FIND-UNIQUE AND NOT #MATCH-FOUND THEN
+        PERFORM SKIP-PREVIOUSLY-RETURNED-ROWS
+/*
+/* At this point we must either reject the current record,
+/* restart the read loop or begin processing the current record.
+        DECIDE FOR FIRST CONDITION
+          WHEN #MATCH-FOUND IGNORE    /* Found desired record
+          WHEN NOT #FIND-UNIQUE
+/*
+/* The unique record was deleted, restart the call.
+            PERFORM EXIT-READ-LOOP
+          WHEN NONE
+            REJECT #UNCONDITIONALLY       /* Keep looking for match.
+        END-DECIDE
+      END-IF
+      END-SUBROUTINE /* ACCEPTANCE-CHECKING
+**
+************************************************************************
+      DEFINE SUBROUTINE R-PERSONNEL-ID
+************************************************************************
+**
+        L-R-PERSONNEL-ID.
+      READ MULTI-FETCH OF ROWS-REQUESTED EMPLOYEES-DB012
+          BY EMPLOYEES-DB012.PERSONNEL-ID
+          STARTING FROM KEY-TABLE.PERSONNEL-ID(#LOW-KEY-VALUE)
+          TO KEY-TABLE.PERSONNEL-ID(#HIGH-KEY-VALUE)
+          STARTING WITH ISN = #START-ISN
+
+
+
+        AT BREAK OF EMPLOYEES-DB012.PERSONNEL-ID
+          RESET #SKIP-COUNT
+        END-BREAK
+        ADD 1 TO #SKIP-COUNT
+/*
+/* Assign current record key and unique id
+        ASSIGN KEY-TABLE.PERSONNEL-ID(#CURRENT) =
+          EMPLOYEES-DB012.PERSONNEL-ID
+        ASSIGN KEY-TABLE.UNIQUE-ID(#CURRENT) = *ISN(L-R-PERSONNEL-ID.)
+        PERFORM ACCEPTANCE-CHECKING
+/*
+/* At this point we have a record to be returned.
+        PERFORM PROCESS-ROW
+      END-READ /* L-R-PERSONNEL-ID.
+      END-SUBROUTINE /* R-PERSONNEL-ID
+**
+************************************************************************
+      DEFINE SUBROUTINE H-PERSONNEL-ID
+************************************************************************
+**
+        L-H-PERSONNEL-ID.
+      HISTOGRAM MULTI-FETCH OF ROWS-REQUESTED H-PERSONNEL-ID
+        FOR H-PERSONNEL-ID.PERSONNEL-ID
+            STARTING FROM KEY-TABLE.PERSONNEL-ID(#LOW-KEY-VALUE)
+            TO KEY-TABLE.PERSONNEL-ID(#HIGH-KEY-VALUE)
+
+/*
+/* Assign current record key and unique id
+          ASSIGN KEY-TABLE.PERSONNEL-ID(#CURRENT) =
+            H-PERSONNEL-ID.PERSONNEL-ID
+          ASSIGN #COUNT = *NUMBER (L-H-PERSONNEL-ID.)
+          MOVE BY NAME H-PERSONNEL-ID TO EMPLOYEES-DB012
+/*
+/* At this point we have a record to be returned.
+          PERFORM PROCESS-ROW
+        END-HISTOGRAM /* L-H-PERSONNEL-ID.
+        END-SUBROUTINE /* H-PERSONNEL-ID
+**
+************************************************************************
+      DEFINE SUBROUTINE R-NAME
+************************************************************************
+**
+        L-R-NAME.
+      READ MULTI-FETCH OF ROWS-REQUESTED EMPLOYEES-DB012
+          BY EMPLOYEES-DB012.NAME
+          STARTING FROM KEY-TABLE.NAME(#LOW-KEY-VALUE)
+          TO KEY-TABLE.NAME(#HIGH-KEY-VALUE)
+          STARTING WITH ISN = #START-ISN
+
+
+
+        AT BREAK OF EMPLOYEES-DB012.NAME
+          RESET #SKIP-COUNT
+        END-BREAK
+        ADD 1 TO #SKIP-COUNT
+/*
+/* Assign current record key and unique id
+        ASSIGN KEY-TABLE.NAME(#CURRENT) =
+          EMPLOYEES-DB012.NAME
+        ASSIGN KEY-TABLE.UNIQUE-ID(#CURRENT) = *ISN(L-R-NAME.)
+        PERFORM ACCEPTANCE-CHECKING
+/*
+/* At this point we have a record to be returned.
+        PERFORM PROCESS-ROW
+      END-READ /* L-R-NAME.
+      END-SUBROUTINE /* R-NAME
+**
+************************************************************************
+      DEFINE SUBROUTINE H-NAME
+************************************************************************
+**
+        L-H-NAME.
+      HISTOGRAM MULTI-FETCH OF ROWS-REQUESTED H-NAME
+        FOR H-NAME.NAME
+            STARTING FROM KEY-TABLE.NAME(#LOW-KEY-VALUE)
+            TO KEY-TABLE.NAME(#HIGH-KEY-VALUE)
+
+/*
+/* Assign current record key and unique id
+          ASSIGN KEY-TABLE.NAME(#CURRENT) =
+            H-NAME.NAME
+          ASSIGN #COUNT = *NUMBER (L-H-NAME.)
+          MOVE BY NAME H-NAME TO EMPLOYEES-DB012
+/*
+/* At this point we have a record to be returned.
+          PERFORM PROCESS-ROW
+        END-HISTOGRAM /* L-H-NAME.
+        END-SUBROUTINE /* H-NAME
+**
+************************************************************************
+        DEFINE SUBROUTINE R-BIRTH
+************************************************************************
+**
+          L-R-BIRTH.
+        READ MULTI-FETCH OF ROWS-REQUESTED EMPLOYEES-DB012
+            BY EMPLOYEES-DB012.BIRTH
+            STARTING FROM KEY-TABLE.BIRTH(#LOW-KEY-VALUE)
+            TO KEY-TABLE.BIRTH(#HIGH-KEY-VALUE)
+            STARTING WITH ISN = #START-ISN
+
+
+
+          AT BREAK OF EMPLOYEES-DB012.BIRTH
+            RESET #SKIP-COUNT
+          END-BREAK
+          ADD 1 TO #SKIP-COUNT
+/*
+/* Assign current record key and unique id
+          ASSIGN KEY-TABLE.BIRTH(#CURRENT) =
+            EMPLOYEES-DB012.BIRTH
+          ASSIGN KEY-TABLE.UNIQUE-ID(#CURRENT) = *ISN(L-R-BIRTH.)
+          PERFORM ACCEPTANCE-CHECKING
+/*
+/* At this point we have a record to be returned.
+          PERFORM PROCESS-ROW
+        END-READ /* L-R-BIRTH.
+        END-SUBROUTINE /* R-BIRTH
+**
+************************************************************************
+        DEFINE SUBROUTINE H-BIRTH
+************************************************************************
+**
+          L-H-BIRTH.
+        HISTOGRAM MULTI-FETCH OF ROWS-REQUESTED H-BIRTH
+          FOR H-BIRTH.BIRTH
+              STARTING FROM KEY-TABLE.BIRTH(#LOW-KEY-VALUE)
+              TO KEY-TABLE.BIRTH(#HIGH-KEY-VALUE)
+
+/*
+/* Assign current record key and unique id
+            ASSIGN KEY-TABLE.BIRTH(#CURRENT) =
+              H-BIRTH.BIRTH
+            ASSIGN #COUNT = *NUMBER (L-H-BIRTH.)
+            MOVE BY NAME H-BIRTH TO EMPLOYEES-DB012
+/*
+/* At this point we have a record to be returned.
+            PERFORM PROCESS-ROW
+          END-HISTOGRAM /* L-H-BIRTH.
+    END-SUBROUTINE /* H-BIRTH
+**
+************************************************************************
+    DEFINE SUBROUTINE R-CITY
+************************************************************************
+**
+    L-R-CITY.
+    READ MULTI-FETCH OF ROWS-REQUESTED EMPLOYEES-DB012
+    BY EMPLOYEES-DB012.CITY
+    STARTING FROM KEY-TABLE.CITY(#LOW-KEY-VALUE)
+    TO KEY-TABLE.CITY(#HIGH-KEY-VALUE)
+    STARTING WITH ISN = #START-ISN
+
+
+
+    AT BREAK OF EMPLOYEES-DB012.CITY
+    RESET #SKIP-COUNT
+    END-BREAK
+    ADD 1 TO #SKIP-COUNT
+/*
+/* Assign current record key and unique id
+    ASSIGN KEY-TABLE.CITY(#CURRENT) =
+    EMPLOYEES-DB012.CITY
+    ASSIGN KEY-TABLE.UNIQUE-ID(#CURRENT) = *ISN(L-R-CITY.)
+    PERFORM ACCEPTANCE-CHECKING
+/*
+/* At this point we have a record to be returned.
+    PERFORM PROCESS-ROW
+    END-READ /* L-R-CITY.
+    END-SUBROUTINE /* R-CITY
+**
+************************************************************************
+    DEFINE SUBROUTINE H-CITY
+************************************************************************
+**
+    L-H-CITY.
+    HISTOGRAM MULTI-FETCH OF ROWS-REQUESTED H-CITY
+    FOR H-CITY.CITY
+    STARTING FROM KEY-TABLE.CITY(#LOW-KEY-VALUE)
+    TO KEY-TABLE.CITY(#HIGH-KEY-VALUE)
+
+/*
+/* Assign current record key and unique id
+    ASSIGN KEY-TABLE.CITY(#CURRENT) =
+    H-CITY.CITY
+    ASSIGN #COUNT = *NUMBER (L-H-CITY.)
+    MOVE BY NAME H-CITY TO EMPLOYEES-DB012
+/*
+/* At this point we have a record to be returned.
+    PERFORM PROCESS-ROW
+    END-HISTOGRAM /* L-H-CITY.
+    END-SUBROUTINE /* H-CITY
+**
+************************************************************************
+    DEFINE SUBROUTINE R-DEPT
+************************************************************************
+**
+    L-R-DEPT.
+    READ MULTI-FETCH OF ROWS-REQUESTED EMPLOYEES-DB012
+    BY EMPLOYEES-DB012.DEPT
+    STARTING FROM KEY-TABLE.DEPT(#LOW-KEY-VALUE)
+    TO KEY-TABLE.DEPT(#HIGH-KEY-VALUE)
+    STARTING WITH ISN = #START-ISN
+
+
+
+    AT BREAK OF EMPLOYEES-DB012.DEPT
+    RESET #SKIP-COUNT
+    END-BREAK
+    ADD 1 TO #SKIP-COUNT
+/*
+/* Assign current record key and unique id
+    ASSIGN KEY-TABLE.DEPT(#CURRENT) =
+    EMPLOYEES-DB012.DEPT
+    ASSIGN KEY-TABLE.UNIQUE-ID(#CURRENT) = *ISN(L-R-DEPT.)
+    PERFORM ACCEPTANCE-CHECKING
+/*
+/* At this point we have a record to be returned.
+    PERFORM PROCESS-ROW
+    END-READ /* L-R-DEPT.
+    END-SUBROUTINE /* R-DEPT
+**
+************************************************************************
+    DEFINE SUBROUTINE H-DEPT
+************************************************************************
+**
+    L-H-DEPT.
+    HISTOGRAM MULTI-FETCH OF ROWS-REQUESTED H-DEPT
+    FOR H-DEPT.DEPT
+    STARTING FROM KEY-TABLE.DEPT(#LOW-KEY-VALUE)
+    TO KEY-TABLE.DEPT(#HIGH-KEY-VALUE)
+
+/*
+/* Assign current record key and unique id
+    ASSIGN KEY-TABLE.DEPT(#CURRENT) =
+    H-DEPT.DEPT
+    ASSIGN #COUNT = *NUMBER (L-H-DEPT.)
+    MOVE BY NAME H-DEPT TO EMPLOYEES-DB012
+/*
+/* At this point we have a record to be returned.
+    PERFORM PROCESS-ROW
+    END-HISTOGRAM /* L-H-DEPT.
+    END-SUBROUTINE /* H-DEPT
+**
+************************************************************************
+    DEFINE SUBROUTINE R-JOB-TITLE
+************************************************************************
+**
+    L-R-JOB-TITLE.
+    READ MULTI-FETCH OF ROWS-REQUESTED EMPLOYEES-DB012
+    BY EMPLOYEES-DB012.JOB-TITLE
+    STARTING FROM KEY-TABLE.JOB-TITLE(#LOW-KEY-VALUE)
+    TO KEY-TABLE.JOB-TITLE(#HIGH-KEY-VALUE)
+    STARTING WITH ISN = #START-ISN
+
+
+
+    AT BREAK OF EMPLOYEES-DB012.JOB-TITLE
+    RESET #SKIP-COUNT
+    END-BREAK
+    ADD 1 TO #SKIP-COUNT
+/*
+/* Assign current record key and unique id
+    ASSIGN KEY-TABLE.JOB-TITLE(#CURRENT) =
+    EMPLOYEES-DB012.JOB-TITLE
+    ASSIGN KEY-TABLE.UNIQUE-ID(#CURRENT) = *ISN(L-R-JOB-TITLE.)
+    PERFORM ACCEPTANCE-CHECKING
+/*
+/* At this point we have a record to be returned.
+    PERFORM PROCESS-ROW
+    END-READ /* L-R-JOB-TITLE.
+    END-SUBROUTINE /* R-JOB-TITLE
+**
+************************************************************************
+    DEFINE SUBROUTINE H-JOB-TITLE
+************************************************************************
+**
+    L-H-JOB-TITLE.
+    HISTOGRAM MULTI-FETCH OF ROWS-REQUESTED H-JOB-TITLE
+    FOR H-JOB-TITLE.JOB-TITLE
+    STARTING FROM KEY-TABLE.JOB-TITLE(#LOW-KEY-VALUE)
+    TO KEY-TABLE.JOB-TITLE(#HIGH-KEY-VALUE)
+
+/*
+/* Assign current record key and unique id
+    ASSIGN KEY-TABLE.JOB-TITLE(#CURRENT) =
+    H-JOB-TITLE.JOB-TITLE
+    ASSIGN #COUNT = *NUMBER (L-H-JOB-TITLE.)
+    MOVE BY NAME H-JOB-TITLE TO EMPLOYEES-DB012
+/*
+/* At this point we have a record to be returned.
+    PERFORM PROCESS-ROW
+    END-HISTOGRAM /* L-H-JOB-TITLE.
+    END-SUBROUTINE /* H-JOB-TITLE
+*
+    END-REPEAT /* NEW-READ.
+    END-REPEAT /* ALLOW-NEW-READ.
+    END-REPEAT /* PROG.
+    END

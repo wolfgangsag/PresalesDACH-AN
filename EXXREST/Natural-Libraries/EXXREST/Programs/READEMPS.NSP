@@ -1,0 +1,40 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Program READEMPS.
+/**
+/** :author WOHE
+/* TODO /* Enter your code here
+
+* DEFINE DATA
+*
+* LOCAL USING FINEMPL
+* LOCAL
+*    01 EMPLOYEES /*VIEW OF EMPLOYEES
+*     02  DEPT
+*     02  NAME
+*     02  FIRST-NAME
+*     02  PERSONNEL-ID
+* END-DEFINE
+*
+*
+*    WRITE   TITLE 'Employee List sorted by Departments'
+*              / 'Department -' EMPLOYEES.DEPT
+*              / 'Date:' *DATN 'Time:' *TIMN 'Site: DAEA, DBID=204'/* iub ouinpunpijnpinpunpiunpin
+* *   FIND EMPLOYEES WITH PERSONNEL-ID = PERSVAL
+* *    #PERSONNEL-ID := PERSONNEL-ID
+* *    #DEPT := DEPT /*Comment
+* *    #NAME := NAME
+* *    #FIRST-NAME := FIRST-NAME
+* *    END-FIND
+*     READ (50)  EMPLOYEES BY DEPT-PERSON
+* *      AT BREAK OF DEPT /4/
+* *         NEWPAGE
+* *      END-BREAK
+*      DISPLAY  EMPLOYEES
+*     END-READ
+*
+END
+
+

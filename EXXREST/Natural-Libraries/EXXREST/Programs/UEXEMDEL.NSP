@@ -1,0 +1,52 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* ----------------------------------------------------------------------
+* UEXEMPL  - list all employees sorted by department
+*            copy employee to new personnel-id
+*
+* ----------------------------------------------------------------------
+DEFINE DATA LOCAL
+01  EMPLOYEES VIEW OF EMPLOYEES
+    02  PERSONNEL-ID
+*
+01  #EMPLOYEES
+    02  #PERSONNEL-ID    (A08)
+01  #I                   (P03)
+01  #J                   (P03)
+01  #JOBNAME             (A08)
+01  #ETMAX               (N04)    INIT <100>
+01  #ETCNTR              (N04)
+01  #PREFIX              (A04)
+01  #SFXMIN              (A04)    INIT <'0000'>
+01  #SFXMAX              (A04)    INIT <'9999'>
+01  #PIDSTART            (A08)
+01  #PIDEND              (A08)
+01  #DBLCHK              (A04)
+01  #NUMBER              (N04)
+END-DEFINE
+INPUT #PREFIX #ETMAX
+COMPRESS #PREFIX #SFXMIN INTO #PIDSTART LEAVING NO
+COMPRESS #PREFIX #SFXMAX INTO #PIDEND   LEAVING NO
+WRITE *PROGRAM ':' #PREFIX #ETMAX #PIDSTART #PIDEND
+RESET #ETCNTR #NUMBER
+READ EMPLOYEES LOGICAL  BY    PERSONNEL-ID
+               STARTING FROM  #PIDSTART
+               ENDING   AT    #PIDEND
+*    WHERE SUBSTRING (PERSONNEL-ID,1,4) = #PREFIX
+    #ETCNTR  := #ETCNTR + 1
+    #NUMBER  := #NUMBER + 1
+    DELETE
+*    WRITE PERSONNEL-ID
+    IF #ETCNTR = #ETMAX
+       END OF TRANSACTION
+       #ETCNTR := 0
+    END-IF
+    AT END OF DATA
+       END OF TRANSACTION
+    END-ENDDATA
+END-READ
+WRITE *PROGRAM ':' #NUMBER 'Records deleted with Prefix:' #PREFIX
+END

@@ -1,0 +1,78 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP IBM01140
+* :LineIncrement 10
+* <Natural Source Header
+* Program   MCONSOL
+* View      CONSOLE
+*
+* Function  Operator Console
+*
+* ----------------------------------------------------------------------
+*
+DEFINE DATA LOCAL
+01 CONSOLE VIEW OF CONSOLE
+  02 ERROR-CODE     (N3.0)
+  02 ERROR-TEXT     (A58)
+  02 NODE           (N05)
+  02 TEXT-LENGTH    (N03)
+  02 TEXT           (A253)
+  02 REPLY-ID       (A08)
+  02 CONSOLE-ID     (B01)
+  02 FUNCTION       (A08)
+  02 TIMX           (T)
+  02 JOB-NAME       (A08)
+  02 TIME-STAMP     (A08)
+  02 REPLY          (A80)
+  02 SYSTEM-CODE    (B02)
+  02 RECORD-NUMBER  (N09)
+  02 READ-DIRECTION (A01)
+  02 REPLY-FLAG     (A01)
+  02 JOB-TYPE       (A06)
+  02 NETTO-TEXT     (A253)
+  02 WAIT-TIME      (B04)
+  02 JOB-ID         (A08)
+01 #NODE       (N05)       INIT <248>
+01 #DBID       (A05)       INIT <204>
+01 #ZIIP       (A03)       INIT <'YES'>
+01 #NO         (A03)       INIT <'NO'>
+01 #OP-CMD     (A08)       INIT <'OP-CMD'>
+01 #DISPLAY    (A08)       INIT <'DISPLAY'>
+01 #DZSTAT     (A65)       INIT <'F NUC.DBID.,DZSTAT,ALL'>
+01 #ZIIP-ON    (A65)       INIT <'F NUC.DBID.,ZIIP=YES'>
+01 #ZIIP-OFF   (A65)       INIT <'F NUC.DBID.,ZIIP=NO'>
+*
+END-DEFINE
+*
+INPUT  #NODE  #DBID  #ZIIP
+* WRITE  #NODE  #DBID  #ZIIP
+IF   #ZIIP = #NO   THEN
+   EXAMINE #ZIIP-OFF  FOR '.DBID.' REPLACE #DBID
+   PROCESS CONSOLE USING    NODE       = #NODE
+                        ,   FUNCTION   = #OP-CMD
+                        ,   TEXT       = #ZIIP-OFF
+                     GIVING ERROR-CODE ERROR-TEXT
+ELSE
+   EXAMINE #ZIIP-ON   FOR '.DBID.' REPLACE #DBID
+   PROCESS CONSOLE USING    NODE       = #NODE
+                        ,   FUNCTION   = #OP-CMD
+                        ,   TEXT       = #ZIIP-ON
+                     GIVING ERROR-CODE ERROR-TEXT
+
+END-IF
+PERFORM CHECK-ERROR
+* EXAMINE #DZSTAT FOR '.DBID.' REPLACE #DBID
+* DISPLAY #NODE  #DBID  #ZIIP
+* PROCESS CONSOLE USING    NODE       = #NODE
+*                     ,   FUNCTION   = #OP-CMD
+*                     ,   TEXT       = #DZSTAT
+*                  GIVING ERROR-CODE ERROR-TEXT
+* PERFORM CHECK-ERROR
+*
+DEFINE SUBROUTINE CHECK-ERROR
+   IF ERROR-CODE > 0
+      WRITE ERROR-CODE ERROR-TEXT
+   END-IF
+END-SUBROUTINE
+*
+END

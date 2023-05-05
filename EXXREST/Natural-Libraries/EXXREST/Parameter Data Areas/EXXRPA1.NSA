@@ -1,0 +1,18 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/*  This data area was generated via the OBJECT-BROWSE-N1 EXXREST.
+/*
+01 EXXRPA1 /* Private data
+  02 FIRST-TIME (A3)
+  02 PREV-REQ (A50)
+  02 KEY-DATA (B1/1:112)
+  02 REDEFINE KEY-DATA /* REDEF. BEGIN : KEY-DATA
+    03 KEY-DATA-B (B112)
+  02 REDEFINE KEY-DATA /* REDEF. BEGIN : KEY-DATA
+    03 RESET-STRUCTURE
+      04 PREV-KEY-VAL (A25/0:3) /* last input,from,thru,la
+      04 PREV-UNIQUE-ID (P10/0:1) /* last input,from
+END-DEFINE

@@ -1,0 +1,382 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* ----------------------------------------------------------------------
+* UEXEMPL  - list all employees sorted by department
+*            copy employee to new personnel-id
+*
+* ----------------------------------------------------------------------
+DEFINE DATA LOCAL
+01  EMPLOYEES VIEW OF EMPLOYEES
+    02  DEPT
+    02  NAME
+    02  FIRST-NAME
+    02  PERSONNEL-ID
+    02  SEX
+    02  BIRTH
+    02  CITY
+    02  AREA-CODE
+    02  PHONE
+    02  SALARY (1:1)
+*
+01  NEW-EMPLOYEE VIEW OF EMPLOYEES
+    02  DEPT
+    02  NAME
+    02  FIRST-NAME
+    02  PERSONNEL-ID
+    02  SEX
+    02  BIRTH
+    02  CITY
+    02  AREA-CODE
+    02  PHONE
+    02  SALARY (1:1)
+*
+01  #DBID                (N05)    INIT <104>
+01  #FNR                 (N05)    INIT <1>
+01  #ZIIP-NAT            (A03)    INIT <'ON'>
+01  #ZIIP-PRT            (N07)    INIT <0>
+01  #ZIIP-INP            (N07)    INIT <0>
+01  #ZIIP-OUT            (N07)    INIT <0>
+*
+01  #EMPLOYEES
+    02  #DEPT            (A06)
+    02  #NAME            (A20)
+    02  #FIRST-NAME      (A20)
+    02  #PERSONNEL-ID    (A08)
+    02  #SEX             (A01)
+    02  #BIRTH           (D)
+    02  #CITY            (A20)
+    02  #AREA-CODE       (A06)
+    02  #PHONE           (A15)
+    02  #SALARY          (P09)
+01  #I                   (N03)
+01  #J                   (N03)    INIT <1>
+01  #K                   (N03)    INIT <1>
+01  #KMAX                (N03)    INIT <9>
+01  #JOBNAME             (A08)    INIT <'DROECOMP'>
+01  #P-OWNER             (A10)    INIT <'NODEZIIP'>
+01  #P-NETWORK           (A10)    INIT <'ONLINE'>
+01  #P-RUN5              (A05)    INIT <'00000'>
+01  #P-JOB               (A10)    INIT <'ONLINE'>
+01  #P-JOB-ID            (A10)    INIT <'JOBIDNYA'>
+01  #P-SUBMIT-ID         (A20)    INIT <'DRO'>
+01  #PRINTAM             (A03)    INIT <'NOM'>
+01  #P-C-OWNER           (A10)
+01  #P-C-NETWORK         (A10)
+01  #P-C-RUN             (N05)
+01  #P-C-RUN5            (A05)
+01  #P-C-JOB             (A10)
+01  #PAY-RISE            (P5.2)   INIT <30>
+01  #ETMAX               (N04)    INIT <100>
+01  #ETCNTR              (N04)
+01  #ETTOTAL             (N04)
+01  #NUMBER              (N04)
+01  #STORE               (N08)
+01  #RETRY               (N08)
+01  #UPDATE              (N08)
+01  #READ                (N08)
+01  #READ01              (N08)
+01  #WRITE01             (N08)
+01  #TITLE               (N08)    INIT <7>
+01  #HEADER              (N08)    INIT <1>
+01  #DELETE              (N08)
+01  #PREFIX              (A04)
+01  REDEFINE #PREFIX
+    02 #IDENTIFIER       (A01)
+    02 #REST             (A03)
+01  #DBLCHK              (A04)
+01  REDEFINE #DBLCHK
+    02 #COPY             (A01)
+    02 #REST             (A03)
+01  #SUFFIX              (A04)
+01  REDEFINE #SUFFIX
+    02 ##SUFFIX          (N04)
+01  #SFXMIN              (A04)    INIT <'0000'>
+01  #SFXMAX              (A04)    INIT <'9999'>
+01  #PIDSTART            (A08)
+01  #PIDEND              (A08)
+*
+01  #DATX                (A10)
+01  #TIMX                (A10)
+01  #HOSTNAME            (A64)
+01  #TEXT-START          (A79)
+01  #TEXT-STARTED        (A79)
+01  #TEXT-OPERATIONS     (A79)
+01  #TEXT-CALLED-BY      (A79)
+01  #TEXT-ZIIP-PARM      (A79)
+01  #TEXT-READ           (A79)
+01  #TEXT-STORED         (A79)
+01  #TEXT-UPDATED        (A79)
+01  #TEXT-READ01         (A79)
+01  #TEXT-WRITTEN        (A79)
+01  #TEXT-DELETED        (A79)
+01  #TEXT-RETRIED        (A79)
+01  #TEXT-ENDTACS        (A79)
+01  #TEXT-ELAPSED        (A79)
+01  #TEXT-CPUTIME        (A79)
+01  #TEXT-ENDED          (A79)
+*
+01 #CPUTIME  (P07)
+01 ##CPUTIME (A07)
+01 #ELAPSED  (P8.1)
+01 ##ELAPSED (A10)
+01 #TIMD     (N07)
+01 REDEFINE #TIMD
+   02 #HH       (N02)
+   02 #II       (N02)
+   02 #SS       (N02)
+   02 #T        (N01)
+01 ##T          (P3.1)
+END-DEFINE
+*
+* >>>>>>>>>>>>>   Begin   P r o l o g    <<<<<<<<<<<<<<
+*
+FORMAT (1) LS=133 PS=60
+INPUT   #DBID      (AD=M) #FNR         (AD=M)
+        #J         (AD=M) #K           (AD=M)
+        #JOBNAME   (AD=M) #ETMAX       (AD=M)
+        #P-OWNER   (AD=M) #P-NETWORK   (AD=M)
+        #P-RUN5    (AD=M) #P-JOB       (AD=M)
+        #P-C-OWNER (AD=M) #P-C-NETWORK (AD=M)
+        #P-C-RUN   (AD=M) #P-C-JOB     (AD=M)
+        #P-JOB-ID  (AD=M) #P-SUBMIT-ID (AD=M) #PRINTAM (AD=M)
+        #ZIIP-NAT  (AD=M) #ZIIP-PRT    (AD=M)
+        #ZIIP-INP  (AD=M) #ZIIP-OUT    (AD=M)
+IF (#JOBNAME EQ ' ') OR (#P-JOB EQ ' ') THEN
+   WRITE 'Error #JOBNAME or #P-JOB must not be blank'
+   ESCAPE ROUTINE
+END-IF
+* WRITE #DBID #J #K #JOBNAME #ETMAX #P-JOB-ID #P-SUBMIT-ID
+* WRITE #P-OWNER #P-NETWORK #P-RUN5 #P-JOB
+START.   SET TIME
+MOVE EDITED   *DATX (EM=DD.MM.YYYY)  TO   #DATX
+MOVE EDITED   *TIMX (EM=HH:II:SS.T)  TO   #TIMX
+MOVE          *HOSTNAME              TO   #HOSTNAME
+COMPRESS *PROGRAM 'Start          :' #DATX 'at' #TIMX INTO #TEXT-START
+COMPRESS *PROGRAM 'Started on     :' SUBSTRING (#HOSTNAME,1,10)
+                                        'Job='     #JOBNAME
+                                        'JID='     #P-JOB-ID
+                                        'DBID=('   #DBID ',' #FNR ')'
+                                        INTO #TEXT-STARTED
+COMPRESS *PROGRAM 'Identification :' #P-OWNER '/' #P-NETWORK '/'
+                                         #P-RUN5 '/' #P-JOB ', Print='
+                                         #PRINTAM
+                                         INTO #TEXT-OPERATIONS
+IF  #P-C-RUN NE 0 THEN
+   MOVE EDITED #P-C-RUN (EM=99999) TO  #P-C-RUN5
+   COMPRESS *PROGRAM 'Called by      :' #P-C-OWNER '/' #P-C-NETWORK '/'
+                                            #P-C-RUN5 '/' #P-C-JOB
+                                            INTO #TEXT-CALLED-BY
+ELSE
+   COMPRESS *PROGRAM 'Not called as Subnetwork' INTO #TEXT-CALLED-BY
+END-IF
+COMPRESS *PROGRAM 'zIIP Parameter :' 'ZIIP=(' #ZIIP-NAT ','
+                                         'PWCSIZE=(' #ZIIP-PRT ','
+                                          #ZIIP-INP ',' #ZIIP-OUT '))'
+                                         INTO #TEXT-ZIIP-PARM
+RESET #ETCNTR  #SUFFIX   #NUMBER  #STORE  #UPDATE #READ01  #DELETE
+      #RETRY   #ETTOTAL
+MOVE SUBSTRING (#JOBNAME,5,4) TO #PREFIX
+COMPRESS #PREFIX #SFXMIN INTO #PIDSTART LEAVING NO
+COMPRESS #PREFIX #SFXMAX INTO #PIDEND   LEAVING NO
+*
+* >>>>>>>>>>>>>   End   P r o l o g    <<<<<<<<<<<<<<
+*
+* >>>>   Begin adding new Employees with unique Personnel-Id    <<<<<<
+*
+IF #K > #KMAX THEN #K := #KMAX END-IF
+FOR #I = 1 TO #K
+   #READ := 0
+   READ EMPLOYEES LOGICAL BY EMPLOYEES.PERSONNEL-ID
+       #READ := #READ + 1
+       MOVE SUBSTRING (EMPLOYEES.PERSONNEL-ID,1,4) TO #DBLCHK
+       IF #IDENTIFIER NE #COPY THEN
+          IF #DBLCHK NE #PREFIX THEN
+             #ETCNTR  := #ETCNTR + 1
+             ##SUFFIX := ##SUFFIX + 1
+             MOVE EMPLOYEES.DEPT          TO  #DEPT
+             MOVE EMPLOYEES.NAME          TO  #NAME
+             MOVE EMPLOYEES.FIRST-NAME    TO  #FIRST-NAME
+             MOVE EMPLOYEES.SEX           TO  #SEX
+             MOVE EMPLOYEES.BIRTH         TO  #BIRTH
+             MOVE EMPLOYEES.CITY          TO  #CITY
+             MOVE EMPLOYEES.AREA-CODE     TO  #AREA-CODE
+             MOVE EMPLOYEES.PHONE         TO  #PHONE
+             MOVE EMPLOYEES.SALARY (1:1)  TO  #SALARY
+             COMPRESS #PREFIX #SUFFIX INTO #PERSONNEL-ID LEAVING NO
+             MOVE #DEPT                   TO  NEW-EMPLOYEE.DEPT
+             MOVE #NAME                   TO  NEW-EMPLOYEE.NAME
+             MOVE #FIRST-NAME             TO  NEW-EMPLOYEE.FIRST-NAME
+             MOVE #PERSONNEL-ID           TO  NEW-EMPLOYEE.PERSONNEL-ID
+             MOVE #SEX                    TO  NEW-EMPLOYEE.SEX
+             MOVE #BIRTH                  TO  NEW-EMPLOYEE.BIRTH
+             MOVE #CITY                   TO  NEW-EMPLOYEE.CITY
+             MOVE #AREA-CODE              TO  NEW-EMPLOYEE.AREA-CODE
+             MOVE #PHONE                  TO  NEW-EMPLOYEE.PHONE
+             MOVE #SALARY                 TO  NEW-EMPLOYEE.SALARY (1:1)
+             STORE RECORD IN NEW-EMPLOYEE
+             #STORE := #STORE + 1
+             IF #ETCNTR = #ETMAX
+                END OF TRANSACTION
+                #ETTOTAL := #ETTOTAL + 1
+                #ETCNTR := 0
+             END-IF
+          END-IF
+       END-IF
+       AT END OF DATA
+          END OF TRANSACTION
+          #ETCNTR  := #ETCNTR  + 1
+          #ETTOTAL := #ETTOTAL + 1
+       END-ENDDATA
+   END-READ
+END-FOR
+MOVE EDITED   *DATX (EM=DD.MM.YYYY)  TO   #DATX
+MOVE EDITED   *TIMX (EM=HH:II:SS.T)  TO   #TIMX
+COMPRESS *PROGRAM 'Read           :' #DATX 'at' #TIMX #STORE 'Records'
+                                         INTO #TEXT-READ
+COMPRESS *PROGRAM 'Stored         :' #DATX 'at' #TIMX #STORE 'Records'
+                                         INTO #TEXT-STORED
+*                                         *
+* >>>>   Begin update new Employees with unique Personnel-Id    <<<<<<
+*
+#ETCNTR   := 0
+#PAY-RISE := #PAY-RISE / 100
+READ EMPLOYEES LOGICAL BY EMPLOYEES.PERSONNEL-ID
+               STARTING FROM  #PIDSTART
+               ENDING   AT    #PIDEND
+   #ETCNTR  := #ETCNTR + 1
+   MOVE EMPLOYEES.NAME          TO  #NAME
+   MOVE EMPLOYEES.FIRST-NAME    TO  #FIRST-NAME
+   MOVE EMPLOYEES.CITY          TO  #CITY
+   MOVE EMPLOYEES.SALARY (1:1)  TO  #SALARY
+   EXAMINE SUBSTRING (#NAME,2,19)       TRANSLATE INTO LOWER CASE
+   EXAMINE SUBSTRING (#FIRST-NAME,2,19) TRANSLATE INTO LOWER CASE
+   EXAMINE SUBSTRING (#CITY,2,19)       TRANSLATE INTO LOWER CASE
+   #SALARY := #SALARY * #PAY-RISE
+   MOVE #NAME                   TO  EMPLOYEES.NAME
+   MOVE #FIRST-NAME             TO  EMPLOYEES.FIRST-NAME
+   MOVE #CITY                   TO  EMPLOYEES.CITY
+   MOVE #SALARY                 TO  EMPLOYEES.SALARY (1:1)
+   UPDATE
+   #UPDATE := #UPDATE + 1
+   IF #ETCNTR = #ETMAX
+      END OF TRANSACTION
+      #ETTOTAL := #ETTOTAL + 1
+      #ETCNTR := 0
+   END-IF
+   AT END OF DATA
+      END OF TRANSACTION
+      #ETCNTR  := #ETCNTR  + 1
+      #ETTOTAL := #ETTOTAL + 1
+   END-ENDDATA
+END-READ
+MOVE EDITED   *DATX (EM=DD.MM.YYYY)  TO   #DATX
+MOVE EDITED   *TIMX (EM=HH:II:SS.T)  TO   #TIMX
+COMPRESS *PROGRAM 'Updated        :' #DATX 'at' #TIMX #UPDATE 'Records'
+                                        INTO #TEXT-UPDATED
+*
+* >>>>  Begin read new Employees and create List by Departement   <<<<<<
+*
+#WRITE01 := 0
+FOR #I = 1 TO #J
+   WRITE  (1) TITLE 'Employee List sorted by Departments'
+             / 'Department -' EMPLOYEES.DEPT
+             / 'Date:' #DATX  'Time:' #TIMX
+             / 'on Host:' #HOSTNAME (AL=10)
+               'for DBID=' #DBID 'File=' #FNR
+               'as Jobname:' #JOBNAME 'with JobId' #P-JOB-ID
+               'and SubmitID' #P-SUBMIT-ID
+             / 'with zIIP Parameter: ZIIP=(' #ZIIP-NAT ', PWCSIZE=('
+               #ZIIP-PRT ',' #ZIIP-INP ',' #ZIIP-OUT '))'
+             / 'Owner:' #P-OWNER 'Network:' #P-NETWORK
+               'Run:' #P-RUN5  'Job:' #P-JOB 'Print to' #PRINTAM
+             / 'Called by Owner:' #P-C-OWNER 'Network:' #P-C-NETWORK
+               'Run:' #P-C-RUN5  'Job:' #P-C-JOB
+   #WRITE01 := #WRITE01 + 1
+   READ  EMPLOYEES BY DEPT-PERSON
+      WHERE SUBSTRING(EMPLOYEES.PERSONNEL-ID,1,4) = #PREFIX
+      AT BREAK OF DEPT /4/
+         NEWPAGE (1)
+         #WRITE01 := #WRITE01 + #TITLE + #HEADER
+      END-BREAK
+      #READ01 := #READ01 + 1
+      DISPLAY (1) EMPLOYEES
+      #WRITE01 := #WRITE01 + 1
+   END-READ
+END-FOR
+MOVE EDITED   *DATX (EM=DD.MM.YYYY)  TO   #DATX
+MOVE EDITED   *TIMX (EM=HH:II:SS.T)  TO   #TIMX
+COMPRESS *PROGRAM 'Read for Report:' #DATX 'at' #TIMX #READ01  'Records'
+                                         INTO #TEXT-READ01
+COMPRESS *PROGRAM 'Reported       :' #DATX 'at' #TIMX #WRITE01 'Records'
+                                         INTO #TEXT-WRITTEN
+#ETCNTR := 0
+READ EMPLOYEES LOGICAL BY EMPLOYEES.PERSONNEL-ID
+               STARTING FROM  #PIDSTART
+               ENDING   AT    #PIDEND
+   #ETCNTR  := #ETCNTR + 1
+   #DELETE  := #DELETE + 1
+   DELETE
+   ON ERROR
+      IF *ERROR-NR = 3145 THEN
+         #RETRY := #RETRY + 1
+         RETRY
+      END-IF
+   END-ERROR
+   IF #ETCNTR = #ETMAX
+      END OF TRANSACTION
+      #ETCNTR := 0
+      #ETTOTAL := #ETTOTAL + 1
+   END-IF
+   AT END OF DATA
+      END OF TRANSACTION
+      #ETCNTR  := #ETCNTR  + 1
+      #ETTOTAL := #ETTOTAL + 1
+   END-ENDDATA
+END-READ
+MOVE EDITED   *DATX (EM=DD.MM.YYYY)  TO   #DATX
+MOVE EDITED   *TIMX (EM=HH:II:SS.T)  TO   #TIMX
+COMPRESS *PROGRAM 'Deleted        :' #DATX 'at' #TIMX #DELETE 'Records'
+                                          INTO #TEXT-DELETED
+*
+* >>>>>>>>>>>>>   Begin   E   p   i   l   o   g   <<<<<<<<<<<<<<
+*
+MOVE EDITED   *DATX (EM=DD.MM.YYYY)  TO   #DATX
+MOVE EDITED   *TIMX (EM=HH:II:SS.T)  TO   #TIMX
+COMPRESS *PROGRAM 'Transaction    :' #DATX 'at' #TIMX
+                                          #ETTOTAL 'End Transactions'
+                                          INTO #TEXT-ENDTACS
+IF #RETRY > 0 THEN
+   MOVE EDITED   *DATX (EM=DD.MM.YYYY)  TO   #DATX
+   MOVE EDITED   *TIMX (EM=HH:II:SS.T)  TO   #TIMX
+   COMPRESS *PROGRAM 'Retry           :' #DATX 'at' #TIMX
+                                             #RETRY 'Collisions'
+                                             INTO #TEXT-RETRIED
+END-IF
+MOVE EDITED   *DATX (EM=DD.MM.YYYY)  TO   #DATX
+MOVE EDITED   *TIMX (EM=HH:II:SS.T)  TO   #TIMX
+MOVE *TIMD (START.) TO #TIMD
+##T := #T / 10
+#ELAPSED := 3600*#HH + 60*#II + #SS + ##T
+MOVE EDITED #ELAPSED (EM=ZZZZZZ9.9) TO ##ELAPSED
+MOVE *CPU-TIME TO #CPUTIME
+MOVE EDITED #CPUTIME (EM=ZZZZZZ9) TO ##CPUTIME
+COMPRESS *PROGRAM 'Duration       :' #DATX 'at' #TIMX
+                                         ##ELAPSED 'seconds elapsed'
+                                         INTO #TEXT-ELAPSED
+COMPRESS *PROGRAM 'CPU time       :' #DATX 'at' #TIMX
+                                         ##CPUTIME 'in milliseconds'
+                                         INTO #TEXT-CPUTIME
+COMPRESS *PROGRAM 'End            :' #DATX 'at' #TIMX INTO #TEXT-ENDED
+WRITE   #TEXT-STARTED   / #TEXT-OPERATIONS  / #TEXT-CALLED-BY
+      / #TEXT-ZIIP-PARM / #TEXT-START       / #TEXT-READ
+      / #TEXT-STORED    / #TEXT-UPDATED     / #TEXT-READ01
+      / #TEXT-WRITTEN   / #TEXT-DELETED
+      / #TEXT-RETRIED   / #TEXT-ENDTACS
+      / #TEXT-CPUTIME   / #TEXT-ELAPSED     / #TEXT-ENDED
+*
+* >>>>>>>>>>>>>   End   E   p   i   l   o   g   <<<<<<<<<<<<<<
+*
+END
