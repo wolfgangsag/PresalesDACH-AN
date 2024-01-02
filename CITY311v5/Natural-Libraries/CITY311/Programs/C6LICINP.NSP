@@ -1,0 +1,48 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+
+/** New Program C6LICINP.
+/**
+/** :author tst
+/* TODO Enter your code here
+DEFINE DATA LOCAL
+1 LANGUAGEKEY              (A) DYNAMIC /** :in
+1 INCIDENT                 (1:*)       /* out /** :out
+2 INC-ID                    (A) DYNAMIC /** :out
+2 INCIDENTTYPE             (A) DYNAMIC /** :out
+2 DESCRIPTION              (A) DYNAMIC /** :out
+2 DATEOPENED               (A) DYNAMIC /** :out
+2 ESTIMATEDENDDATE         (A) DYNAMIC /** :out
+2 PRIORITY                 (A) DYNAMIC /** :out
+2 INC-STATUS               (A) DYNAMIC /** :out
+/*
+1 ERRORSTATUS              (A10)       /* inout /** :inout
+*
+01 #WORKFILE_VALUE (A120)
+01 #DATUMZEIT (A40)
+END-DEFINE
+*
+COMPRESS *DATX *TIME to #DATUMZEIT
+DEFINE WORK FILE 9 '/tmp/c6licinp.log' ATTRIBUTES 'APPEND,KEEP'
+WRITE WORK FILE 9 #WORKFILE_VALUE 
+COMPRESS #DATUMZEIT 'C6LISINP: Start Reading' TO #WORKFILE_VALUE  
+WRITE WORK FILE 9 #WORKFILE_VALUE 
+
+CALLNAT "C6LISINC" LANGUAGEKEY INCIDENT(*) ERRORSTATUS
+compress incident.inc-id(*) incident.description (*) TO #WORKFILE_VALUE 
+WRITE WORK FILE 9 #WORKFILE_VALUE 
+COMPRESS *DATX *TIME to #DATUMZEIT
+COMPRESS #DATUMZEIT 'C6LISINP: finished Reading' TO #WORKFILE_VALUE  
+WRITE WORK FILE 9 #WORKFILE_VALUE 
+*
+ON ERROR
+ COMPRESS *ERROR-NR '-' *ERROR-LINE INTO ERRORSTATUS
+ COMPRESS #DATUMZEIT ERRORSTATUS TO #WORKFILE_VALUE
+ WRITE WORK FILE 9 #WORKFILE_VALUE  
+ CLOSE WORK FILE 9
+ ESCAPE ROUTINE
+END-ERROR
+*
+END

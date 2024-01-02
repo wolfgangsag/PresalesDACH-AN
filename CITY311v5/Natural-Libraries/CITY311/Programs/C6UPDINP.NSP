@@ -1,0 +1,57 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Program C6UPDINP.
+/**
+/** :author tst
+/* TODO Enter your code here
+**********************************************************************
+DEFINE DATA
+LOCAL 
+1 LANGUAGEKEY      (A) DYNAMIC         /* :IN
+1 INCIDENTDATA                         /* IN /** :IN
+2 INC-ID           (A) DYNAMIC         /* IN
+2 INCIDENTTYPE     (A) DYNAMIC         /** :IN
+2 DESCRIPTION      (A) DYNAMIC         /** :IN
+2 DATEOPENED       (A) DYNAMIC         /** :IN
+2 PHOTOS           (A/1:*) DYNAMIC     /** :IN
+2 AUDIOS           (A/1:*) DYNAMIC     /** :IN
+2 ADDRESS                              /** :IN
+3 POSTAL                               /** :IN
+4 STREET           (A) DYNAMIC         /** :IN
+4 CITY             (A) DYNAMIC         /** :IN
+/* 4 ZIPCODE          (I2)                /** :IN
+4 ZIPCODE          (A) DYNAMIC               /** :IN
+3 GPS                                  /** :IN
+4 LATITUDE         (F4)                /** :IN
+4 LONGITUDE        (F4)                /** :IN
+2 REPORTER                             /** :IN
+3 FIRSTNAME        (A) DYNAMIC         /** :IN
+3 LASTNAME         (A) DYNAMIC         /** :IN
+3 CONTACTMAIL      (A) DYNAMIC         /** :IN
+3 PHONENUMBER      (A) DYNAMIC         /** :IN
+3 CALLBACKOPTION   (L)                 /** :IN
+1 ERRORSTATUS      (A) DYNAMIC         /* OUT /** :OUT
+
+END-DEFINE
+/* 
+ON ERROR
+   BACKOUT TRANSACTION
+   ESCAPE ROUTINE
+END-ERROR
+/*
+SET KEY PF3 NAMED "Ende"
+SET KEY PF5 NAMED "Upd"
+*
+INCIDENTDATA.INC-ID := "INC03719899206896002"
+INCIDENTDATA.INCIDENTTYPE := "Small Traffic Accident"
+INCIDENTDATA.DESCRIPTION := "Dies ist die neue Beschreibung"
+RP1. REPEAT
+INPUT (AD=M IP=ON AL=20) INCIDENTDATA.INC-ID / INCIDENTDATA.INCIDENTTYPE / INCIDENTDATA.DESCRIPTION / ERRORSTATUS (AD=O) 
+IF *PF-KEY = "PF5"
+CALLNAT 'C6UPDINC' LANGUAGEKEY INCIDENTDATA ERRORSTATUS
+END-IF
+UNTIL *PF-KEY = "PF3"
+END-REPEAT
+END

@@ -1,0 +1,22 @@
+DB: 012 FILE: 097  - D311LPL                          DEFAULT SEQUENCE:   
+TYPE: ADABAS
+ 
+T L DB Name                              F Leng  S D Remark
+- - -- --------------------------------- - ----  - - ------------------------
+*      >Natural Source Header 000000
+*      :CP
+*      
+*      
+*      <Natural Source Header
+  1 A0 LPL-ID                            A   20    D 
+  1 A1 LPL-TYPE                          A   20      
+  1 A2 LPL-DISABLED                      A    1      
+  1 A3 LPL-VTNR                          A    1      
+  1 A4 LPL-VIN                           A   20      
+  1 A5 LPL-RECEIPTID                     A   20      
+  1 A6 LPL-DTAA                          A    1      
+  1 A7 LPL-ISPC                          A    1      
+  1 A8 LPL-ISDC                          A    1      
+  1 A9 LPL-STATUS                        A   20      
+  1 B4 LPL-ESTEND                        A   20      
+******DDM OUTPUT TERMINATED******

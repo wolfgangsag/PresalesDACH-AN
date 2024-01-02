@@ -1,0 +1,60 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+/* RPC: Support of SSL
+/*
+/* Function ... Set/Get the SSL parameters to be used for the
+/*              communication to EntireX Broker via SSL.
+/*
+/* This program serves as example how to design a user-defined
+/* program call 'USR2035N'.
+/*
+/* Parameter ..
+/*     INPUT
+/*             FUNCTION  (A1)   - Function code
+/*                                P: set passed SSL parameters
+/*                                G: get already set SSL parameters
+/*     INOUT
+/*             SSLPARMS  (A128) - Parameter string for SSL communication
+/*                                P: passed parameter string is saved
+/*                                G: saved  parameter string is returned
+/*
+** Maintenance log *****************************************************
+*
+* Date        Key   Refer.   Description
+* ----------- ----- -------- -------------------------------------------
+* 06.Jan.2021 nau1  OS-8541  Remove upper case translation for the SSL
+*                            parameter string.
+/***********************************************************************
+DEFINE DATA LOCAL
+1 PARM-INPUT
+  2 I-FUNCTION  (A1) INIT <'P'>
+  2 I-SSLPARMS  (A128) INIT <'TRUST_STORE=/opt/ssl/vm311.eur.ad.sag.pem&verify_server=no'>
+/*   2 I-SSLPARMS  (A128) INIT <'TRUST_STORE=/opt/ssl/SAGCertificateChain.pem&verify_server=no'>
+/*  2 I-SSLPARMS  (A128) INIT <'TRUST_STORE=/opt/keystores/city311azure.jks&verify_server=no'>
+  2 REDEFINE I-SSLPARMS
+    3 I-SSLPARMS-1 (A64)
+    3 I-SSLPARMS-2 (A64)
+END-DEFINE
+*
+* DEFINE WINDOW RPC-SETSSLPARMS  SIZE 6*69 BASE 8/10
+*   TITLE ' Set SSL parameter string' CONTROL SCREEN
+* *
+* SET KEY PF3
+* *
+* I-FUNCTION := 'G'
+* CALLNAT 'USR2035N' USING PARM-INPUT
+* *
+* INPUT WINDOW='RPC-SETSSLPARMS'   /
+*       'Please enter SSL parameter string:' /
+*       '-' I-SSLPARMS-1 (AD=MI) /
+*       '-' I-SSLPARMS-2 (AD=MI) /
+* *
+* IF *PF-KEY NE 'PF3'
+*   I-FUNCTION := 'P'
+  CALLNAT 'USR2035N' USING PARM-INPUT
+* END-IF
+*
+END

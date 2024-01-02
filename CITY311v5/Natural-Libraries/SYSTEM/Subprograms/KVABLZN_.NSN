@@ -1,0 +1,16 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Subprogram TEST.
+/**
+/** :author tst
+/* TODO Enter your code here
+DEFINE DATA
+PARAMETER USING KVABLUAR
+END-DEFINE
+
+#P-KVABLUAR.FEHLERTEXT := "Alles gut"
+
+IGNORE
+END

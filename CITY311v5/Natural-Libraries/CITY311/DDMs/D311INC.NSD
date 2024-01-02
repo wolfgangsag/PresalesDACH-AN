@@ -1,0 +1,47 @@
+DB: 012 FILE: 091  - D311INC                          DEFAULT SEQUENCE:   
+TYPE: ADABAS
+ 
+T L DB Name                              F Leng  S D Remark
+- - -- --------------------------------- - ----  - - ------------------------
+*      >Natural Source Header 000000
+*      :CP
+*      
+*      
+*      <Natural Source Header
+  1 A0 INC-ID                            A   20    D 
+  1 A1 INC-TYPE                          A   25      
+  1 A2 INC-DESC                          A  250      
+  1 A3 INC-OPENED                        A   20      
+  1 A4 INC-EST-END                       A   20      
+  1 A5 INC-PRIO                          A   10      
+  1 A6 INC-STAT                          A   20      
+  1 N1 INC-ASSNAME                       A   50      
+G 1 A7 INC-REPORTER                                          
+  2 B1 INC-REP-FNAME                     A   50      
+  2 B2 INC-REP-LNAME                     A   50      
+  2 B3 INC-REP-MAIL                      A   50      
+  2 B4 INC-REP-PHONE                     A   50      
+  2 B5 INC-REP-CALLBACK                  A    1      
+G 1 A8 INC-ADDRESS                                          
+  2 C1 INC-CITY                          A   50      
+  2 C2 INC-STREET                        A   50      
+  2 C3 INC-ZIP                           A   10      
+  2 C4 INC-GPSLATI                       A   10      
+  2 C5 INC-GPSLONG                       A   10      
+P 1 D0 INC-HISTORY                                          
+  2 D1 HIS-DAT                           A   20      
+  2 D2 HIS-AUTHOR                        A   20      
+  2 D3 HIS-PRIO                          A   10      
+  2 D4 HIS-STAT                          A   20      
+  2 D5 HIS-END                           A   20      
+  2 D6 HIS-DESC                          A  250      
+  1 A9 INC-RELATEDNEWS                   A  100      
+M 1 AE L@INC-PHOTOBIN                    I    4      LEN. IND. OF AE-1
+M 1 AE INC-PHOTOBIN                      A       N   LOB/NB/NV
+       DY
+       OPTIONS=LB
+M 1 AI L@INC-AUDIOBIN                    I    4      LEN. IND. OF AI-1
+M 1 AI INC-AUDIOBIN                      A       N   LOB/NB/NV
+       DY
+       OPTIONS=LB
+******DDM OUTPUT TERMINATED******

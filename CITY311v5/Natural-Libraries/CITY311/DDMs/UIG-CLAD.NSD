@@ -1,0 +1,20 @@
+DB: 012 FILE: 055  - UIG-CLAD                         DEFAULT SEQUENCE:   
+TYPE: ADABAS
+ 
+T L DB Name                              F Leng  S D Remark
+- - -- --------------------------------- - ----  - - ------------------------
+*      >Natural Source Header 000000
+*      :CP
+*      
+*      
+*      <Natural Source Header
+  1 AA CLAIMDOC-NR                       A   10    D 
+  1 AB CLAIM-NR                          A   10    D 
+  1 AC CLAIM-DOC-TYPE                    A    1    D 
+P 1 GA CLAIMDOC-GROUP                                
+  2 AG CLAIMDOC-BINNR                    A   10    D 
+  2 AE L@AE-1                            I    4      LEN. IND. OF AE-1
+  2 AE CLAIMDOC-BIN                      A           LOB/NB/NV
+       DY
+       OPTIONS=LB
+******DDM OUTPUT TERMINATED******

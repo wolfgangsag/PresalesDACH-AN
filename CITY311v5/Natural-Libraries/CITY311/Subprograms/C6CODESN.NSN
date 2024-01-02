@@ -1,0 +1,48 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Subprogram C6CODESN.
+/**
+/** :author tst
+/* TODO Enter your code here
+DEFINE DATA PARAMETER
+01 TYPE (A10) /* In
+01 CODEVALUES (A20/1:*) /* Out
+01 ERRORMESSAGE (A20) /* Out
+END-DEFINE
+*
+RESET ERRORMESSAGE
+*
+MOVE *TRANSLATE(TYPE, UPPER) TO TYPE
+*
+DECIDE ON FIRST VALUE OF TYPE
+  VALUE "PRIO"
+    EXPAND ARRAY CODEVALUES TO (1:3)
+    MOVE "low"        TO CODEVALUES(1)
+    MOVE "medium"    TO CODEVALUES(2)
+    MOVE "high"        TO CODEVALUES(3)
+  VALUE "STATUS"
+    EXPAND ARRAY CODEVALUES TO (1:8)
+    MOVE "New"                    TO CODEVALUES(1)
+    MOVE "new"                    TO CODEVALUES(2)
+    MOVE "unassigned"             TO CODEVALUES(3)
+    MOVE "assigned"               TO CODEVALUES(4)
+    MOVE "missing information"    TO CODEVALUES(5)
+    MOVE "in Progress"            TO CODEVALUES(6)
+    MOVE "solved"                 TO CODEVALUES(7)
+    MOVE "completed"              TO CODEVALUES(8)
+  VALUE "TYPE"
+    EXPAND ARRAY CODEVALUES TO (1:6)
+    MOVE "Water problem"          TO CODEVALUES(1)
+    MOVE "Noice disturbance"      TO CODEVALUES(2)
+    MOVE "Trash pickup"           TO CODEVALUES(3)
+    MOVE "Street light problem"   TO CODEVALUES(4)
+    MOVE "Power problem"          TO CODEVALUES(5)
+    MOVE "Trafic accident"        TO CODEVALUES(6)
+  NONE
+    EXPAND ARRAY CODEVALUES TO (1:1)
+    MOVE "PRIO, STATUS, TYPE" to ERRORMESSAGE
+END-DECIDE
+*
+END
