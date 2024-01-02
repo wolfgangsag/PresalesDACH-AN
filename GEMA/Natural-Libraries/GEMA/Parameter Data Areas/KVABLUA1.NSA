@@ -1,0 +1,28 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/* * ********************************************************************
+/* A utor: A.Maltsev / SAG              Pflegestelle:  GEMA
+/* - --------------------------------------------------------------------
+/* M odul:        KVABLUA1  Version: 1.0  Versionsdatum: 12.04.2003
+/* V erfahren:    Massenverarbeitung
+/* A rbeitspaket: Erw.
+/* - --------------------------------------------------------------------
+/* B eschreibung:
+/* L iste der abzulaufenden Vereinbarungen
+/* * ********************************************************************
+/* Ä nderungsverzeichnis:
+/* - --------------------------------------------------------------------
+/* N r.  I Name/Stelle      I Datum      I Änderungsgrund
+/* - ----+------------------+------------+-------------------------------
+/* 0001 I AMA/SAG          I 03.11.2022  I Erstellt
+/* * ********************************************************************
+1 #P-KVABLUAR
+   2 VEREINBA_NR (N9)
+   2 GLTG-BIS-DT (N8.0)
+   2 INK-BIS-DT (N8.0)
+   2 INK-NACHTR-KNZ (A5)
+   2 FEHLERTEXT (A250)
+END-DEFINE

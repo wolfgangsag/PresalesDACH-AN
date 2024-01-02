@@ -1,0 +1,18 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Subprogram MERGE.
+/**
+/** :author tst
+/* TODO Enter your code here
+DEFINE DATA
+PARAMETER
+01 body
+02 iswcgroup
+03 iswc (A/1:*) dynamic
+03 agencyworks (1:*) 
+04 agencycode (A) dynamic 
+04 agencyworkcode (A) dynamic 
+END-DEFINE
+END

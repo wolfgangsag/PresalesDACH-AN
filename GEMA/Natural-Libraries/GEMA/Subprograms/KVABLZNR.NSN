@@ -1,0 +1,15 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Subprogram TEST.
+/**
+/** :author tst
+/* TODO Enter your code here
+DEFINE DATA
+PARAMETER USING ZRDSTUA0
+PARAMETER USING ZRERRUA0
+PARAMETER USING KVABLUAR
+END-DEFINE
+IGNORE
+END

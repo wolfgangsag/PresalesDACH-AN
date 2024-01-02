@@ -1,0 +1,54 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/* *********************************************************************
+/* Autor: W. Dederichs/SAG Systemhaus    Pflegestelle: GEMA
+/* ---------------------------------------------------------------------
+/* $RCSfile: ZRDSTUA0.NSA,v $ $Revision: 1.3 $
+/* $Date: 2007/06/19 11:17:03 $
+/* Verfahren:    Framework
+/* Arbeitspaket: Infrastruktur Anwendungsentwicklung und Technik
+/* ---------------------------------------------------------------------
+/* Beschreibung:
+/*
+/* Datenstruktur für Kommunikation mit beliebigen Subprogrammen
+/*
+/* Die Datenstruktur ist bei einem Unterprogramm-Aufruf
+/* immer als erste anzugeben. Sie dient im wesentlichen
+/* der Nachrichten-Übermittlung, sowie der Steuerung aufgerufener
+/* Objekt-Instanzen bzw. Zugriffs-Module.
+/*
+/* *********************************************************************
+/* Änderungsverzeichnis:
+/* ---------------------------------------------------------------------
+/* Nr.  I Name/Stelle      I Datum      I Änderungsgrund
+/* -----+------------------+------------+-------------------------------
+/* 0003 I HHH/SAG         I  28.02.2001  I  MAX-RECORDS alt N4
+/*                                                      neu N9
+/* 0002 I WDE/SAG Systemh. I 16.06.2000 I Erweiterung diverse
+/* -----+------------------+------------+-------------------------------
+/* 0001 I WDE/SAG Systemh. I 28.03.2000 I Umstellung für GEMA
+/* *********************************************************************
+/*
+1 ##P-ZEN
+   2 USER_ID (A8)
+   2 ANW-ART (A1) /* Anwendungs-Art: Online/Batc
+   2 ANW-MODUS (A1) /* Anwend.-Modus:Test/Produkti
+   2 FKT (A3) /* Zugriffs-Fkt wie UPD
+   2 OBJ-FKT (A3) /* Zug.Fkt Objekt, z.B. GET/SE
+   2 SUB-FKT (A3)
+   2 PRUEF-STUFE (N1) /* Prüfstufe
+   2 S-ET-INSTANZ (L)
+   2 MAX-RECORDS (N9) /* Treffer in der DB, Count *
+   2 ANZ-RECORDS (N4)
+   2 S-NACHLESEN (L)
+   2 CONTAINER (A100)
+   2 NACHRICHT
+     3 RC (N2) /* #k-ok oder #k-nok
+     3 ANZ-MSG (N2)
+     3 MSG-NR (N7/1:10)
+     3 MSG-TYP (A1/1:10)
+     3 MSG-PARM (A30/1:10,1:3)
+END-DEFINE

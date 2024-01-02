@@ -1,0 +1,37 @@
+DEFINE DATA LOCAL
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/* *********************************************************************
+/* Autor: W. Dederichs/SAG Systemhaus    Pflegestelle: GEMA
+/* ---------------------------------------------------------------------
+/* $RCSfile: ZRDSTUL0.NSL,v $ $Revision: 1.4 $
+/* $Date: 2007/06/19 11:17:03 $
+/* Verfahren:    Framework
+/* Arbeitspaket: Infrastruktur Anwendungsentwicklung und Technik
+/* ---------------------------------------------------------------------
+/* Beschreibung:
+/*
+/* Allgemeine, schichtübergreifende Variablen: universell einsetzbar
+/*
+/* *********************************************************************
+/* Änderungsverzeichnis:
+/* ---------------------------------------------------------------------
+/* Nr.  I Name/Stelle      I Datum      I Änderungsgrund
+/* -----+------------------+------------+-------------------------------
+/* 0001 I WDE/SAG Systemh. I 20.03.2000 I Umstellung für GEMA
+/* 0002 I MAA/SAG Systemh. I 21.11.2002 I Neu ##DIALOG-VERSION-NR
+/* *********************************************************************
+/*
+1 ##I-1 (I2)
+1 ##I-2 (I2)
+1 ##I-3 (I2)
+1 ##I-4 (I2)
+1 ##I-5 (I2)
+1 ##I-6 (I2)
+1 ##I-7 (I2)
+1 ##I-8 (I2)
+/*
+1 ##DIALOG-VERSION-NR (A30)
+END-DEFINE
