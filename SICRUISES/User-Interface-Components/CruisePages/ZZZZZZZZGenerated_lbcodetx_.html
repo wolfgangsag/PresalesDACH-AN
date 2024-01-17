@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 <head>
+<title></title>
 <meta charset='UTF-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
 <script>var m_perfPageLoadStart = new Date();
 var m_perfPageLoadEnd = null;
 var m_perfPageFocusEnd = null;</script>
+<link rel="stylesheet" href="../HTMLBasedGUI/jquery/jquery-ui.min.css" type="text/css" >
+<link rel="stylesheet" href="../HTMLBasedGUI/bootstrapicons/font/bootstrap-icons.css" type="text/css" >
+<link rel="stylesheet" href="../HTMLBasedGUI/bootstrap4/css/bootstrap.min.css" type="text/css" >
 <link id="casabacstylesheet" rel="stylesheet" type="text/css" href="../cis/styles/CIS_WM.css">
 <link id="addcsshref" rel="stylesheet" type="text/css" href="../HTMLBasedGUI/bootstrap/njxmobiledemo.css">
-<link rel="stylesheet" href="../HTMLBasedGUI/jquery/jquery-ui.min.css" type="text/css" >
-<link rel="stylesheet" href="../HTMLBasedGUI/bootstrap/css/bootstrap.min.css" type="text/css" >
-<script src="../HTMLBasedGUI/jquery/jquery-2.2.4.min.js"></script>
+<script src="../HTMLBasedGUI/jquery3/jquery.min.js"></script>
 <script src="../HTMLBasedGUI/jquery/jquery-ui.min.js"></script>
-<script src="../HTMLBasedGUI/bootstrap/js/alert.js"></script>
-<script src="../HTMLBasedGUI/bootstrap/js/bootstrap.min.js"></script>
+<script src="../HTMLBasedGUI/bootstrap4/js/bootstrap.bundle.min.js"></script>
 <script>
 var CASAstylesheetfile = '../cis/styles/CIS_WM.css';
 </script>
@@ -47,18 +48,16 @@ function registerFillTextIdListener(listener)
 m_fillTextIdListeners.push(listener);
 }
 </script>
-<table id='JUSTLOADING' style='table-layout: fixed;z-index: 100;cursor: progress; position: absolute; left: 0; top: 0; width: 100%; height: 100%' class='PAGEBody'>
+<table role='presentation' id='JUSTLOADING' style='table-layout: fixed;z-index: 100;cursor: progress; position: absolute; left: 0; top: 0; width: 100%; height: 100%' class='PAGEBody'>
 <tr><td align="center" valign="middle" class='FLASHPageSwitch'>&nbsp;</td></tr>
 </table>
 <div id='THISPAGE' style='width: 100%;height: 100%;'>
-<div id='PAGEDIV2' style='width:100%;height:100%;padding-left:0;padding-right:0;margin-left:0;margin-right:0; overflow: auto;' >
-<nav class='navbar navbar-default' id='NB_3'>
+<div id='PAGEDIV2' style='width:100%;height:100%;padding-left:0;padding-right:0;margin-left:0;margin-right:0;' >
+<nav data-testtoolid='dlmenu' class='navbar navbar-expand-sm bg-primary navbar-dark' id='NB_3'>
 <div class='container-fluid' >
 <div id='NBHEAD_3' class='navbar-header' >
-<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#citNavbarcollapse3'>
-<span class='icon-bar'></span>
-<span class='icon-bar'></span>
-<span class='icon-bar'></span>
+<button type='button' class='navbar-toggler' aria-label='Toggle navigation' data-toggle='collapse' data-target='#citNavbarcollapse3'>
+<span class='navbar-toggler-icon'></span>
 </button>
 </div>
 <div class='collapse navbar-collapse' id='citNavbarcollapse3'>
@@ -68,72 +67,72 @@ m_fillTextIdListeners.push(listener);
 </div>
 </nav>
 <div class='container-fluid' >
-<img id="IC_5" class='img-responsive '  src='./images/logo_sag.png' ></img>
+<img id="IC_5" class='img-fluid '  src='./images/logo_sag.png' alt='' ></img>
 <div class='row' style='height:10px' ></div>
 <div class='row' style='width:100%' id="PL_7">
-<div class='col-lg-10 col-md-10' >
-<div class='well' >
+<div class='col-lg-10 col-md-10' id='8' >
+<div class='card card-body well'  >
 <form class='form-horizontal' name='form9' id='form9' onSubmit='return false' >
 <fieldset>
 <legend id="$9" >ContractDetails</legend>
-<div class='form-group' id='fgroup10' >
-<label  id="$11" class='control-label col-lg-2'>Customer Name</label>
-<div class='col-lg-4' ><!-- BMOBILE:FFIELD begin -->
-<input id="F_13" name="CC" type='text' class='form-control form-control' placeholder='Registration Start'  data-testtoolid='cocustomer'>
+<div class='form-group form-row align-items-center' id='fgroup10'  >
+<label  id="$11" class='col-form-label col-lg-2'>Customer Name</label>
+<div class='col-lg-4' id='12' >
+<input id="F_13" name="CC" type='text' class='form-control form-control' placeholder='Registration Start'  data-testtoolid='cocustomer' aria-labelledby='$11' >
 </div>
-<label  id="$14" class='control-label col-lg-2'>Contract Id</label>
-<div class='col-lg-4' ><!-- BMOBILE:FFIELD begin -->
-<input id="F_16" name="CC" type='text' class='form-control' placeholder='Contract Id' maxlength='20' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid16();"  data-testtoolid='cocontractid'>
-</div>
-</div>
-<div class='form-group' id='fgroup17' >
-<label  id="$18" class='control-label col-lg-2'>Price</label>
-<div class='col-lg-4' ><!-- BMOBILE:FFIELD begin -->
-<input id="F_20" name="CC" type='text' class='form-control' placeholder='Price' maxlength='20' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid20();"  data-testtoolid='coprice'>
-</div>
-<label  id="$21" class='control-label col-lg-2'>Status</label>
-<div class='col-lg-4' ><!-- BMOBILE:FFIELD begin -->
-<input id="F_23" name="CC" type='text' class='form-control' placeholder='Status' maxlength='20' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid23();"  data-testtoolid='costatus'>
+<label  id="$14" class='col-form-label col-lg-2'>Contract Id</label>
+<div class='col-lg-4' id='15' >
+<input id="F_16" name="CC" type='text' class='form-control' placeholder='Contract Id' maxlength='20' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid16();"  data-testtoolid='cocontractid' aria-labelledby='$14' >
 </div>
 </div>
-<div class='form-group' id='fgroup24' >
-<label  id="$25" class='control-label col-lg-2'>Customer Name</label>
-<div class='col-lg-4' ><!-- BMOBILE:FFIELD begin -->
-<input id="F_27" name="CC" type='text' class='form-control form-control' placeholder='Customer Name'  data-testtoolid='cocustomer'>
+<div class='form-group form-row align-items-center' id='fgroup17'  >
+<label  id="$18" class='col-form-label col-lg-2'>Price</label>
+<div class='col-lg-4' id='19' >
+<input id="F_20" name="CC" type='text' class='form-control' placeholder='Price' maxlength='20' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid20();"  data-testtoolid='coprice' aria-labelledby='$18' >
 </div>
-<label  id="$28" class='control-label col-lg-2'>Yacht Name</label>
-<div class='col-lg-4' ><!-- BMOBILE:FFIELD begin -->
-<input id="F_30" name="CC" type='text' class='form-control form-control' placeholder='Yacht Name'  data-testtoolid='coyachtname'>
-</div>
-</div>
-<div class='form-group' id='fgroup31' >
-<label  id="$32" class='control-label col-lg-2'>Route</label>
-<div class='col-lg-4' ><!-- BMOBILE:FFIELD begin -->
-<input id="F_34" name="CC" type='text' class='form-control' placeholder='Route' maxlength='20' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid34();"  data-testtoolid='coroute'>
-</div>
-<label  id="$35" class='control-label col-lg-2'>Cruise Date</label>
-<div class='col-lg-4' ><!-- BMOBILE:FFIELD begin -->
-<input id="F_37" name="CC" type='text' class='form-control' placeholder='Cruise Date' maxlength='30' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid37();"  data-testtoolid='codate'>
+<label  id="$21" class='col-form-label col-lg-2'>Status</label>
+<div class='col-lg-4' id='22' >
+<input id="F_23" name="CC" type='text' class='form-control' placeholder='Status' maxlength='20' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid23();"  data-testtoolid='costatus' aria-labelledby='$21' >
 </div>
 </div>
-<div class='form-group' id='fgroup38' >
-<label  id="$39" class='control-label col-lg-2'>Date of Bookig</label>
-<div class='col-lg-4' ><!-- BMOBILE:FFIELD begin -->
-<input id="F_41" name="CC" type='text' class='form-control' placeholder='BookingdateDate' maxlength='20' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid41();"  data-testtoolid='cobookingdate'>
+<div class='form-group form-row align-items-center' id='fgroup24'  >
+<label  id="$25" class='col-form-label col-lg-2'>Customer Name</label>
+<div class='col-lg-4' id='26' >
+<input id="F_27" name="CC" type='text' class='form-control form-control' placeholder='Customer Name'  data-testtoolid='cocustomer' aria-labelledby='$25' >
 </div>
-<label  id="$42" class='control-label col-lg-2'>Date of Reservation</label>
-<div class='col-lg-4' ><!-- BMOBILE:FFIELD begin -->
-<input id="F_44" name="CC" type='text' class='form-control' placeholder='ReservationDate' maxlength='20' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid44();"  data-testtoolid='coreservationdate'>
-</div>
-</div>
-<div class='form-group' id='fgroup45' >
-<label  id="$46" class='control-label col-lg-2'>Date of Cancelation</label>
-<div class='col-lg-4' ><!-- BMOBILE:FFIELD begin -->
-<input id="F_48" name="CC" type='text' class='form-control' placeholder='CancelationDate' maxlength='20' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid48();"  data-testtoolid='cocancellationdate'>
+<label  id="$28" class='col-form-label col-lg-2'>Yacht Name</label>
+<div class='col-lg-4' id='29' >
+<input id="F_30" name="CC" type='text' class='form-control form-control' placeholder='Yacht Name'  data-testtoolid='coyachtname' aria-labelledby='$28' >
 </div>
 </div>
-<div class='form-group' id='fgroup49' >
-<div class='col-lg-10 col-lg-offset-2' ><!-- BMOBILE:BUTTON begin -->
+<div class='form-group form-row align-items-center' id='fgroup31'  >
+<label  id="$32" class='col-form-label col-lg-2'>Route</label>
+<div class='col-lg-4' id='33' >
+<input id="F_34" name="CC" type='text' class='form-control' placeholder='Route' maxlength='20' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid34();"  data-testtoolid='coroute' aria-labelledby='$32' >
+</div>
+<label  id="$35" class='col-form-label col-lg-2'>Cruise Date</label>
+<div class='col-lg-4' id='36' >
+<input id="F_37" name="CC" type='text' class='form-control' placeholder='Cruise Date' maxlength='30' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid37();"  data-testtoolid='codate' aria-labelledby='$35' >
+</div>
+</div>
+<div class='form-group form-row align-items-center' id='fgroup38'  >
+<label  id="$39" class='col-form-label col-lg-2'>Date of Bookig</label>
+<div class='col-lg-4' id='40' >
+<input id="F_41" name="CC" type='text' class='form-control' placeholder='BookingdateDate' maxlength='20' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid41();"  data-testtoolid='cobookingdate' aria-labelledby='$39' >
+</div>
+<label  id="$42" class='col-form-label col-lg-2'>Date of Reservation</label>
+<div class='col-lg-4' id='43' >
+<input id="F_44" name="CC" type='text' class='form-control' placeholder='ReservationDate' maxlength='20' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid44();"  data-testtoolid='coreservationdate' aria-labelledby='$42' >
+</div>
+</div>
+<div class='form-group form-row align-items-center' id='fgroup45'  >
+<label  id="$46" class='col-form-label col-lg-2'>Date of Cancelation</label>
+<div class='col-lg-4' id='47' >
+<input id="F_48" name="CC" type='text' class='form-control' placeholder='CancelationDate' maxlength='20' autocomplete='off' required oninput="setCustomValidity('');" oninvalid="dooninvalid48();"  data-testtoolid='cocancellationdate' aria-labelledby='$46' >
+</div>
+</div>
+<div class='form-group form-row align-items-center' id='fgroup49'  >
+<div class='col-lg-10 col-lg-offset-2' id='50' >
 <button data-testtoolid='onCancellation' type='submit' class='btn btn-primary'  id="B_51" name="CC"  >Cancelation</button>
 <button data-testtoolid='onBooking' type='submit' class='btn btn-primary'  id="B_52" name="CC"  >Booking</button>
 </div>
@@ -142,7 +141,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 <div class='row' style='width:100%' id="PL_53">
-<div class='col-lg-10 col-md-10' ><!-- BMOBILE:ALERT begin -->
+<div class='col-lg-10 col-md-10' id='54' >
 <div id="A_55" data-testtoolid='alertshorttextprop' ></div>
 </div>
 </div>
@@ -167,8 +166,12 @@ var C;
 var m_roi_firstusage;
 function reactOnInit(firstusage)
 {
+if (document.title != null && document.title != '' && window.frameElement != null) window.frameElement.setAttribute('title',document.title);
+else if (window.frameElement != null) { var ftitle = window.frameElement.getAttribute('title'); if (ftitle != null && ftitle != '') document.title = ftitle;}
 if (firstusage == undefined) firstusage = true;
-m_roi_firstusage = firstusage;if (parent.m_centralLib == null) { document.location.href = '../HTMLBasedGUI/general/aboutBlank.html'; return; }
+m_roi_firstusage = firstusage;
+if (parent.m_centralLib == null) { if (parent.document.readyState == 'complete') document.location.href = '../HTMLBasedGUI/general/aboutBlank.html';
+else parent.document.onreadystatechange = function(){ reactOnInit(firstusage); }; return; }
 C = csciframe;
 CL = C.CL();
 m_resizeListeners = [];
@@ -191,35 +194,35 @@ var pageInitParam = parent.pageInitParam;
 if (pageInitParam == null) pageInitParam = '';
 if (firstusage) generateCCs();
 if (firstusage) CNB_3 = document.getElementById('NB_3');
-if (firstusage) C.iccNAVBAR (CNB_3,NBHEAD_3,NBNAV_3);
+if (firstusage) C.iccNAVBAR (CNB_3,NBHEAD_3,NBNAV_3,true);
 C.registerListener(reactOnModelUpdate3);
 CNB_3.CASA_navbarcollectionprop = 'dlmenu';
 if (firstusage) C_5 = gebid('IC_5');
-C.iccBM_ICON(C_5,romu5,N,N,N);
-if (firstusage) C.iccBM_LABEL($11,romu11,N,N,N);
-C.iccFFIELD(CF_13,romu13,C.reactFFIELD,'cocustomer',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N);
-if (firstusage) C.iccBM_LABEL($14,romu14,N,N,N);
-C.iccFFIELD(CF_16,romu16,C.reactFFIELD,'cocontractid',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required');
-if (firstusage) C.iccBM_LABEL($18,romu18,N,N,N);
-C.iccFFIELD(CF_20,romu20,C.reactFFIELD,'coprice',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required');
-if (firstusage) C.iccBM_LABEL($21,romu21,N,N,N);
-C.iccFFIELD(CF_23,romu23,C.reactFFIELD,'costatus',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required');
-if (firstusage) C.iccBM_LABEL($25,romu25,N,N,N);
-C.iccFFIELD(CF_27,romu27,C.reactFFIELD,'cocustomer',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N);
-if (firstusage) C.iccBM_LABEL($28,romu28,N,N,N);
-C.iccFFIELD(CF_30,romu30,C.reactFFIELD,'coyachtname',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N);
-if (firstusage) C.iccBM_LABEL($32,romu32,N,N,N);
-C.iccFFIELD(CF_34,romu34,C.reactFFIELD,'coroute',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required');
-if (firstusage) C.iccBM_LABEL($35,romu35,N,N,N);
-C.iccFFIELD(CF_37,romu37,C.reactFFIELD,'codate',N,N,N,N,N,N,N,N,N,'30','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required');
-if (firstusage) C.iccBM_LABEL($39,romu39,N,N,N);
-C.iccFFIELD(CF_41,romu41,C.reactFFIELD,'cobookingdate',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required');
-if (firstusage) C.iccBM_LABEL($42,romu42,N,N,N);
-C.iccFFIELD(CF_44,romu44,C.reactFFIELD,'coreservationdate',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required');
-if (firstusage) C.iccBM_LABEL($46,romu46,N,N,N);
-C.iccFFIELD(CF_48,romu48,C.reactFFIELD,'cocancellationdate',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required');
-if (firstusage) C.iccBM_BUTTON(CB_51,romu51,rohk51,C.reactBM_BUTTON,'onCancellation',N,N,'cancbotvisible','disabled',N);
-if (firstusage) C.iccBM_BUTTON(CB_52,romu52,rohk52,C.reactBM_BUTTON,'onBooking',N,N,'bookbotvisible','disabled',N);
+C.iccBM_ICON(C_5,romu5,N,N,N,N,N,N);
+if (firstusage) C.iccBM_LABEL($11,romu11,N,N,N,N,'false');
+C.iccFFIELD(CF_13,romu13,C.reactFFIELD,'cocustomer',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+if (firstusage) C.iccBM_LABEL($14,romu14,N,N,N,N,'false');
+C.iccFFIELD(CF_16,romu16,C.reactFFIELD,'cocontractid',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+if (firstusage) C.iccBM_LABEL($18,romu18,N,N,N,N,'false');
+C.iccFFIELD(CF_20,romu20,C.reactFFIELD,'coprice',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+if (firstusage) C.iccBM_LABEL($21,romu21,N,N,N,N,'false');
+C.iccFFIELD(CF_23,romu23,C.reactFFIELD,'costatus',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+if (firstusage) C.iccBM_LABEL($25,romu25,N,N,N,N,'false');
+C.iccFFIELD(CF_27,romu27,C.reactFFIELD,'cocustomer',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+if (firstusage) C.iccBM_LABEL($28,romu28,N,N,N,N,'false');
+C.iccFFIELD(CF_30,romu30,C.reactFFIELD,'coyachtname',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+if (firstusage) C.iccBM_LABEL($32,romu32,N,N,N,N,'false');
+C.iccFFIELD(CF_34,romu34,C.reactFFIELD,'coroute',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+if (firstusage) C.iccBM_LABEL($35,romu35,N,N,N,N,'false');
+C.iccFFIELD(CF_37,romu37,C.reactFFIELD,'codate',N,N,N,N,N,N,N,N,N,'30','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+if (firstusage) C.iccBM_LABEL($39,romu39,N,N,N,N,'false');
+C.iccFFIELD(CF_41,romu41,C.reactFFIELD,'cobookingdate',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+if (firstusage) C.iccBM_LABEL($42,romu42,N,N,N,N,'false');
+C.iccFFIELD(CF_44,romu44,C.reactFFIELD,'coreservationdate',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+if (firstusage) C.iccBM_LABEL($46,romu46,N,N,N,N,'false');
+C.iccFFIELD(CF_48,romu48,C.reactFFIELD,'cocancellationdate',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+if (firstusage) C.iccBM_BUTTON(CB_51,romu51,rohk51,C.reactBM_BUTTON,'onCancellation',N,N,'cancbotvisible','disabled',N,N,'false',false);
+if (firstusage) C.iccBM_BUTTON(CB_52,romu52,rohk52,C.reactBM_BUTTON,'onBooking',N,N,'bookbotvisible','disabled',N,N,'false',false);
 if (firstusage) CA_55= document.getElementById('A_55');if (firstusage) C.iccBM_ALERT(CA_55,romu55,'alerttypeprop','alertshorttextprop','alertlongtextprop','6000');
 if (firstusage) C_2 = document.getElementById('PAGEDIV2');
 if (firstusage) THISPAGEBODY = document.getElementById('PAGEDIV2');
@@ -296,6 +299,7 @@ function rohk51(param) { C.transferModelBM_BUTTON(CB_51); }
 function romu52(model) { C.romuBM_BUTTON(CB_52); }
 function rohk52(param) { C.transferModelBM_BUTTON(CB_52); }
 function romu55(model) { C.romuBM_ALERT(CA_55); }
+$(document).ready(function(){$('[data-tooltip="tooltip"]').tooltip({trigger:'hover'});$('[data-tooltip="tooltip"]').click(function () {$('[data-tooltip="tooltip"]').tooltip("hide");});   });
 </script>
 <iframe hidden id="csciframe" name="csciframe" tabIndex="-1" src="ZZZZZZZZGenerated_lbcodetx__JLIBS.html" style="width:0;height:0;left:0;top:0">
 </iframe>

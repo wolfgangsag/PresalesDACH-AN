@@ -8,7 +8,7 @@
 /* TODO Enter your code here
 define data
     PARAMETER
-    01 startdatum (d)
+    01 startdatum (d) 
     01 endedatum (d)
     01 zeit (t)
 end-define

@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
 <head>
+<title></title>
 <meta charset='UTF-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
 <script>var m_perfPageLoadStart = new Date();
 var m_perfPageLoadEnd = null;
 var m_perfPageFocusEnd = null;</script>
+<link rel="stylesheet" href="../HTMLBasedGUI/jquery/jquery-ui.min.css" type="text/css" >
+<link rel="stylesheet" href="../HTMLBasedGUI/bootstrapicons/font/bootstrap-icons.css" type="text/css" >
+<link rel="stylesheet" href="../HTMLBasedGUI/bootstrap4/css/bootstrap.min.css" type="text/css" >
+<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/dataTables.bootstrap4.min.css" type="text/css" >
+<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/scroller.dataTables.min.css" type="text/css" >
+<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/responsive.bootstrap4.min.css" type="text/css" >
+<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/scroller.bootstrap4.min.css" type="text/css" >
+<link rel="stylesheet" href="../HTMLBasedGUI/openlayers/ol.css" type="text/css" >
 <link id="casabacstylesheet" rel="stylesheet" type="text/css" href="../cis/styles/CIS_WM.css">
 <link id="addcsshref" rel="stylesheet" type="text/css" href="./styles/njxmobileZD.css">
-<link rel="stylesheet" href="../HTMLBasedGUI/jquery/jquery-ui.min.css" type="text/css" >
-<link rel="stylesheet" href="../HTMLBasedGUI/bootstrap/css/bootstrap.min.css" type="text/css" >
-<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/dataTables.bootstrap.css" type="text/css" >
-<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/responsive.bootstrap.min.css" type="text/css" >
-<link rel="stylesheet" href="../HTMLBasedGUI/openlayers/ol.css" type="text/css" >
-<script src="../HTMLBasedGUI/jquery/jquery-2.2.4.min.js"></script>
+<script src="../HTMLBasedGUI/jquery3/jquery.min.js"></script>
 <script src="../HTMLBasedGUI/jquery/jquery-ui.min.js"></script>
-<script src="../HTMLBasedGUI/bootstrap/js/alert.js"></script>
-<script src="../HTMLBasedGUI/bootstrap/js/bootstrap.min.js"></script>
+<script src="../HTMLBasedGUI/bootstrap4/js/bootstrap.bundle.min.js"></script>
 <script src="../HTMLBasedGUI/datatables/js/jquery.dataTables.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/dataTables.bootstrap.min.js"></script>
+<script src="../HTMLBasedGUI/datatables/js/dataTables.bootstrap4.min.js"></script>
 <script src="../HTMLBasedGUI/datatables/js/dataTables.responsive.min.js"></script>
+<script src="../HTMLBasedGUI/datatables/js/responsive.bootstrap4.min.js"></script>
+<script src="../HTMLBasedGUI/datatables/js/scroller.dataTables.min.js"></script>
+<script src="../HTMLBasedGUI/datatables/js/scroller.bootstrap4.min.js"></script>
+<script src="../HTMLBasedGUI/datatables/js/dataTables.scroller.min.js"></script>
 <script src="../HTMLBasedGUI/openlayers/ol.js"></script>
 <script>
 var CASAstylesheetfile = '../cis/styles/CIS_WM.css';
@@ -53,43 +60,41 @@ function registerFillTextIdListener(listener)
 m_fillTextIdListeners.push(listener);
 }
 </script>
-<table id='JUSTLOADING' style='table-layout: fixed;z-index: 100;cursor: progress; position: absolute; left: 0; top: 0; width: 100%; height: 100%' class='PAGEBody'>
+<table role='presentation' id='JUSTLOADING' style='table-layout: fixed;z-index: 100;cursor: progress; position: absolute; left: 0; top: 0; width: 100%; height: 100%' class='PAGEBody'>
 <tr><td align="center" valign="middle" class='FLASHPageSwitch'>&nbsp;</td></tr>
 </table>
 <div id='THISPAGE' style='width: 100%;height: 100%;'>
-<div id='PAGEDIV3' style='width:100%;height:100%;padding-left:0;padding-right:0;margin-left:0;margin-right:0; overflow: auto;background-color:#E5E5E4' ><!-- BMOBILE:CONTAINER begin -->
+<div id='PAGEDIV3' style='width:100%;height:100%;padding-left:0;padding-right:0;margin-left:0;margin-right:0;background-color:#E5E5E4' >
 <div class='container-fluid' >
 <div class='row' style='background-color: #125996' id="PL_5">
-<div class='col-xs-6' ></div>
-<div class='col-lg-1 col-md-1 col-sm-1 col-xs-1' style='padding-left:0;padding-right:2%;' >
-<img id="IC_8" class='img-responsive iconclickable ' data-testtoolid='onSeten' src='./images/RD-flageng.png' title='english' onclick='C.reactBM_ICON(event);' ></img>
+<div class='col-6' id='6' ></div>
+<div class='col-lg-1 col-md-1 col-sm-1 col-1' style='padding-left:0;padding-right:2%;' id='7' >
+<img id="IC_8" class='img-fluid iconclickable ' data-testtoolid='onSeten' src='./images/RD-flageng.png' title='english' alt='english' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
 </div>
-<div class='col-lg-1 col-md-1 col-sm-1 col-xs-1' style='padding-left:0;padding-right:2%;' >
-<img id="IC_10" class='img-responsive iconclickable ' data-testtoolid='onSetge' src='./images/RD-flagger.png' title='german' onclick='C.reactBM_ICON(event);' ></img>
+<div class='col-lg-1 col-md-1 col-sm-1 col-1' style='padding-left:0;padding-right:2%;' id='9' >
+<img id="IC_10" class='img-fluid iconclickable ' data-testtoolid='onSetge' src='./images/RD-flagger.png' title='german' alt='german' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
 </div>
-<div class='col-lg-1 col-md-1 col-sm-1 col-xs-1' style='padding-left:0;padding-right:2%;' >
-<img id="IC_12" class='img-responsive iconclickable ' data-testtoolid='onSetsp' src='./images/RD-flagspa.png' title='spanish' onclick='C.reactBM_ICON(event);' ></img>
+<div class='col-lg-1 col-md-1 col-sm-1 col-1' style='padding-left:0;padding-right:2%;' id='11' >
+<img id="IC_12" class='img-fluid iconclickable ' data-testtoolid='onSetsp' src='./images/RD-flagspa.png' title='spanish' alt='spanish' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
 </div>
-<div class='col-lg-1 col-md-1 col-sm-1 col-xs-1' style='padding-left:0;padding-right:2%;' >
-<img id="IC_14" class='img-responsive iconclickable ' data-testtoolid='onSetpo' src='./images/RD-flagpor.png' title='portuguese' onclick='C.reactBM_ICON(event);' ></img>
+<div class='col-lg-1 col-md-1 col-sm-1 col-1' style='padding-left:0;padding-right:2%;' id='13' >
+<img id="IC_14" class='img-fluid iconclickable ' data-testtoolid='onSetpo' src='./images/RD-flagpor.png' title='portuguese' alt='portuguese' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
 </div>
 </div>
 <div class='row' style='background-color: #125996' id="PL_15">
-<div class='col-xs-3' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$17" style='color:#0899cc;font-style: italic;font-size:150%' class='control-label'>null</label>
+<div class='col-3' id='16' >
+<label  id="$17" style='color:#0899cc;font-style: italic;font-size:150%' class='col-form-label'></label>
 </div>
-<div class='col-xs-8' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$19" style='color:#0899cc;font-style: italic;font-size:150%' class='control-label'>null</label>
+<div class='col-8' id='18' >
+<label  id="$19" style='color:#0899cc;font-style: italic;font-size:150%' class='col-form-label'></label>
 </div>
 </div>
 </div>
-<nav class='navbar navbar-default' id='NB_20'>
+<nav data-testtoolid='capmenu' class='navbar navbar-expand-sm bg-primary navbar-dark' id='NB_20'>
 <div class='container-fluid' >
 <div id='NBHEAD_20' class='navbar-header' >
-<button type='button' class='navbar-toggle' data-toggle='collapse' data-target='#citNavbarcollapse20'>
-<span class='icon-bar'></span>
-<span class='icon-bar'></span>
-<span class='icon-bar'></span>
+<button type='button' class='navbar-toggler' aria-label='Toggle navigation' data-toggle='collapse' data-target='#citNavbarcollapse20'>
+<span class='navbar-toggler-icon'></span>
 </button>
 </div>
 <div class='collapse navbar-collapse' id='citNavbarcollapse20'>
@@ -100,89 +105,90 @@ m_fillTextIdListeners.push(listener);
 </nav>
 <div class='container-fluid' >
 <div class='row' style='background-color:white' id="PL_22">
-<div class='col-xs-12' >
+<div class='col-12' id='23' >
 <div id="IO_24">
 </div>
 </div>
 </div>
 <div class='row' style='background-color:white' id="PL_25">
-<div class='col-xs-10 col-sm-10 label-as-header' style='padding-top:20%' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$27" style='padding-left:25px;color:#0899cc;' class='control-label'>null</label>
+<div class='col-10 col-sm-10 label-as-header' style='padding-top:20%' id='26' >
+<label  id="$27" style='padding-left:25px;color:#0899cc;' class='col-form-label'></label>
 </div>
-<div class='col-xs-10 col-sm-10 label-as-header2' style='padding-top:2%; margin-button:10%' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$29" style='padding-left:25px;color:#0899cc;margin-button:10%' class='control-label'>null</label>
+<div class='col-10 col-sm-10 label-as-header2' style='padding-top:2%; margin-button:10%' id='28' >
+<label  id="$29" style='padding-left:25px;color:#0899cc;margin-button:10%' class='col-form-label'></label>
 </div>
 </div>
 <div class='center-block row' style='width:100%' id="PL_30">
-<div class='col-lg-6 col-md-6 col-sm-6 col-xs-6 label-as-header' ><!-- BMOBILE:BUTTON begin -->
+<div class='col-lg-6 col-md-6 col-sm-6 col-6 label-as-header' id='31' >
 <button data-testtoolid='onLoginbutton' class='btn' style='padding-left:25px;padding-right:25px;margin:20px;margin-top:40px;background-color:#0899cc;color:white;border-style:sold;border-color:white;'  id="B_32" name="CC"  ></button>
 </div>
 </div>
-<div class='panel-default panel' style='background-color:#CCCCCB; border-style:none' id="33">
-<div class='panel-heading panel-title' style='color:white;background-color: #989898; border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px' id="$34" >null</div>
-<div class='panel-body' id='PANEL33' style='border-style:none' >
+<div class='card' style='background-color:#CCCCCB; border-style:none' id="33">
+<div class='card-header card-title card-text' style='color:white;background-color: #989898; border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px' id="$34" ></div>
+<div class='card-body' id='PANEL33' style='border-style:none' >
 <div class='center-block row' id="PL_36">
-<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' >
-<div class='well' >
+<div class='col-lg-12 col-md-12 col-sm-12 col-12' id='37' >
+<div class='card card-body well'  >
 <form class='form-horizontal' name='form38' id='form38' onSubmit='return false' >
 <fieldset>
-<div class='form-group' id='fgroup39' >
-<div class='col-lg-6 col-md-12 col-sm-12 col-xs-12' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$41" class='control-label'>null</label>
-<input id="F_42" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value1'>
+<legend id="$38" ></legend>
+<div class='form-group form-row align-items-center' id='fgroup39'  >
+<div class='col-lg-6 col-md-12 col-sm-12 col-12' id='40' >
+<label  id="$41" class='col-form-label'></label>
+<input id="F_42" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value1' aria-labelledby='$41' >
 </div>
 </div>
-<div class='form-group' id='fgroup43' >
-<div class='col-lg-6 col-md-12 col-sm-12 col-xs-12' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$45" class='control-label'>null</label>
-<input id="F_46" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value2'>
+<div class='form-group form-row align-items-center' id='fgroup43'  >
+<div class='col-lg-6 col-md-12 col-sm-12 col-12' id='44' >
+<label  id="$45" class='col-form-label'></label>
+<input id="F_46" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value2' aria-labelledby='$45' >
 </div>
-<div class='col-lg-6 col-md-12 col-sm-12 col-xs-12' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$48" class='control-label'>null</label>
-<input id="F_49" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value3'>
+<div class='col-lg-6 col-md-12 col-sm-12 col-12' id='47' >
+<label  id="$48" class='col-form-label'></label>
+<input id="F_49" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value3' aria-labelledby='$48' >
 </div>
-<div class='col-lg-6 col-md-12 col-sm-12 col-xs-12' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$51" class='control-label'>null</label>
-<input id="F_52" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value4'>
+<div class='col-lg-6 col-md-12 col-sm-12 col-12' id='50' >
+<label  id="$51" class='col-form-label'></label>
+<input id="F_52" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value4' aria-labelledby='$51' >
 </div>
-<div class='col-lg-6 col-md-12 col-sm-12 col-xs-12' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$54" class='control-label'>null</label>
-<input id="F_55" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value5'>
+<div class='col-lg-6 col-md-12 col-sm-12 col-12' id='53' >
+<label  id="$54" class='col-form-label'></label>
+<input id="F_55" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value5' aria-labelledby='$54' >
 </div>
 </div>
-<div class='form-group' id='fgroup56' >
-<div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' >
+<div class='form-group form-row align-items-center' id='fgroup56'  >
+<div class='col-lg-6 col-md-6 col-sm-12 col-12' id='57' >
 <div id='OSM_58'  style='height:100%;' class='map'   >
 </div>
 </div>
 </div>
-<div class='form-group' id='fgroup59' >
-<div class='col-lg-6 col-md-12 col-sm-12 col-xs-12' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$61" class='control-label'>null</label>
-<input id="F_62" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value6'>
+<div class='form-group form-row align-items-center' id='fgroup59'  >
+<div class='col-lg-6 col-md-12 col-sm-12 col-12' id='60' >
+<label  id="$61" class='col-form-label'></label>
+<input id="F_62" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value6' aria-labelledby='$61' >
 </div>
-<div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$64" class='control-label'>null</label>
-<input id="F_65" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value7'>
+<div class='col-lg-6 col-md-6 col-sm-12 col-12' id='63' >
+<label  id="$64" class='col-form-label'></label>
+<input id="F_65" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value7' aria-labelledby='$64' >
 </div>
-<div class='col-lg-6 col-md-12 col-sm-12 col-xs-12' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$67" class='control-label'>null</label>
-<input id="F_68" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value8'>
+<div class='col-lg-6 col-md-12 col-sm-12 col-12' id='66' >
+<label  id="$67" class='col-form-label'></label>
+<input id="F_68" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value8' aria-labelledby='$67' >
 </div>
-<div class='col-lg-6 col-md-12 col-sm-12 col-xs-12' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$70" class='control-label'>null</label>
-<input id="F_71" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value9'>
+<div class='col-lg-6 col-md-12 col-sm-12 col-12' id='69' >
+<label  id="$70" class='col-form-label'></label>
+<input id="F_71" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value9' aria-labelledby='$70' >
 </div>
-<div class='col-lg-6 col-md-12 col-sm-12 col-xs-12' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$73" class='control-label'>null</label>
-<input id="F_74" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value10'>
+<div class='col-lg-6 col-md-12 col-sm-12 col-12' id='72' >
+<label  id="$73" class='col-form-label'></label>
+<input id="F_74" name="CC" type='text' class='form-control'  data-testtoolid='incdet.value10' aria-labelledby='$73' >
 </div>
 </div>
-<div class='form-group' id='fgroup75' >
-<div class='col-lg-3 col-md-3 col-sm-3 col-xs-3' ><!-- BMOBILE:BUTTON begin -->
+<div class='form-group form-row align-items-center' id='fgroup75'  >
+<div class='col-lg-3 col-md-3 col-sm-3 col-3' id='76' >
 <button data-testtoolid='onIncComment' class='btn' style='margin-bottom:10px;margin-top:10px;padding:8px;width:120px;background-color:#989898;color:white'  id="B_77" name="CC"  ></button>
 </div>
-<div class='col-lg-3 col-md-3 col-sm-3 col-xs-3' ><!-- BMOBILE:BUTTON begin -->
+<div class='col-lg-3 col-md-3 col-sm-3 col-3' id='78' >
 <button data-testtoolid='onIncBack2l' class='btn' style='margin-bottom:10px;margin-top:10px;padding:8px;width:120px;background-color:#989898;color:white'  id="B_79" name="CC"  ></button>
 </div>
 </div>
@@ -191,25 +197,26 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 </div>
-<div class='panel-default panel' style='background-color:#CCCCCB; border-style:none' id="80">
-<div class='panel-heading panel-title' style='color:white;background-color: #989898; border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px' id="$81" >null</div>
-<div class='panel-body' id='PANEL80' style='border-style:none' >
+<div class='card' style='background-color:#CCCCCB; border-style:none' id="80">
+<div class='card-header card-title card-text' style='color:white;background-color: #989898; border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px' id="$81" ></div>
+<div class='card-body' id='PANEL80' style='border-style:none' >
 <div class='center-block row' id="PL_83">
-<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' >
-<div class='well' >
+<div class='col-lg-12 col-md-12 col-sm-12 col-12' id='84' >
+<div class='card card-body well'  >
 <form class='form-horizontal' name='form85' id='form85' onSubmit='return false' >
 <fieldset>
-<div class='form-group' id='fgroup86' >
-<div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' >
+<legend id="$85" ></legend>
+<div class='form-group form-row align-items-center' id='fgroup86'  >
+<div class='col-lg-6 col-md-6 col-sm-12 col-12' id='87' >
 <div id="IO_88">
 </div>
 </div>
 </div>
-<div class='form-group' id='fgroup89' >
-<div class='col-lg-3 col-md-3 col-sm-3 col-xs-3' ><!-- BMOBILE:BUTTON begin -->
+<div class='form-group form-row align-items-center' id='fgroup89'  >
+<div class='col-lg-3 col-md-3 col-sm-3 col-3' id='90' >
 <button data-testtoolid='onIncComment' class='btn' style='margin-bottom:10px;margin-top:10px;padding:8px;width:120px;background-color:#989898;color:white'  id="B_91" name="CC"  ></button>
 </div>
-<div class='col-lg-3 col-md-3 col-sm-3 col-xs-3' ><!-- BMOBILE:BUTTON begin -->
+<div class='col-lg-3 col-md-3 col-sm-3 col-3' id='92' >
 <button data-testtoolid='onIncBack2l' class='btn' style='margin-bottom:10px;margin-top:10px;padding:8px;width:120px;background-color:#989898;color:white'  id="B_93" name="CC"  ></button>
 </div>
 </div>
@@ -218,12 +225,12 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 </div>
-<div class='panel-default panel' style='background-color:#CCCCCB ;border-style:none' id="94">
-<div class='panel-heading panel-title' style='color:white;background-color: #989898; border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px' id="$95" >null</div>
-<div class='panel-body' id='PANEL94' style='border-style:none' >
+<div class='card' style='background-color:#CCCCCB ;border-style:none' id="94">
+<div class='card-header card-title card-text' style='color:white;background-color: #989898; border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px' id="$95" ></div>
+<div class='card-body' id='PANEL94' style='border-style:none' >
 <div class='row' style='height:10%' ></div>
 <div class='row' id="PL_98">
-<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' style='border-style:none' ><table id='SIMPLEGRID100' class='table dt-responsive nowrap table-striped' cellspacing='0' data-testtoolid='caplines'  style='width:100%' >
+<div class='col-lg-12 col-md-12 col-sm-12 col-12' style='border-style:none' id='99' ><table id='SIMPLEGRID100' class='table dt-responsive nowrap table-striped' cellspacing='0' data-testtoolid='caplines'  style='width:100%' >
 <thead>
 <tr >
 <th  style='width:5%' >Type</th>
@@ -238,89 +245,90 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 </div>
-<div class='panel-default panel' style='background-color:#CCCCCB ;border-style:none' id="113">
-<div class='panel-heading panel-title' style='color:white;background-color: #989898; border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px' id="$114" >null</div>
-<div class='panel-body' id='PANEL113' style='border-style:none' >
+<div class='card' style='background-color:#CCCCCB ;border-style:none' id="113">
+<div class='card-header card-title card-text' style='color:white;background-color: #989898; border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px' id="$114" ></div>
+<div class='card-body' id='PANEL113' style='border-style:none' >
 <div class='row' style='height:10%' ></div>
 <div class='row' id="PL_117">
-<div class='col-lg-12 col-md-12 col-sm-12 col-xs-12' >
-<div class='well' >
+<div class='col-lg-12 col-md-12 col-sm-12 col-12' id='118' >
+<div class='card card-body well'  >
 <form class='form-horizontal' name='form119' id='form119' onSubmit='return false' >
 <fieldset>
-<div class='form-group' id='fgroup120' >
-<div class='col-lg-3 col-md-3 col-sm-5 col-xs-5' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$122" class='control-label'>null</label>
+<legend id="$119" ></legend>
+<div class='form-group form-row align-items-center' id='fgroup120'  >
+<div class='col-lg-3 col-md-3 col-sm-5 col-5' id='121' >
+<label  id="$122" class='col-form-label'></label>
 </div>
-<div class='col-lg-3 col-md-3 col-sm-5 col-xs-5' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$124" class='control-label'>null</label>
+<div class='col-lg-3 col-md-3 col-sm-5 col-5' id='123' >
+<label  id="$124" class='col-form-label'></label>
 </div>
 </div>
-<div class='form-group' id='fgroup125' >
-<div class='col-lg-3 col-md-3 col-sm-5 col-xs-5' ><!-- BMOBILE:FFIELD begin -->
+<div class='form-group form-row align-items-center' id='fgroup125'  >
+<div class='col-lg-3 col-md-3 col-sm-5 col-5' id='126' >
 <input id="F_127" name="CC" type='text' class='form-control'  data-testtoolid='inccomment.inctypevalue'>
 </div>
-<div class='col-lg-3 col-md-3 col-sm-5 col-xs-5' ><!-- BMOBILE:FFIELD begin -->
+<div class='col-lg-3 col-md-3 col-sm-5 col-5' id='128' >
 <input id="F_129" name="CC" type='text' class='form-control'  data-testtoolid='inccomment.incdatevalue'>
 </div>
 </div>
-<div class='form-group' id='fgroup130' >
-<div class='col-lg-6 col-md-6 col-sm-12 col-xs-12' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$132" class='control-label'>null</label>
-<textarea class='form-control' id="T_133" name="CC" data-testtoolid='inccomment.comvalue' ></textarea>
+<div class='form-group form-row align-items-center' id='fgroup130'  >
+<div class='col-lg-6 col-md-6 col-sm-12 col-12' id='131' >
+<label  id="$132" class='col-form-label'></label>
+<textarea class='form-control' aria-labelledby='$132' id="T_133" name="CC" data-testtoolid='inccomment.comvalue' ></textarea>
 </div>
 </div>
-<div class='form-group' id='fgroup134' >
-<div class='col-xs-12' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$136" class='control-label'>null</label>
+<div class='form-group form-row align-items-center' id='fgroup134'  >
+<div class='col-12' id='135' >
+<label  id="$136" class='col-form-label'></label>
 </div>
-<div class='col-xs-12' ><!-- DATEINPUT2 -->
-<input id="F_138" name="CC" type="text" data-testtoolid='inccomment.enddatevalue' class='form-control' >
-</div>
-</div>
-<div class='form-group' id='fgroup139' >
-<div class='col-xs-12' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$141" class='control-label'>null</label>
-</div>
-<div class='col-xs-2' ><!-- BMOBILE CHECKBOX start -->
-<div class='checkbox ' >
-<label><input type='checkbox' value='' data-testtoolid='inccomment.newstatcboxv1' id='C_143' onchange='C.reactBM_CHECKBOX(event);' >in Progress</label>
+<div class='col-12' id='137' >
+<input id="F_138" name="CC" type="text" data-testtoolid='inccomment.enddatevalue' class='form-control' aria-labelledby='$136' >
 </div>
 </div>
-<div class='col-xs-2' ><!-- BMOBILE CHECKBOX start -->
-<div class='checkbox ' >
-<label><input type='checkbox' value='' data-testtoolid='inccomment.newstatcboxv2' id='C_145' onchange='C.reactBM_CHECKBOX(event);' >solved</label>
+<div class='form-group form-row align-items-center' id='fgroup139'  >
+<div class='col-12' id='140' >
+<label  id="$141" class='col-form-label'></label>
+</div>
+<div class='col-2' id='142' >
+<div class='form-check ' >
+<input type='checkbox' value='' data-testtoolid='inccomment.newstatcboxv1' id='C_143' onchange='C.reactBM_CHECKBOX(event);' class='form-check-input' ><label class='form-check-label ' for='C_143' ><span id='$143'>in Progress</span></label>
 </div>
 </div>
-</div>
-<div class='form-group' id='fgroup146' >
-<div class='col-xs-12' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$148" class='control-label'>null</label>
-</div>
-<div class='col-xs-2' ><!-- BMOBILE CHECKBOX start -->
-<div class='checkbox ' >
-<label><input type='checkbox' value='' data-testtoolid='inccomment.newpriocboxv1' id='C_150' onchange='C.reactBM_CHECKBOX(event);' >low</label>
-</div>
-</div>
-<div class='col-xs-2' ><!-- BMOBILE CHECKBOX start -->
-<div class='checkbox ' >
-<label><input type='checkbox' value='' data-testtoolid='inccomment.newpriocboxv2' id='C_152' onchange='C.reactBM_CHECKBOX(event);' >medium</label>
-</div>
-</div>
-<div class='col-xs-2' ><!-- BMOBILE CHECKBOX start -->
-<div class='checkbox ' >
-<label><input type='checkbox' value='' data-testtoolid='inccomment.newpriocboxv3' id='C_154' onchange='C.reactBM_CHECKBOX(event);' >high</label>
+<div class='col-2' id='144' >
+<div class='form-check ' >
+<input type='checkbox' value='' data-testtoolid='inccomment.newstatcboxv2' id='C_145' onchange='C.reactBM_CHECKBOX(event);' class='form-check-input' ><label class='form-check-label ' for='C_145' ><span id='$145'>solved</span></label>
 </div>
 </div>
 </div>
-<div class='form-group' id='fgroup155' >
-<div class='col-xs-12' ><!-- BMOBILE:FLABEL begin -->
-<label  id="$157" style='font-weight: bold' class='control-label'>null</label>
+<div class='form-group form-row align-items-center' id='fgroup146'  >
+<div class='col-12' id='147' >
+<label  id="$148" class='col-form-label'></label>
 </div>
-<div class='col-lg-3 col-md-3 col-sm-3 col-xs-3' ><!-- BMOBILE:BUTTON begin -->
-<button data-testtoolid='onSaveInccomment' class='btn' style='margin-bottom:10px;margin-top:10px;padding:8px;width:120px;background-color:#989898;color:white'  id="B_159" name="CC"  ></button>
+<div class='col-2' id='149' >
+<div class='form-check ' >
+<input type='checkbox' value='' data-testtoolid='inccomment.newpriocboxv1' id='C_150' onchange='C.reactBM_CHECKBOX(event);' class='form-check-input' ><label class='form-check-label ' for='C_150' ><span id='$150'>low</span></label>
 </div>
-<div class='col-lg-3 col-md-3 col-sm-3 col-xs-3' ><!-- BMOBILE:BUTTON begin -->
-<button data-testtoolid='onIncBack2d' class='btn' style='margin-bottom:10px;margin-top:10px;padding:8px;width:120px;background-color:#989898;color:white'  id="B_161" name="CC"  ></button>
+</div>
+<div class='col-2' id='151' >
+<div class='form-check ' >
+<input type='checkbox' value='' data-testtoolid='inccomment.newpriocboxv2' id='C_152' onchange='C.reactBM_CHECKBOX(event);' class='form-check-input' ><label class='form-check-label ' for='C_152' ><span id='$152'>medium</span></label>
+</div>
+</div>
+<div class='col-2' id='153' >
+<div class='form-check ' >
+<input type='checkbox' value='' data-testtoolid='inccomment.newpriocboxv3' id='C_154' onchange='C.reactBM_CHECKBOX(event);' class='form-check-input' ><label class='form-check-label ' for='C_154' ><span id='$154'>high</span></label>
+</div>
+</div>
+</div>
+<div class='form-group form-row align-items-center' id='fgroup155'  >
+<div class='col-12' id='156' >
+<label  id="$157" style='font-weight: bold' class='col-form-label'></label>
+</div>
+<div class='col-lg-3 col-md-3 col-sm-3 col-3' id='158' >
+<button data-testtoolid='onSaveInccomment' class='btn' style='margin-bottom:10px;margin-top:10px;padding:8px;width:120px;background-color:#989898;color:white'  id="B_159" name="CC" aria-labelledby='$157'  ></button>
+</div>
+<div class='col-lg-3 col-md-3 col-sm-3 col-3' id='160' >
+<button data-testtoolid='onIncBack2d' class='btn' style='margin-bottom:10px;margin-top:10px;padding:8px;width:120px;background-color:#989898;color:white'  id="B_161" name="CC" aria-labelledby='$157'  ></button>
 </div>
 </div>
 </fieldset></form></div>
@@ -349,8 +357,12 @@ var C;
 var m_roi_firstusage;
 function reactOnInit(firstusage)
 {
+if (document.title != null && document.title != '' && window.frameElement != null) window.frameElement.setAttribute('title',document.title);
+else if (window.frameElement != null) { var ftitle = window.frameElement.getAttribute('title'); if (ftitle != null && ftitle != '') document.title = ftitle;}
 if (firstusage == undefined) firstusage = true;
-m_roi_firstusage = firstusage;if (parent.m_centralLib == null) { document.location.href = '../HTMLBasedGUI/general/aboutBlank.html'; return; }
+m_roi_firstusage = firstusage;
+if (parent.m_centralLib == null) { if (parent.document.readyState == 'complete') document.location.href = '../HTMLBasedGUI/general/aboutBlank.html';
+else parent.document.onreadystatechange = function(){ reactOnInit(firstusage); }; return; }
 C = csciframe;
 CL = C.CL();
 m_resizeListeners = [];
@@ -373,65 +385,65 @@ var pageInitParam = parent.pageInitParam;
 if (pageInitParam == null) pageInitParam = '';
 if (firstusage) generateCCs();
 if (firstusage) C_8 = gebid('IC_8');
-C.iccBM_ICON(C_8,romu8,'onSeten',N,N);
+C.iccBM_ICON(C_8,romu8,'onSeten',N,N,N,N,N);
 if (firstusage) C_10 = gebid('IC_10');
-C.iccBM_ICON(C_10,romu10,'onSetge',N,N);
+C.iccBM_ICON(C_10,romu10,'onSetge',N,N,N,N,N);
 if (firstusage) C_12 = gebid('IC_12');
-C.iccBM_ICON(C_12,romu12,'onSetsp',N,N);
+C.iccBM_ICON(C_12,romu12,'onSetsp',N,N,N,N,N);
 if (firstusage) C_14 = gebid('IC_14');
-C.iccBM_ICON(C_14,romu14,'onSetpo',N,N);
-if (firstusage) C.iccBM_LABEL($17,romu17,'cap.datum',N,N);
-if (firstusage) C.iccBM_LABEL($19,romu19,'cap.message',N,N);
+C.iccBM_ICON(C_14,romu14,'onSetpo',N,N,N,N,N);
+if (firstusage) C.iccBM_LABEL($17,romu17,'cap.datum',N,N,N,'false');
+if (firstusage) C.iccBM_LABEL($19,romu19,'cap.message',N,N,N,'false');
 if (firstusage) CNB_20 = document.getElementById('NB_20');
-if (firstusage) C.iccNAVBAR (CNB_20,NBHEAD_20,NBNAV_20);
+if (firstusage) C.iccNAVBAR (CNB_20,NBHEAD_20,NBNAV_20,true);
 C.registerListener(reactOnModelUpdate20);
 CNB_20.CASA_navbarcollectionprop = 'capmenu';
 if (firstusage) C_24 = gebid('IO_24');
-C.iccIMAGEOUT(C_24,romu24,'cap.myloginimage',N,'center-block','max-width:100%;height:auto;',N,N,'cap.myloginimage');
+C.iccIMAGEOUT(C_24,romu24,'cap.myloginimage',N,'img-fluid center-block','max-width:100%;height:auto;',N,N,'cap.myloginimage');
 if (firstusage) C_22 = gebid('PL_22');
-C.iccBM_PANEL(C_22,romu22,'cap.panelvisi_login','invisible');
-if (firstusage) C.iccBM_LABEL($27,romu27,'inc.starttown',N,N);
-if (firstusage) C.iccBM_LABEL($29,romu29,'inc.startorg',N,N);
+C.iccBM_PANEL(C_22,romu22,'cap.panelvisi_login','invisible',N);
+if (firstusage) C.iccBM_LABEL($27,romu27,'inc.starttown',N,N,N,'false');
+if (firstusage) C.iccBM_LABEL($29,romu29,'inc.startorg',N,N,N,'false');
 if (firstusage) C_25 = gebid('PL_25');
-C.iccBM_PANEL(C_25,romu25,'cap.panelvisi_login','invisible');
-if (firstusage) C.iccBM_BUTTON(CB_32,romu32,rohk32,C.reactBM_BUTTON,'onLoginbutton','buttonstart',N,N,N,N);
+C.iccBM_PANEL(C_25,romu25,'cap.panelvisi_login','invisible',N);
+if (firstusage) C.iccBM_BUTTON(CB_32,romu32,rohk32,C.reactBM_BUTTON,'onLoginbutton','buttonstart',N,N,N,N,N,'false',false);
 if (firstusage) C_30 = gebid('PL_30');
-C.iccBM_PANEL(C_30,romu30,'cap.panelvisi_login','invisible');
-if (firstusage) C.iccBM_PANELHEADER($34,romu34,'cap_detpanelname');
-if (firstusage) C.iccBM_LABEL($41,romu41,'incdet.label1',N,N);
-C.iccFFIELD(CF_42,romu42,C.reactFFIELD,'incdet.value1',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N);
-if (firstusage) C.iccBM_LABEL($45,romu45,'incdet.label2',N,N);
-C.iccFFIELD(CF_46,romu46,C.reactFFIELD,'incdet.value2',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N);
-if (firstusage) C.iccBM_LABEL($48,romu48,'incdet.label3',N,N);
-C.iccFFIELD(CF_49,romu49,C.reactFFIELD,'incdet.value3',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N);
-if (firstusage) C.iccBM_LABEL($51,romu51,'incdet.label4',N,N);
-C.iccFFIELD(CF_52,romu52,C.reactFFIELD,'incdet.value4',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N);
-if (firstusage) C.iccBM_LABEL($54,romu54,'incdet.label5',N,N);
-C.iccFFIELD(CF_55,romu55,C.reactFFIELD,'incdet.value5',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccBM_PANEL(C_30,romu30,'cap.panelvisi_login','invisible',N);
+if (firstusage) C.iccBM_PANELHEADER($34,romu34,'cap_detpanelname','false');
+if (firstusage) C.iccBM_LABEL($41,romu41,'incdet.label1',N,N,N,'false');
+C.iccFFIELD(CF_42,romu42,C.reactFFIELD,'incdet.value1',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+if (firstusage) C.iccBM_LABEL($45,romu45,'incdet.label2',N,N,N,'false');
+C.iccFFIELD(CF_46,romu46,C.reactFFIELD,'incdet.value2',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+if (firstusage) C.iccBM_LABEL($48,romu48,'incdet.label3',N,N,N,'false');
+C.iccFFIELD(CF_49,romu49,C.reactFFIELD,'incdet.value3',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+if (firstusage) C.iccBM_LABEL($51,romu51,'incdet.label4',N,N,N,'false');
+C.iccFFIELD(CF_52,romu52,C.reactFFIELD,'incdet.value4',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+if (firstusage) C.iccBM_LABEL($54,romu54,'incdet.label5',N,N,N,'false');
+C.iccFFIELD(CF_55,romu55,C.reactFFIELD,'incdet.value5',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C_58 = document.getElementById('OSM_58');
 if (firstusage) C.iccOSMAP(C_58,romu58,'osLongitude','osLatitude','osAdress','osClickmethod','osSelected',N,N,N,N,N,N,N,N,'10',N,N,'true','true' );
-if (firstusage) C.iccBM_LABEL($61,romu61,'incdet.label6',N,N);
-C.iccFFIELD(CF_62,romu62,C.reactFFIELD,'incdet.value6',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N);
-if (firstusage) C.iccBM_LABEL($64,romu64,'incdet.label7',N,N);
-C.iccFFIELD(CF_65,romu65,C.reactFFIELD,'incdet.value7',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N);
-if (firstusage) C.iccBM_LABEL($67,romu67,'incdet.label8',N,N);
-C.iccFFIELD(CF_68,romu68,C.reactFFIELD,'incdet.value8',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N);
-if (firstusage) C.iccBM_LABEL($70,romu70,'incdet.label9',N,N);
-C.iccFFIELD(CF_71,romu71,C.reactFFIELD,'incdet.value9',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N);
-if (firstusage) C.iccBM_LABEL($73,romu73,'incdet.label10',N,N);
-C.iccFFIELD(CF_74,romu74,C.reactFFIELD,'incdet.value10',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N);
-if (firstusage) C.iccBM_BUTTON(CB_77,romu77,rohk77,C.reactBM_BUTTON,'onIncComment','inccomment.openbutton',N,N,N,N);
-if (firstusage) C.iccBM_BUTTON(CB_79,romu79,rohk79,C.reactBM_BUTTON,'onIncBack2l','inccomment.back2lbutton',N,N,N,N);
+if (firstusage) C.iccBM_LABEL($61,romu61,'incdet.label6',N,N,N,'false');
+C.iccFFIELD(CF_62,romu62,C.reactFFIELD,'incdet.value6',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+if (firstusage) C.iccBM_LABEL($64,romu64,'incdet.label7',N,N,N,'false');
+C.iccFFIELD(CF_65,romu65,C.reactFFIELD,'incdet.value7',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+if (firstusage) C.iccBM_LABEL($67,romu67,'incdet.label8',N,N,N,'false');
+C.iccFFIELD(CF_68,romu68,C.reactFFIELD,'incdet.value8',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+if (firstusage) C.iccBM_LABEL($70,romu70,'incdet.label9',N,N,N,'false');
+C.iccFFIELD(CF_71,romu71,C.reactFFIELD,'incdet.value9',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+if (firstusage) C.iccBM_LABEL($73,romu73,'incdet.label10',N,N,N,'false');
+C.iccFFIELD(CF_74,romu74,C.reactFFIELD,'incdet.value10',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+if (firstusage) C.iccBM_BUTTON(CB_77,romu77,rohk77,C.reactBM_BUTTON,'onIncComment','inccomment.openbutton',N,N,N,N,N,'false',false);
+if (firstusage) C.iccBM_BUTTON(CB_79,romu79,rohk79,C.reactBM_BUTTON,'onIncBack2l','inccomment.back2lbutton',N,N,N,N,N,'false',false);
 if (firstusage) C_33 = gebid('33');
 if (firstusage) C.iccBM_PANEL(C_33,romu33,'cap.panelvisi_incdetails','invisible',N);
-if (firstusage) C.iccBM_PANELHEADER($81,romu81,'cap_picpanelname');
+if (firstusage) C.iccBM_PANELHEADER($81,romu81,'cap_picpanelname','false');
 if (firstusage) C_88 = gebid('IO_88');
-C.iccIMAGEOUT(C_88,romu88,'incdet.valuepic1',N,N,'background-color:#CCCCCB',N,N,'incdet.valuepic1');
-if (firstusage) C.iccBM_BUTTON(CB_91,romu91,rohk91,C.reactBM_BUTTON,'onIncComment','inccomment.openbutton',N,N,N,N);
-if (firstusage) C.iccBM_BUTTON(CB_93,romu93,rohk93,C.reactBM_BUTTON,'onIncBack2l','inccomment.back2lbutton',N,N,N,N);
+C.iccIMAGEOUT(C_88,romu88,'incdet.valuepic1',N,'img-fluid','background-color:#CCCCCB',N,N,'incdet.valuepic1');
+if (firstusage) C.iccBM_BUTTON(CB_91,romu91,rohk91,C.reactBM_BUTTON,'onIncComment','inccomment.openbutton',N,N,N,N,N,'false',false);
+if (firstusage) C.iccBM_BUTTON(CB_93,romu93,rohk93,C.reactBM_BUTTON,'onIncBack2l','inccomment.back2lbutton',N,N,N,N,N,'false',false);
 if (firstusage) C_80 = gebid('80');
 if (firstusage) C.iccBM_PANEL(C_80,romu80,'cap.panelvisi_incpics','invisible',N);
-if (firstusage) C.iccBM_PANELHEADER($95,romu95,'cap_inclistpanelname');
+if (firstusage) C.iccBM_PANELHEADER($95,romu95,'cap_inclistpanelname','false');
 if (firstusage) C_100 = document.getElementById('SIMPLEGRID100');
 C_100.CASA_colinfos = [];
 C_100.CASA_colinfos[0]=new Object();
@@ -447,34 +459,34 @@ C_100.CASA_colinfos[4].property='caplva5';
 C_100.CASA_colinfos[4].visible='false';
 C_100.CASA_onclickmethod = 'caplines.onInlineClick';
 C_100.CASA_ondblclickmethod = 'caplines.onInlineClick';
-if (firstusage) C.initSIMPLEGRID(C_100,'caplines','capl_selected',N,'prop',N,N,N,N,'autoWidth:false;info:false;paging:true;searching:false;ordering:false;lengthChange:false' );
+if (firstusage) C.initSIMPLEGRID(C_100,'caplines','capl_selected',N,'prop',N,N,N,N,'autoWidth:false;info:false;paging:true;searching:false;ordering:false;lengthChange:false',true,false,N,false,true,'200',N);
 if (firstusage) C.registerListener(reactOnModelUpdate100);
 if (firstusage) C_94 = gebid('94');
 if (firstusage) C.iccBM_PANEL(C_94,romu94,'cap.panelvisi_inclist','invisible',N);
-if (firstusage) C.iccBM_PANELHEADER($114,romu114,'cap_inccommentpanelname');
-if (firstusage) C.iccBM_LABEL($122,romu122,'inccomment.inctypelabel',N,N);
-if (firstusage) C.iccBM_LABEL($124,romu124,'inccomment.incdatelabel',N,N);
-C.iccFFIELD(CF_127,romu127,C.reactFFIELD,'inccomment.inctypevalue',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N);
-C.iccFFIELD(CF_129,romu129,C.reactFFIELD,'inccomment.incdatevalue',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N);
-if (firstusage) C.iccBM_LABEL($132,romu132,'inccomment.comlabel',N,N);
-C.iccFTEXTAREA(CT_133,romu133,C.reactFTEXTAREA,'inccomment.comvalue',N,N,N,N,N,N);
-if (firstusage) C.iccBM_LABEL($136,romu136,'inccomment.enddatelabel',N,N);
-if (firstusage) C.iccDI2(CF_138,romu138,C.reactDI2,'inccomment.enddatevalue',N,N,N,N,N,N,N,N,N,'1',N,N,N,N,N,N,N,N,'DATEINPUT2Holidays',N,N,N,'true');
-if (firstusage) C.iccBM_LABEL($141,romu141,'inccomment.textnewstatus',N,N);
+if (firstusage) C.iccBM_PANELHEADER($114,romu114,'cap_inccommentpanelname','false');
+if (firstusage) C.iccBM_LABEL($122,romu122,'inccomment.inctypelabel',N,N,N,'false');
+if (firstusage) C.iccBM_LABEL($124,romu124,'inccomment.incdatelabel',N,N,N,'false');
+C.iccFFIELD(CF_127,romu127,C.reactFFIELD,'inccomment.inctypevalue',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_129,romu129,C.reactFFIELD,'inccomment.incdatevalue',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+if (firstusage) C.iccBM_LABEL($132,romu132,'inccomment.comlabel',N,N,N,'false');
+C.iccFTEXTAREA(CT_133,romu133,C.reactFTEXTAREA,'inccomment.comvalue',N,N,N,N,N,N,N);
+if (firstusage) C.iccBM_LABEL($136,romu136,'inccomment.enddatelabel',N,N,N,'false');
+if (firstusage) C.iccDI2(CF_138,romu138,C.reactDI2,'inccomment.enddatevalue',N,N,N,N,N,N,N,N,N,N,N,'1',N,N,N,N,N,N,N,N,'DATEINPUT2Holidays',N,N,N,N,'true');
+if (firstusage) C.iccBM_LABEL($141,romu141,'inccomment.textnewstatus',N,N,N,'false');
 if (firstusage) C_143 = gebid('C_143');
-C.iccBM_CHECKBOX(C_143,romu143,'inccomment.newstatcboxv1','server','onCommnewstat1',N,N,N,N);
+C.iccBM_CHECKBOX(C_143,romu143,'inccomment.newstatcboxv1','server','onCommnewstat1',N,N,N,N,N,N,'false');
 if (firstusage) C_145 = gebid('C_145');
-C.iccBM_CHECKBOX(C_145,romu145,'inccomment.newstatcboxv2','server','onCommnewstat2',N,N,N,N);
-if (firstusage) C.iccBM_LABEL($148,romu148,'inccomment.textnewprio',N,N);
+C.iccBM_CHECKBOX(C_145,romu145,'inccomment.newstatcboxv2','server','onCommnewstat2',N,N,N,N,N,N,'false');
+if (firstusage) C.iccBM_LABEL($148,romu148,'inccomment.textnewprio',N,N,N,'false');
 if (firstusage) C_150 = gebid('C_150');
-C.iccBM_CHECKBOX(C_150,romu150,'inccomment.newpriocboxv1','server','onCommnewprio1',N,N,N,N);
+C.iccBM_CHECKBOX(C_150,romu150,'inccomment.newpriocboxv1','server','onCommnewprio1',N,N,N,N,N,N,'false');
 if (firstusage) C_152 = gebid('C_152');
-C.iccBM_CHECKBOX(C_152,romu152,'inccomment.newpriocboxv2','server','onCommnewprio2',N,N,N,N);
+C.iccBM_CHECKBOX(C_152,romu152,'inccomment.newpriocboxv2','server','onCommnewprio2',N,N,N,N,N,N,'false');
 if (firstusage) C_154 = gebid('C_154');
-C.iccBM_CHECKBOX(C_154,romu154,'inccomment.newpriocboxv3','server','onCommnewprio3',N,N,N,N);
-if (firstusage) C.iccBM_LABEL($157,romu157,'inccomment.message',N,N);
-if (firstusage) C.iccBM_BUTTON(CB_159,romu159,rohk159,C.reactBM_BUTTON,'onSaveInccomment','inccomment.savebutton',N,N,N,N);
-if (firstusage) C.iccBM_BUTTON(CB_161,romu161,rohk161,C.reactBM_BUTTON,'onIncBack2d','inccomment.back2dbutton',N,N,N,N);
+C.iccBM_CHECKBOX(C_154,romu154,'inccomment.newpriocboxv3','server','onCommnewprio3',N,N,N,N,N,N,'false');
+if (firstusage) C.iccBM_LABEL($157,romu157,'inccomment.message',N,N,N,'false');
+if (firstusage) C.iccBM_BUTTON(CB_159,romu159,rohk159,C.reactBM_BUTTON,'onSaveInccomment','inccomment.savebutton',N,N,N,N,N,'false',false);
+if (firstusage) C.iccBM_BUTTON(CB_161,romu161,rohk161,C.reactBM_BUTTON,'onIncBack2d','inccomment.back2dbutton',N,N,N,N,N,'false',false);
 if (firstusage) C_113 = gebid('113');
 if (firstusage) C.iccBM_PANEL(C_113,romu113,'cap.panelvisi_comment','invisible',N);
 if (firstusage) C_3 = document.getElementById('PAGEDIV3');
@@ -601,6 +613,7 @@ function romu159(model) { C.romuBM_BUTTON(CB_159); }
 function rohk159(param) { C.transferModelBM_BUTTON(CB_159); }
 function romu161(model) { C.romuBM_BUTTON(CB_161); }
 function rohk161(param) { C.transferModelBM_BUTTON(CB_161); }
+$(document).ready(function(){$('[data-tooltip="tooltip"]').tooltip({trigger:'hover'});$('[data-tooltip="tooltip"]').click(function () {$('[data-tooltip="tooltip"]').tooltip("hide");});   });
 </script>
 <iframe hidden id="csciframe" name="csciframe" tabIndex="-1" src="cmmenux_JLIBS.html" style="width:0;height:0;left:0;top:0">
 </iframe>
