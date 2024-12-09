@@ -10,23 +10,14 @@ var m_perfPageFocusEnd = null;</script>
 <link rel="stylesheet" href="../HTMLBasedGUI/jquery/jquery-ui.min.css" type="text/css" >
 <link rel="stylesheet" href="../HTMLBasedGUI/bootstrapicons/font/bootstrap-icons.css" type="text/css" >
 <link rel="stylesheet" href="../HTMLBasedGUI/bootstrap4/css/bootstrap.min.css" type="text/css" >
-<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/dataTables.bootstrap4.min.css" type="text/css" >
-<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/scroller.dataTables.min.css" type="text/css" >
-<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/responsive.bootstrap4.min.css" type="text/css" >
-<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/scroller.bootstrap4.min.css" type="text/css" >
+<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/dataTables.min.css" type="text/css" >
 <link rel="stylesheet" href="../HTMLBasedGUI/openlayers/ol.css" type="text/css" >
 <link id="casabacstylesheet" rel="stylesheet" type="text/css" href="../cis/styles/CIS_WM.css">
 <link id="addcsshref" rel="stylesheet" type="text/css" href="./styles/njxmobileZD.css">
 <script src="../HTMLBasedGUI/jquery3/jquery.min.js"></script>
 <script src="../HTMLBasedGUI/jquery/jquery-ui.min.js"></script>
 <script src="../HTMLBasedGUI/bootstrap4/js/bootstrap.bundle.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/jquery.dataTables.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/dataTables.bootstrap4.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/dataTables.responsive.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/responsive.bootstrap4.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/scroller.dataTables.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/scroller.bootstrap4.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/dataTables.scroller.min.js"></script>
+<script src="../HTMLBasedGUI/datatables/js/dataTables.min.js"></script>
 <script src="../HTMLBasedGUI/openlayers/ol.js"></script>
 <script>
 var CASAstylesheetfile = '../cis/styles/CIS_WM.css';
@@ -36,7 +27,7 @@ html {height:100%;}
 body {height:100%;}
 </style>
 </head>
-<body id='THISBODY' oncontextmenu='try { return C.reactOnContextMenuRequestPAGE(event); } catch(e) {}' onmousemove='try { return moveDrag(event); } catch(exc) {}' onmouseup='try { endDrag(event);C.CL().checkMozIO(parent); } catch (exc) {}' onkeydown='try { processHotKeys(event); } catch (exc) {}' class='PAGEBody' style='margin: 0' onclick='try { C.clickAway(); } catch (exc) {}; try { C.reactOnClickPage(event); } catch (exc) {}' onresize='try { reactOnResize(); } catch (exc) {}'	onload=' try { reactOnResize(); } catch (exc) {}'	onhelp='C.reactOnHelpPAGE(); return false;'  tabindex='-1' onblur='try { C.onBlurPAGE(event); } catch(e) {}' onfocus='try { C.onFocusPAGE(); } catch(e) {}' onmousewheel='if (event.shiftKey) C.CL().cancelEvent(event);' onwheel='if (event.shiftKey) C.CL().cancelEvent(event);' onmouseleave='try { return removeTHISOCCUPIED(); } catch(exc) {}' onmouseout ='try { return removeTHISOCCUPIED(); } catch(exc) {}'>
+<body id='THISBODY' oncontextmenu='try { C.clickAway(); } catch (exc) {}; try { return C.reactOnContextMenuRequestPAGE(event); } catch(e) {}' onmousemove='try { return moveDrag(event); } catch(exc) {}' onmouseup='try { endDrag(event);C.CL().checkMozIO(parent); } catch (exc) {}' onkeydown='try { processHotKeys(event); } catch (exc) {}' class='PAGEBody' style='margin: 0' onclick='try { C.clickAway(); } catch (exc) {}; try { C.reactOnClickPage(event); } catch (exc) {}' onresize='try { reactOnResize(); } catch (exc) {}'	onload=' try { reactOnResize(); } catch (exc) {}'	onhelp='C.reactOnHelpPAGE(); return false;'  tabindex='-1' onblur='try { C.onBlurPAGE(event); } catch(e) {}' onfocus='try { C.onFocusPAGE(); } catch(e) {}' onmousewheel='if (event.shiftKey) C.CL().cancelEvent(event);' onwheel='if (event.shiftKey) C.CL().cancelEvent(event);' onmouseleave='try { return removeTHISOCCUPIED(); } catch(exc) {}' onmouseout ='try { return removeTHISOCCUPIED(); } catch(exc) {}'>
 <script>
 function gebid(pid) { return document.getElementById(pid); }
 var m_isSafari = navigator.userAgent.toLowerCase().indexOf( 'safari' ) != -1;
@@ -120,11 +111,11 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 <div class='container-fluid' >
-<div class='card' style='background-color:#CCCCCB ;border-style:none' id="31">
+<div class='card'  style='background-color:#CCCCCB ;border-style:none' id="31">
 <div class='card-header card-title card-text' style='background-color:#989898;color:white;border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px' id="$32" ></div>
 <div class='card-body' id='PANEL31' >
 <div class='center-block row' id="PL_34">
-<div class='col-lg-12 col-md-12 col-sm-12 col-12' style='border-style:none' id='35' ><table id='SIMPLEGRID36' class='table dt-responsive nowrap table-striped' cellspacing='0' data-testtoolid='inclines'  style='width:100%' >
+<div class='col-lg-12 col-md-12 col-sm-12 col-12' style='border-style:none' id='35' ><table id='SIMPLEGRID36' class='table nowrap table-striped' cellspacing='0' data-testtoolid='inclines'  style='width:100%' >
 <thead>
 <tr >
 <th >Type</th>
@@ -141,7 +132,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 </div>
-<div class='col-lg-4 col-md-12 col-sm-12 col-xs-12 card' style='background-color: #CCCCCB; border-style:none' id="53">
+<div class='col-lg-4 col-md-12 col-sm-12 col-xs-12 card'  style='background-color: #CCCCCB; border-style:none' id="53">
 <div class='card-header card-title card-text' style='background-color:#989898;color:white;border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px' id="$54" ></div>
 <div class='card-body' id='PANEL53' style='background-color:#0899cc' >
 <div class='center-block row' style='background-color:#cccccb' id="PL_56">
@@ -201,11 +192,11 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 </div>
-<div class='col-lg-4 col-md-12 col-sm-12 col-xs-12 card' style='background-color: #CCCCCB; border-style:none' id="95">
+<div class='col-lg-4 col-md-12 col-sm-12 col-xs-12 card'  style='background-color: #CCCCCB; border-style:none' id="95">
 <div class='card-header card-title card-text' style='background-color:#989898;color:white;border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px' id="$96" ></div>
 <div class='card-body' id='PANEL95' >
 <div class='row' id="PL_98">
-<div class='col-12' id='99' ><table id='SIMPLEGRID100' class='table dt-responsive nowrap table-striped' cellspacing='0' data-testtoolid='hislines'  style='width:100%' >
+<div class='col-12' id='99' ><table id='SIMPLEGRID100' class='table nowrap table-striped' cellspacing='0' data-testtoolid='hislines'  style='width:100%' >
 <thead>
 <tr >
 <th >1</th>
@@ -309,7 +300,9 @@ m_fillTextIdListeners.push(listener);
 <label  id="$163" class='col-form-label'></label>
 </div>
 <div class='col-12' id='164' >
+<div class='input-group'>
 <input id="F_165" name="CC" type="text" data-testtoolid='inccomment.enddatevalue' class='form-control' >
+</div>
 </div>
 <div class='col-12' id='166' >
 <label  id="$167" class='col-form-label'></label>
@@ -330,7 +323,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 </div>
-<div class='col-lg-4 col-md-12 col-sm-12 col-xs-12 card' style='background-color: #CCCCCB; border-style:none' id="175">
+<div class='col-lg-4 col-md-12 col-sm-12 col-xs-12 card'  style='background-color: #CCCCCB; border-style:none' id="175">
 <div class='card-header card-title card-text' style='background-color:#989898;color:white;border-bottom-style: solid; border-bottom-color: #0899cc;border-bottom-width:12px' id="$176" ></div>
 <div class='card-body' id='PANEL175' style='background-color:#0899cc' >
 <div class='row' style='background-color:#CCCCCB' id="PL_178">
@@ -468,36 +461,36 @@ C_36.CASA_colinfos[6].property='incl_va7';
 C_36.CASA_colinfos[6].visible='false';
 C_36.CASA_onclickmethod = 'inclines.onInclineClick';
 C_36.CASA_ondblclickmethod = 'inclines.onInclineClick';
-if (firstusage) C.initSIMPLEGRID(C_36,'inclines','incselected',N,'prop',N,N,'1','desc',N,true,false,N,false,true,'200',N);
+if (firstusage) C.initSIMPLEGRID(C_36,'inclines','incselected',N,'prop',N,N,'1','desc',N,true,false,N,false,true,'200',N,0,0,false,false);
 if (firstusage) C.registerListener(reactOnModelUpdate36);
 if (firstusage) C_31 = gebid('31');
-if (firstusage) C.iccBM_PANEL(C_31,romu31,'cap.visi_inclist','invisible',N);
+if (firstusage) C.iccBM_PANEL(C_31,romu31,'cap.visi_inclist','invisible',N,N);
 if (firstusage) C.iccBM_PANELHEADER($54,romu54,'cap.incdetailspanelname','false');
 if (firstusage) C.iccBM_LABEL($60,romu60,N,N,N,N,'false');
 if (firstusage) C.iccBM_LABEL($62,romu62,'incdet.label0',N,N,N,'false');
-C.iccFFIELD(CF_63,romu63,C.reactFFIELD,'incdet.value0',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_63,romu63,C.reactFFIELD,'incdet.value0',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($65,romu65,'incdet.label1',N,N,N,'false');
-C.iccFFIELD(CF_66,romu66,C.reactFFIELD,'incdet.value1',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_66,romu66,C.reactFFIELD,'incdet.value1',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($68,romu68,'incdet.label2',N,N,N,'false');
-C.iccFFIELD(CF_69,romu69,C.reactFFIELD,'incdet.value2',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_69,romu69,C.reactFFIELD,'incdet.value2',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($71,romu71,'incdet.label3',N,N,N,'false');
-C.iccFFIELD(CF_72,romu72,C.reactFFIELD,'incdet.value3',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_72,romu72,C.reactFFIELD,'incdet.value3',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($74,romu74,'incdet.label4',N,N,N,'false');
-C.iccFFIELD(CF_75,romu75,C.reactFFIELD,'incdet.value4',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_75,romu75,C.reactFFIELD,'incdet.value4',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($77,romu77,'incdet.label5',N,N,N,'false');
-C.iccFFIELD(CF_78,romu78,C.reactFFIELD,'incdet.value5',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_78,romu78,C.reactFFIELD,'incdet.value5',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($80,romu80,'incdet.label6',N,N,N,'false');
-C.iccFFIELD(CF_81,romu81,C.reactFFIELD,'incdet.value6',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_81,romu81,C.reactFFIELD,'incdet.value6',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($83,romu83,'incdet.label7',N,N,N,'false');
-C.iccFFIELD(CF_84,romu84,C.reactFFIELD,'incdet.value7',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_84,romu84,C.reactFFIELD,'incdet.value7',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($86,romu86,'incdet.label8',N,N,N,'false');
 C.iccFTEXTAREA(CT_87,romu87,C.reactFTEXTAREA,'incdet.value8',N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($89,romu89,'incdet.label9',N,N,N,'false');
-C.iccFFIELD(CF_90,romu90,C.reactFFIELD,'incdet.value9',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
-C.iccFFIELD(CF_92,romu92,C.reactFFIELD,'incdet.value10',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_90,romu90,C.reactFFIELD,'incdet.value9',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_92,romu92,C.reactFFIELD,'incdet.value10',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_BUTTON(CB_94,romu94,rohk94,C.reactBM_BUTTON,'onIncdelete','inccomment.buttonsdelete',N,N,N,N,N,'false',false);
 if (firstusage) C_53 = gebid('53');
-if (firstusage) C.iccBM_PANEL(C_53,romu53,'cap.visi_incdetails','invisible',N);
+if (firstusage) C.iccBM_PANEL(C_53,romu53,'cap.visi_incdetails','invisible',N,N);
 if (firstusage) C.iccBM_PANELHEADER($96,romu96,'incdet.histstring','false');
 if (firstusage) C_100 = document.getElementById('SIMPLEGRID100');
 C_100.CASA_colinfos = [];
@@ -515,17 +508,17 @@ C_100.CASA_colinfos[5]=new Object();
 C_100.CASA_colinfos[5].property='hisl_va6';
 C_100.CASA_onclickmethod = 'hislines.onHislineClick';
 C_100.CASA_ondblclickmethod = 'hislines.onHislineClick';
-if (firstusage) C.initSIMPLEGRID(C_100,'hislines','hisselected','changeindex','prop',N,N,N,N,'autoWidth:false;info:false;paging:false;searching:false;ordering:false;lengthChange:false',true,false,N,false,true,'200',N);
+if (firstusage) C.initSIMPLEGRID(C_100,'hislines','hisselected','changeindex','prop',N,N,N,N,'autoWidth:false;info:false;paging:false;searching:false;ordering:false;lengthChange:false',true,false,N,false,true,'200',N,0,0,false,false);
 if (firstusage) C.registerListener(reactOnModelUpdate100);
 if (firstusage) C.iccBM_LABEL($117,romu117,'inccomment.entrytextold',N,N,N,'false');
 if (firstusage) C_115 = gebid('PL_115');
 C.iccBM_PANEL(C_115,romu115,'inccomentold.visible','invisible',N);
 if (firstusage) C.iccBM_LABEL($120,romu120,'inccomment.priotext',N,N,N,'false');
 if (firstusage) C.iccBM_LABEL($122,romu122,'inccomment.stattext',N,N,N,'false');
-C.iccFFIELD(CF_124,romu124,C.reactFFIELD,'inccomment.prioold',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
-C.iccFFIELD(CF_126,romu126,C.reactFFIELD,'inccomment.statold',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_124,romu124,C.reactFFIELD,'inccomment.prioold',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_126,romu126,C.reactFFIELD,'inccomment.statold',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($128,romu128,'inccomment.endedatetext',N,N,N,'false');
-C.iccFFIELD(CF_130,romu130,C.reactFFIELD,'inccomment.endedateold',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_130,romu130,C.reactFFIELD,'inccomment.endedateold',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($132,romu132,'inccomment.comlabel',N,N,N,'false');
 C.iccFTEXTAREA(CT_134,romu134,C.reactFTEXTAREA,'inccomment.comvalu',N,N,N,N,N,N,N);
 if (firstusage) C_118 = gebid('PL_118');
@@ -538,22 +531,22 @@ if (firstusage) C_138 = gebid('PL_138');
 C.iccBM_PANEL(C_138,romu138,'inccomentnew.visible','invisible',N);
 if (firstusage) C.iccBM_LABEL($143,romu143,'inccomment.priotext',N,N,N,'false');
 if (firstusage) C_145 = gebid('C_145');
-C.iccBM_CHECKBOX(C_145,romu145,'inccomment.priocboxv1','server','onCommnewprio1',N,N,N,N,N,N,'false');
+if (firstusage) C.iccBM_CHECKBOX(C_145,romu145,'inccomment.priocboxv1','server','onCommnewprio1',N,N,N,N,N,N,'false');
 if (firstusage) C_147 = gebid('C_147');
-C.iccBM_CHECKBOX(C_147,romu147,'inccomment.priocboxv2','server','onCommnewprio2',N,N,N,N,N,N,'false');
+if (firstusage) C.iccBM_CHECKBOX(C_147,romu147,'inccomment.priocboxv2','server','onCommnewprio2',N,N,N,N,N,N,'false');
 if (firstusage) C_149 = gebid('C_149');
-C.iccBM_CHECKBOX(C_149,romu149,'inccomment.priocboxv3','server','onCommnewprio3',N,N,N,N,N,N,'false');
+if (firstusage) C.iccBM_CHECKBOX(C_149,romu149,'inccomment.priocboxv3','server','onCommnewprio3',N,N,N,N,N,N,'false');
 if (firstusage) C.iccBM_LABEL($151,romu151,'inccomment.stattext',N,N,N,'false');
 if (firstusage) C_153 = gebid('C_153');
-C.iccBM_CHECKBOX(C_153,romu153,'inccomment.statcboxv1','server','onCommstat1',N,N,N,N,N,N,'false');
+if (firstusage) C.iccBM_CHECKBOX(C_153,romu153,'inccomment.statcboxv1','server','onCommstat1',N,N,N,N,N,N,'false');
 if (firstusage) C_155 = gebid('C_155');
-C.iccBM_CHECKBOX(C_155,romu155,'inccomment.statocboxv2','server','onCommstat2',N,N,N,N,N,N,'false');
+if (firstusage) C.iccBM_CHECKBOX(C_155,romu155,'inccomment.statocboxv2','server','onCommstat2',N,N,N,N,N,N,'false');
 if (firstusage) C_157 = gebid('C_157');
-C.iccBM_CHECKBOX(C_157,romu157,'inccomment.statcboxv3','server','onCommstat3',N,N,N,N,N,N,'false');
+if (firstusage) C.iccBM_CHECKBOX(C_157,romu157,'inccomment.statcboxv3','server','onCommstat3',N,N,N,N,N,N,'false');
 if (firstusage) C_159 = gebid('C_159');
-C.iccBM_CHECKBOX(C_159,romu159,'inccomment.statocboxv4','server','onCommstat4',N,N,N,N,N,N,'false');
+if (firstusage) C.iccBM_CHECKBOX(C_159,romu159,'inccomment.statocboxv4','server','onCommstat4',N,N,N,N,N,N,'false');
 if (firstusage) C_161 = gebid('C_161');
-C.iccBM_CHECKBOX(C_161,romu161,'inccomment.statcboxv5','server','onCommstat5',N,N,N,N,N,N,'false');
+if (firstusage) C.iccBM_CHECKBOX(C_161,romu161,'inccomment.statcboxv5','server','onCommstat5',N,N,N,N,N,N,'false');
 if (firstusage) C.iccBM_LABEL($163,romu163,'inccomment.endedatelabel',N,N,N,'false');
 if (firstusage) C.iccDI2(CF_165,romu165,C.reactDI2,'inccomment.enddatevalue',N,N,N,N,N,N,N,N,N,N,N,'1',N,N,N,N,N,N,N,N,'DATEINPUT2Holidays',N,N,N,N,'true');
 if (firstusage) C.iccBM_LABEL($167,romu167,'inccomment.comlabel',N,N,N,'false');
@@ -565,7 +558,7 @@ if (firstusage) C.iccBM_BUTTON(CB_174,romu174,rohk174,C.reactBM_BUTTON,'onHistse
 if (firstusage) C_170 = gebid('PL_170');
 C.iccBM_PANEL(C_170,romu170,'inccomentnew.visible','invisible',N);
 if (firstusage) C_95 = gebid('95');
-if (firstusage) C.iccBM_PANEL(C_95,romu95,'cap.visi_incdetails','invisible',N);
+if (firstusage) C.iccBM_PANEL(C_95,romu95,'cap.visi_incdetails','invisible',N,N);
 if (firstusage) C.iccBM_PANELHEADER($176,romu176,'incdet.mappicstring','false');
 if (firstusage) C_182 = document.getElementById('OSM_182');
 if (firstusage) C.iccOSMAP(C_182,romu182,'osLongitude','osLatitude','osAdress','osClickmethod','osSelected',N,N,N,N,N,N,N,N,'10',N,N,'true','true' );
@@ -588,7 +581,7 @@ if (firstusage) C.iccBM_BUTTON(CB_196,romu196,rohk196,C.reactBM_BUTTON,'onShowpi
 if (firstusage) C.iccBM_BUTTON(CB_198,romu198,rohk198,C.reactBM_BUTTON,'onShowpic2','buttonpic2prop',N,'buttonpic2visi','invisible',N,N,'false',false);
 if (firstusage) C.iccBM_BUTTON(CB_200,romu200,rohk200,C.reactBM_BUTTON,'onShowpic3','buttonpic3prop',N,'buttonpic3visi','invisible',N,N,'false',false);
 if (firstusage) C_175 = gebid('175');
-if (firstusage) C.iccBM_PANEL(C_175,romu175,'cap.visi_incdetails','invisible',N);
+if (firstusage) C.iccBM_PANEL(C_175,romu175,'cap.visi_incdetails','invisible',N,N);
 if (firstusage) C_3 = document.getElementById('PAGEDIV3');
 if (firstusage) THISPAGEBODY = document.getElementById('PAGEDIV3');
 C.initCasaControlPAGEBODY(C_3);
@@ -743,7 +736,7 @@ function romu198(model) { C.romuBM_BUTTON(CB_198); }
 function rohk198(param) { C.transferModelBM_BUTTON(CB_198); }
 function romu200(model) { C.romuBM_BUTTON(CB_200); }
 function rohk200(param) { C.transferModelBM_BUTTON(CB_200); }
-$(document).ready(function(){$('[data-tooltip="tooltip"]').tooltip({trigger:'hover'});$('[data-tooltip="tooltip"]').click(function () {$('[data-tooltip="tooltip"]').tooltip("hide");});   });
+$(document).ready(function(){$('[data-tooltip="tooltip"]').tooltip({trigger:'hover'});$('[data-tooltip="tooltip"]').click(function () {$('[data-tooltip="tooltip"]').tooltip("hide");}); $('[data-toggle="popover"]').popover();  });
 </script>
 <iframe hidden id="csciframe" name="csciframe" tabIndex="-1" src="camenux_JLIBS.html" style="width:0;height:0;left:0;top:0">
 </iframe>

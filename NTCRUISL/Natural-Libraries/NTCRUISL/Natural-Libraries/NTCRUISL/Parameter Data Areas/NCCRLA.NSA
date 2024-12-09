@@ -1,0 +1,26 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/** New Parameter Data Area NCCRLA.
+/**
+/** :author ziv
+*
+1 Cruise-Id-From (N08.0) /*in
+1 Cruise-Id-To (N08.0)   /*in
+*
+1 Cruise-List (1:*) /*out
+  2 Cruise-Id (N08.0)
+  2 Start-Harbor (A020)
+  2 Destination-Harbor (A020)
+  2 Start-Date (A013)
+  2 Start-Time (A007)
+  2 End-Date (A013)
+  2 End-Time (A007)
+  2 Price-1W (A020)
+  2 Price-2W (A020)
+  2 Price-3W (A020)
+  2 Cruise-Status (A020)
+  2 Yacht-Name (A020)
+END-DEFINE
