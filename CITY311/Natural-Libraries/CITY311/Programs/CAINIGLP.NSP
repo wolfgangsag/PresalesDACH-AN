@@ -62,9 +62,9 @@ CAPMENU.METHOD(10)  := 'onLogout'
 /* INPUT (AD=O) 'L' CCG-LANG
 DECIDE ON FIRST VALUE OF CCG-LANG
   VALUE 2                             /* deutsch
-    MOVE 'Versicherte'            TO CAPMENU.TEXT (1)
-    MOVE 'Statistik'                  TO CAPMENU.TEXT (2)
-    MOVE 'DMS e-Akte'                 TO CAPMENU.TEXT (3)
+    MOVE 'Bürgermeldungen'            TO CAPMENU.TEXT (1)
+    MOVE 'Technische Berichte'        TO CAPMENU.TEXT (2)
+    MOVE 'Rathaus News'               TO CAPMENU.TEXT (3)
     MOVE 'Hilfe'                      TO CAPMENU.TEXT (4)
     MOVE 'Sprache'                    TO CAPMENU.TEXT (5)
     MOVE 'deutsch'                    TO CAPMENU.TEXT (6)
