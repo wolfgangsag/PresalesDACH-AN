@@ -1,11 +1,11 @@
 addWebconfigFolder=true
 eclipse.preferences.version=1
-previewMode=SWT
+previewMode=HTML
 refreshMode=false
 uicomponentFolder=true
 uicomponentWSrealative=true
 webappconfName=Development
-webapplicationFolder=C\:\\data101\\workspaces\\NATDemos\\.naturalone\\apache-tomcat\\webapps\\cisnatural
+webapplicationFolder=C\:\\Users\\WOHE\\workspace110_2024\\.naturalone\\apache-tomcat\\webapps\\cisnatural
 webapplicationName=cisnatural
 webserverConnection=localhost\:28080
-webseverFolder=C\:\\data101\\workspaces\\NATDemos\\.naturalone\\apache-tomcat
+webseverFolder=C\:\\Users\\WOHE\\workspace110_2024\\.naturalone\\apache-tomcat

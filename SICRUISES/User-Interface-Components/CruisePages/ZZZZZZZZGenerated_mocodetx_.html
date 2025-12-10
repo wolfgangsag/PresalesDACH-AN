@@ -23,7 +23,7 @@ html {height:100%;}
 body {height:100%;}
 </style>
 </head>
-<body id='THISBODY' oncontextmenu='try { return C.reactOnContextMenuRequestPAGE(event); } catch(e) {}' onmousemove='try { return moveDrag(event); } catch(exc) {}' onmouseup='try { endDrag(event);C.CL().checkMozIO(parent); } catch (exc) {}' onkeydown='try { processHotKeys(event); } catch (exc) {}' class='PAGEBody' style='margin: 0' onclick='try { C.clickAway(); } catch (exc) {}; try { C.reactOnClickPage(event); } catch (exc) {}' onresize='try { reactOnResize(); } catch (exc) {}'	onload=' try { reactOnResize(); } catch (exc) {}'	onhelp='C.reactOnHelpPAGE(); return false;'  tabindex='-1' onblur='try { C.onBlurPAGE(event); } catch(e) {}' onfocus='try { C.onFocusPAGE(); } catch(e) {}' onmousewheel='if (event.shiftKey) C.CL().cancelEvent(event);' onwheel='if (event.shiftKey) C.CL().cancelEvent(event);' onmouseleave='try { return removeTHISOCCUPIED(); } catch(exc) {}' onmouseout ='try { return removeTHISOCCUPIED(); } catch(exc) {}'>
+<body id='THISBODY' oncontextmenu='try { C.clickAway(); } catch (exc) {}; try { return C.reactOnContextMenuRequestPAGE(event); } catch(e) {}' onmousemove='try { return moveDrag(event); } catch(exc) {}' onmouseup='try { endDrag(event);C.CL().checkMozIO(parent); } catch (exc) {}' onkeydown='try { processHotKeys(event); } catch (exc) {}' class='PAGEBody' style='margin: 0' onclick='try { C.clickAway(); } catch (exc) {}; try { C.reactOnClickPage(event); } catch (exc) {}' onresize='try { reactOnResize(); } catch (exc) {}'	onload=' try { reactOnResize(); } catch (exc) {}'	onhelp='C.reactOnHelpPAGE(); return false;'  tabindex='-1' onblur='try { C.onBlurPAGE(event); } catch(e) {}' onfocus='try { C.onFocusPAGE(); } catch(e) {}' onmousewheel='if (event.shiftKey) C.CL().cancelEvent(event);' onwheel='if (event.shiftKey) C.CL().cancelEvent(event);' onmouseleave='try { return removeTHISOCCUPIED(); } catch(exc) {}' onmouseout ='try { return removeTHISOCCUPIED(); } catch(exc) {}'>
 <script>
 function gebid(pid) { return document.getElementById(pid); }
 var m_isSafari = navigator.userAgent.toLowerCase().indexOf( 'safari' ) != -1;
@@ -200,30 +200,30 @@ CNB_3.CASA_navbarcollectionprop = 'dlmenu';
 if (firstusage) C_5 = gebid('IC_5');
 C.iccBM_ICON(C_5,romu5,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($11,romu11,N,N,N,N,'false');
-C.iccFFIELD(CF_13,romu13,C.reactFFIELD,'cocustomer',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_13,romu13,C.reactFFIELD,'cocustomer',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($14,romu14,N,N,N,N,'false');
-C.iccFFIELD(CF_16,romu16,C.reactFFIELD,'cocontractid',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_16,romu16,C.reactFFIELD,'cocontractid',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C.iccBM_LABEL($18,romu18,N,N,N,N,'false');
-C.iccFFIELD(CF_20,romu20,C.reactFFIELD,'coprice',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_20,romu20,C.reactFFIELD,'coprice',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C.iccBM_LABEL($21,romu21,N,N,N,N,'false');
-C.iccFFIELD(CF_23,romu23,C.reactFFIELD,'costatus',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_23,romu23,C.reactFFIELD,'costatus',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C.iccBM_LABEL($25,romu25,N,N,N,N,'false');
-C.iccFFIELD(CF_27,romu27,C.reactFFIELD,'cocustomer',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_27,romu27,C.reactFFIELD,'cocustomer',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($28,romu28,N,N,N,N,'false');
-C.iccFFIELD(CF_30,romu30,C.reactFFIELD,'coyachtname',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_30,romu30,C.reactFFIELD,'coyachtname',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($32,romu32,N,N,N,N,'false');
-C.iccFFIELD(CF_34,romu34,C.reactFFIELD,'coroute',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_34,romu34,C.reactFFIELD,'coroute',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C.iccBM_LABEL($35,romu35,N,N,N,N,'false');
-C.iccFFIELD(CF_37,romu37,C.reactFFIELD,'codate',N,N,N,N,N,N,N,N,N,'30','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_37,romu37,C.reactFFIELD,'codate',N,N,N,N,N,N,N,N,N,'30','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C.iccBM_LABEL($39,romu39,N,N,N,N,'false');
-C.iccFFIELD(CF_41,romu41,C.reactFFIELD,'cobookingdate',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_41,romu41,C.reactFFIELD,'cobookingdate',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C.iccBM_LABEL($42,romu42,N,N,N,N,'false');
-C.iccFFIELD(CF_44,romu44,C.reactFFIELD,'coreservationdate',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_44,romu44,C.reactFFIELD,'coreservationdate',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C.iccBM_LABEL($46,romu46,N,N,N,N,'false');
-C.iccFFIELD(CF_48,romu48,C.reactFFIELD,'cocancellationdate',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_48,romu48,C.reactFFIELD,'cocancellationdate',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C.iccBM_BUTTON(CB_51,romu51,rohk51,C.reactBM_BUTTON,'onCancellation',N,N,'cancbotvisible','disabled',N,N,'false',false);
 if (firstusage) C.iccBM_BUTTON(CB_52,romu52,rohk52,C.reactBM_BUTTON,'onBooking',N,N,'bookbotvisible','disabled',N,N,'false',false);
-if (firstusage) CA_55= document.getElementById('A_55');if (firstusage) C.iccBM_ALERT(CA_55,romu55,'alerttypeprop','alertshorttextprop','alertlongtextprop','6000');
+if (firstusage) CA_55= document.getElementById('A_55');if (firstusage) C.iccBM_ALERT(CA_55,romu55,'alerttypeprop','alertshorttextprop','alertlongtextprop','6000',N);
 if (firstusage) C_2 = document.getElementById('PAGEDIV2');
 if (firstusage) THISPAGEBODY = document.getElementById('PAGEDIV2');
 C.initCasaControlPAGEBODY(C_2);
@@ -299,7 +299,7 @@ function rohk51(param) { C.transferModelBM_BUTTON(CB_51); }
 function romu52(model) { C.romuBM_BUTTON(CB_52); }
 function rohk52(param) { C.transferModelBM_BUTTON(CB_52); }
 function romu55(model) { C.romuBM_ALERT(CA_55); }
-$(document).ready(function(){$('[data-tooltip="tooltip"]').tooltip({trigger:'hover'});$('[data-tooltip="tooltip"]').click(function () {$('[data-tooltip="tooltip"]').tooltip("hide");});   });
+$(document).ready(function(){$('[data-tooltip="tooltip"]').tooltip({trigger:'hover'});$('[data-tooltip="tooltip"]').click(function () {$('[data-tooltip="tooltip"]').tooltip("hide");}); $('[data-toggle="popover"]').popover();  });
 </script>
 <iframe hidden id="csciframe" name="csciframe" tabIndex="-1" src="ZZZZZZZZGenerated_mocodetx__JLIBS.html" style="width:0;height:0;left:0;top:0">
 </iframe>

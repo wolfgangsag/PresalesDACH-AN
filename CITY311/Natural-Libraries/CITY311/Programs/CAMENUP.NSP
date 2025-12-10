@@ -38,7 +38,7 @@ DEFINE DATA GLOBAL
 LOCAL
   USING CCVIEWSL /* Enthält Daten eines Incidents
 LOCAL
-/*( PARAMETER
+/*( PARAMETER /* 03.12.2025
 1 BUTTONMAPPROP (A) DYNAMIC
 1 BUTTONMAPVISI (L)
 1 BUTTONPIC1PROP (A) DYNAMIC
@@ -233,9 +233,10 @@ END-DEFINE
 * END-ERROR
 /* =======================================================================
 MOVE *DATA TO V-DATA
-IF V-DATA NE -1 AND V-DATA NE 0
-  INPUT (AD=I) V-STACKMESSAGE (AL=60)
-END-IF
+ IF V-DATA NE -1 AND V-DATA NE 0
+/*  INPUT (AD=I) V-STACKMESSAGE (AL=60)
+WRITE "HELLO"
+ END-IF
 
 /* =======================================================================
 /* =======================================================================
@@ -852,8 +853,8 @@ V-TOPMESSAGE (9)            := "Entschuldigung, ein Fehler ist aufgetreten"
 /*    STARTORG        := "Administration Ordnungswidrigkeiten"
 /*    STARTTOWN       := "KSK-Anwendung"
 /*    STARTORG        := "Evolutionäre Weiterentwicklung"
-     STARTTOWN       := "MeineStadt311"
-     STARTORG        := "Administration Bürgermeldungen"
+    STARTTOWN       := "MeineStadt311"
+    STARTORG        := "Administration Bürgermeldungen"
     BUTTONSTART     := "Start"
 /*    BUTTONSTART     := "Version 1.1"
     BUTTONSDELETE   := "Incident Löschen"

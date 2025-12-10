@@ -10,22 +10,13 @@ var m_perfPageFocusEnd = null;</script>
 <link rel="stylesheet" href="../HTMLBasedGUI/jquery/jquery-ui.min.css" type="text/css" >
 <link rel="stylesheet" href="../HTMLBasedGUI/bootstrapicons/font/bootstrap-icons.css" type="text/css" >
 <link rel="stylesheet" href="../HTMLBasedGUI/bootstrap4/css/bootstrap.min.css" type="text/css" >
-<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/dataTables.bootstrap4.min.css" type="text/css" >
-<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/scroller.dataTables.min.css" type="text/css" >
-<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/responsive.bootstrap4.min.css" type="text/css" >
-<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/scroller.bootstrap4.min.css" type="text/css" >
+<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/dataTables.min.css" type="text/css" >
 <link id="casabacstylesheet" rel="stylesheet" type="text/css" href="../cis/styles/CIS_WM.css">
 <link id="addcsshref" rel="stylesheet" type="text/css" href="../HTMLBasedGUI/bootstrap/njxmobiledemo.css">
 <script src="../HTMLBasedGUI/jquery3/jquery.min.js"></script>
 <script src="../HTMLBasedGUI/jquery/jquery-ui.min.js"></script>
 <script src="../HTMLBasedGUI/bootstrap4/js/bootstrap.bundle.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/jquery.dataTables.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/dataTables.bootstrap4.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/dataTables.responsive.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/responsive.bootstrap4.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/scroller.dataTables.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/scroller.bootstrap4.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/dataTables.scroller.min.js"></script>
+<script src="../HTMLBasedGUI/datatables/js/dataTables.min.js"></script>
 <script>
 var CASAstylesheetfile = '../cis/styles/CIS_WM.css';
 </script>
@@ -34,7 +25,7 @@ html {height:100%;}
 body {height:100%;}
 </style>
 </head>
-<body id='THISBODY' oncontextmenu='try { return C.reactOnContextMenuRequestPAGE(event); } catch(e) {}' onmousemove='try { return moveDrag(event); } catch(exc) {}' onmouseup='try { endDrag(event);C.CL().checkMozIO(parent); } catch (exc) {}' onkeydown='try { processHotKeys(event); } catch (exc) {}' class='PAGEBody' style='margin: 0' onclick='try { C.clickAway(); } catch (exc) {}; try { C.reactOnClickPage(event); } catch (exc) {}' onresize='try { reactOnResize(); } catch (exc) {}'	onload=' try { reactOnResize(); } catch (exc) {}'	onhelp='C.reactOnHelpPAGE(); return false;'  tabindex='-1' onblur='try { C.onBlurPAGE(event); } catch(e) {}' onfocus='try { C.onFocusPAGE(); } catch(e) {}' onmousewheel='if (event.shiftKey) C.CL().cancelEvent(event);' onwheel='if (event.shiftKey) C.CL().cancelEvent(event);' onmouseleave='try { return removeTHISOCCUPIED(); } catch(exc) {}' onmouseout ='try { return removeTHISOCCUPIED(); } catch(exc) {}'>
+<body id='THISBODY' oncontextmenu='try { C.clickAway(); } catch (exc) {}; try { return C.reactOnContextMenuRequestPAGE(event); } catch(e) {}' onmousemove='try { return moveDrag(event); } catch(exc) {}' onmouseup='try { endDrag(event);C.CL().checkMozIO(parent); } catch (exc) {}' onkeydown='try { processHotKeys(event); } catch (exc) {}' class='PAGEBody' style='margin: 0' onclick='try { C.clickAway(); } catch (exc) {}; try { C.reactOnClickPage(event); } catch (exc) {}' onresize='try { reactOnResize(); } catch (exc) {}'	onload=' try { reactOnResize(); } catch (exc) {}'	onhelp='C.reactOnHelpPAGE(); return false;'  tabindex='-1' onblur='try { C.onBlurPAGE(event); } catch(e) {}' onfocus='try { C.onFocusPAGE(); } catch(e) {}' onmousewheel='if (event.shiftKey) C.CL().cancelEvent(event);' onwheel='if (event.shiftKey) C.CL().cancelEvent(event);' onmouseleave='try { return removeTHISOCCUPIED(); } catch(exc) {}' onmouseout ='try { return removeTHISOCCUPIED(); } catch(exc) {}'>
 <script>
 function gebid(pid) { return document.getElementById(pid); }
 var m_isSafari = navigator.userAgent.toLowerCase().indexOf( 'safari' ) != -1;
@@ -103,7 +94,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 </div>
-<div class='card' style='background-color: ##0C3B60; border-style:none' id="29">
+<div class='card'  style='background-color: ##0C3B60; border-style:none' id="29">
 <div class='card-body' id='PANEL29' style='background-color: #125996; border-style:none' >
 <div class='row' id="PL_31">
 <div class='col-lg-6 col-md-6 col-6 col-sm-6' id='32' >
@@ -146,7 +137,7 @@ m_fillTextIdListeners.push(listener);
 <div class='container-fluid' style='overflow-x:hidden;' >
 <div class='row' id="PL_47">
 <div class='col-lg-9 col-md-12 col-sm-12 col-12' id='48' >
-<div class='card' style='background-color:#125996; border-style:none' id="49">
+<div class='card'  style='background-color:#125996; border-style:none' id="49">
 <div class='card-body' id='PANEL49' >
 <div class='center-block row' style='width:100%' id="PL_51">
 <div id='52' >
@@ -163,7 +154,7 @@ m_fillTextIdListeners.push(listener);
 <div class='row' style='height:20px' ></div>
 <div class='row' id="PL_58">
 <div class='col-lg-12 col-md-12 col-sm-12 col-12' id='59' >
-<div class='card' style='border-style:none;background-color: #125996;' id="60">
+<div class='card'  style='border-style:none;background-color: #125996;' id="60">
 <div class='card-body' id='PANEL60' >
 <div class='row' id="PL_62">
 <label  id="$63" style='color:#c6d9f1;text-align:left;font-size: 1.2em;font-style:italic;padding-left:5%;;padding-right:5%' class='col-form-label'></label>
@@ -180,7 +171,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 <div class='row' id="PL_68">
 <div class='col-lg-4 col-md-4 col-sm-12 col-12' id='69' >
-<div class='card' style='background-color: #0C3B60; border-color:#c6d9f1; border-style:solid' id="70">
+<div class='card'  style='background-color: #0C3B60; border-color:#c6d9f1; border-style:solid' id="70">
 <div class='card-body' id='PANEL70' >
 <div class='row' id="PL_72">
 <div class='col-lg-8 col-md-8 col-sm-12 col-12' id='73' >
@@ -199,7 +190,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 <div class='col-lg-4 col-md-4 col-sm-12 col-12' id='80' >
-<div class='card' style='background-color: #0C3B60; border-color:#c6d9f1; border-style:solid' id="81">
+<div class='card'  style='background-color: #0C3B60; border-color:#c6d9f1; border-style:solid' id="81">
 <div class='card-body' id='PANEL81' >
 <div class='row' id="PL_83">
 <div class='col-lg-8 col-md-8 col-sm-12 col-12' id='84' >
@@ -218,7 +209,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 <div class='col-lg-4 col-md-4 col-sm-12 col-12' id='91' >
-<div class='card' style='background-color: #0C3B60; border-color:#c6d9f1; border-style:solid' id="92">
+<div class='card'  style='background-color: #0C3B60; border-color:#c6d9f1; border-style:solid' id="92">
 <div class='card-body' id='PANEL92' >
 <div class='row' id="PL_94">
 <div class='col-lg-8 col-md-8 col-sm-12 col-12' id='95' >
@@ -243,7 +234,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 </div>
-<div class='card' style='background-color: #0C3B60; border-style:none' id="105">
+<div class='card'  style='background-color: #0C3B60; border-style:none' id="105">
 <div class='card-body' id='PANEL105' >
 <div class='row' style='background-color: #0C3B60' id="PL_107">
 <div class='col-lg-4 col-md-4 col-sm-10 col-10' id='108' >
@@ -256,7 +247,9 @@ m_fillTextIdListeners.push(listener);
 </div>
 <div class='col-lg-4 col-md-4 col-sm-10 col-10' id='114' >
 <label  id="$115" style='color: #c6d9f1;' class='col-form-label'></label>
+<div class='input-group'>
 <input id="F_116" name="CC" type="text" data-testtoolid='pvmybirthdate' class='form-control form-control' placeholder='Registration Start' >
+</div>
 </div>
 </div>
 <div class='row' style='background-color: #0C3B60' id="PL_117">
@@ -300,11 +293,11 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 </div>
-<div class='card' style='background-color: #1995dc; border-style:none' id="142">
+<div class='card'  style='background-color: #1995dc; border-style:none' id="142">
 <div class='card-body' id='PANEL142' >
 <div class='row' id="PL_144">
 <div class='col-lg-3 col-md-6 col-sm-6 col-6' id='145' >
-<div class='card' style='background-color: #125996; border-style:none' id="146">
+<div class='card'  style='background-color: #125996; border-style:none' id="146">
 <div class='card-body' id='PANEL146' >
 <div class='center-block row' id="PL_148">
 <div id='149' >
@@ -338,7 +331,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 <div class='col-lg-3 col-md-6 col-sm-6 col-6' id='165' >
-<div class='card' style='background-color: #125996; border-style:none' id="166">
+<div class='card'  style='background-color: #125996; border-style:none' id="166">
 <div class='card-body' id='PANEL166' >
 <div class='center-block row' id="PL_168">
 <div id='169' >
@@ -370,7 +363,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 <div class='col-lg-3 col-md-6 col-sm-6 col-6' id='184' >
-<div class='card' style='background-color: #125996; border-style:none' id="185">
+<div class='card'  style='background-color: #125996; border-style:none' id="185">
 <div class='card-body' id='PANEL185' >
 <div class='center-block row' id="PL_187">
 <div id='188' >
@@ -402,7 +395,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 <div class='col-lg-3 col-md-6 col-sm-6 col-6' id='203' >
-<div class='card' style='background-color: #125996; border-style:none' id="204">
+<div class='card'  style='background-color: #125996; border-style:none' id="204">
 <div class='card-body' id='PANEL204' >
 <div class='center-block row' id="PL_206">
 <div id='207' >
@@ -448,7 +441,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 </div>
-<div class='card' style='background-color: #1995dc; border-style:none' id="228">
+<div class='card'  style='background-color: #1995dc; border-style:none' id="228">
 <div class='card-body' id='PANEL228' >
 <div class='center-block row' id="PL_230">
 <div class='col-lg-6 col-md-6 col-sm-8 col-8' id='231' >
@@ -470,11 +463,15 @@ m_fillTextIdListeners.push(listener);
 <div class='row' id="PL_241">
 <div class='col-lg-6 col-md-6 col-sm-12 col-12' id='242' >
 <label  id="$243" style='color:#c6d9f1;font-style:italic;font-size: 1em' class='col-form-label'></label>
+<div class='input-group'>
 <input id="F_244" name="CC" type="text" data-testtoolid='pvcrdetstartdate' class='form-control form-control' >
+</div>
 </div>
 <div class='col-lg-6 col-md-6 col-sm-12 col-12' id='245' >
 <label  id="$246" style='color:#c6d9f1;font-style:italic;font-size: 1em' class='col-form-label'></label>
+<div class='input-group'>
 <input id="F_247" name="CC" type="text" data-testtoolid='pvcrdetenddate' class='form-control form-control' >
+</div>
 </div>
 </div>
 <div class='row' id="PL_248">
@@ -512,7 +509,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 </div>
 </div>
-<div class='card' style='background-color: #125996; border-style:none' id="269">
+<div class='card'  style='background-color: #125996; border-style:none' id="269">
 <div class='card-body' id='PANEL269' >
 <div class='center-block row' id="PL_271">
 <div id="myCarousel" class="carousel slide" data-ride="carousel" casaindex="272" casaidxexpand="272">
@@ -602,11 +599,11 @@ Next</span>
 </div>
 </div>
 </div>
-<div class='card' style='background-color:#1995dc;border-style:none' id="316">
+<div class='card'  style='background-color:#1995dc;border-style:none' id="316">
 <div class='card-body' id='PANEL316' style='background-color: #1995dc; border-style:none' >
 <div class='row' style='height:10%' ></div>
 <div class='row' id="PL_319">
-<div class='col-lg-12 col-md-12 col-sm-12 col-12' style='border-style:none' id='320' ><table id='SIMPLEGRID321' class='table dt-responsive nowrap table-striped' cellspacing='0' data-testtoolid='lines'  style='width:100%' >
+<div class='col-lg-12 col-md-12 col-sm-12 col-12' style='border-style:none' id='320' ><table id='SIMPLEGRID321' class='table nowrap table-striped' cellspacing='0' data-testtoolid='lines'  style='width:100%' >
 <thead>
 <tr >
 <th  style='width:3%' >Id</th>
@@ -624,10 +621,10 @@ Next</span>
 </div>
 </div>
 <div class='col-lg-3 col-md-12 col-sm-12 col-12' id='332' >
-<div class='card' style='background-color:#0C3B60;border-style:none' id="333">
+<div class='card'  style='background-color:#0C3B60;border-style:none' id="333">
 <div class='card-body' id='PANEL333' >
 <div class='col-lg-12 col-md-3 col-sm-6 col-6' id='335' >
-<div class='card' style='background-color: #125996;border-style:none' id="336">
+<div class='card'  style='background-color: #125996;border-style:none' id="336">
 <div class='card-body' id='PANEL336' >
 <div class='center-block row' style='width:100%' id="PL_338">
 <div id='339' ><img src="./images/CR16-paros-153754741.jpg" alt="Paros" style="width:90%;margin-bottom: 10px;padding-top:2%" casaindex="340" casaidxexpand="340">
@@ -646,7 +643,7 @@ Next</span>
 </div>
 </div>
 <div class='col-lg-12 col-md-3 col-sm-6 col-6' id='346' >
-<div class='card' style='background-color:#125996;border-style:none' id="347">
+<div class='card'  style='background-color:#125996;border-style:none' id="347">
 <div class='card-body' id='PANEL347' >
 <div class='center-block row' style='width:100%' id="PL_349">
 <div id='350' ><img src="./images/CR16-aghios-489205274.jpg" alt="Agios Nikolaos" style="width:90%;margin-bottom: 10px;padding-top:2%" casaindex="351" casaidxexpand="351">
@@ -665,7 +662,7 @@ Next</span>
 </div>
 </div>
 <div class='col-lg-12 col-md-3 col-sm-6 col-6' id='357' >
-<div class='card' style='background-color: #125996;border-style:none' id="358">
+<div class='card'  style='background-color: #125996;border-style:none' id="358">
 <div class='card-body' id='PANEL358' >
 <div class='center-block row' style='width:100%' id="PL_360">
 <div id='361' ><img src="./images/CR16-lefkas-99958818.jpg" alt="Lefkas" style="width:90%;margin-bottom: 10px;padding-top:2%" casaindex="362" casaidxexpand="362">
@@ -684,7 +681,7 @@ Next</span>
 </div>
 </div>
 <div class='col-lg-12 col-md-3 col-sm-6 col-6' id='368' >
-<div class='card' style='background-color: #125996;border-style:none' id="369">
+<div class='card'  style='background-color: #125996;border-style:none' id="369">
 <div class='card-body' id='PANEL369' >
 <div class='center-block row' style='width:100%' id="PL_371">
 <div id='372' ><img src="./images/CR16-santorini-537873450.jpg" alt="Santorini" style="width:90%;margin-bottom: 10px;padding-top:2%" casaindex="373" casaidxexpand="373">
@@ -719,7 +716,7 @@ Next</span>
 </div>
 <div class='row' style='background-color:#323232;' id="PL_385">
 <div class='col-lg-3 col-md-3 col-sm-6 col-12' id='386' >
-<div class='card' style='background-color: #323232; border-color:#6d6d6d; border-style:solid' id="387">
+<div class='card'  style='background-color: #323232; border-color:#6d6d6d; border-style:solid' id="387">
 <div class='card-body' id='PANEL387' >
 <div class='center-block row' style='width:100%' id="PL_389">
 <div id='390' ></div>
@@ -734,7 +731,7 @@ Next</span>
 </div>
 </div>
 <div class='col-lg-3 col-md-3 col-sm-6 col-12' id='395' >
-<div class='card' style='background-color: #323232;border-color:#6d6d6d; border-style:solid' id="396">
+<div class='card'  style='background-color: #323232;border-color:#6d6d6d; border-style:solid' id="396">
 <div class='card-body' id='PANEL396' >
 <div class='center-block row' style='width:100%' id="PL_398">
 <div id='399' ></div>
@@ -749,7 +746,7 @@ Next</span>
 </div>
 </div>
 <div class='col-lg-3 col-md-3 col-sm-6 col-12' id='404' >
-<div class='card' style='background-color: #323232;border-color:#6d6d6d; border-style:solid' id="405">
+<div class='card'  style='background-color: #323232;border-color:#6d6d6d; border-style:solid' id="405">
 <div class='card-body' id='PANEL405' >
 <div class='center-block row' style='width:100%' id="PL_407">
 <div id='408' ></div>
@@ -764,7 +761,7 @@ Next</span>
 </div>
 </div>
 <div class='col-lg-3 col-md-3 col-sm-6 col-12' id='413' >
-<div class='card' style='background-color: #323232;border-color:#6d6d6d; border-style:solid' id="414">
+<div class='card'  style='background-color: #323232;border-color:#6d6d6d; border-style:solid' id="414">
 <div class='card-body' id='PANEL414' >
 <div class='center-block row' style='width:100%' id="PL_416">
 <div id='417' ></div>
@@ -856,8 +853,8 @@ if (firstusage) C_28 = gebid('IO_28');
 C.iccIMAGEOUT(C_28,romu28,'pvmyloginimage',N,'img-fluid center-block','max-width:100%;height:auto;',N,N,'pvmyloginimage');
 if (firstusage) C_26 = gebid('PL_26');
 C.iccBM_PANEL(C_26,romu26,'pvloginpanelvisible','invisible',N);
-C.iccFFIELD(CF_33,romu33,C.reactFFIELD,'pvloginident',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
-C.iccFFIELD(CF_35,romu35,C.reactFFIELD,'pvloginpw',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_33,romu33,C.reactFFIELD,'pvloginident',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
+C.iccFFIELD(CF_35,romu35,C.reactFFIELD,'pvloginpw',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C_38 = gebid('IC_38');
 C.iccBM_ICON(C_38,romu38,'onLoginbutton',N,N,N,N,N);
 if (firstusage) C_40 = gebid('IC_40');
@@ -866,7 +863,7 @@ if (firstusage) C.iccBM_LABEL($43,romu43,'pvloginalerttxt',N,N,N,'false');
 if (firstusage) C_41 = gebid('PL_41');
 C.iccBM_PANEL(C_41,romu41,'pvloginalerttxtvisible','invisible',N);
 if (firstusage) C_29 = gebid('29');
-if (firstusage) C.iccBM_PANEL(C_29,romu29,'pvloginpanelvisible','invisible',N);
+if (firstusage) C.iccBM_PANEL(C_29,romu29,'pvloginpanelvisible','invisible',N,N);
 if (firstusage) CNB_44 = document.getElementById('NB_44');
 if (firstusage) C.iccNAVBAR (CNB_44,NBHEAD_44,NBNAV_44,true);
 C.registerListener(reactOnModelUpdate44);
@@ -903,19 +900,19 @@ C.iccIMAGEOUT(C_104,romu104,'pvmydataimage',N,'img-fluid center-block','max-widt
 if (firstusage) C_102 = gebid('PL_102');
 C.iccBM_PANEL(C_102,romu102,'pvmydatapanelvisible','invisible',N);
 if (firstusage) C.iccBM_LABEL($109,romu109,'pvmynamelabeprop',N,N,N,'false');
-C.iccFFIELD(CF_110,romu110,C.reactFFIELD,'pvmyname',N,N,N,N,N,N,'true',N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_110,romu110,C.reactFFIELD,'pvmyname',N,N,N,N,N,N,'true',N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($112,romu112,'pvmyfirstnamelabelprop',N,N,N,'false');
-C.iccFFIELD(CF_113,romu113,C.reactFFIELD,'pvmyfirstname',N,N,N,N,N,N,'true',N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_113,romu113,C.reactFFIELD,'pvmyfirstname',N,N,N,N,N,N,'true',N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($115,romu115,'pvmybirthdatelabelprop',N,N,N,'false');
 if (firstusage) C.iccDI2(CF_116,romu116,C.reactDI2,'pvmybirthdate',N,N,'date',N,N,N,N,N,N,N,N,'1',N,N,N,N,N,N,N,N,'DATEINPUT2Holidays',N,N,N,N,'true');
 if (firstusage) C.iccBM_LABEL($119,romu119,'pvmyemaillabelprop',N,N,N,'false');
-C.iccFFIELD(CF_120,romu120,C.reactFFIELD,'pvmyemail',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_120,romu120,C.reactFFIELD,'pvmyemail',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C.iccBM_LABEL($123,romu123,'pvmystreetlabelprop',N,N,N,'false');
-C.iccFFIELD(CF_124,romu124,C.reactFFIELD,'pvmyStreet',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_124,romu124,C.reactFFIELD,'pvmyStreet',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C.iccBM_LABEL($126,romu126,'pvmyziplabelprop',N,N,N,'false');
-C.iccFFIELD(CF_127,romu127,C.reactFFIELD,'pvmyzipcode',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_127,romu127,C.reactFFIELD,'pvmyzipcode',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C.iccBM_LABEL($129,romu129,'pvmycitylabelprop',N,N,N,'false');
-C.iccFFIELD(CF_130,romu130,C.reactFFIELD,'pvmycity',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_130,romu130,C.reactFFIELD,'pvmycity',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C_133 = gebid('IC_133');
 C.iccBM_ICON(C_133,romu133,'onMydataSave',N,N,N,N,N);
 if (firstusage) C_135 = gebid('IC_135');
@@ -924,7 +921,7 @@ if (firstusage) C.iccBM_LABEL($138,romu138,'pvmydataalerttxt',N,N,N,'false');
 if (firstusage) C_136 = gebid('PL_136');
 C.iccBM_PANEL(C_136,romu136,'pvmydataalerttxtvisible','invisible',N);
 if (firstusage) C_105 = gebid('105');
-if (firstusage) C.iccBM_PANEL(C_105,romu105,'pvmydatapanelvisible','invisible',N);
+if (firstusage) C.iccBM_PANEL(C_105,romu105,'pvmydatapanelvisible','invisible',N,N);
 if (firstusage) C_141 = gebid('IO_141');
 C.iccIMAGEOUT(C_141,romu141,'pvofferimage',N,'img-fluid center-block','max-width:100%;height:auto;',N,N,'pvofferimage');
 if (firstusage) C_139 = gebid('PL_139');
@@ -962,7 +959,7 @@ if (firstusage) C.iccBM_LABEL($218,romu218,'pvoffer4date',N,N,N,'false');
 if (firstusage) C_221 = gebid('IC_221');
 C.iccBM_ICON(C_221,romu221,'onShowdetails4',N,N,N,N,N);
 if (firstusage) C_142 = gebid('142');
-if (firstusage) C.iccBM_PANEL(C_142,romu142,'pvoffervisible','invisible',N);
+if (firstusage) C.iccBM_PANEL(C_142,romu142,'pvoffervisible','invisible',N,N);
 if (firstusage) C_224 = gebid('IO_224');
 C.iccIMAGEOUT(C_224,romu224,'pvqestionsimage',N,'img-fluid center-block','max-width:100%;height:auto;',N,N,'pvqestionsimage');
 if (firstusage) C_222 = gebid('PL_222');
@@ -974,17 +971,17 @@ C.iccBM_PANEL(C_225,romu225,'pvcrdetailspanelvisible','invisible',N);
 if (firstusage) C_232 = gebid('IO_232');
 C.iccIMAGEOUT(C_232,romu232,'pvcruiseimage',N,'img-fluid',N,N,N,'pvcruiseimage');
 if (firstusage) C.iccBM_LABEL($236,romu236,'pvcrlabeldetstartharbor',N,N,N,'false');
-C.iccFFIELD(CF_237,romu237,C.reactFFIELD,'pvcrdetstartharbor',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_237,romu237,C.reactFFIELD,'pvcrdetstartharbor',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C.iccBM_LABEL($239,romu239,'pvcrlabeldetdestharbor',N,N,N,'false');
-C.iccFFIELD(CF_240,romu240,C.reactFFIELD,'pvcrdetdestharbor',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_240,romu240,C.reactFFIELD,'pvcrdetdestharbor',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C.iccBM_LABEL($243,romu243,'pvcrlabeldetstartdate',N,N,N,'false');
 if (firstusage) C.iccDI2(CF_244,romu244,C.reactDI2,'pvcrdetstartdate',N,N,'date',N,N,N,N,N,N,N,N,'1',N,N,N,N,N,N,N,N,'DATEINPUT2Holidays',N,N,N,N,'true');
 if (firstusage) C.iccBM_LABEL($246,romu246,'pvcrlabeldetenddate',N,N,N,'false');
 if (firstusage) C.iccDI2(CF_247,romu247,C.reactDI2,'pvcrdetenddate',N,N,'date',N,N,N,N,N,N,N,N,'1',N,N,N,N,N,N,N,N,'DATEINPUT2Holidays',N,N,N,N,'true');
 if (firstusage) C.iccBM_LABEL($250,romu250,'pvcrlabeldetyachtname',N,N,N,'false');
-C.iccFFIELD(CF_251,romu251,C.reactFFIELD,'pvcrdetyachtname',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_251,romu251,C.reactFFIELD,'pvcrdetyachtname',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C.iccBM_LABEL($254,romu254,'pvcrlabeldetprice',N,N,N,'false');
-C.iccFFIELD(CF_255,romu255,C.reactFFIELD,'pvcrdetprices',N,N,N,N,N,N,N,N,N,'30','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N);
+C.iccFFIELD(CF_255,romu255,C.reactFFIELD,'pvcrdetprices',N,N,N,N,N,N,N,N,N,'30','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
 if (firstusage) C_259 = gebid('IC_259');
 C.iccBM_ICON(C_259,romu259,'onBookingSave',N,N,N,N,N);
 if (firstusage) C_261 = gebid('IC_261');
@@ -993,7 +990,7 @@ if (firstusage) C.iccBM_LABEL($264,romu264,'pvdetailsalerttxt',N,N,N,'false');
 if (firstusage) C_262 = gebid('PL_262');
 C.iccBM_PANEL(C_262,romu262,'pvdetailsalerttxtvisible','invisible',N);
 if (firstusage) C_228 = gebid('228');
-if (firstusage) C.iccBM_PANEL(C_228,romu228,'pvcrdetailspanelvisible','invisible',N);
+if (firstusage) C.iccBM_PANEL(C_228,romu228,'pvcrdetailspanelvisible','invisible',N,N);
 if (firstusage) C_268 = gebid('IO_268');
 C.iccIMAGEOUT(C_268,romu268,'pvfavorimage',N,'img-fluid center-block','max-width:100%;height:auto;',N,N,'pvfavorimage');
 if (firstusage) C_266 = gebid('PL_266');
@@ -1007,7 +1004,7 @@ C.iccBM_ICON(C_307,romu307,'onFav3button',N,N,N,N,N);
 if (firstusage) C_309 = gebid('IC_309');
 C.iccBM_ICON(C_309,romu309,'onFav4button',N,N,N,N,N);
 if (firstusage) C_269 = gebid('269');
-if (firstusage) C.iccBM_PANEL(C_269,romu269,'pvfavtxtvisible','invisible',N);
+if (firstusage) C.iccBM_PANEL(C_269,romu269,'pvfavtxtvisible','invisible',N,N);
 if (firstusage) C_312 = gebid('IO_312');
 C.iccIMAGEOUT(C_312,romu312,'pvsearchimage',N,'img-fluid center-block','max-width:100%;height:auto;padding-left:0;padding-right:0;margin-bottom:10%;margin-left:0;margin-right:0',N,N,'pvsearchimage');
 if (firstusage) C_310 = gebid('PL_310');
@@ -1028,10 +1025,10 @@ C_321.CASA_colinfos[3]=new Object();
 C_321.CASA_colinfos[3].property='pvdestharbor';
 C_321.CASA_onclickmethod = 'lines.onpvLineClick';
 C_321.CASA_ondblclickmethod = 'lines.onpvLineClick';
-if (firstusage) C.initSIMPLEGRID(C_321,'lines','selectedline',N,'prop',N,N,N,N,N,true,false,N,false,true,'200',N);
+if (firstusage) C.initSIMPLEGRID(C_321,'lines','selectedline',N,'prop',N,N,N,N,N,true,false,N,false,true,'200',N,0,0,false,false);
 if (firstusage) C.registerListener(reactOnModelUpdate321);
 if (firstusage) C_316 = gebid('316');
-if (firstusage) C.iccBM_PANEL(C_316,romu316,'pvresultpanelvisible','invisible',N);
+if (firstusage) C.iccBM_PANEL(C_316,romu316,'pvresultpanelvisible','invisible',N,N);
 if (firstusage) C.iccBM_LABEL($343,romu343,N,N,N,N,'false');
 if (firstusage) C.iccBM_LABEL($345,romu345,'pvislandtxt2',N,N,N,'false');
 if (firstusage) C.iccBM_LABEL($354,romu354,N,N,N,N,'false');
@@ -1239,7 +1236,7 @@ function romu412(model) { C.romuBM_LABEL($412); }
 function romu419(model) { C.romuBM_LABEL($419); }
 function romu421(model) { C.romuBM_LABEL($421); }
 function romu425(model) { C.romuBM_LABEL($425); }
-$(document).ready(function(){$('[data-tooltip="tooltip"]').tooltip({trigger:'hover'});$('[data-tooltip="tooltip"]').click(function () {$('[data-tooltip="tooltip"]').tooltip("hide");});   });
+$(document).ready(function(){$('[data-tooltip="tooltip"]').tooltip({trigger:'hover'});$('[data-tooltip="tooltip"]').click(function () {$('[data-tooltip="tooltip"]').tooltip("hide");}); $('[data-toggle="popover"]').popover();  });
 </script>
 <iframe hidden id="csciframe" name="csciframe" tabIndex="-1" src="rdcruisx_JLIBS.html" style="width:0;height:0;left:0;top:0">
 </iframe>

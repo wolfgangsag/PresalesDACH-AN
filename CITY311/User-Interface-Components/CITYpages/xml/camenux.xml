@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<natpage stylesheetfile="../cis/styles/CIS_WM.css" addstylesheetfile="./styles/njxmobileZD.css" natsource="camenua" natsinglebyte="true" natkcheck="true" xmlns:njx="http://www.softwareag.com/njx/njxMapConverter" xmlns:bmobile="http://www.softwareag.com/njx/njxMobile">
+<natpage uselatestbootstrap="false" addstylesheetfile="./styles/njxmobileZD.css" natsource="camenua" natsinglebyte="true" natkcheck="true" xmlns:njx="http://www.softwareag.com/njx/njxMapConverter" xmlns:bmobile="http://www.softwareag.com/njx/njxMobile">
     <njx:objects>
     </njx:objects>
     <pagebody pagebodystyle="background-color:#CCCCCB">
@@ -62,7 +62,7 @@
                 <bmobile:panelbody>
                     <bmobile:row styleclasses="center-block">
                         <bmobile:col styleclasses="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="border-style:none">
-                            <bmobile:simplegrid gridprop="inclines" selectprop="incselected" width="100%" styleclasses="table-striped" sortcol="1" sortorder="desc">
+                            <bmobile:simplegrid gridprop="inclines" selectprop="incselected" sortcol="1" sortorder="desc" width="100%" styleclasses="table-striped">
                                 <bmobile:simpleheaderrow>
                                     <bmobile:simpleheadercol name="Type">
                                     </bmobile:simpleheadercol>
@@ -76,7 +76,8 @@
                                     </bmobile:simpleheadercol>
                                     <bmobile:simpleheadercol name="Description">
                                     </bmobile:simpleheadercol>
-                                    <bmobile:simpleheadercol></bmobile:simpleheadercol>
+                                    <bmobile:simpleheadercol>
+                                    </bmobile:simpleheadercol>
                                 </bmobile:simpleheaderrow>
                                 <bmobile:simplerow onclickmethod="onInclineClick" ondblclickmethod="onInclineClick">
                                     <bmobile:simplecol colprop="incl_va1">
@@ -107,15 +108,15 @@
                         <bmobile:col styleclasses="col-xs-12">
                             <bmobile:row style="border-style:none;background-color:#cccccb">
                                 <bmobile:col styleclasses="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <bmobile:flabel name=" " >
+                                    <bmobile:flabel name=" ">
                                     </bmobile:flabel>
-                                </bmobile:col>                            
+                                </bmobile:col>
                                 <bmobile:col styleclasses="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <bmobile:flabel nameprop="incdet.label0">
                                     </bmobile:flabel>
                                     <bmobile:ffield style="background-color:white" valueprop="incdet.value0" displayonly="true">
                                     </bmobile:ffield>
-                                </bmobile:col>                            
+                                </bmobile:col>
                                 <bmobile:col styleclasses="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <bmobile:flabel nameprop="incdet.label1">
                                     </bmobile:flabel>
@@ -189,7 +190,7 @@
                 <bmobile:panelbody>
                     <bmobile:row>
                         <bmobile:col styleclasses="col-xs-12">
-                            <bmobile:simplegrid gridprop="hislines" selectprop="hisselected" width="100%" changeindexprop="changeindex" features="autoWidth:false;info:false;paging:false;searching:false;ordering:false;lengthChange:false" styleclasses="table-striped">
+                            <bmobile:simplegrid gridprop="hislines" selectprop="hisselected" changeindexprop="changeindex" width="100%" features="autoWidth:false;info:false;paging:false;searching:false;ordering:false;lengthChange:false" styleclasses="table-striped">
                                 <bmobile:simpleheaderrow>
                                     <bmobile:simpleheadercol name="1">
                                     </bmobile:simpleheadercol>

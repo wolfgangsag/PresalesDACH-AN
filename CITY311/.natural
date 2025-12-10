@@ -2,15 +2,16 @@
 <NaturalProperties>
     <ConnectionProperties>
         <Hostname>localhost</Hostname>
-        <Portid>2700</Portid>
-        <SessionParameters>ETID=$$</SessionParameters>
+        <Portid>2706</Portid>
+        <SessionParameters>ETID=' '</SessionParameters>
         <EnvironmentName/>
         <SecurityServer>false</SecurityServer>
     </ConnectionProperties>
     <ParserProperties>
         <TerminalCommandChar>%</TerminalCommandChar>
         <TerminalCommandCharSwitch>true</TerminalCommandCharSwitch>
-        <DefaultCodepage> </DefaultCodepage>
+        <DefaultCodepage>windows-1252</DefaultCodepage>
+        <UseDefaultCP>false</UseDefaultCP>
         <InterpretDBShortNames>false</InterpretDBShortNames>
         <DecimalCharacter>.</DecimalCharacter>
         <DateFormat>INTERNATIONAL</DateFormat>
@@ -23,6 +24,9 @@
         <Maxyear>DEFAULT</Maxyear>
         <ParserMode>MAINFRAME_MODE</ParserMode>
         <ParameterCheck>false</ParameterCheck>
+        <Echeck>false</Echeck>
+        <TranslateQuotationMarks>true</TranslateQuotationMarks>
+        <Maxprec>7</Maxprec>
         <PageSize>0</PageSize>
         <SpacingFactor>1</SpacingFactor>
         <StructuredMode>true</StructuredMode>
@@ -48,6 +52,9 @@
         <GroupByObjectType>true</GroupByObjectType>
         <DeleteErrorMessageOnServer>false</DeleteErrorMessageOnServer>
         <UserLanguage>1English</UserLanguage>
+        <VisualMode>false</VisualMode>
+        <AutoShaping>false</AutoShaping>
+        <VisualOrder>false</VisualOrder>
     </GeneralProperties>
     <EnvironmentProperties>
         <SteplibNSV/>
@@ -67,5 +74,6 @@
     </BuilderProperties>
     <EditorProperties>
         <RenumberConstant>false</RenumberConstant>
+        <LayoutOrientation>0</LayoutOrientation>
     </EditorProperties>
 </NaturalProperties>

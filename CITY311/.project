@@ -20,6 +20,5 @@
 	<natures>
 		<nature>com.softwareag.cis.ide.CISNature</nature>
 		<nature>com.softwareag.naturalone.natural.ide.naturalNature</nature>
-		<nature>org.jkiss.dbeaver.DBeaverNature</nature>
 	</natures>
 </projectDescription>
