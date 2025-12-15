@@ -1,4 +1,4 @@
-DB: 000 FILE: 011  - EMPLOYEES                        DEFAULT SEQUENCE:   
+DB: 012 FILE: 011  - EMPLOYEES                        DEFAULT SEQUENCE:   
 TYPE: ADABAS
  
 T L DB Name                              F Leng  S D Remark
