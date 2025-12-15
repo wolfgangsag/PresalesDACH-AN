@@ -1,0 +1,56 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+**************************************************************************
+*  Programa......: nswpai2c                                             **
+*  Descripcion ..: Fill table with the names of states                  **
+*  Created ......: April 2004                                           **
+*  Copyright ....: (c) Copyright Software AG 2004. All rights reserved. **
+**************************************************************************
+*
+DECIDE ON FIRST VALUE OF *LANGUAGE
+  VALUE 1
+    MOVE 'D' TO T-CDLANG(1)
+    MOVE 'Germany'         TO T-DSCOUNTRY(1)
+    MOVE 'SPA' TO T-CDLANG(2)
+    MOVE 'Spain'           TO T-DSCOUNTRY(2)
+    MOVE 'UK'  TO T-CDLANG(3)
+    MOVE 'United Kingdom'  TO T-DSCOUNTRY(3)
+    MOVE 'FR' TO T-CDLANG(4)
+    MOVE 'France'          TO T-DSCOUNTRY(4)
+    MOVE 'USA' TO T-CDLANG(5)
+    MOVE 'Unites States'   TO T-DSCOUNTRY(5)
+    MOVE 'AT' TO T-CDLANG(6)
+    MOVE 'Austria'         TO T-DSCOUNTRY(6)
+  VALUE 2
+    MOVE 'D' TO T-CDLANG(1)
+    MOVE 'Deutschland'     TO T-DSCOUNTRY(1)
+    MOVE 'SPA' TO T-CDLANG(2)
+    MOVE 'Spanien'         TO T-DSCOUNTRY(2)
+    MOVE 'UK'  TO T-CDLANG(3)
+    MOVE 'Ver. Königreich' TO T-DSCOUNTRY(3)
+    MOVE 'FR' TO T-CDLANG(4)
+    MOVE 'Frankreich'      TO T-DSCOUNTRY(4)
+    MOVE 'USA' TO T-CDLANG(5)
+    MOVE 'Ver. Staaten'    TO T-DSCOUNTRY(5)
+    MOVE 'AT' TO T-CDLANG(6)
+    MOVE 'Österreich'      TO T-DSCOUNTRY(6)
+  VALUE 4
+    MOVE 'D' TO T-CDLANG(1)
+    MOVE 'Alemania'        TO T-DSCOUNTRY(1)
+    MOVE 'SPA' TO T-CDLANG(2)
+    MOVE 'Espana'          TO T-DSCOUNTRY(2)
+    MOVE 'UK'  TO T-CDLANG(3)
+    MOVE 'Reino Unido'     TO T-DSCOUNTRY(3)
+    MOVE 'FR' TO T-CDLANG(4)
+    MOVE 'Francia'         TO T-DSCOUNTRY(4)
+    MOVE 'USA' TO T-CDLANG(5)
+    MOVE 'Estados Unidos'  TO T-DSCOUNTRY(5)
+    MOVE 'AT' TO T-CDLANG(6)
+    MOVE 'Austria'         TO T-DSCOUNTRY(6)
+  NONE VALUE
+    IGNORE
+END-DECIDE
+*

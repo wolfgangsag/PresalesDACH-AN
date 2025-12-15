@@ -1,0 +1,18 @@
+DEFINE DATA PARAMETER
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+* Kommunkationsbereich RPC
+* Suchkriterien
+1 #P-PERSONNEL-ID-VON (A8)
+1 #P-PERSONNEL-ID-WEITER (A8)
+1 #P-RESPONSE-CODE (I4)
+1 #P-RESPONSE-MESSAGE (A80)
+* Ergebniswerte
+1 #E-PERSONNEL-ID (A8/1:15)
+1 #E-NAME (A20/1:15)
+1 #E-FIRST-NAME (A20/1:15)
+1 #E-ZIP (A10/1:15)
+1 #E-CITY (A20/1:15)
+END-DEFINE

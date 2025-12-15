@@ -1,0 +1,45 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* MAP2: PROTOTYPE             --- CREATED BY UNIX 9.3.2 ---
+* INPUT USING MAP 'XXXXXXXX'
+FORMAT PS=023 LS=080 ZP=OFF SG=OFF KD=OFF IP=OFF
+* MAP2: MAP PROFILES *****************************        200***********
+* .TTAAAMMOO   D I D I N D I D I        ?_)^&:+(                       *
+* 023079        N0NNUCN____         X        01 SYSDBA  NR             *
+************************************************************************
+INPUT          (     IP=OFF                                           /*
+                                                                       )
+/
+/
+/
+/
+/
+/
+/
+/
+/
+/
+ 022T 'Numero de Error ..:'
+ 042T *ERROR-NR  (AD=OIL ) /*.01S007 N07.0.
+/
+/
+ 022T 'Programa .........:'
+ 042T *PROGRAM  (AD=OIL ) /*.01S008 A008 .
+/
+/
+ 022T 'Línea de Error ...:'
+ 042T *ERROR-LINE  (AD=OIL ) /*.01S004 N04.0.
+/
+/
+/
+/
+/
+/
+/
+/
+* MAP2: VALIDATION *****************************************************
+* MAP2: END OF MAP *****************************************************
+END

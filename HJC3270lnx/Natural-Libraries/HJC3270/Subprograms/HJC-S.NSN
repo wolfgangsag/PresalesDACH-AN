@@ -1,0 +1,73 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* ---------------------------------------------------------------------
+* Member          NSWEMPCP
+* Component       EWVDEMO
+* Created         April 2004
+* Copyright       (c) Copyright Software AG 2004. All rights reserved.
+* Remarks         View employees
+*
+* ---------------------------------------------------------------------
+DEFINE DATA
+       GLOBAL USING NSW-GDA
+       PARAMETER USING HJC-P
+       LOCAL USING NSWEMPLO
+*       LOCAL USING NSWVEHIC
+       LOCAL
+*
+
+1 I                 (N2)
+1 M-BIRTH           (A6)
+1 REDEFINE M-BIRTH
+  2 #M-DAY          (N2)
+  2 #M-MONTH        (N2)
+ 2 #M-YEAR          (N2)
+1 N-BIRTH           (A8)
+1 REDEFINE N-BIRTH
+ 2 #N-DAY           (N2)
+ 2 #N-DX            (A1)
+ 2 #N-MONTH         (N2)
+ 2 #N-MX            (A1)
+ 2 #N-YEAR          (N2)
+END-DEFINE
+*************************************************
+ON ERROR
+*  INCLUDE NSWERR1C
+  ASSIGN ERR-CODE = *ERROR-NR
+  COMPRESS
+     'Fehler:' *ERROR-NR 'im Programm'  *PROGRAM
+            'auf Zeile: ' *ERROR-LINE INTO ERR-MESSAGE
+    ESCAPE ROUTINE
+END-ERROR
+
+RESET I
+MOVE *DATE TO N-BIRTH
+READ NSWEMPLO BY PERSONNEL-ID EQ CL-KEY
+   ADD 1 TO I
+   IF I LE 10
+     MOVE PERSONNEL-ID TO M-KEY(I)
+     MOVE EDITED BIRTH (EM=DDMMYY) TO M-BIRTH
+     MOVE #M-DAY   TO #N-DAY
+     MOVE #M-MONTH TO #N-MONTH
+     MOVE #M-YEAR  TO #N-YEAR
+     MOVE N-BIRTH  TO M-DATE-OF-BIRTH(I)
+
+     MOVE NAME TO M-LAST_NAME(I)
+     MOVE CITY       TO M-CITY(I)
+     MOVE FIRST-NAME TO M-SURNAME(I)
+   ELSE
+     MOVE PERSONNEL-ID TO CL-AUX
+
+     ESCAPE ROUTINE
+   END-IF
+  IF I EQ 1
+     MOVE PERSONNEL-ID TO T-PAGING(INDX-PAGING)
+   END-IF
+END-READ
+IF M-KEY(1) EQ ' '
+   MOVE 8 TO MESSAGE       /* END OF DATA
+   END-IF
+END

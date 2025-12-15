@@ -1,0 +1,86 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+************************************************************************
+* Programm: EMSELP
+* Funktion: Mitarbeiterüersicht, -Selektion aus einer Auswahltabelle
+*           Zugriff auf die Daten über Subprogramm
+*
+*
+* Autor...: HJC - Achim Certa
+************************************************************************
+DEFINE DATA
+       LOCAL USING EMSEL-L
+       LOCAL
+       1 #E-SELEKTION (A1/1:15)
+       1 #E-SUCHEN-AB (N8)
+       1 #E-SUCHEN-BACK (A8)
+END-DEFINE
+************************************************************************
+SET KEY ON
+SET KEY PF3 NAMED 'Menü'
+SET KEY PF7 NAMED '<<'
+SET KEY PF8 NAMED '>>'
+
+*  Definition der Suchbegriffe, PARAMETER
+ASSIGN #P-PERSONNEL-ID-VON   = 11100102
+* 1.Maskenfüllung bei Programmstart
+PERFORM LESEN
+*
+REPEAT
+*
+INPUT USING MAP 'EMSEL-M'
+*        assign #e-suchen-back = #E-PERSONNEL-ID(1)
+      IF *PF-KEY = 'PF3'
+          FETCH 'MENU'
+*          STOP
+      END-IF
+      IF *PF-KEY = 'ENTR'
+          IF #E-SUCHEN-AB GT 0
+            ASSIGN #P-PERSONNEL-ID-VON = #E-SUCHEN-AB
+           ELSE
+            REINPUT ' Bitte einen Suchwert eingeben !'  MARK #E-SUCHEN-AB ALARM
+            END-IF
+         PERFORM LESEN
+         END-IF
+
+      IF *PF-KEY = 'PF7'
+          IF #E-SUCHEN-AB GT 0
+            ASSIGN #P-PERSONNEL-ID-VON = #E-SUCHEN-AB
+           ELSE
+            ASSIGN #P-PERSONNEL-ID-VON = #E-SUCHEN-BACK
+            END-IF
+         PERFORM LESEN
+         END-IF
+
+      IF *PF-KEY = 'PF8'
+          IF #E-SUCHEN-AB GT 0
+            ASSIGN #P-PERSONNEL-ID-VON = #E-SUCHEN-AB
+           ELSE
+            ASSIGN #P-PERSONNEL-ID-VON = #P-PERSONNEL-ID-WEITER
+            END-IF
+         ASSIGN #E-SUCHEN-BACK = #E-PERSONNEL-ID(1) /* Zurückblättern !
+         PERFORM LESEN
+         END-IF
+END-REPEAT
+*************************************************
+DEFINE SUBROUTINE LESEN
+*************************************************
+CALLNAT 'EMSEL-S'
+        #P-PERSONNEL-ID-VON
+        #P-PERSONNEL-ID-WEITER
+        #P-RESPONSE-CODE
+        #P-RESPONSE-MESSAGE
+
+        #E-PERSONNEL-ID (1:15)
+        #E-NAME(1:15)
+        #E-FIRST-NAME(1:15)
+        #E-ZIP(1:15)
+        #E-CITY(1:15)
+* display   'Pers-id' #E-PERSONNEL-ID (1:15) 'Weiterlese ab:' #P-PERSONNEL-ID-WEITER
+*
+END-SUBROUTINE
+*************************************************
+END

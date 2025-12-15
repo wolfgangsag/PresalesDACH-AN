@@ -1,0 +1,88 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* MAP2: PROTOTYPE             --- CREATED BY UNIX 9.3.2 ---
+* INPUT USING MAP 'XXXXXXXX'
+*     C-VEHNUMBER M-COLOR M-CURRENCY M-DAY M-DSCURR M-INDICATION
+*     M-MAINT-COST M-MODEL M-MODELYEAR M-MONTH M-TITLE M-VEHCLASS
+*     M-VEHNUMBER M-YEAR
+DEFINE DATA PARAMETER
+1  C-VEHNUMBER (C)
+1 M-COLOR (A020)
+1 M-CURRENCY (A003)
+1 M-DAY (N02.0)
+1 M-DSCURR (A016)
+1 M-INDICATION (A020)
+1 M-MAINT-COST (N06.0)
+1 M-MODEL (A020)
+1 M-MODELYEAR (N04.0)
+1 M-MONTH (N02.0)
+1 M-TITLE (A050)
+1 M-VEHCLASS (A001)
+1 M-VEHNUMBER (A015)
+1 M-YEAR (N04.0)
+END-DEFINE
+FORMAT PS=021 LS=080 ZP=OFF SG=OFF KD=ON  IP=OFF
+* MAP2: MAP PROFILES *****************************        200***********
+* .TTAAAMMOO   D I D I N D I D I        ?_)^&:+(                       *
+* 023079        N0NNUCN____         X        01 SYSDBA  YR             *
+************************************************************************
+INPUT          (     IP=OFF                                           /*
+                                                                       )
+ 002T 'SOFTWARE A.G.'
+ 024T '*** GESTION DE EMPLEADOS ***'
+ 071T *DATE  (AD=ODL CD=NE ) /*.01S008 A008 .
+/
+ 002T *PROGRAM  (AD=ODL ) /*.01S008 A008 .
+ 017T M-TITLE  (AD=ODL CD=YE ) /*.01U050 A050 .
+ 071T *TIMX  (AD=ODL ) /*.01S008 T    .
+/
+ 001T '-' (079)
+/
+/
+/
+ 002T 'DATOS DEL VEHICULO'(I)
+/
+/
+ 002T 'Matrícula ...:'
+ 017T M-VEHNUMBER  (AD=OYL CV=C-VEHNUMBER /*.01U015 A015 .
+      HE='NSWVEH1H' )
+/
+/
+ 002T 'Marca .......:'
+ 017T M-INDICATION  (AD=ODL ) /*.01U020 A020 .
+ 040T 'Modelo ......:'
+ 055T M-MODEL  (AD=ODL ) /*.01U020 A020 .
+/
+/
+ 002T 'Color .......:'
+ 017T M-COLOR  (AD=ODL ) /*.01U020 A020 .
+ 040T 'Año de fabricación .......:'
+ 068T M-MODELYEAR  (AD=ODR ) /*.01U004 N04.0.
+/
+/
+ 002T 'Clase (E/P) ..:'
+ 018T M-VEHCLASS  (AD=ODL ) /*.01U001 A001 .
+ 020T '(Empleado/Privado)'
+ 040T 'Fecha de Adquisición .....:'
+ 068T M-DAY  (AD=ODRT ) /*.01U002 N02.0.
+ 071T M-MONTH  (AD=ODRT ) /*.01U002 N02.0.
+ 074T M-YEAR  (AD=ODRT ) /*.01U004 N04.0.
+/
+/
+ 002T 'Divisa .......:'
+ 018T M-CURRENCY  (AD=ODL /*.01U003 A003 .
+      HE='NSWDIV1H',M-CURRENCY,M-DSCURR )
+ 022T M-DSCURR  (AD=ODL ) /*.01U016 A016 .
+ 040T 'Gastos....................:'
+ 068T M-MAINT-COST  (AD=ODR ) /*.01U006 N06.0.
+/
+/
+/
+/
+/
+* MAP2: VALIDATION *****************************************************
+* MAP2: END OF MAP *****************************************************
+END

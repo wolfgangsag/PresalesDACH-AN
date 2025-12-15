@@ -1,0 +1,107 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* MAP2: PROTOTYPE             --- CREATED BY UNIX 9.3.2 ---
+* INPUT USING MAP 'XXXXXXXX'
+*     M-ADDRESS M-AREACODE M-CDCOUNTRY M-CDMARIT M-CDPOSTAL M-CITY M-DAY
+*     M-DEPT M-DSCOUNTRY M-DSGEND M-DSMARIT M-GENDER M-KEY M-MONTH M-NAME
+*     M-OCCUPATION M-PHONE M-SURNAME M-TITLE M-YEAR
+DEFINE DATA PARAMETER
+1 M-ADDRESS (A020)
+1 M-AREACODE (A006)
+1 M-CDCOUNTRY (A003)
+1 M-CDMARIT (A001)
+1 M-CDPOSTAL (A010)
+1 M-CITY (A020)
+1 M-DAY (N02.0)
+1 M-DEPT (A006)
+1 M-DSCOUNTRY (A015)
+1 M-DSGEND (A015)
+1 M-DSMARIT (A015)
+1 M-GENDER (A001)
+1 M-KEY (A008)
+1 M-MONTH (N02.0)
+1 M-NAME (A020)
+1 M-OCCUPATION (A025)
+1 M-PHONE (A015)
+1 M-SURNAME (A020)
+1 M-TITLE (A050)
+1 M-YEAR (N04.0)
+END-DEFINE
+FORMAT PS=021 LS=080 ZP=OFF SG=OFF KD=ON  IP=OFF
+* MAP2: MAP PROFILES *****************************        200***********
+* .TTAAAMMOO   D I D I N D I D I        ?_)^&:+(                       *
+* 023079        N0NNUCN____         X        01 SYSDBA  YR             *
+************************************************************************
+INPUT          (     IP=OFF                                           /*
+                                                                       )
+ 002T 'SOFTWARE A.G.'
+ 025T '*** EMPLOYEE MANAGEMENT ***'
+ 071T *DATE  (AD=ODL CD=NE ) /*.01S008 A008 .
+/
+ 002T *PROGRAM  (AD=ODLT ) /*.01S008 A008 .
+ 017T M-TITLE  (AD=ODL CD=YE ) /*.01U050 A050 .
+ 071T *TIMX  (AD=ODL ) /*.01S008 T    .
+/
+ 001T '-' (079)(TU)
+/
+/
+ 002T 'PERSONAL DATA'(I)
+/
+/
+ 002T 'Key .........:'
+ 017T M-KEY  (AD=OIL ) /*.01U008 A008 .
+/
+ 002T 'Last name ...:'
+ 017T M-SURNAME  (AD=MDLW'_' ) /*.99U020 A020 .
+ 040T 'First name ..:'
+ 055T M-NAME  (AD=MDLT'_' ) /*.99U020 A020 .
+/
+ 002T 'Marital St. .:'
+ 017T M-CDMARIT  (AD=MDLT'_' /*.99U001 A001 .
+      HE='NSWEST1H',M-CDMARIT,M-DSMARIT )
+ 019T M-DSMARIT  (AD=ODL ) /*.01U015 A015 .
+ 040T 'Date of birth:'
+ 055T M-DAY  (AD=MDRT'_' ) /*.99U002 N02.0.
+ 058T M-MONTH  (AD=MDRT'_' ) /*.99U002 N02.0.
+ 061T M-YEAR  (AD=MDRT'_' ) /*.99U004 N04.0.
+ 066T '(DD-MM-YYYY)'
+/
+ 002T 'Gender ......:'
+ 017T M-GENDER  (AD=MDT'_' HE='NSWGEN1H',M-GENDER ) /*.99U001 A001 .
+ 019T M-DSGEND  (AD=ODL ) /*.01U015 A015 .
+/
+ 002T 'ADDRESS'(I)
+/
+/
+ 002T 'Address .....:'
+ 017T M-ADDRESS  (AD=MDLW'_' ) /*.99U020 A020 .
+ 040T 'City ......:'
+ 053T M-CITY  (AD=MDLW'_' ) /*.99U020 A020 .
+/
+ 002T 'Country .....:'
+ 017T M-CDCOUNTRY  (AD=MDLT'_' /*.99U003 A003 .
+      HE='NSWPAI1H',M-CDCOUNTRY,M-DSCOUNTRY )
+ 022T M-DSCOUNTRY  (AD=ODL ) /*.01U015 A015 .
+ 040T 'Postcode ..:'
+ 053T M-CDPOSTAL  (AD=MDLT'_' ) /*.99U010 A010 .
+/
+ 002T 'Phone .......:'
+ 017T M-AREACODE  (AD=MDLT'_' ) /*.99U006 A006 .
+ 024T M-PHONE  (AD=MDT'_' ) /*.99U015 A015 .
+/
+ 002T 'COMPANY DATA'(I)
+/
+/
+ 002T 'Department ......:'
+ 021T M-DEPT  (AD=MDLT'_' ) /*.99U006 A006 .
+/
+ 002T 'Occupation ......:'
+ 021T M-OCCUPATION  (AD=MDLW'_' ) /*.99U025 A025 .
+/
+/
+* MAP2: VALIDATION *****************************************************
+* MAP2: END OF MAP *****************************************************
+END

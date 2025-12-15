@@ -1,0 +1,36 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* MAP2: PROTOTYPE             --- CREATED BY UNIX 9.3.2 ---
+* INPUT USING MAP 'XXXXXXXX'
+*     M-CONFIRM
+DEFINE DATA PARAMETER
+1 M-CONFIRM (A001)
+END-DEFINE
+FORMAT PS=011 LS=051 ZP=OFF SG=OFF KD=OFF IP=OFF
+* MAP2: MAP PROFILES *****************************        200***********
+* .TTAAAMMOO   D I D I N D I D I        ?_)^&:+(                       *
+* 011050        N0NNUCN____         X        01 SYSDBA  NR             *
+************************************************************************
+INPUT          (     IP=OFF                                           /*
+                                                                       )
+/
+ 003T 'El empleado seleccionado tiene vehículos'
+/
+/
+ 003T 'asignados; si confirma la baja estos serán'
+/
+/
+ 003T 'desasignados. Pulse ''S'' para confirmar o'
+/
+/
+ 003T '''N'' para anular ------>'
+ 028T M-CONFIRM  (AD=MILT'_' ) /*.99U001 A001 .
+/
+/
+/
+* MAP2: VALIDATION *****************************************************
+* MAP2: END OF MAP *****************************************************
+END

@@ -1,0 +1,56 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+**************************************************************************
+*  CopyCode .....: nswgen2c                                             **
+*  Descripcion ..: Fill the table with the gender information           **
+*  Created ......: April 2004                                           **
+*  Copyright ....: (c) Copyright Software AG 2004. All rights reserved. **
+**************************************************************************
+*
+DECIDE ON FIRST VALUE OF *LANGUAGE
+  VALUE 1
+    MOVE 'F' TO T-CDGEND(1)
+    MOVE 'Female'          TO T-DSGEND(1)
+    MOVE 'M'  TO T-CDGEND(2)
+    MOVE 'Male'            TO T-DSGEND(2)
+    MOVE 'D'  TO T-CDGEND(3)
+    MOVE 'Diverse'         TO T-DSGEND(3)
+    MOVE 'I'  TO T-CDGEND(4)
+    MOVE 'Inter*'          TO T-DSGEND(4)
+    MOVE 'O'  TO T-CDGEND(5)
+    MOVE 'Open'            TO T-DSGEND(5)
+    MOVE 'N'  TO T-CDGEND(6)
+    MOVE 'Not specified'   TO T-DSGEND(6)
+  VALUE 2
+    MOVE 'F' TO T-CDGEND(1)
+    MOVE 'Weiblich'        TO T-DSGEND(1)
+    MOVE 'M'  TO T-CDGEND(2)
+    MOVE 'Männlich'        TO T-DSGEND(2)
+    MOVE 'D'  TO T-CDGEND(3)
+    MOVE 'Divers'          TO T-DSGEND(3)
+    MOVE 'I'  TO T-CDGEND(4)
+    MOVE 'Inter*'          TO T-DSGEND(4)
+    MOVE 'O'  TO T-CDGEND(5)
+    MOVE 'Offen'           TO T-DSGEND(5)
+    MOVE 'N'  TO T-CDGEND(6)
+    MOVE 'Keine Angabe'    TO T-DSGEND(6)
+  VALUE 4
+    MOVE 'F' TO T-CDGEND(1)
+    MOVE 'Hembra'          TO T-DSGEND(1)
+    MOVE 'M'  TO T-CDGEND(2)
+    MOVE 'Varonil'         TO T-DSGEND(2)
+    MOVE 'D'  TO T-CDGEND(3)
+    MOVE 'Diverso'         TO T-DSGEND(3)
+    MOVE 'I'  TO T-CDGEND(4)
+    MOVE 'Inter*'          TO T-DSGEND(4)
+    MOVE 'O'  TO T-CDGEND(5)
+    MOVE 'Abierto'         TO T-DSGEND(5)
+    MOVE 'N'  TO T-CDGEND(6)
+    MOVE 'No especificado' TO T-DSGEND(6)
+  NONE VALUE
+    IGNORE
+END-DECIDE
+*

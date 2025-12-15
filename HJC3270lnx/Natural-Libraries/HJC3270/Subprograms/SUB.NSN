@@ -1,0 +1,15 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+/** New Subprogram SUB.
+/**
+/** :author hjc
+/* TODO: Enter your code here
+DEFINE DATA PARAMETER
+01 #IN (A10)
+01 #OUT (A10)
+END-DEFINE
+ASSIGN #OUT := 'Hallo'
+END

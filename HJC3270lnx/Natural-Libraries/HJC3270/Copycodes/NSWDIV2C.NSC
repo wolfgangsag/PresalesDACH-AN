@@ -1,0 +1,56 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+**************************************************************************
+*  CopyCode .....: nswdiv2c                                             **
+*  Description ..: File the table with the curreny information          **
+*  Created ......: April 2004                                           **
+*  Copyright ....: (c) Copyright Software AG 2004. All rights reserved. **
+**************************************************************************
+*
+DECIDE ON FIRST VALUE OF *LANGUAGE
+  VALUE 1
+    MOVE 'USD' TO T-CDCURR(1)
+    MOVE 'Dollar'  TO T-DSCURR(1)
+    MOVE 'EUR'  TO T-CDCURR(2)
+    MOVE 'Euro'    TO T-DSCURR(2)
+    MOVE 'FRA' TO T-CDCURR(3)
+    MOVE 'Franc'   TO T-DSCURR(3)
+    MOVE 'UKL' TO T-CDCURR(4)
+    MOVE 'Pound Sterling' TO T-DSCURR(4)
+    MOVE 'PTA' TO T-CDCURR(5)
+    MOVE 'Peseta' TO T-DSCURR(5)
+    MOVE 'DKK' TO T-CDCURR(6)
+    MOVE 'Danish Kroner'    TO T-DSCURR(6)
+  VALUE 2
+    MOVE 'USD' TO T-CDCURR(1)
+    MOVE 'Dollar'  TO T-DSCURR(1)
+    MOVE 'EUR'  TO T-CDCURR(2)
+    MOVE 'Euro'    TO T-DSCURR(2)
+    MOVE 'FRA' TO T-CDCURR(3)
+    MOVE 'Franc'   TO T-DSCURR(3)
+    MOVE 'UKL' TO T-CDCURR(4)
+    MOVE 'Englische Pfund' TO T-DSCURR(4)
+    MOVE 'PTA' TO T-CDCURR(5)
+    MOVE 'Peseten' TO T-DSCURR(5)
+    MOVE 'DKK' TO T-CDCURR(6)
+    MOVE 'Dänische Kronen'    TO T-DSCURR(6)
+  VALUE 4
+    MOVE 'USD' TO T-CDCURR(1)
+    MOVE 'Dolar'  TO T-DSCURR(1)
+    MOVE 'EUR'  TO T-CDCURR(2)
+    MOVE 'Euros'  TO T-DSCURR(2)
+    MOVE 'FRA' TO T-CDCURR(3)
+    MOVE 'Francos' TO T-DSCURR(3)
+    MOVE 'UKL' TO T-CDCURR(4)
+    MOVE 'Libra Esterlina'TO T-DSCURR(4)
+    MOVE 'PTA' TO T-CDCURR(5)
+    MOVE 'Peseta' TO T-DSCURR(5)
+    MOVE 'DKK' TO T-CDCURR(6)
+    MOVE 'Corona Danesa'    TO T-DSCURR(6)
+  NONE VALUE
+    IGNORE
+END-DECIDE
+*

@@ -1,0 +1,82 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* MAP2: PROTOTYPE             --- CREATED BY UNIX 9.3.2 ---
+* INPUT USING MAP 'XXXXXXXX'
+*     C-KEY C-VEHNUMBER M-COLOR M-DEPT M-INDICATION M-KEY M-MODEL
+*     M-MODELYEAR M-OCCUPATION M-TITLE M-TNAME M-VEHNUMBER
+DEFINE DATA PARAMETER
+1  C-KEY (C)
+1  C-VEHNUMBER (C)
+1 M-COLOR (A010)
+1 M-DEPT (A006)
+1 M-INDICATION (A020)
+1 M-KEY (A008)
+1 M-MODEL (A020)
+1 M-MODELYEAR (N04.0)
+1 M-OCCUPATION (A025)
+1 M-TITLE (A050)
+1 M-TNAME (A027)
+1 M-VEHNUMBER (A015)
+END-DEFINE
+FORMAT PS=021 LS=081 ZP=OFF SG=OFF KD=ON  IP=OFF
+* MAP2: MAP PROFILES *****************************        200***********
+* .TTAAAMMOO   D I D I N D I D I        ?_)^&:+(                       *
+* 023080        N0NNUCN____         X        01 SYSDBA  YR             *
+************************************************************************
+INPUT          (     IP=OFF                                           /*
+                                                                       )
+ 002T 'SOFTWARE A.G.'
+ 024T '*** GESTION DE EMPLEADOS ***'
+ 071T *DATE  (AD=ODL CD=NE ) /*.01S008 A008 .
+/
+ 002T *PROGRAM  (AD=ODL CD=TU ) /*.01S008 A008 .
+ 017T M-TITLE  (AD=ODL CD=YE ) /*.01U050 A050 .
+ 071T *TIMX  (AD=ODL CD=TU ) /*.01S008 T    .
+/
+ 001T '-' (079)(TU)
+/
+/
+/
+ 002T 'DATOS DEL VEHICULO'(I)
+ 040T 'DATOS DEL EMPLEADO'(I)
+/
+/
+ 002T 'Matrícula ...:'
+ 017T M-VEHNUMBER  (AD=MYL'_' CV=C-VEHNUMBER /*.99U015 A015 .
+      HE='NSWVEH1H',M-VEHNUMBER )
+ 040T 'Código ....:'
+ 053T M-KEY  (AD=MYLT'_' CV=C-KEY /*.99U008 A008 .
+      HE='NSWEMP2H',M-KEY,M-TNAME,M-DEPT,M-OCCUPATION )
+/
+/
+ 002T 'Marca .......:'
+ 017T M-INDICATION  (AD=ODL ) /*.01U020 A020 .
+ 040T 'Nombre ....:'
+ 053T M-TNAME  (AD=ODL ) /*.01U027 A027 .
+/
+/
+ 002T 'Modelo ......:'
+ 017T M-MODEL  (AD=ODL ) /*.01U020 A020 .
+ 040T 'Dpto ......:'
+ 053T M-DEPT  (AD=ODL ) /*.01U006 A006 .
+/
+/
+ 002T 'Color .......:'
+ 017T M-COLOR  (AD=ODL ) /*.01U010 A010 .
+ 040T 'Categoría .:'
+ 053T M-OCCUPATION  (AD=ODL ) /*.01U025 A025 .
+/
+/
+ 002T 'Año de fabricación ..:'
+ 025T M-MODELYEAR  (AD=ODR ) /*.01U004 N04.0.
+/
+/
+/
+/
+/
+* MAP2: VALIDATION *****************************************************
+* MAP2: END OF MAP *****************************************************
+END

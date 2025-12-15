@@ -1,0 +1,8 @@
+DEFINE DATA GLOBAL
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+1 G-KEY (A8) /*Key for Employee
+1 G-VEHICLE (A15) /*Number of vehicle
+END-DEFINE

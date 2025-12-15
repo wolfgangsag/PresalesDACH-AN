@@ -1,0 +1,50 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* MAP2: PROTOTYPE             --- CREATED BY UNIX 9.3.2 ---
+* INPUT USING MAP 'XXXXXXXX'
+*     M-DSGEND(*) M-SELECTION(*)
+DEFINE DATA PARAMETER
+1 M-DSGEND (A016/00001:00006)
+1 M-SELECTION (A001/00001:00006)
+END-DEFINE
+FORMAT PS=011 LS=033 ZP=OFF SG=OFF KD=ON  IP=OFF
+* MAP2: MAP PROFILES *****************************        200***********
+* .TTAAAMMOO   D I D I N D I D I        ?_)^&:+(                       *
+* 013032        N0NNUCN____         X        01 SYSDBA  YR             *
+************************************************************************
+INPUT          (     IP=OFF                                           /*
+                                                                       )
+/
+/
+ 006T 'C'(I)
+ 012T 'Gender'(I)
+/
+ 006T '='
+ 008T '==============='
+/
+ 006T M-SELECTION (1+000)  (AD=MILT'_' ) /*.99U001 A001 .
+   /**A1000060000100001000010000100001100006001001000001000HV
+ 008T M-DSGEND (1+000)  (AD=ODL ) /*.01U016 A016 .
+   /**A1000060000100001000010000100001100006001001000001000HV
+/
+ 006T M-SELECTION (1+001)  (AD=MILT'_' ) /*.99U001 A001 .
+ 008T M-DSGEND (1+001)  (AD=ODL ) /*.01U016 A016 .
+/
+ 006T M-SELECTION (1+002)  (AD=MILT'_' ) /*.99U001 A001 .
+ 008T M-DSGEND (1+002)  (AD=ODL ) /*.01U016 A016 .
+/
+ 006T M-SELECTION (1+003)  (AD=MILT'_' ) /*.99U001 A001 .
+ 008T M-DSGEND (1+003)  (AD=ODL ) /*.01U016 A016 .
+/
+ 006T M-SELECTION (1+004)  (AD=MILT'_' ) /*.99U001 A001 .
+ 008T M-DSGEND (1+004)  (AD=ODL ) /*.01U016 A016 .
+/
+ 006T M-SELECTION (1+005)  (AD=MILT'_' ) /*.99U001 A001 .
+ 008T M-DSGEND (1+005)  (AD=ODL ) /*.01U016 A016 .
+/
+* MAP2: VALIDATION *****************************************************
+* MAP2: END OF MAP *****************************************************
+END

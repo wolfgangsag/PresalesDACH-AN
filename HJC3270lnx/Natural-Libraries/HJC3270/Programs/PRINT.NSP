@@ -1,0 +1,29 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+DEFINE DATA
+  LOCAL
+  1 #OUT (A8)
+END-DEFINE
+*
+#OUT := *PROGRAM
+*
+* write to report with CLOSE MODE USER
+*
+WRITE (1) 'OUTPUT PROGRAM: ' #OUT
+
+*
+* write to report with CLOSE MODE AUTO
+*
+WRITE (2) 'OUTPUT PROGRAM: ' #OUT
+
+*
+* close printer 1
+* printer 1 is user controlled
+* (CLOSE MODE = USER)
+*
+CLOSE PRINTER (1)
+*
+END

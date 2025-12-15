@@ -1,0 +1,30 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+** Example 'RWFEX1': READ WORK FILE
+************************************************************************
+DEFINE DATA LOCAL
+*
+1 #RECORD
+  2 #MON            (A5)
+  2 #WERT1          (N10)
+  2 #WERT2          (N10)
+END-DEFINE
+DEFINE WORK FILE 1 'd:\work\wkf01-P_grafik_umsatz.txt'
+*
+FORMAT LS=250
+*
+* ...
+*
+READ WORK FILE 1 RECORD #RECORD
+  DISPLAY NOTITLE
+   #MON
+   #WERT1
+   #WERT2
+
+END-WORK
+
+*
+END

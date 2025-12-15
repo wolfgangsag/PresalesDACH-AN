@@ -1,0 +1,100 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* ---------------------------------------------------------------------*
+* Member          NSWVEH1P
+* Component       EWVDEMO
+* Created         April 2004
+* Copyright       (c) Copyright Software AG 2004. All rights reserved.
+* Remarks         Vehicles menu
+*
+* -------------------------------------------------------------------- *
+*
+DEFINE DATA
+       GLOBAL USING NSW-GDA
+       LOCAL
+1 M-COMMAND         (A1)
+1 W-COMMAND         (A1)
+1 M-TITLE           (A50)
+1 MSG-PAR           (A20)
+1 MESSAGE           (N4)
+1 INDICATION        (I4)
+1 M-PRG-ERROR       (A8)
+END-DEFINE
+*
+ON ERROR
+  INCLUDE NSWERR1C
+  ESCAPE ROUTINE
+END-ERROR
+*
+SET KEY ALL
+INCLUDE NSWPFK1C
+*
+DECIDE ON FIRST VALUE OF *LANGUAGE
+  VALUE 1
+    MOVE '           Vehicles Maintenance'    TO M-TITLE
+  VALUE 2
+    MOVE '          Fahrzeugdaten verwalten'  TO M-TITLE
+  VALUE 4
+    MOVE '        Mantenimiento de Vehículos' TO M-TITLE
+  NONE VALUE
+    IGNORE
+END-DECIDE
+*
+R1. REPEAT
+*
+  INPUT WITH TEXT *MESSAGE, MSG-PAR MARK INDICATION USING MAP 'NSWVEH1&'
+*
+  DECIDE ON FIRST VALUE OF *PF-KEY
+    VALUE 'ENTR'
+      RESET MESSAGE
+      PERFORM VALIDATIONS
+      IF MESSAGE NE 0
+        ESCAPE TOP
+      END-IF
+    VALUE 'PF3'
+      ESCAPE BOTTOM
+    VALUE 'PF12'
+      STOP
+    NONE VALUE
+      MOVE 6 TO MESSAGE
+      ESCAPE TOP
+  END-DECIDE
+END-REPEAT
+*
+* ----------------------------------------------
+DEFINE SUBROUTINE VALIDATIONS
+* ----------------------------------------------
+MOVE M-COMMAND TO W-COMMAND
+RESET M-COMMAND
+IF W-COMMAND NE ' '
+  DECIDE ON FIRST VALUE OF W-COMMAND
+    VALUE '1'
+      FETCH RETURN 'NSWVEHAP'
+    VALUE '2'
+      FETCH RETURN 'NSWVEHMP'
+    VALUE '3'
+      FETCH RETURN 'NSWVEHBP'
+    VALUE '4'
+      FETCH RETURN 'NSWVEHCP'
+    NONE VALUE
+      MOVE 2 TO MESSAGE
+      DECIDE ON FIRST VALUE OF *LANGUAGE
+       VALUE 1
+        MOVE 'Option'  TO MSG-PAR
+       VALUE 2
+        MOVE 'Auswahl' TO MSG-PAR
+       VALUE 4
+        MOVE 'Opción'  TO MSG-PAR
+       NONE VALUE
+        IGNORE
+      END-DECIDE
+      COMPUTE INDICATION = POS(M-COMMAND)
+      ESCAPE ROUTINE
+   END-DECIDE
+END-IF
+END-SUBROUTINE
+*
+END

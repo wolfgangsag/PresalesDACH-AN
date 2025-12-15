@@ -1,0 +1,198 @@
+DEFINE DATA LOCAL
+/* >Natural Source Header 000000
+/* :Mode R
+/* :CP
+/* <Natural Source Header
+
+/*  **********************************      ************************************
+
+/*  *Natural RPC                                                               *
+
+/*  **********************************      ************************************
+
+/*  *
+
+/*  *RPC protocol header for stubs
+
+/*  *
+
+/*  **********************************      ************************************
+
+/*  *SYSTEM MAINTENANCE
+
+/*  *
+
+/*  *----- ------ RPC 5.1 ------------      ------------------------------------
+
+/*  *WWE   030925 Reworked                      (internal fields removed) 245251
+
+/*  *----- ------ RPC 6.1 ------------      ------------------------------------
+
+/*  *WWE01 050408 New function code:            FKT-STUBLESSRPCX          263882
+
+/*  *WWE02 050415 New CB version:               CB_VERSION_2000           263882
+
+/*  *----- ------ RPC 6.2 ------------      ------------------------------------
+
+/*  *WWE03 051214 New CB version:               CB_VERSION_2020            #0200
+
+/*  *----- ------ RPC 6.3 ------------      ------------------------------------
+
+/*  *WWE06 110607 New CB version:               CB_VERSION_2035           i17882
+
+/*  *WWE07 110607 New fields:                   CB_OFF_SB, CB_LEN_SB      i17882
+
+/*  *----- ------ RPC 8.2 ------------      ------------------------------------
+
+/*  *WWE04 100805 New CB version:               CB_VERSION_2030           i00993
+
+/*  *WWE05 100805 New CB version:               CB_VERSION_2040           i00012
+
+/*  **********************************      ************************************
+
+ 1 CB_VERSION_1110 (N4) CONST /* CB version 1110
+
+   <1110>
+
+ 1 CB_VERSION_1120 (N4) CONST /* CB version 1120
+
+   <1120>
+
+ 1 CB_VERSION_1130 (N4) CONST /* CB version 1130
+
+   <1130>
+
+ 1 CB_VERSION_1140 (N4) CONST /* CB version 1140
+
+   <1140>
+
+ 1 CB_VERSION_2000 (N4) CONST /* CB version 2000         WWE02
+
+   <2000>
+
+ 1 CB_VERSION_2020 (N4) CONST /* CB version 2020         WWE03
+
+   <2020>
+
+ 1 CB_VERSION_2030 (N4) CONST /* CB VERSION 2030         WWE04
+
+   <2030>
+
+ 1 CB_VERSION_2035 (N4) CONST /* CB VERSION 2035         WWE06
+
+   <2035>
+
+ 1 CB_VERSION_2040 (N4) CONST /* CB VERSION 2040         WWE05
+
+   <2040>
+
+ 1 CB (A1/1:192)
+
+ 1 REDEFINE CB /* BEGIN REDEFINE: CB
+
+   2 CBBLOCK (A192)
+
+ 1 REDEFINE CB /* BEGIN REDEFINE: CB
+
+   2 CB_VERSION (N4) /* protocol version
+
+   2 CB_NPARM (N8) /* number of parameters
+
+   2 CB_NATERR_INFO
+
+     3 CB_NATERR_NR (N5) /* Natural error from server
+
+     3 CB_NATERR_LINE (N4) /* Natural error line
+
+     3 CB_NATERR_STAT (A1) /* Natural error status
+
+     3 CB_NATERR_PNAM (A8) /* Natural error program
+
+     3 CB_NATERR_LEVEL (N2) /* Natural error program level
+
+   2 CB_SERVICE_ID (A16) /* ID of service routine
+
+   2 REDEFINE CB_SERVICE_ID /* BEGIN REDEFINE: CB_SERVICE_ID
+
+     3 CB_LIB (A8) /* library id   service routine
+
+     3 CB_PNAM (A8) /* program name service routine
+
+   2 CB_USID (A16) /* user id
+
+   2 CB_ARCHITECTURE (A2) /* architecture byte sender
+
+   2 CB_DATA_ARCH (A1) /* vb format
+
+/*                                              /* s=srv  c=clt  ' '=char
+
+   2 CB_REQUEST_TYPE (A2) /* packet classifier
+
+   2 CB_RESPONSECODE (N4) /* RPC runtime errors
+
+   2 CB_COMPRESS (A1) /* buffer compressed
+
+   2 CB_ERXAD (A1) /* ERX additions present 'Y'
+
+   2 CB_LOG (A1) /* LOGON data present 'Y'
+
+   2 CB_SEC (A1) /* SEC-LEVEL 1 TO 4 OR ' '
+
+   2 CB_OFF_ERXB (N6) /* ERX addtions offset
+
+   2 REDEFINE CB_OFF_ERXB
+
+     3 CB_OFF_SB (N6) /* offset to SB            WWE07
+
+   2 CB_OFF_LOGB (N6) /* NSC token offset
+
+   2 CB_OFF_SECB (N6) /* encryption token offset
+
+   2 REDEFINE CB_OFF_SECB
+
+     3 CB_LEN_SB (N6) /* length of SB            WWE07
+
+   2 CB_STPLSET (A1) /* STEPLIB set by stub 'Y'
+
+   2 CB_RESERV (A96)
+
+   2 REDEFINE CB_RESERV /* BEGIN REDEFINE: CB_RESERV
+
+     3 CB_STILL_RESERVE (A4) /* KEEP 4 BYTE FOR LATER USE
+
+     3 CB_NATERR_DYNPART /* dynamic part of error message
+
+       4 CB_DYNERR (A1) /* DYNERR PRESENT 'Y'
+
+       4 CB_NATERR_OTYP (A1) /* OBJECT TYPE MISSING ABOVE
+
+       4 CB_DYNTLEN (N2) /* TOTAL LENGTH OF DYN TEXT
+
+     3 CB_DYNTEXT (A88) /*
+
+/*  *fields defined for compatibility
+
+ 1 RPC-PARM
+
+   2 SEND-LEN (I4) /* send    length
+
+   2 REC-LEN (I4) /* receive length
+
+ 1 CBVER (N4) CONST /* CB version 1120
+
+   <1120>
+
+ 1 CBVEROLD (N4) CONST /* CB version 1110
+
+   <1110>
+
+ 1 FKT-CONVCLIENT (I4) CONST /* client conversations
+
+   <7>
+
+ 1 FKT-STUBLESSRPCX (I4) CONST /* execute stub without VB WWE01
+
+   <15>
+
+END-DEFINE
+
