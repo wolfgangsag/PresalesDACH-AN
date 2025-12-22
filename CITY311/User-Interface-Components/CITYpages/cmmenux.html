@@ -10,14 +10,14 @@ var m_perfPageFocusEnd = null;</script>
 <link rel="stylesheet" href="../HTMLBasedGUI/jquery/jquery-ui.min.css" type="text/css" >
 <link rel="stylesheet" href="../HTMLBasedGUI/bootstrapicons/font/bootstrap-icons.css" type="text/css" >
 <link rel="stylesheet" href="../HTMLBasedGUI/bootstrap4/css/bootstrap.min.css" type="text/css" >
-<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/dataTables.min.css" type="text/css" >
+<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/datatables.bootstrap4.min.css" type="text/css" >
 <link rel="stylesheet" href="../HTMLBasedGUI/openlayers/ol.css" type="text/css" >
 <link id="casabacstylesheet" rel="stylesheet" type="text/css" href="../cis/styles/CIS_WM.css">
 <link id="addcsshref" rel="stylesheet" type="text/css" href="./styles/njxmobileZD.css">
 <script src="../HTMLBasedGUI/jquery3/jquery.min.js"></script>
 <script src="../HTMLBasedGUI/jquery/jquery-ui.min.js"></script>
 <script src="../HTMLBasedGUI/bootstrap4/js/bootstrap.bundle.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/dataTables.min.js"></script>
+<script src="../HTMLBasedGUI/datatables/js/datatables.bootstrap4.min.js"></script>
 <script src="../HTMLBasedGUI/openlayers/ol.js"></script>
 <script>
 var CASAstylesheetfile = '../cis/styles/CIS_WM.css';
@@ -29,6 +29,7 @@ body {height:100%;}
 </head>
 <body id='THISBODY' oncontextmenu='try { C.clickAway(); } catch (exc) {}; try { return C.reactOnContextMenuRequestPAGE(event); } catch(e) {}' onmousemove='try { return moveDrag(event); } catch(exc) {}' onmouseup='try { endDrag(event);C.CL().checkMozIO(parent); } catch (exc) {}' onkeydown='try { processHotKeys(event); } catch (exc) {}' class='PAGEBody' style='margin: 0' onclick='try { C.clickAway(); } catch (exc) {}; try { C.reactOnClickPage(event); } catch (exc) {}' onresize='try { reactOnResize(); } catch (exc) {}'	onload=' try { reactOnResize(); } catch (exc) {}'	onhelp='C.reactOnHelpPAGE(); return false;'  tabindex='-1' onblur='try { C.onBlurPAGE(event); } catch(e) {}' onfocus='try { C.onFocusPAGE(); } catch(e) {}' onmousewheel='if (event.shiftKey) C.CL().cancelEvent(event);' onwheel='if (event.shiftKey) C.CL().cancelEvent(event);' onmouseleave='try { return removeTHISOCCUPIED(); } catch(exc) {}' onmouseout ='try { return removeTHISOCCUPIED(); } catch(exc) {}'>
 <script>
+if (!window.Promise && typeof njx_redirecturl !== 'undefined' ) window.location.href= njx_redirecturl;
 function gebid(pid) { return document.getElementById(pid); }
 var m_isSafari = navigator.userAgent.toLowerCase().indexOf( 'safari' ) != -1;
 function isSafari() { return m_isSafari; }
@@ -60,16 +61,16 @@ m_fillTextIdListeners.push(listener);
 <div class='row' style='background-color: #125996' id="PL_5">
 <div class='col-6' id='6' ></div>
 <div class='col-lg-1 col-md-1 col-sm-1 col-1' style='padding-left:0;padding-right:2%;' id='7' >
-<img id="IC_8" class='img-fluid iconclickable ' data-testtoolid='onSeten' src='./images/RD-flageng.png' title='english' alt='english' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_8" class='img-fluid iconclickable ' data-testtoolid='onSeten' src='./images/RD-flageng.png' title='english' alt='english' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-1 col-md-1 col-sm-1 col-1' style='padding-left:0;padding-right:2%;' id='9' >
-<img id="IC_10" class='img-fluid iconclickable ' data-testtoolid='onSetge' src='./images/RD-flagger.png' title='german' alt='german' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_10" class='img-fluid iconclickable ' data-testtoolid='onSetge' src='./images/RD-flagger.png' title='german' alt='german' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-1 col-md-1 col-sm-1 col-1' style='padding-left:0;padding-right:2%;' id='11' >
-<img id="IC_12" class='img-fluid iconclickable ' data-testtoolid='onSetsp' src='./images/RD-flagspa.png' title='spanish' alt='spanish' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_12" class='img-fluid iconclickable ' data-testtoolid='onSetsp' src='./images/RD-flagspa.png' title='spanish' alt='spanish' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-1 col-md-1 col-sm-1 col-1' style='padding-left:0;padding-right:2%;' id='13' >
-<img id="IC_14" class='img-fluid iconclickable ' data-testtoolid='onSetpo' src='./images/RD-flagpor.png' title='portuguese' alt='portuguese' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_14" class='img-fluid iconclickable ' data-testtoolid='onSetpo' src='./images/RD-flagpor.png' title='portuguese' alt='portuguese' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 </div>
 <div class='row' style='background-color: #125996' id="PL_15">
@@ -273,8 +274,9 @@ m_fillTextIdListeners.push(listener);
 <label  id="$136" class='col-form-label'></label>
 </div>
 <div class='col-12' id='137' >
-<div class='input-group'>
+<div class='input-withicon-wrapper'>
 <input id="F_138" name="CC" type="text" data-testtoolid='inccomment.enddatevalue' class='form-control' aria-labelledby='$136' >
+<i id='F_138_icon' class='icon-ininput bi bi-calendar3' ></i>
 </div>
 </div>
 </div>
@@ -283,13 +285,13 @@ m_fillTextIdListeners.push(listener);
 <label  id="$141" class='col-form-label'></label>
 </div>
 <div class='col-2' id='142' >
-<div class='form-check ' >
-<input type='checkbox' value='' data-testtoolid='inccomment.newstatcboxv1' id='C_143' onchange='C.reactBM_CHECKBOX(event);' class='form-check-input' ><label class='form-check-label ' for='C_143' ><span id='$143'>in Progress</span></label>
+<div class='custom-control custom-checkbox ' >
+<input type='checkbox' value='' data-testtoolid='inccomment.newstatcboxv1' id='C_143' onchange='C.reactBM_CHECKBOX(event);' class='custom-control-input' aria-labelledby='$141' ><label class='custom-control-label ' for='C_143'  ><span id='$143'>in Progress</span></label>
 </div>
 </div>
 <div class='col-2' id='144' >
-<div class='form-check ' >
-<input type='checkbox' value='' data-testtoolid='inccomment.newstatcboxv2' id='C_145' onchange='C.reactBM_CHECKBOX(event);' class='form-check-input' ><label class='form-check-label ' for='C_145' ><span id='$145'>solved</span></label>
+<div class='custom-control custom-checkbox ' >
+<input type='checkbox' value='' data-testtoolid='inccomment.newstatcboxv2' id='C_145' onchange='C.reactBM_CHECKBOX(event);' class='custom-control-input' aria-labelledby='$141' ><label class='custom-control-label ' for='C_145'  ><span id='$145'>solved</span></label>
 </div>
 </div>
 </div>
@@ -298,18 +300,18 @@ m_fillTextIdListeners.push(listener);
 <label  id="$148" class='col-form-label'></label>
 </div>
 <div class='col-2' id='149' >
-<div class='form-check ' >
-<input type='checkbox' value='' data-testtoolid='inccomment.newpriocboxv1' id='C_150' onchange='C.reactBM_CHECKBOX(event);' class='form-check-input' ><label class='form-check-label ' for='C_150' ><span id='$150'>low</span></label>
+<div class='custom-control custom-checkbox ' >
+<input type='checkbox' value='' data-testtoolid='inccomment.newpriocboxv1' id='C_150' onchange='C.reactBM_CHECKBOX(event);' class='custom-control-input' aria-labelledby='$148' ><label class='custom-control-label ' for='C_150'  ><span id='$150'>low</span></label>
 </div>
 </div>
 <div class='col-2' id='151' >
-<div class='form-check ' >
-<input type='checkbox' value='' data-testtoolid='inccomment.newpriocboxv2' id='C_152' onchange='C.reactBM_CHECKBOX(event);' class='form-check-input' ><label class='form-check-label ' for='C_152' ><span id='$152'>medium</span></label>
+<div class='custom-control custom-checkbox ' >
+<input type='checkbox' value='' data-testtoolid='inccomment.newpriocboxv2' id='C_152' onchange='C.reactBM_CHECKBOX(event);' class='custom-control-input' aria-labelledby='$148' ><label class='custom-control-label ' for='C_152'  ><span id='$152'>medium</span></label>
 </div>
 </div>
 <div class='col-2' id='153' >
-<div class='form-check ' >
-<input type='checkbox' value='' data-testtoolid='inccomment.newpriocboxv3' id='C_154' onchange='C.reactBM_CHECKBOX(event);' class='form-check-input' ><label class='form-check-label ' for='C_154' ><span id='$154'>high</span></label>
+<div class='custom-control custom-checkbox ' >
+<input type='checkbox' value='' data-testtoolid='inccomment.newpriocboxv3' id='C_154' onchange='C.reactBM_CHECKBOX(event);' class='custom-control-input' aria-labelledby='$148' ><label class='custom-control-label ' for='C_154'  ><span id='$154'>high</span></label>
 </div>
 </div>
 </div>
@@ -404,27 +406,27 @@ if (firstusage) C_30 = gebid('PL_30');
 C.iccBM_PANEL(C_30,romu30,'cap.panelvisi_login','invisible',N);
 if (firstusage) C.iccBM_PANELHEADER($34,romu34,'cap_detpanelname','false');
 if (firstusage) C.iccBM_LABEL($41,romu41,'incdet.label1',N,N,N,'false');
-C.iccFFIELD(CF_42,romu42,C.reactFFIELD,'incdet.value1',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_42,romu42,C.reactFFIELD,'incdet.value1',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($45,romu45,'incdet.label2',N,N,N,'false');
-C.iccFFIELD(CF_46,romu46,C.reactFFIELD,'incdet.value2',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_46,romu46,C.reactFFIELD,'incdet.value2',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($48,romu48,'incdet.label3',N,N,N,'false');
-C.iccFFIELD(CF_49,romu49,C.reactFFIELD,'incdet.value3',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_49,romu49,C.reactFFIELD,'incdet.value3',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($51,romu51,'incdet.label4',N,N,N,'false');
-C.iccFFIELD(CF_52,romu52,C.reactFFIELD,'incdet.value4',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_52,romu52,C.reactFFIELD,'incdet.value4',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($54,romu54,'incdet.label5',N,N,N,'false');
-C.iccFFIELD(CF_55,romu55,C.reactFFIELD,'incdet.value5',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_55,romu55,C.reactFFIELD,'incdet.value5',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C_58 = document.getElementById('OSM_58');
 if (firstusage) C.iccOSMAP(C_58,romu58,'osLongitude','osLatitude','osAdress','osClickmethod','osSelected',N,N,N,N,N,N,N,N,'10',N,N,'true','true' );
 if (firstusage) C.iccBM_LABEL($61,romu61,'incdet.label6',N,N,N,'false');
-C.iccFFIELD(CF_62,romu62,C.reactFFIELD,'incdet.value6',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_62,romu62,C.reactFFIELD,'incdet.value6',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($64,romu64,'incdet.label7',N,N,N,'false');
-C.iccFFIELD(CF_65,romu65,C.reactFFIELD,'incdet.value7',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_65,romu65,C.reactFFIELD,'incdet.value7',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($67,romu67,'incdet.label8',N,N,N,'false');
-C.iccFFIELD(CF_68,romu68,C.reactFFIELD,'incdet.value8',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_68,romu68,C.reactFFIELD,'incdet.value8',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($70,romu70,'incdet.label9',N,N,N,'false');
-C.iccFFIELD(CF_71,romu71,C.reactFFIELD,'incdet.value9',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_71,romu71,C.reactFFIELD,'incdet.value9',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($73,romu73,'incdet.label10',N,N,N,'false');
-C.iccFFIELD(CF_74,romu74,C.reactFFIELD,'incdet.value10',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_74,romu74,C.reactFFIELD,'incdet.value10',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_BUTTON(CB_77,romu77,rohk77,C.reactBM_BUTTON,'onIncComment','inccomment.openbutton',N,N,N,N,N,'false',false);
 if (firstusage) C.iccBM_BUTTON(CB_79,romu79,rohk79,C.reactBM_BUTTON,'onIncBack2l','inccomment.back2lbutton',N,N,N,N,N,'false',false);
 if (firstusage) C_33 = gebid('33');
@@ -459,24 +461,24 @@ if (firstusage) C.iccBM_PANEL(C_94,romu94,'cap.panelvisi_inclist','invisible',N,
 if (firstusage) C.iccBM_PANELHEADER($114,romu114,'cap_inccommentpanelname','false');
 if (firstusage) C.iccBM_LABEL($122,romu122,'inccomment.inctypelabel',N,N,N,'false');
 if (firstusage) C.iccBM_LABEL($124,romu124,'inccomment.incdatelabel',N,N,N,'false');
-C.iccFFIELD(CF_127,romu127,C.reactFFIELD,'inccomment.inctypevalue',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
-C.iccFFIELD(CF_129,romu129,C.reactFFIELD,'inccomment.incdatevalue',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_127,romu127,C.reactFFIELD,'inccomment.inctypevalue',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_129,romu129,C.reactFFIELD,'inccomment.incdatevalue',N,N,N,N,N,N,'true',N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($132,romu132,'inccomment.comlabel',N,N,N,'false');
-C.iccFTEXTAREA(CT_133,romu133,C.reactFTEXTAREA,'inccomment.comvalue',N,N,N,N,N,N,N);
+C.iccFTEXTAREA(CT_133,romu133,C.reactFTEXTAREA,'inccomment.comvalue',N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($136,romu136,'inccomment.enddatelabel',N,N,N,'false');
-if (firstusage) C.iccDI2(CF_138,romu138,C.reactDI2,'inccomment.enddatevalue',N,N,N,N,N,N,N,N,N,N,N,'1',N,N,N,N,N,N,N,N,'DATEINPUT2Holidays',N,N,N,N,'true');
+if (firstusage) C.iccDI2(CF_138,romu138,C.reactDI2,'inccomment.enddatevalue',N,N,N,N,N,N,N,N,N,N,N,'1',N,N,N,N,N,N,N,N,'DATEINPUT2Holidays',N,N,N,N,'true',N);
 if (firstusage) C.iccBM_LABEL($141,romu141,'inccomment.textnewstatus',N,N,N,'false');
 if (firstusage) C_143 = gebid('C_143');
-if (firstusage) C.iccBM_CHECKBOX(C_143,romu143,'inccomment.newstatcboxv1','server','onCommnewstat1',N,N,N,N,N,N,'false');
+if (firstusage) C.iccBM_CHECKBOX(C_143,romu143,'inccomment.newstatcboxv1','server','onCommnewstat1',N,N,N,N,N,N,'false',N);
 if (firstusage) C_145 = gebid('C_145');
-if (firstusage) C.iccBM_CHECKBOX(C_145,romu145,'inccomment.newstatcboxv2','server','onCommnewstat2',N,N,N,N,N,N,'false');
+if (firstusage) C.iccBM_CHECKBOX(C_145,romu145,'inccomment.newstatcboxv2','server','onCommnewstat2',N,N,N,N,N,N,'false',N);
 if (firstusage) C.iccBM_LABEL($148,romu148,'inccomment.textnewprio',N,N,N,'false');
 if (firstusage) C_150 = gebid('C_150');
-if (firstusage) C.iccBM_CHECKBOX(C_150,romu150,'inccomment.newpriocboxv1','server','onCommnewprio1',N,N,N,N,N,N,'false');
+if (firstusage) C.iccBM_CHECKBOX(C_150,romu150,'inccomment.newpriocboxv1','server','onCommnewprio1',N,N,N,N,N,N,'false',N);
 if (firstusage) C_152 = gebid('C_152');
-if (firstusage) C.iccBM_CHECKBOX(C_152,romu152,'inccomment.newpriocboxv2','server','onCommnewprio2',N,N,N,N,N,N,'false');
+if (firstusage) C.iccBM_CHECKBOX(C_152,romu152,'inccomment.newpriocboxv2','server','onCommnewprio2',N,N,N,N,N,N,'false',N);
 if (firstusage) C_154 = gebid('C_154');
-if (firstusage) C.iccBM_CHECKBOX(C_154,romu154,'inccomment.newpriocboxv3','server','onCommnewprio3',N,N,N,N,N,N,'false');
+if (firstusage) C.iccBM_CHECKBOX(C_154,romu154,'inccomment.newpriocboxv3','server','onCommnewprio3',N,N,N,N,N,N,'false',N);
 if (firstusage) C.iccBM_LABEL($157,romu157,'inccomment.message',N,N,N,'false');
 if (firstusage) C.iccBM_BUTTON(CB_159,romu159,rohk159,C.reactBM_BUTTON,'onSaveInccomment','inccomment.savebutton',N,N,N,N,N,'false',false);
 if (firstusage) C.iccBM_BUTTON(CB_161,romu161,rohk161,C.reactBM_BUTTON,'onIncBack2d','inccomment.back2dbutton',N,N,N,N,N,'false',false);
@@ -606,7 +608,11 @@ function romu159(model) { C.romuBM_BUTTON(CB_159); }
 function rohk159(param) { C.transferModelBM_BUTTON(CB_159); }
 function romu161(model) { C.romuBM_BUTTON(CB_161); }
 function rohk161(param) { C.transferModelBM_BUTTON(CB_161); }
-$(document).ready(function(){$('[data-tooltip="tooltip"]').tooltip({trigger:'hover'});$('[data-tooltip="tooltip"]').click(function () {$('[data-tooltip="tooltip"]').tooltip("hide");}); $('[data-toggle="popover"]').popover();  });
+$(document).ready(function(){$('[data-tooltip]').tooltip({trigger:'hover',container:'body'});$('[data-tooltip]').click(function () {$(this).tooltip('hide');}); $('[data-toggle="popover"]').popover();
+var htmlElement = document.querySelector('html');
+var savedTheme = localStorage.getItem('njxtheme');
+if (savedTheme) htmlElement.setAttribute('data-bs-theme', savedTheme);
+});
 </script>
 <iframe hidden id="csciframe" name="csciframe" tabIndex="-1" src="cmmenux_JLIBS.html" style="width:0;height:0;left:0;top:0">
 </iframe>

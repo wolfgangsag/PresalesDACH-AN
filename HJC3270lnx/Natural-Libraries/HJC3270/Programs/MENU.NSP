@@ -25,7 +25,6 @@ DEFINE DATA
 
 * test heute
 END-DEFINE
-* Tet
 *
 ON ERROR
   INCLUDE NSWERR1C
