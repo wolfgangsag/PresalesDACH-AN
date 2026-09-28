@@ -27,6 +27,8 @@ INPUT          (     IP=OFF                                           /*
 /
  001T '-' (079)(TU)
 /
+ 033T '*PARM:'(NE)
+ 040T *PARM-USER  (AD=ODR EM=XXXXXXXX CD=GR ) /*.01S008 A253 .
 /
 /
 /

@@ -1,0 +1,46 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+/** New Subprogram GETUDB-N.
+/**
+/** :author sagapg
+/* TODO Enter your code here
+DEFINE DATA
+PARAMETER
+01 UDB  (N3)     /* IN
+01 FILE (A30)    /* OUT
+LOCAL
+1 USR8224N-PARAMETERS
+  2 USR8224N-INPUT-DBID               (I4)       /* In
+  2 USR8224N-INPUT-FNR                (I4)       /* In
+  2 USR8224N-NUMBER-FILES             (I4)       /* Output
+  2 USR8224N-FILE-LIST                (*)        /* Output
+    3 USR8224N-FNR                    (I4)
+    3 USR8224N-FILE-NAME              (A16)
+  2 USR8224N-RETURN-CODE              (I4)       /* Out
+  2 USR8224N-RETURN-MESSAGE           (A250)     /* Out
+END-DEFINE
+*
+/*---------------------------------------------------------------------
+/* Prepare Input
+/*---------------------------------------------------------------------
+USR8224N-INPUT-DBID := UDB
+USR8224N-INPUT-FNR  := 11        /* EMPLOYEES-NAT
+*
+CALLNAT 'USR8224N' USR8224N-PARAMETERS
+IF USR8224N-RETURN-CODE <> 0
+    PRINT *PROGRAM 'Calling USR8224N error (check RC with SYSEXT):' USR8224N-RETURN-CODE
+END-IF
+IF (USR8224N-RETURN-CODE = 0)
+    IF USR8224N-NUMBER-FILES > 0
+        FILE := USR8224N-FILE-NAME(1:1)
+    ELSE
+        FILE := 'FILE NOT FOUND'
+    END-IF
+ELSE
+  FILE := USR8224N-RETURN-MESSAGE
+END-IF
+*
+END

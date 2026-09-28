@@ -8,7 +8,7 @@ DEFINE DATA PARAMETER
 
 *
 
-/**   PDA HJC99A for Interface HJC99N.       
+/**   PDA HJC99A for Interface HJC99N.
 
 /**          Path: HJCIDL.idl
 
@@ -61,6 +61,3 @@ DEFINE DATA PARAMETER
 1 ERR-COD           (I4)               /* inout /** :inout
 
 END-DEFINE
-
-
-

@@ -1,0 +1,33 @@
+* >Natural Source Header 000000
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+* PAGE1: PROTOTYPE /*<RO>>
+* PROCESS PAGE USING 'XXXXXXXX' WITH
+* LINES1(*)
+DEFINE DATA PARAMETER
+/*( PARAMETER
+1 LINES1 (A/1:*) DYNAMIC
+/*) END-PARAMETER
+END-DEFINE
+*
+/*( PROCESS PAGE
+PROCESS PAGE U'/hjc3270/NSWGEN11' WITH
+PARAMETERS
+ NAME U'lines1(*)'
+  VALUE LINES1(*)
+END-PARAMETERS
+/*) END-PROCESS
+*
+/*/*( DEFINE EVENT HANDLER
+* DECIDE ON FIRST *PAGE-EVENT
+*  VALUE U'nat:page.end', U'nat:browser.end'
+*   /* Page closed.
+*   IGNORE
+*  NONE VALUE
+*   /* Unhandled events.
+*   PROCESS PAGE UPDATE
+* END-DECIDE
+/*/*) END-HANDLER
+*
+END /*<<RO>

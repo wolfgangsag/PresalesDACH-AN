@@ -1,0 +1,29 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+/** New Program TDFILEP.
+/** Download employees to local file
+/** :author sagapg
+/* TODO Enter your code here
+DEFINE DATA LOCAL
+1 EMPLOYEES VIEW OF EMPLOYEES
+  2 PERSONNEL-ID
+  2 NAME
+  2 FIRST-NAME
+  2 DEPT
+1 #OUTPUT-LINE (A256)
+END-DEFINE
+
+DEFINE WORK FILE 1 'C:\temp\employees_download.txt' TYPE 'ASCII'
+
+READ EMPLOYEES BY PERSONNEL-ID
+  WRITE WORK 1 #OUTPUT-LINE
+    /* Construct a line to output
+    COMPRESS PERSONNEL-ID NAME FIRST-NAME DEPT INTO #OUTPUT-LINE
+    WRITE WORK 1 #OUTPUT-LINE
+END-READ
+
+CLOSE WORK FILE 1
+END

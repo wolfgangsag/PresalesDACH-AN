@@ -54,8 +54,11 @@ END-DEFINE
 MOVE 'Text in Datei' TO P_INPUT
    /*
 *       / 1T 'EntireX RPC Template - Natural WRITETOF Client' (BL)
-      MOVE 'localhost:1972' TO RPC-CNTX.BROKERID
-      MOVE 'ISCRUISESRV' TO RPC-CNTX.SERVER
+/* 20251223      MOVE 'localhost:1972' TO RPC-CNTX.BROKERID
+/* 20251223      MOVE 'ISCRUISESRV' TO RPC-CNTX.SERVER
+      MOVE 'city311linux:1971' TO RPC-CNTX.BROKERID
+      MOVE 'HJCSRV' TO RPC-CNTX.SERVER
+
   /*
   /* Set RPC context and logon to broker
   ASSIGN RPC-CNTX.FUNCTION = 'SL' /* Set RPC context and logon to broker

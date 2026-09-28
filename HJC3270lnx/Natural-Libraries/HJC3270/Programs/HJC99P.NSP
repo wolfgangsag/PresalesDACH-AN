@@ -1,6 +1,7 @@
 * >Natural Source Header 000000
 * :Mode S
 * :CP
+* :LineIncrement 10
 * <Natural Source Header
 **********************************************************************
 
@@ -76,7 +77,7 @@ LOCAL
 
 /* Execution control
 
-1 REINPUT-MSG            (A) DYNAMIC CONST 
+1 REINPUT-MSG            (A) DYNAMIC CONST
 
   <'Press Enter to Execute or any other PF-key to stop.'>
 
@@ -112,7 +113,7 @@ IF RPC-CNTX.ERR-CODE NE 0
 
 END-IF
 
-* 
+*
 
 REPEAT
 
@@ -160,19 +161,19 @@ REPEAT
 
        / 1T 'MAP-TABLE.M-SELECTION ...' (BL)  MAP-TABLE.M-SELECTION(1)
 
-       / 1T 'CL-KEY ..................' (BL)  CL-KEY       
+       / 1T 'CL-KEY ..................' (BL)  CL-KEY
 
-       / 1T 'CL-AUX ..................' (BL)  CL-AUX     
+       / 1T 'CL-AUX ..................' (BL)  CL-AUX
 
        / 1T 'T-PAGING ................' (BL)  T-PAGING(1)
 
-       / 1T 'INDX-PAGING .............' (BL)  INDX-PAGING       
+       / 1T 'INDX-PAGING .............' (BL)  INDX-PAGING
 
-       / 1T 'MESSAGE .................' (BL)  MESSAGE    
+       / 1T 'MESSAGE .................' (BL)  MESSAGE
 
        / 1T 'ERR-MESSAGE .............' (BL)  ERR-MESSAGE(AL=40)
 
-       / 1T 'ERR-COD .................' (BL)  ERR-COD     
+       / 1T 'ERR-COD .................' (BL)  ERR-COD
 
       // 1T PROGRESS-MSG(01) (AD=O)
 
@@ -228,7 +229,7 @@ REPEAT
 
 
 
-  CALLNAT 'HJC99N  ' 
+  CALLNAT 'HJC99N  '
 
         MAP-TABLE        /* inout /** :inout
 
@@ -264,7 +265,7 @@ REPEAT
 
      /* error logoff from broker
 
-     REINPUT FULL REINPUT-MSG         
+     REINPUT FULL REINPUT-MSG
 
   END-IF
 
@@ -346,7 +347,7 @@ ON ERROR
 
 END-ERROR
 
-* 
+*
 
 END
 

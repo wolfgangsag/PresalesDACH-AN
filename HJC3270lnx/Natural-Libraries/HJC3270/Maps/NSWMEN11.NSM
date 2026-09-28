@@ -3,14 +3,15 @@
 * :CP
 * :LineIncrement 10
 * <Natural Source Header
-* MAP2: PROTOTYPE             --- CREATED BY UNIX 9.3.2 ---
+* MAP2: PROTOTYPE VERSION 820 --- CREATED BY ONE 9.3.1 ---
 * INPUT USING MAP 'XXXXXXXX'
-*     M-COMMAND M-TITLE
+*     #UDB M-COMMAND M-TITLE
 DEFINE DATA PARAMETER
+1 #UDB (N03.0)
 1 M-COMMAND (A001)
 1 M-TITLE (A050)
 END-DEFINE
-FORMAT PS=021 LS=081 ZP=OFF SG=OFF KD=ON  IP=OFF
+FORMAT PS=021 LS=081 ZP=OFF SG=OFF KD=ON IP=OFF
 * MAP2: MAP PROFILES *****************************        200***********
 * .TTAAAMMOO   D I D I N D I D I        ?_)^&:+(                       *
 * 023080        N0NNUCN____         X        01 SYSDBA  YR             *
@@ -19,16 +20,33 @@ INPUT          (     IP=OFF                                           /*
                                                                        )
  002T 'SOFTWARE A.G.'
  025T '*** EMPLOYEE MANAGEMENT ***'
- 071T *DATE  (AD=ODL CD=NE ) /*.01S008 A008 .
+ 071T *DATE /*.01S008 A008 .
+      (AD=ODL CD=NE )
 /
- 002T *PROGRAM  (AD=ODL CD=TU ) /*.01S008 A008 .
- 017T M-TITLE  (AD=ODL CD=YE ) /*.01U050 A050 .
- 071T *TIMX  (AD=ODL CD=TU ) /*.01S008 T    .
+ 002T *PROGRAM /*.01S008 A008 .
+      (AD=ODL CD=TU )
+ 017T M-TITLE /*.01U050 A050 .
+      (AD=ODL CD=YE )
+ 071T *TIMX /*.01S008 T    .
+      (AD=ODL CD=TU )
 /
  001T '-' (079)(TU)
 /
- 002T *HOSTNAME  (AD=ODL CD=NE AL=065  ) /*.01S065 A064 .
- 071T *INIT-USER  (AD=ODR CD=NE ) /*.01S008 A008 .
+ 001T '*HOST:'(NE)
+ 008T *HOSTNAME /*.01S016 A064 .
+      (AD=ODL CD=GR AL=016 )
+ 025T 'UDB:'(NE)
+ 030T #UDB /*.01U003 N03.0.
+      (AD=ODL CD=GR )
+ 033T '*PARM:'(NE)
+ 040T *PARM-USER /*.01S008 A253 .
+      (AD=ODL EM=XXXXXXXX CD=GR )
+ 049T '*USER:'(NE)
+ 056T *USER /*.01S008 A008 .
+      (AD=ODL CD=GR )
+ 064T '*GROUP:'(NE)
+ 072T *GROUP /*.01S008 A008 .
+      (AD=ODL CD=GR )
 /
 /
 /
@@ -53,7 +71,8 @@ INPUT          (     IP=OFF                                           /*
 /
 /
  033T 'Option:'(TU)
- 041T M-COMMAND  (AD=MILT'_' CD=PI ) /*.99U001 A001 .
+ 041T M-COMMAND /*.99U001 A001 .
+      (AD=MILT'_' CD=PI )
 /
 /
 * MAP2: VALIDATION *****************************************************

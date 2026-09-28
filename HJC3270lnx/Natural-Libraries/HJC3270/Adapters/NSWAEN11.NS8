@@ -1,5 +1,6 @@
 * >Natural Source Header 000000
 * :CP
+* :LineIncrement 10
 * <Natural Source Header
 * PAGE1: PROTOTYPE /*<RO>>
 * PROCESS PAGE USING 'XXXXXXXX' WITH

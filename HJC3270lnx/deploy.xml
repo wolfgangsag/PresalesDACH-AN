@@ -79,18 +79,18 @@
     <property name="natural.ant.repository.version" value="" />
     <property name="natural.ant.deploy.stow" value="YES" />
     <property name="natural.ant.user.exit.enable" value="NO" />
-    <property name="natural.ant.deploy.full" value="YES" />
+    <property name="natural.ant.deploy.full" value="NO" />
     <property name="natural.ant.server.secured.environment" value="NO" />
-    <property name="natural.ant.library.steplib.nsv" value="HJC3270;!;!BATCH;!;!" />
+    <property name="natural.ant.library.steplib.nsv" value="HJC3270;!;!" />
     <property name="natural.ant.deploy.delete" value="NO" />
     <property name="natural.ant.server.environment" value="city311linux-2706" />
     <property name="natural.ant.source.type.selection" value="2736127" />
     <property name="natural.ant.server.password" value="" />
-    <property name="natural.ant.library.steplibs" value="HJC3270;0;!;!BATCH;0;!;!" />
+    <property name="natural.ant.library.steplibs" value="HJC3270;0;!;!" />
     <property name="natural.ant.server.useoidc" value="NO" />
     <property name="natural.ant.server.parameters" value="ETID=&#039; &#039; gpgen=(debugger=on)" />
     <property name="natural.ant.mapping.enable" value="NO" />
-    <property name="natural.ant.project.rootdir" value="C:\Daten\Workspace\2025Okt" />
+    <property name="natural.ant.project.rootdir" value="C:\Daten\WorkspaceSept" />
     <property name="natural.ant.truststore.password" value="" />
     <property name="natural.ant.deploy.timestamp.check" value="NO" />
     <property name="natural.ant.repository.password" value="" />

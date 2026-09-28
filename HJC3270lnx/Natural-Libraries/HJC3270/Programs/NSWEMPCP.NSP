@@ -55,6 +55,9 @@ DEFINE DATA
  2 #N-MONTH         (N2)
  2 #N-MX            (A1)
  2 #N-YEAR          (N2)
+1 #WORK-LINE        (A253)          /* used for upload/download file */
+1 #TMP (A8)
+1 #POS              (I2)
 END-DEFINE
 *
 ON ERROR
@@ -70,6 +73,7 @@ DEFINE WINDOW CONFIRM
 SET KEY ALL
 INCLUDE NSWPFK1C
 INCLUDE NSWPFK2C
+INCLUDE NSWPFK4C
 *
 MOVE 1 TO M-PAGE
 MOVE 1 TO INDX-PAGING
@@ -148,6 +152,14 @@ R1. REPEAT
          ESCAPE  TOP
         END-IF
       END-IF
+    VALUE 'PF10'
+      RESET MESSAGE
+      PERFORM DOWNLOAD-EMPLOYEES
+      PERFORM PROCESS-COMMAND
+    VALUE 'PF11'
+      RESET MESSAGE
+      PERFORM UPLOAD-EMPLOYEES
+      PERFORM PROCESS-COMMAND
     VALUE 'ENTR'
       RESET MESSAGE
       PERFORM VALIDATIONS
@@ -367,6 +379,29 @@ FIND NSWVEHIC WITH PERSONNEL-ID EQ G-KEY
   UPDATE
   END TRANSACTION
 END-FIND
+END-SUBROUTINE
+*
+*
+* ---------------------------------------------------------
+DEFINE SUBROUTINE DOWNLOAD-EMPLOYEES
+* ---------------------------------------------------------
+DEFINE WORK FILE 1 'employees.csv' TYPE 'TRANSFER'
+READ NSWEMPLO BY PERSONNEL-ID
+    COMPRESS PERSONNEL-ID ';' NAME ';' FIRST-NAME ';' DEPT INTO #WORK-LINE LEAVING NO
+    WRITE WORK 1 #WORK-LINE
+END-READ
+CLOSE WORK FILE 1
+END-SUBROUTINE
+*
+*
+* ---------------------------------------------------------
+DEFINE SUBROUTINE UPLOAD-EMPLOYEES
+* ---------------------------------------------------------
+DEFINE WORK FILE 1 'c:\temp\employees.csv' TYPE 'TRANSFER'
+READ WORK FILE 1 #TMP
+    WRITE #TMP
+END-WORK
+CLOSE WORK FILE 1
 END-SUBROUTINE
 *
 END

@@ -1,0 +1,36 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+/** New Program TDFILEP.
+/** upload file
+/** :author sagapg
+/* TODO Enter your code here
+DEFINE DATA LOCAL
+1 #PERSONNEL-ID (A8)
+1 #NAME         (A20)
+1 #FIRST-NAME   (A20)
+1 #DEPT         (A6)
+1 #INPUT-LINE   (A80)
+1 #POS          (I2)
+END-DEFINE
+
+DEFINE WORK FILE 1 'C:\temp\employees_upload.txt' TYPE 'ASCII'
+
+READ WORK 1 #INPUT-LINE
+    /* Parse the line
+    EXAMINE #INPUT-LINE FOR ' ' GIVING POSITION #POS
+    /* Or use SUBSTRING / SEGMENT parsing based on your format
+    /* Example assuming space-delimited
+    MOVE SUBSTRING(#INPUT-LINE, 1, 8)  TO #PERSONNEL-ID
+    MOVE SUBSTRING(#INPUT-LINE, 10, 20) TO #NAME
+    MOVE SUBSTRING(#INPUT-LINE, 31, 20) TO #FIRST-NAME
+    MOVE SUBSTRING(#INPUT-LINE, 52, 6)  TO #DEPT
+
+    WRITE (1) #PERSONNEL-ID #NAME #FIRST-NAME #DEPT
+END-WORK
+*
+CLOSE WORK FILE 1
+*
+END

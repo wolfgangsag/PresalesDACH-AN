@@ -1,0 +1,19 @@
+DEFINE DATA LOCAL
+/* >Natural Source Header 000000
+/* :Mode S
+/* :CP
+/* <Natural Source Header
+/** New Local Data Area ERROR.
+/**
+/** :author sagapg
+/* TODO Enter your data definitions here
+*
+*  parms to call 'USR0221N'
+*
+01 PARM-AREA
+    02 ERROR-NUMBER (N04)     /* 1 thru 9999
+    02 LANG-NUMB    (I01)     /* 1 thru 60 , similar to *LANGUAGE
+    02 RESPONSE     (N04)     /* Error during execution of USR0220N
+    02 LONG-TEXT    (A78/1:20)
+01 INFO (A64)
+END-DEFINE

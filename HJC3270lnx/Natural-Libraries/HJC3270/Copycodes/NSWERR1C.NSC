@@ -11,4 +11,4 @@
 **************************************************************************
 *
 WRITE 'ERROR' *ERROR-NR 'OCCURRED IN PROGRAM' *PROGRAM 'AT LINE' *ERROR-LINE
-INPUT USING MAP 'NSWERR1&'
+* INPUT USING MAP 'NSWERR1&'

@@ -36,23 +36,24 @@ INPUT          (     IP=OFF                                           /*
 /
  001T '-' (079)(TU)
 /
+ 033T '*PARM:'(NE)
+ 040T *PARM-USER  (AD=ODR EM=XXXXXXXX CD=GR ) /*.01S008 A253 .
 /
  004T 'Key from:'
  014T M-KEY-INI  (AD=MILT' ' ) /*.99U008 A008 .
- 063T 'Page no.:'
- 073T M-PAGE  (AD=OIR ) /*.01U003 N03.0.
+ 063T 'Page no.:'(NE)
+ 073T M-PAGE  (AD=ODR CD=GR ) /*.01U003 N03.0.
 /
 /
- 004T 'C'(I)
- 006T 'Key'(I)
- 015T 'First Name'(I)
- 036T 'Last name'(I)
- 057T 'Birthday'(I)
- 066T 'City'(I)
+ 004T 'C'(TU)
+ 006T 'Key'(TU)
+ 015T 'First Name'(TU)
+ 036T 'Last name'(TU)
+ 057T 'Birthday'(TU)
+ 066T 'City'(TU)
 /
- 004T '='(I)
- 006T '======== ==================== ==================== ======='-
-      '= =========='(I)
+ 004T '= ======== ==================== ==================== ====='-
+      '=== =========='(TU)
 /
  004T M-SELECTION (001)  (AD=MYLT' ' CV=CONTROL(001) ) /*.99U001 A001 .
    /**A1000100000100001000010000100001100010001001000001000HV

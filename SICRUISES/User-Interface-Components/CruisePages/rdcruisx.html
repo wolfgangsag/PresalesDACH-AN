@@ -10,13 +10,13 @@ var m_perfPageFocusEnd = null;</script>
 <link rel="stylesheet" href="../HTMLBasedGUI/jquery/jquery-ui.min.css" type="text/css" >
 <link rel="stylesheet" href="../HTMLBasedGUI/bootstrapicons/font/bootstrap-icons.css" type="text/css" >
 <link rel="stylesheet" href="../HTMLBasedGUI/bootstrap4/css/bootstrap.min.css" type="text/css" >
-<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/dataTables.min.css" type="text/css" >
+<link rel="stylesheet" href="../HTMLBasedGUI/datatables/css/datatables.bootstrap4.min.css" type="text/css" >
 <link id="casabacstylesheet" rel="stylesheet" type="text/css" href="../cis/styles/CIS_WM.css">
 <link id="addcsshref" rel="stylesheet" type="text/css" href="../HTMLBasedGUI/bootstrap/njxmobiledemo.css">
 <script src="../HTMLBasedGUI/jquery3/jquery.min.js"></script>
 <script src="../HTMLBasedGUI/jquery/jquery-ui.min.js"></script>
 <script src="../HTMLBasedGUI/bootstrap4/js/bootstrap.bundle.min.js"></script>
-<script src="../HTMLBasedGUI/datatables/js/dataTables.min.js"></script>
+<script src="../HTMLBasedGUI/datatables/js/datatables.bootstrap4.min.js"></script>
 <script>
 var CASAstylesheetfile = '../cis/styles/CIS_WM.css';
 </script>
@@ -27,6 +27,7 @@ body {height:100%;}
 </head>
 <body id='THISBODY' oncontextmenu='try { C.clickAway(); } catch (exc) {}; try { return C.reactOnContextMenuRequestPAGE(event); } catch(e) {}' onmousemove='try { return moveDrag(event); } catch(exc) {}' onmouseup='try { endDrag(event);C.CL().checkMozIO(parent); } catch (exc) {}' onkeydown='try { processHotKeys(event); } catch (exc) {}' class='PAGEBody' style='margin: 0' onclick='try { C.clickAway(); } catch (exc) {}; try { C.reactOnClickPage(event); } catch (exc) {}' onresize='try { reactOnResize(); } catch (exc) {}'	onload=' try { reactOnResize(); } catch (exc) {}'	onhelp='C.reactOnHelpPAGE(); return false;'  tabindex='-1' onblur='try { C.onBlurPAGE(event); } catch(e) {}' onfocus='try { C.onFocusPAGE(); } catch(e) {}' onmousewheel='if (event.shiftKey) C.CL().cancelEvent(event);' onwheel='if (event.shiftKey) C.CL().cancelEvent(event);' onmouseleave='try { return removeTHISOCCUPIED(); } catch(exc) {}' onmouseout ='try { return removeTHISOCCUPIED(); } catch(exc) {}'>
 <script>
+if (!window.Promise && typeof njx_redirecturl !== 'undefined' ) window.location.href= njx_redirecturl;
 function gebid(pid) { return document.getElementById(pid); }
 var m_isSafari = navigator.userAgent.toLowerCase().indexOf( 'safari' ) != -1;
 function isSafari() { return m_isSafari; }
@@ -61,16 +62,16 @@ m_fillTextIdListeners.push(listener);
 </div>
 <div class='col-lg-5 col-md-5 col-sm-4 col-0' id='7' ></div>
 <div class='col-lg-1 col-md-1 col-sm-1 col-1' style='padding-left:0;padding-right:2%;' id='8' >
-<img id="IC_9" class='img-fluid iconclickable ' data-testtoolid='onSeten' src='./images/RD-flageng.png' title='english' alt='english' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_9" class='img-fluid iconclickable ' data-testtoolid='onSeten' src='./images/RD-flageng.png' title='english' alt='english' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-1 col-md-1 col-sm-1 col-1' style='padding-left:0;padding-right:2%;' id='10' >
-<img id="IC_11" class='img-fluid iconclickable ' data-testtoolid='onSetge' src='./images/RD-flagger.png' title='german' alt='german' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_11" class='img-fluid iconclickable ' data-testtoolid='onSetge' src='./images/RD-flagger.png' title='german' alt='german' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-1 col-md-1 col-sm-1 col-1' style='padding-left:0;padding-right:2%;' id='12' >
-<img id="IC_13" class='img-fluid iconclickable ' data-testtoolid='onSetsp' src='./images/RD-flagspa.png' title='spanish' alt='spanish' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_13" class='img-fluid iconclickable ' data-testtoolid='onSetsp' src='./images/RD-flagspa.png' title='spanish' alt='spanish' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-1 col-md-1 col-sm-1 col-1' style='padding-left:0;padding-right:2%;' id='14' >
-<img id="IC_15" class='img-fluid iconclickable ' data-testtoolid='onSetpo' src='./images/RD-flagpor.png' title='portuguese' alt='portuguese' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_15" class='img-fluid iconclickable ' data-testtoolid='onSetpo' src='./images/RD-flagpor.png' title='portuguese' alt='portuguese' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 </div>
 <div class='row' style='height:5px;background-color:#0C3B60' ></div>
@@ -79,13 +80,13 @@ m_fillTextIdListeners.push(listener);
 <label  id="$19" class='col-form-label cruiselabelitalic'></label>
 </div>
 <div class='col-lg-offset-1 col-md-offset-1 col-sm-offset-1 offset-1 col-lg-1 col-md-1 col-sm-1 col-1' style='padding-left:0;padding-right:2%;' id='20' >
-<img id="IC_21" class='img-fluid iconclickable ' data-testtoolid='onLoginicon' style='padding:4%;' src='./images/RD-login.png' title='Login' alt='Login' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_21" class='img-fluid iconclickable ' data-testtoolid='onLoginicon' style='padding:4%;' src='./images/RD-login.png' title='Login' alt='Login' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-1 col-md-1 col-sm-1 col-1' style='padding-left:0;padding-right:2%;' id='22' >
-<img id="IC_23" class='img-fluid iconclickable ' data-testtoolid='onMydataicon' style='padding:4%;' src='./images/RD-mydata.png' title='MyData' alt='MyData' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_23" class='img-fluid iconclickable ' data-testtoolid='onMydataicon' style='padding:4%;' src='./images/RD-mydata.png' title='MyData' alt='MyData' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-1 col-md-1 col-sm-1 col-1' style='padding-left:0;padding-right:2%;' id='24' >
-<img id="IC_25" class='img-fluid iconclickable ' data-testtoolid='onLogouticon' style='padding:4%;' src='./images/RD-logout.png' title='Logout' alt='Logout' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_25" class='img-fluid iconclickable ' data-testtoolid='onLogouticon' style='padding:4%;' src='./images/RD-logout.png' title='Logout' alt='Logout' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 </div>
 <div class='center-block row' style='width:100%' id="PL_26">
@@ -106,10 +107,10 @@ m_fillTextIdListeners.push(listener);
 </div>
 <div class='row' id="PL_36">
 <div class='col-lg-offset-5 col-md-offset-5 col-sm-offset-4 offset-4 col-lg-1 col-md-1 col-sm-2 col-2' style='padding-left:0;padding-right:2%;' id='37' >
-<img id="IC_38" class='img-fluid iconclickable ' data-testtoolid='onLoginbutton' style='border-style:none;padd ing:2%;' src='./images/RD-ok.png' title='ok' alt='ok' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_38" class='img-fluid iconclickable ' data-testtoolid='onLoginbutton' style='border-style:none;padd ing:2%;' src='./images/RD-ok.png' title='ok' alt='ok' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-1 col-md-1 col-sm-2 col-2' style='padding-left:0;padding-right:2%;' id='39' >
-<img id="IC_40" class='img-fluid iconclickable ' data-testtoolid='onLoginClose' style='border-style:none;padding:2%;' src='./images/RD-cancel.png' title='Cancel' alt='Cancel' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_40" class='img-fluid iconclickable ' data-testtoolid='onLoginClose' style='border-style:none;padding:2%;' src='./images/RD-cancel.png' title='Cancel' alt='Cancel' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 </div>
 <div class='row' style='background-color:#0C3B60' id="PL_41">
@@ -180,7 +181,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 <div class='row' id="PL_75">
 <div class='col-lg-3 col-md-3 col-sm-2 col-2' id='76' >
-<img id="IC_77" class='img-fluid iconclickable ' data-testtoolid='onShowAll' src='./images/RD-select2.png' alt='' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_77" class='img-fluid iconclickable ' data-testtoolid='onShowAll' src='./images/RD-select2.png' alt='' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-9 col-md-9 col-sm-10 col-10' id='78' >
 <label  id="$79" style='color:#c6d9f1;text-align:left;font-size: 1.2em;font-style:italic;' class='col-form-label'></label>
@@ -199,7 +200,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 <div class='row' id="PL_86">
 <div class='col-lg-3 col-md-3 col-sm-2 col-2' id='87' >
-<img id="IC_88" class='img-fluid iconclickable ' data-testtoolid='onHotcruises' src='./images/RD-select2.png' alt='' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_88" class='img-fluid iconclickable ' data-testtoolid='onHotcruises' src='./images/RD-select2.png' alt='' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-9 col-md-9 col-sm-10 col-10' id='89' >
 <label  id="$90" style='color:#c6d9f1;text-align:left;font-size: 1.2em;font-style:italic;' class='col-form-label'></label>
@@ -218,7 +219,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 <div class='row' id="PL_97">
 <div class='col-lg-3 col-md-3 col-sm-2 col-2' id='98' >
-<img id="IC_99" class='img-fluid iconclickable ' data-testtoolid='onFavorites' src='./images/RD-select2.png' alt='' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_99" class='img-fluid iconclickable ' data-testtoolid='onFavorites' src='./images/RD-select2.png' alt='' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-9 col-md-9 col-sm-10 col-10' id='100' >
 <label  id="$101" style='color:#c6d9f1;text-align:left;font-size: 1.2em;font-style:italic;' class='col-form-label'></label>
@@ -247,8 +248,9 @@ m_fillTextIdListeners.push(listener);
 </div>
 <div class='col-lg-4 col-md-4 col-sm-10 col-10' id='114' >
 <label  id="$115" style='color: #c6d9f1;' class='col-form-label'></label>
-<div class='input-group'>
+<div class='input-withicon-wrapper'>
 <input id="F_116" name="CC" type="text" data-testtoolid='pvmybirthdate' class='form-control form-control' placeholder='Registration Start' >
+<i id='F_116_icon' class='icon-ininput bi bi-calendar3' ></i>
 </div>
 </div>
 </div>
@@ -274,10 +276,10 @@ m_fillTextIdListeners.push(listener);
 </div>
 <div class='row' id="PL_131">
 <div class='col-lg-1 col-md-1 col-sm-2 col-2' style='padding-left:0;padding-right:2%;' id='132' >
-<img id="IC_133" class='img-fluid iconclickable ' data-testtoolid='onMydataSave' style='border-style:none;padding:2%;' src='./images/RD-ok2.png' title='ok' alt='ok' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_133" class='img-fluid iconclickable ' data-testtoolid='onMydataSave' style='border-style:none;padding:2%;' src='./images/RD-ok2.png' title='ok' alt='ok' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-1 col-md-1 col-sm-2 col-2' style='padding-left:0;padding-right:2%;' id='134' >
-<img id="IC_135" class='img-fluid iconclickable ' data-testtoolid='onMydataClose' style='border-style:none;padding:2%;' src='./images/RD-cancel2.png' title='Cancel' alt='Cancel' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_135" class='img-fluid iconclickable ' data-testtoolid='onMydataClose' style='border-style:none;padding:2%;' src='./images/RD-cancel2.png' title='Cancel' alt='Cancel' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 </div>
 <div class='row' style='background-color:#0C3B60' id="PL_136">
@@ -324,7 +326,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 <div class='row' id="PL_162">
 <div id='163' >
-<img id="IC_164" class='img-fluid iconclickable ' data-testtoolid='onShowdetails1' style='max-width:30%; width:30%; height:auto;text-align:left' src='./images/RD-select.png' title='Select Favorit 1' alt='Select Favorit 1' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_164" class='img-fluid iconclickable ' data-testtoolid='onShowdetails1' style='max-width:30%; width:30%; height:auto;text-align:left' src='./images/RD-select.png' title='Select Favorit 1' alt='Select Favorit 1' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 </div>
 </div>
@@ -356,7 +358,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 <div class='row' id="PL_181">
 <div id='182' >
-<img id="IC_183" class='img-fluid iconclickable ' data-testtoolid='onShowdetails2' style='max-width:30%; width:30%; height:auto;text-align:left' src='./images/RD-select.png' title='Select Favorit 2' alt='Select Favorit 2' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_183" class='img-fluid iconclickable ' data-testtoolid='onShowdetails2' style='max-width:30%; width:30%; height:auto;text-align:left' src='./images/RD-select.png' title='Select Favorit 2' alt='Select Favorit 2' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 </div>
 </div>
@@ -388,7 +390,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 <div class='row' id="PL_200">
 <div id='201' >
-<img id="IC_202" class='img-fluid iconclickable ' data-testtoolid='onShowdetails3' style='max-width:30%; width:30%; height:auto;text-align:left' src='./images/RD-select.png' title='Select Favorit 3' alt='Select Favorit 3' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_202" class='img-fluid iconclickable ' data-testtoolid='onShowdetails3' style='max-width:30%; width:30%; height:auto;text-align:left' src='./images/RD-select.png' title='Select Favorit 3' alt='Select Favorit 3' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 </div>
 </div>
@@ -420,7 +422,7 @@ m_fillTextIdListeners.push(listener);
 </div>
 <div class='row' id="PL_219">
 <div id='220' >
-<img id="IC_221" class='img-fluid iconclickable ' data-testtoolid='onShowdetails4' style='max-width:30%; width:30%; height:auto;text-align:left' src='./images/RD-select.png' title='Select Favorit 4' alt='Select Favorit 4' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_221" class='img-fluid iconclickable ' data-testtoolid='onShowdetails4' style='max-width:30%; width:30%; height:auto;text-align:left' src='./images/RD-select.png' title='Select Favorit 4' alt='Select Favorit 4' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 </div>
 </div>
@@ -463,14 +465,16 @@ m_fillTextIdListeners.push(listener);
 <div class='row' id="PL_241">
 <div class='col-lg-6 col-md-6 col-sm-12 col-12' id='242' >
 <label  id="$243" style='color:#c6d9f1;font-style:italic;font-size: 1em' class='col-form-label'></label>
-<div class='input-group'>
+<div class='input-withicon-wrapper'>
 <input id="F_244" name="CC" type="text" data-testtoolid='pvcrdetstartdate' class='form-control form-control' >
+<i id='F_244_icon' class='icon-ininput bi bi-calendar3' ></i>
 </div>
 </div>
 <div class='col-lg-6 col-md-6 col-sm-12 col-12' id='245' >
 <label  id="$246" style='color:#c6d9f1;font-style:italic;font-size: 1em' class='col-form-label'></label>
-<div class='input-group'>
+<div class='input-withicon-wrapper'>
 <input id="F_247" name="CC" type="text" data-testtoolid='pvcrdetenddate' class='form-control form-control' >
+<i id='F_247_icon' class='icon-ininput bi bi-calendar3' ></i>
 </div>
 </div>
 </div>
@@ -489,10 +493,10 @@ m_fillTextIdListeners.push(listener);
 <div class='row' style='height:5px;background-color:##1995dc' ></div>
 <div class='row' id="PL_257">
 <div class='col-lg-offset-1 col-md-offset-1 col-sm-offset-1 offset-1 col-lg-1 col-md-1 col-sm-2 col-2' style='padding-left:0;padding-right:2%;' id='258' >
-<img id="IC_259" class='img-fluid iconclickable ' data-testtoolid='onBookingSave' style='border-style:none;padding:2%;' src='./images/RD-ok3.png' title='ok' alt='ok' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_259" class='img-fluid iconclickable ' data-testtoolid='onBookingSave' style='border-style:none;padding:2%;' src='./images/RD-ok3.png' title='ok' alt='ok' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-1 col-md-1 col-sm-2 col-2' style='padding-left:0;padding-right:2%;' id='260' >
-<img id="IC_261" class='img-fluid iconclickable ' data-testtoolid='onBookingClose' style='border-style:none;padding:2%;' src='./images/RD-cancel3.png' title='Cancel' alt='Cancel' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_261" class='img-fluid iconclickable ' data-testtoolid='onBookingClose' style='border-style:none;padding:2%;' src='./images/RD-cancel3.png' title='Cancel' alt='Cancel' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 </div>
 <div class='row' style='background-color:#0C3B60' id="PL_262">
@@ -573,16 +577,16 @@ Next</span>
 </div>
 <div class='row' style='background-color: #125996; border-style:none' id="PL_301">
 <div class='col-lg-offset-2 col-md-offset-2 col-sm-offset-2 offset-2 col-lg-2 col-md-2 col-sm-2 col-2' id='302' >
-<img id="IC_303" class='img-fluid iconclickable ' data-testtoolid='onFav1button' style='font-size:5px' src='./images/RD-selfav1.png' title='Select Favorit 1' alt='Select Favorit 1' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_303" class='img-fluid iconclickable ' data-testtoolid='onFav1button' style='font-size:5px' src='./images/RD-selfav1.png' title='Select Favorit 1' alt='Select Favorit 1' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-2 col-md-2 col-sm-2 col-2' id='304' >
-<img id="IC_305" class='img-fluid iconclickable ' data-testtoolid='onFav2button' style='font-size:5px' src='./images/RD-selfav2.png' title='Select Favorit 2' alt='Select Favorit 2' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_305" class='img-fluid iconclickable ' data-testtoolid='onFav2button' style='font-size:5px' src='./images/RD-selfav2.png' title='Select Favorit 2' alt='Select Favorit 2' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-2 col-md-2 col-sm-2 col-2' id='306' >
-<img id="IC_307" class='img-fluid iconclickable ' data-testtoolid='onFav3button' style='font-size:5px' src='./images/RD-selfav3.png' title='Select Favorit 3' alt='Select Favorit 3' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_307" class='img-fluid iconclickable ' data-testtoolid='onFav3button' style='font-size:5px' src='./images/RD-selfav3.png' title='Select Favorit 3' alt='Select Favorit 3' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 <div class='col-lg-2 col-md-2 col-sm-2 col-2' id='308' >
-<img id="IC_309" class='img-fluid iconclickable ' data-testtoolid='onFav4button' style='font-size:5px' src='./images/RD-selfav4.png' title='Select Favorit 4' alt='Select Favorit 4' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_309" class='img-fluid iconclickable ' data-testtoolid='onFav4button' style='font-size:5px' src='./images/RD-selfav4.png' title='Select Favorit 4' alt='Select Favorit 4' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 </div>
 </div>
@@ -705,7 +709,7 @@ Next</span>
 </div>
 <div class='row' style='background-color:#0C3B60' id="PL_379">
 <div class='col-lg-1 col-md-1 col-sm-2 col-2' id='380' >
-<img id="IC_381" class='img-fluid iconclickable ' data-testtoolid='onHome' src='./images/RD-home2.png' title='Home' alt='Home' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' ></img>
+<img id="IC_381" class='img-fluid iconclickable ' data-testtoolid='onHome' src='./images/RD-home2.png' title='Home' alt='Home' data-tooltip='tooltip' data-html='true' onclick='C.reactBM_ICON(event);' onkeydown='C.reactBM_ICON(event);' tabindex='0' >
 </div>
 </div>
 <div class='row' style='height:10px;' id="PL_382">
@@ -853,8 +857,8 @@ if (firstusage) C_28 = gebid('IO_28');
 C.iccIMAGEOUT(C_28,romu28,'pvmyloginimage',N,'img-fluid center-block','max-width:100%;height:auto;',N,N,'pvmyloginimage');
 if (firstusage) C_26 = gebid('PL_26');
 C.iccBM_PANEL(C_26,romu26,'pvloginpanelvisible','invisible',N);
-C.iccFFIELD(CF_33,romu33,C.reactFFIELD,'pvloginident',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
-C.iccFFIELD(CF_35,romu35,C.reactFFIELD,'pvloginpw',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
+C.iccFFIELD(CF_33,romu33,C.reactFFIELD,'pvloginident',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N,N,N,N);
+C.iccFFIELD(CF_35,romu35,C.reactFFIELD,'pvloginpw',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N,N,N,N);
 if (firstusage) C_38 = gebid('IC_38');
 C.iccBM_ICON(C_38,romu38,'onLoginbutton',N,N,N,N,N);
 if (firstusage) C_40 = gebid('IC_40');
@@ -900,19 +904,19 @@ C.iccIMAGEOUT(C_104,romu104,'pvmydataimage',N,'img-fluid center-block','max-widt
 if (firstusage) C_102 = gebid('PL_102');
 C.iccBM_PANEL(C_102,romu102,'pvmydatapanelvisible','invisible',N);
 if (firstusage) C.iccBM_LABEL($109,romu109,'pvmynamelabeprop',N,N,N,'false');
-C.iccFFIELD(CF_110,romu110,C.reactFFIELD,'pvmyname',N,N,N,N,N,N,'true',N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_110,romu110,C.reactFFIELD,'pvmyname',N,N,N,N,N,N,'true',N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($112,romu112,'pvmyfirstnamelabelprop',N,N,N,'false');
-C.iccFFIELD(CF_113,romu113,C.reactFFIELD,'pvmyfirstname',N,N,N,N,N,N,'true',N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
+C.iccFFIELD(CF_113,romu113,C.reactFFIELD,'pvmyfirstname',N,N,N,N,N,N,'true',N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($115,romu115,'pvmybirthdatelabelprop',N,N,N,'false');
-if (firstusage) C.iccDI2(CF_116,romu116,C.reactDI2,'pvmybirthdate',N,N,'date',N,N,N,N,N,N,N,N,'1',N,N,N,N,N,N,N,N,'DATEINPUT2Holidays',N,N,N,N,'true');
+if (firstusage) C.iccDI2(CF_116,romu116,C.reactDI2,'pvmybirthdate',N,N,'date',N,N,N,N,N,N,N,N,'1',N,N,N,N,N,N,N,N,'DATEINPUT2Holidays',N,N,N,N,'true',N);
 if (firstusage) C.iccBM_LABEL($119,romu119,'pvmyemaillabelprop',N,N,N,'false');
-C.iccFFIELD(CF_120,romu120,C.reactFFIELD,'pvmyemail',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
+C.iccFFIELD(CF_120,romu120,C.reactFFIELD,'pvmyemail',N,N,N,N,N,N,N,N,N,N,'true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($123,romu123,'pvmystreetlabelprop',N,N,N,'false');
-C.iccFFIELD(CF_124,romu124,C.reactFFIELD,'pvmyStreet',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
+C.iccFFIELD(CF_124,romu124,C.reactFFIELD,'pvmyStreet',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($126,romu126,'pvmyziplabelprop',N,N,N,'false');
-C.iccFFIELD(CF_127,romu127,C.reactFFIELD,'pvmyzipcode',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
+C.iccFFIELD(CF_127,romu127,C.reactFFIELD,'pvmyzipcode',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($129,romu129,'pvmycitylabelprop',N,N,N,'false');
-C.iccFFIELD(CF_130,romu130,C.reactFFIELD,'pvmycity',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
+C.iccFFIELD(CF_130,romu130,C.reactFFIELD,'pvmycity',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N,N,N,N);
 if (firstusage) C_133 = gebid('IC_133');
 C.iccBM_ICON(C_133,romu133,'onMydataSave',N,N,N,N,N);
 if (firstusage) C_135 = gebid('IC_135');
@@ -971,17 +975,17 @@ C.iccBM_PANEL(C_225,romu225,'pvcrdetailspanelvisible','invisible',N);
 if (firstusage) C_232 = gebid('IO_232');
 C.iccIMAGEOUT(C_232,romu232,'pvcruiseimage',N,'img-fluid',N,N,N,'pvcruiseimage');
 if (firstusage) C.iccBM_LABEL($236,romu236,'pvcrlabeldetstartharbor',N,N,N,'false');
-C.iccFFIELD(CF_237,romu237,C.reactFFIELD,'pvcrdetstartharbor',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
+C.iccFFIELD(CF_237,romu237,C.reactFFIELD,'pvcrdetstartharbor',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($239,romu239,'pvcrlabeldetdestharbor',N,N,N,'false');
-C.iccFFIELD(CF_240,romu240,C.reactFFIELD,'pvcrdetdestharbor',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
+C.iccFFIELD(CF_240,romu240,C.reactFFIELD,'pvcrdetdestharbor',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($243,romu243,'pvcrlabeldetstartdate',N,N,N,'false');
-if (firstusage) C.iccDI2(CF_244,romu244,C.reactDI2,'pvcrdetstartdate',N,N,'date',N,N,N,N,N,N,N,N,'1',N,N,N,N,N,N,N,N,'DATEINPUT2Holidays',N,N,N,N,'true');
+if (firstusage) C.iccDI2(CF_244,romu244,C.reactDI2,'pvcrdetstartdate',N,N,'date',N,N,N,N,N,N,N,N,'1',N,N,N,N,N,N,N,N,'DATEINPUT2Holidays',N,N,N,N,'true',N);
 if (firstusage) C.iccBM_LABEL($246,romu246,'pvcrlabeldetenddate',N,N,N,'false');
-if (firstusage) C.iccDI2(CF_247,romu247,C.reactDI2,'pvcrdetenddate',N,N,'date',N,N,N,N,N,N,N,N,'1',N,N,N,N,N,N,N,N,'DATEINPUT2Holidays',N,N,N,N,'true');
+if (firstusage) C.iccDI2(CF_247,romu247,C.reactDI2,'pvcrdetenddate',N,N,'date',N,N,N,N,N,N,N,N,'1',N,N,N,N,N,N,N,N,'DATEINPUT2Holidays',N,N,N,N,'true',N);
 if (firstusage) C.iccBM_LABEL($250,romu250,'pvcrlabeldetyachtname',N,N,N,'false');
-C.iccFFIELD(CF_251,romu251,C.reactFFIELD,'pvcrdetyachtname',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
+C.iccFFIELD(CF_251,romu251,C.reactFFIELD,'pvcrdetyachtname',N,N,N,N,N,N,N,N,N,'20','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N,N,N,N);
 if (firstusage) C.iccBM_LABEL($254,romu254,'pvcrlabeldetprice',N,N,N,'false');
-C.iccFFIELD(CF_255,romu255,C.reactFFIELD,'pvcrdetprices',N,N,N,N,N,N,N,N,N,'30','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N);
+C.iccFFIELD(CF_255,romu255,C.reactFFIELD,'pvcrdetprices',N,N,N,N,N,N,N,N,N,'30','true',N,N,N,N,N,N,N,N,N,N,N,N,'Required',N,N,N,N,N,N);
 if (firstusage) C_259 = gebid('IC_259');
 C.iccBM_ICON(C_259,romu259,'onBookingSave',N,N,N,N,N);
 if (firstusage) C_261 = gebid('IC_261');
@@ -1236,7 +1240,11 @@ function romu412(model) { C.romuBM_LABEL($412); }
 function romu419(model) { C.romuBM_LABEL($419); }
 function romu421(model) { C.romuBM_LABEL($421); }
 function romu425(model) { C.romuBM_LABEL($425); }
-$(document).ready(function(){$('[data-tooltip="tooltip"]').tooltip({trigger:'hover'});$('[data-tooltip="tooltip"]').click(function () {$('[data-tooltip="tooltip"]').tooltip("hide");}); $('[data-toggle="popover"]').popover();  });
+$(document).ready(function(){$('[data-tooltip]').tooltip({trigger:'hover',container:'body'});$('[data-tooltip]').click(function () {$(this).tooltip('hide');}); $('[data-toggle="popover"]').popover();
+var htmlElement = document.querySelector('html');
+var savedTheme = localStorage.getItem('njxtheme');
+if (savedTheme) htmlElement.setAttribute('data-bs-theme', savedTheme);
+});
 </script>
 <iframe hidden id="csciframe" name="csciframe" tabIndex="-1" src="rdcruisx_JLIBS.html" style="width:0;height:0;left:0;top:0">
 </iframe>

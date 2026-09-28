@@ -1,0 +1,17 @@
+* >Natural Source Header 000000
+* :Mode R
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+/** New Program USR1005P.
+/**
+/** :author sagapg
+/* TODO Enter your code here
+DEFINE DATA LOCAL
+01 UDB (N3)
+END-DEFINE
+*
+CALLNAT 'GETUDB-N' UDB
+DISPLAY 'DBID:' UDB
+*
+END

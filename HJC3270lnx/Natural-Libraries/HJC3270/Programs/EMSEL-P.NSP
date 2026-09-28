@@ -20,9 +20,9 @@ DEFINE DATA
 END-DEFINE
 ************************************************************************
 SET KEY ON
-SET KEY PF3 NAMED 'Menü'
-SET KEY PF7 NAMED '<<'
-SET KEY PF8 NAMED '>>'
+SET KEY PF3  NAMED 'Menü'
+SET KEY PF7  NAMED '<<'
+SET KEY PF8  NAMED '>>'
 
 *  Definition der Suchbegriffe, PARAMETER
 ASSIGN #P-PERSONNEL-ID-VON   = 11100102
@@ -64,6 +64,7 @@ INPUT USING MAP 'EMSEL-M'
          ASSIGN #E-SUCHEN-BACK = #E-PERSONNEL-ID(1) /* Zurückblättern !
          PERFORM LESEN
          END-IF
+
 END-REPEAT
 *************************************************
 DEFINE SUBROUTINE LESEN

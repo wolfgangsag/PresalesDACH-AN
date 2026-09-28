@@ -1,0 +1,88 @@
+* >Natural Source Header 000000
+* :Mode R
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+/** New Program USR1005P.
+/**
+/** :author sagapg
+/* TODO Enter your code here
+DEFINE DATA LOCAL
+01 DATA (A253/4)             /* 'Bytecontainer' to get all data
+01 REDEFINE DATA
+   02 LOWER-UPPER (A1)       /* 'L' = lower-case, 'U' = upper-case
+   02 RECAT       (A1)       /* 'X' = RECAT=ON , ' ' = RECAT=OFF
+   02 DBUPD       (A1)       /* 'X' = DBUPD=ON , ' ' = DBUPD=OFF
+   02 DELETE-PGM  (A1)       /* 'X' = DELETE=ON , ' ' = DELETE=OFF
+   02 RELEASE-ISN (A1)       /* 'X' = RI=ON , ' ' = RI=OFF
+   02 NATURAL-COMMANDS (A1)  /* 'X' = NC=ON , ' ' = NC=OFF
+   02 STRUCTURED-MODE (A1)   /* 'X' = SM=ON , ' ' = SM=OFF
+   02 CPU-TIME-LIMIT  (N8)   /* Value of parameter MT (dec.)
+   02 MAXCL       (N5)       /* Value of parameter MAXCL (dec.)
+   02 MADIO       (N5)       /* Value of parameter MADIO (dec.)
+   02 AUTO        (A1)       /* 'X' = AUTO=ON , ' ' = AUTO=OFF
+   02 DYNPARM     (A1)       /* 'X' = DYNPARM=ON , ' ' = DYNPARM=OFF
+   02 TIME-DIFF   (A6)       /* Time differential
+   02 DTFORM      (A1)       /* Date format
+   02 ERROR-TA    (A8)       /* Name of current error transaction
+   02 STEPLIB     (A8)       /* Name of current steplib
+   02 LANG-CODE   (I1)       /* Current language code
+   02 UDB         (P3)       /* User DBID
+   02 UPDATE-CMD  (A1)       /* 'X' = UPDATE=ON , ' ' = UPDATE=OFF
+   02 DAY-DIFF    (N5)       /* Value of parameter DD (dec.)
+   02 MESSAGE-LINE(A3)       /* Position of the message line
+   02 PFKEY-LINE  (A3)       /* Position of the first PF-key line
+   02 STAT-LINE   (A3)       /* Position of the statistics line
+   02 IA          (A1)       /* Value of IA - Input assign character
+   02 ID          (A1)       /* Value of ID - Input delimiter
+   02 DC          (A1)       /* Value of DC - Decimal character
+   02 CF          (A1)       /* Value of CF - Char. for terminal cmds;
+                             /* For CF=OFF, the char. 'F' is returned
+   02 UDB2        (N5)       /* User DBID (2 Byte long)
+   /*
+   02 TIME-DIFF-S (A9)       /* For mainframes only:
+                             /* Time differential in hh:mm:ss
+   02 TIMEZONE    (A32)      /* For mainframes only:
+                             /* TD=Timezone
+   /*
+   02 WH          (A1)       /* 'X' = WH=ON,    ' ' = WH=OFF
+   02 EJ          (A1)       /* 'X' = EJ=ON,    ' ' = EJ=OFF
+   02 SA          (A1)       /* 'X' = SA=ON,    ' ' = SA=OFF
+   02 ZP          (A1)       /* 'X' = ZP=ON,    ' ' = ZP=OFF
+   02 CC          (A1)       /* 'X' = CC=ON,    ' ' = CC=OFF
+   02 ZD          (A1)       /* 'X' = ZD=ON,    ' ' = ZD=OFF
+   02 LE          (A1)       /* 'X' = LE=ON,    ' ' = LE=OFF
+   02 NC          (A1)       /* 'X' = NC=ON,    ' ' = NC=OFF
+   02 FS          (A1)       /* 'X' = FS=ON,    ' ' = FS=OFF
+   02 TS          (A1)       /* 'X' = TS=ON,    ' ' = TS=OFF
+   02 FCDP        (A1)       /* 'X' = FCDP=ON,  ' ' = FCDP=OFF
+   02 OPF         (A1)       /* 'X' = OPF=ON,   ' ' = OPF=OFF
+   02 REINP       (A1)       /* 'X' = REINP=ON, ' ' = REINP=OFF
+   /*
+   02 IM          (A1)       /* Possible values: 'F', 'D'
+   02 DFSTACK     (A1)       /* Possible values: 'S', 'C', 'I'
+   02 DFOUT       (A1)       /* Possible values: 'S', 'I'
+   02 DFTITLE     (A1)       /* Possible values: 'S', 'L', 'I'
+   02 PM          (A2)       /* Possible values: 'C', 'P', 'I', 'R'
+                             /* and combinations
+   /*
+   02 LS          (I4)       /* Value of LS session parameter
+   02 PS          (I4)       /* Value of PS session parameter
+   02 SL          (I4)       /* Value of SL session parameter
+   02 LT          (I4)       /* Value of LT session parameter
+   02 MT          (I4)       /* Value of MT session parameter
+   02 SF          (I4)       /* Value of SF session parameter
+   02 TQMARK      (A1)       /* Translate quotation marks
+   /* was TQ                 /* 'X' = TQMARK=ON,  ' ' = TQMARK=OFF
+   02 THSEPCH     (A1)       /* Value of THousands SEParator CHaracter
+   02 CPCVERR     (A1)       /* Code Page ConVersion ERRor
+                             /* 'X' = CPCVERR=ON, ' ' CPCVERR=OFF
+   02 P-DO        (A1)       /* Display order (DO) of output data
+                             /*  'L' Logical display order,
+                             /*  'V' visual order
+END-DEFINE
+*
+CALLNAT 'USR1005N' DATA (*)
+DISPLAY 'DBID:' UDB2
+*
+END

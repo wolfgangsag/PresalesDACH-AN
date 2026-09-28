@@ -1,0 +1,33 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+/** New Program PROG1.
+/**
+/** :author sagapg
+/* TODO Enter your code here
+DEFINE DATA
+LOCAL
+1 MESSAGE           (N4)
+END-DEFINE
+DISPLAY 'HELLO'
+SET KEY ALL
+REPEAT
+  INPUT WITH TEXT *MESSAGE MESSAGE
+  DECIDE ON FIRST VALUE OF *PF-KEY
+    VALUE 'PF9'
+      RESET MESSAGE
+      PERFORM PRINT
+    NONE VALUE
+      DISPLAY *PF-KEY
+  END-DECIDE
+END-REPEAT
+* -------------------------------------------------
+  DEFINE SUBROUTINE PRINT
+* -------------------------------------------------
+  DEFINE PRINTER (REPORT9 = 9) OUTPUT 'TRANSFER'
+  PRINT (REPORT9) '-' (40)
+  PRINT (REPORT9) 'PERSONAL DATA'
+  END-SUBROUTINE
+END

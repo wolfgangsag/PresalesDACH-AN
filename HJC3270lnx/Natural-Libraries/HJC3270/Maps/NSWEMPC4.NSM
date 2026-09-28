@@ -39,8 +39,8 @@ INPUT          (     IP=OFF                                           /*
 /
  004T 'Código desde:'
  018T M-KEY-INI  (AD=MILT' ' ) /*.99U008 A008 .
- 063T 'Num Pag.:'
- 073T M-PAGE  (AD=OIR ) /*.01U003 N03.0.
+ 063T 'Num Pag.:'(NE)
+ 073T M-PAGE  (AD=OIR CD=GR ) /*.01U003 N03.0.
 /
 /
  004T 'C'(I)
