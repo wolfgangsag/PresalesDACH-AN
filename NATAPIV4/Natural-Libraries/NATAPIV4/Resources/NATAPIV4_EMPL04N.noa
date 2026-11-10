@@ -1,0 +1,74 @@
+{
+  "version" : "0.4",
+  "mappings" : [ {
+    "openapi_operationId" : "NATAPIV4_EMPL04N",
+    "backend_reference" : "NATAPIV4/EMPL04N",
+    "inputParameters" : [ {
+      "backend_parameter" : "PERSNUMBER",
+      "openapi_parameter" : "persnumber",
+      "mapping_source" : "QUERY_PARAMETER"
+    } ],
+    "outputParameters" : [ {
+      "backend_parameter" : "MESSAGE",
+      "openapi_parameter" : "message"
+    } ],
+    "overflowPolicy" : "Error"
+  } ],
+  "backend" : {
+    "library" : "NATAPIV4",
+    "program" : "EMPL04N",
+    "parameters" : [ {
+      "name" : "PERSNUMBER",
+      "type" : "A8,0",
+      "position" : 1,
+      "direction" : "O"
+    }, {
+      "name" : "MESSAGE",
+      "type" : "A250,0",
+      "position" : 2,
+      "direction" : "S"
+    } ]
+  },
+  "openapi" : {
+    "/NATAPIV4/EMPL04N" : {
+      "delete" : {
+        "tags" : [ "NATAPIV4" ],
+        "summary" : "deleteEmployee",
+        "description" : "Delete employee by personnel-id in Adabas - NATAPIV4/EMPL04N. //  Header X-Impersonate-User: use 'service-account-npi' for try it out with OIDC.",
+        "operationId" : "NATAPIV4_EMPL04N",
+        "parameters" : [ {
+          "name" : "persnumber",
+          "in" : "query",
+          "description" : "persnumber",
+          "required" : false,
+          "schema" : {
+            "maxLength" : 8,
+            "minLength" : 0,
+            "type" : "string",
+            "example" : "99990001"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success response for NATAPIV4/EMPL04N",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "title" : "message",
+                      "maxLength" : 250,
+                      "minLength" : 0,
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

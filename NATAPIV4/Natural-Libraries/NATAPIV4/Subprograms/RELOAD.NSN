@@ -1,0 +1,44 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Subprogram RELOAD.
+/**
+/** Sample program to call the "Reload Services" function
+/** on Natural OpenAPI Server via Natural Request Document
+/** :author brlpi
+/* TODO Enter your code here
+DEFINE DATA
+  PARAMETER
+1 RELOAD (L)            /* IN        /* at least 1 input parameter required
+  1 RC (A) DYNAMIC        /* OUT
+  1 RESULT (A) DYNAMIC    /* OUT
+  LOCAL
+  1 #URL       (A/1:10) DYNAMIC
+  1 #HEADER    (A) DYNAMIC
+  1 #PAGE      (A) DYNAMIC
+  1 #RESULT    (A) DYNAMIC
+  1 #RC        (I4)
+  1 #CNT       (I4)
+END-DEFINE
+*
+* Adapt the url to match your NOA Server Name and Management Port
+ASSIGN #URL(1) = 'https://city311linux.eur.ad.sag:9008/actuator/reloadServices'
+ASSIGN #URL(2) = 'https://city311linux.eur.ad.sag:19008/actuator/reloadServices'
+*
+FOR #CNT 1 TO *OCC(#URL)
+  if #url(#cnt) <> ' '
+    REQUEST DOCUMENT FROM #URL(#CNT)
+      WITH
+        HEADER 'REQUEST-METHOD' VALUE 'POST'
+          'Accept'   VALUE '*/*'
+      RETURN
+        PAGE #RESULT
+    RESPONSE #RC
+  end-if
+end-for
+*
+  RC := #RC
+  RESULT := #RESULT
+*
+END

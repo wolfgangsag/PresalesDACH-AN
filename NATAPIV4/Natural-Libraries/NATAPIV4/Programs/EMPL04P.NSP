@@ -1,0 +1,19 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP ISO_8859-1:1987
+* :LineIncrement 10
+* <Natural Source Header
+/** Program EMPL04P.
+/** Delete employee by personnel-id in Adabas
+/**
+/** :author sagapg
+/**
+/* 
+DEFINE DATA LOCAL
+  1 MESSAGE  (A250)
+END-DEFINE
+*
+CALLNAT 'EMPL04N' '99990000' MESSAGE
+DISPLAY MESSAGE (AL=70)
+*
+END

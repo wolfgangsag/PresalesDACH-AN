@@ -1,0 +1,52 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+************************************************************************
+* PROGRAMM  : GEHSUMP
+* FUNKTION  : maunelle gesetzte tabelle via Subprogramm
+*             Gehaltssummen der Monatswerte 2023/2024 
+*
+************************************************************************
+DEFINE DATA
+LOCAL
+1 #DATEI     (A253) INIT <'/opt/data/data01.txt'>
+*
+* Parameter fuer UMSATZN
+1 #ANZAHL    (I4)
+1 #MONAT     (N2/1:12)
+1 #J2023     (P9/1:12)
+1 #J2024     (P9/1:12)
+1 #J2025     (P9/1:12)
+1 #RC        (I4)
+1 #MSG       (A70)
+*
+* Arbeitsfelder
+1 #I         (I4)
+
+END-DEFINE
+*
+* Dynamische Zuweisung des Workfiles
+* TYPE 'ASCII': die Datei ist mit Leerzeichen ausgerichtet (kein
+* echtes CSV). UMSATZN zerlegt jede Zeile selbst, siehe dort.
+DEFINE WORK FILE 5 #DATEI TYPE 'ASCII'
+*
+CALLNAT 'GEHSUMN'  #MONAT(*) #J2023(*) #J2024(*) #J2025(*)
+
+IF #RC NE 0
+  WRITE 'Fehler beim Lesen von' #DATEI (AL=60)
+      / 'RC =' #RC (AD=L) #MSG
+ELSE
+
+*
+  FOR #I = 1 TO 12
+*
+    DISPLAY 'Monat'     #MONAT(#I)
+            '2023'      #J2023(#I) (EM=ZZZ,ZZZ,ZZ9)
+            '2024'      #J2024(#I) (EM=ZZZ,ZZZ,ZZ9)
+            '2025'      #J2025(#I) (EM=ZZZ,ZZZ,ZZ9)
+  END-FOR
+  END-IF
+*
+END

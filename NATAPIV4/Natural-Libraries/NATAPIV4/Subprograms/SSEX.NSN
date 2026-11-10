@@ -1,0 +1,55 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP windows-1252
+* :LineIncrement 10
+* <Natural Source Header
+/*******************************************************************
+/* Program.: SDEPT
+/* Funktion: Statistik - Anzahl der Mitarbeiter je Geschlecht (SEX)
+/*           Ermitteln der Daten via Histogramm  
+/*           DB14  - File 11 angepasst mit den relevanten Deskriptoren 
+/* Autor...: A.Certa (11.2021)
+/********************************************************************
+/*
+DEFINE DATA PARAMETER
+1 #OUT                 (1:*)   /** :out
+  2 #OUT-SEX    (A1)    /** :out
+  2 #OUT-COUNT         (N08.0) /** :out
+  2 #OUT-GESCHLECHT    (A20)
+*  
+1 #INDEX               (N8)    /** :out 
+*
+LOCAL
+/*
+01 EMPLOY-VIEW VIEW OF EMPLOYEES
+  02 SEX  
+END-DEFINE
+/*
+HISTOGRAM EMPLOY-VIEW SEX
+   ASSIGN #INDEX = #INDEX + 1
+*
+   EXPAND ARRAY #OUT TO (1:#INDEX)
+*
+/* F: Female, M: Male, D: Diverse, I: Inter*, O: Open, N: Not specified
+   IF SEX = 'F'
+      ASSIGN #OUT-GESCHLECHT(#INDEX) := 'weiblich'
+      END-IF
+  IF SEX = 'M'
+      ASSIGN #OUT-GESCHLECHT(#INDEX) := 'männlich'
+      END-IF  
+ IF SEX = 'D'
+      ASSIGN #OUT-GESCHLECHT(#INDEX) := 'divers'
+      END-IF     
+  IF SEX = 'I'
+      ASSIGN #OUT-GESCHLECHT(#INDEX) := 'Inter'
+      END-IF  
+       IF SEX = 'O'
+      ASSIGN #OUT-GESCHLECHT(#INDEX) := 'offen'
+      END-IF    
+  IF SEX = 'N'
+      ASSIGN #OUT-GESCHLECHT(#INDEX) := 'nicht angegeben'
+      END-IF        
+   ASSIGN #OUT-SEX(#INDEX) := SEX
+   ASSIGN #OUT-COUNT(#INDEX)      := *NUMBER
+END-HISTOGRAM
+END

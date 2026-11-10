@@ -1,0 +1,39 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP windows-1252
+* :LineIncrement 10
+* <Natural Source Header
+/************************************************************
+/* Program.: SCOUNTRY
+/* Funktion: Statistik - Anzahl der Mitarbeiter je Land
+/*           Ermitteln der Daten via Histogramm  
+/*           
+/* Autor...: A.Certa (11.2026)
+/* Remarks.: P.Grünböck (11.2026)
+/*           requires additional Descriptor on AL (Country)
+/*           >> adainv db=15 invert=11, fields AL
+/************************************************************
+/*
+DEFINE DATA PARAMETER
+1 #OUT                 (1:*)   /** :out
+  2 #OUT-COUNTRY       (A3)    /** :out
+  2 #OUT-COUNT         (N8) /** :out
+*  
+1 #INDEX               (N8)   /** :out 
+*
+LOCAL
+/*
+01 EMPLOY-VIEW VIEW OF EMPLOYEES
+  02 COUNTRY  
+END-DEFINE
+/*
+HISTOGRAM EMPLOY-VIEW COUNTRY
+   ASSIGN #INDEX = #INDEX + 1
+*
+
+   EXPAND ARRAY #OUT TO (1:#INDEX)
+*
+   ASSIGN #OUT-COUNTRY (#INDEX) := COUNTRY
+   ASSIGN #OUT-COUNT(#INDEX)      := *NUMBER
+END-HISTOGRAM
+END

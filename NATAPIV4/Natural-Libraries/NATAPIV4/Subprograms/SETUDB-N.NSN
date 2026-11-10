@@ -1,0 +1,30 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Subprogram GETUDB-N.
+/**
+/** :author sagapg
+/* TODO Enter your code here
+DEFINE DATA 
+PARAMETER
+01 UDB (A3)    /* INOUT    
+01 REDEFINE UDB
+   02 UDB-N3 (N3)
+LOCAL
+ 1 USR1040L
+   2 INPUTS
+     3 FUNCTION         (A01)
+   2 INPUT-OUTPUTS
+     3 UDB-PARM         (N05)
+   2 OUTPUTS
+     3 RESPONSE         (I04)
+END-DEFINE
+*
+ASSIGN FUNCTION = 'S'
+MOVE RIGHT JUSTIFIED UDB TO UDB
+ASSIGN UDB-PARM = UDB-N3
+CALLNAT 'USR1040N' USR1040L
+UDB := UDB-PARM
+*
+END

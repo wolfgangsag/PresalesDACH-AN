@@ -1,0 +1,428 @@
+{
+  "version" : "0.4",
+  "mappings" : [ {
+    "openapi_operationId" : "NATAPIV4_EMPL03N",
+    "backend_reference" : "NATAPIV4/EMPL03N",
+    "inputParameters" : [ {
+      "backend_parameter" : "EMPLOYEES/TELEPHONE/AREACODE",
+      "openapi_parameter" : "employees//telephone/areacode"
+    }, {
+      "backend_parameter" : "EMPLOYEES/CARS/YEAR",
+      "openapi_parameter" : "employees//cars//year"
+    }, {
+      "backend_parameter" : "EMPLOYEES/CARS/MODEL",
+      "openapi_parameter" : "employees//cars//model"
+    }, {
+      "backend_parameter" : "EMPLOYEES/BIRTH",
+      "openapi_parameter" : "employees//birth"
+    }, {
+      "backend_parameter" : "EMPLOYEES/CARS/REG-NUM",
+      "openapi_parameter" : "employees//cars//reg-num"
+    }, {
+      "backend_parameter" : "EMPLOYEES/ADDRESS/COUNTRY",
+      "openapi_parameter" : "employees//address/country"
+    }, {
+      "backend_parameter" : "EMPLOYEES/CARS/MAKE",
+      "openapi_parameter" : "employees//cars//make"
+    }, {
+      "backend_parameter" : "EMPLOYEES/CARS/COLOR",
+      "openapi_parameter" : "employees//cars//color"
+    }, {
+      "backend_parameter" : "EMPLOYEES/ADDRESS/ZIP",
+      "openapi_parameter" : "employees//address/zip"
+    }, {
+      "backend_parameter" : "EMPLOYEES/SEX",
+      "openapi_parameter" : "employees//sex"
+    }, {
+      "backend_parameter" : "EMPLOYEES/ADDRESS/CITY",
+      "openapi_parameter" : "employees//address/city"
+    }, {
+      "backend_parameter" : "EMPLOYEES/FIRSTNAME",
+      "openapi_parameter" : "employees//firstname"
+    }, {
+      "backend_parameter" : "EMPLOYEES/DEPT",
+      "openapi_parameter" : "employees//dept"
+    }, {
+      "backend_parameter" : "EMPLOYEES/NAME",
+      "openapi_parameter" : "employees//name"
+    }, {
+      "backend_parameter" : "EMPLOYEES/ADDRESS/ADDRESSLINE",
+      "openapi_parameter" : "employees//address/addressline"
+    }, {
+      "backend_parameter" : "EMPLOYEES/LANG",
+      "openapi_parameter" : "employees//lang"
+    }, {
+      "backend_parameter" : "EMPLOYEES/TELEPHONE/PHONE",
+      "openapi_parameter" : "employees//telephone/phone"
+    }, {
+      "backend_parameter" : "EMPLOYEES/PERSONNELID",
+      "openapi_parameter" : "employees//personnelid"
+    }, {
+      "backend_parameter" : "EMPLOYEES/MAR-STAT",
+      "openapi_parameter" : "employees//mar-stat"
+    }, {
+      "backend_parameter" : "EMPLOYEES/JOB-TITLE",
+      "openapi_parameter" : "employees//job-title"
+    } ],
+    "outputParameters" : [ {
+      "backend_parameter" : "MESSAGE",
+      "openapi_parameter" : "message"
+    } ],
+    "overflowPolicy" : "Error"
+  } ],
+  "backend" : {
+    "library" : "NATAPIV4",
+    "program" : "EMPL03N",
+    "parameters" : [ {
+      "name" : "EMPLOYEES",
+      "type" : "G",
+      "position" : 1,
+      "arrayDimensions" : [ -1 ],
+      "direction" : "O",
+      "dataAttributeList" : "U",
+      "members" : [ {
+        "name" : "PERSONNELID",
+        "type" : "A8,0",
+        "position" : 1,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "FIRSTNAME",
+        "type" : "A20,0",
+        "position" : 2,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "NAME",
+        "type" : "A20,0",
+        "position" : 3,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "MAR-STAT",
+        "type" : "A1,0",
+        "position" : 4,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "SEX",
+        "type" : "A1,0",
+        "position" : 5,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "BIRTH",
+        "type" : "D0,0",
+        "position" : 6,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "ADDRESS",
+        "type" : "G",
+        "position" : 7,
+        "arrayDimensions" : [ ],
+        "direction" : "M",
+        "members" : [ {
+          "name" : "COUNTRY",
+          "type" : "A3,0",
+          "position" : 1,
+          "arrayDimensions" : [ ],
+          "direction" : "M"
+        }, {
+          "name" : "ZIP",
+          "type" : "A10,0",
+          "position" : 2,
+          "arrayDimensions" : [ ],
+          "direction" : "M"
+        }, {
+          "name" : "CITY",
+          "type" : "A20,0",
+          "position" : 3,
+          "arrayDimensions" : [ ],
+          "direction" : "M"
+        }, {
+          "name" : "ADDRESSLINE",
+          "type" : "A20,0",
+          "position" : 4,
+          "arrayDimensions" : [ -1 ],
+          "direction" : "M",
+          "dataAttributeList" : "U"
+        } ]
+      }, {
+        "name" : "TELEPHONE",
+        "type" : "G",
+        "position" : 8,
+        "arrayDimensions" : [ ],
+        "direction" : "M",
+        "members" : [ {
+          "name" : "AREACODE",
+          "type" : "A6,0",
+          "position" : 5,
+          "arrayDimensions" : [ ],
+          "direction" : "M"
+        }, {
+          "name" : "PHONE",
+          "type" : "A15,0",
+          "position" : 6,
+          "arrayDimensions" : [ ],
+          "direction" : "M"
+        } ]
+      }, {
+        "name" : "DEPT",
+        "type" : "A6,0",
+        "position" : 9,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "JOB-TITLE",
+        "type" : "A25,0",
+        "position" : 10,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "LANG",
+        "type" : "A3,0",
+        "position" : 11,
+        "arrayDimensions" : [ -1 ],
+        "direction" : "M",
+        "dataAttributeList" : "U"
+      }, {
+        "name" : "CARS",
+        "type" : "G",
+        "position" : 12,
+        "arrayDimensions" : [ -1 ],
+        "direction" : "M",
+        "dataAttributeList" : "U",
+        "members" : [ {
+          "name" : "REG-NUM",
+          "type" : "A15,0",
+          "position" : 7,
+          "arrayDimensions" : [ ],
+          "direction" : "M"
+        }, {
+          "name" : "MAKE",
+          "type" : "A20,0",
+          "position" : 8,
+          "arrayDimensions" : [ ],
+          "direction" : "M"
+        }, {
+          "name" : "MODEL",
+          "type" : "A20,0",
+          "position" : 9,
+          "arrayDimensions" : [ ],
+          "direction" : "M"
+        }, {
+          "name" : "COLOR",
+          "type" : "A10,0",
+          "position" : 10,
+          "arrayDimensions" : [ ],
+          "direction" : "M"
+        }, {
+          "name" : "YEAR",
+          "type" : "N4,0",
+          "position" : 11,
+          "arrayDimensions" : [ ],
+          "direction" : "M"
+        } ]
+      } ]
+    }, {
+      "name" : "MESSAGE",
+      "type" : "A250,0",
+      "position" : 2,
+      "direction" : "S"
+    } ]
+  },
+  "openapi" : {
+    "/NATAPIV4/EMPL03N" : {
+      "post" : {
+        "tags" : [ "NATAPIV4" ],
+        "summary" : "upsertEmployees",
+        "description" : "Upsert (multiple) employees in Adabas - NATAPIV4/EMPL03N",
+        "operationId" : "NATAPIV4_EMPL03N",
+        "parameters" : [ ],
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "type" : "object",
+                "properties" : {
+                  "employees" : {
+                    "type" : "array",
+                    "items" : {
+                      "type" : "object",
+                      "properties" : {
+                        "personnelid" : {
+                          "title" : "personnelid",
+                          "maxLength" : 8,
+                          "minLength" : 0,
+                          "type" : "string"
+                        },
+                        "firstname" : {
+                          "title" : "firstname",
+                          "maxLength" : 20,
+                          "minLength" : 0,
+                          "type" : "string"
+                        },
+                        "name" : {
+                          "title" : "name",
+                          "maxLength" : 20,
+                          "minLength" : 0,
+                          "type" : "string"
+                        },
+                        "mar-stat" : {
+                          "title" : "mar-stat",
+                          "maxLength" : 1,
+                          "minLength" : 0,
+                          "type" : "string"
+                        },
+                        "sex" : {
+                          "title" : "sex",
+                          "maxLength" : 1,
+                          "minLength" : 0,
+                          "type" : "string"
+                        },
+                        "birth" : {
+                          "title" : "birth",
+                          "type" : "string",
+                          "format" : "date"
+                        },
+                        "address" : {
+                          "type" : "object",
+                          "properties" : {
+                            "country" : {
+                              "title" : "country",
+                              "maxLength" : 3,
+                              "minLength" : 0,
+                              "type" : "string"
+                            },
+                            "zip" : {
+                              "title" : "zip",
+                              "maxLength" : 10,
+                              "minLength" : 0,
+                              "type" : "string"
+                            },
+                            "city" : {
+                              "title" : "city",
+                              "maxLength" : 20,
+                              "minLength" : 0,
+                              "type" : "string"
+                            },
+                            "addressline" : {
+                              "type" : "array",
+                              "items" : {
+                                "title" : "addressline",
+                                "maxLength" : 20,
+                                "minLength" : 0,
+                                "type" : "string"
+                              }
+                            }
+                          }
+                        },
+                        "telephone" : {
+                          "type" : "object",
+                          "properties" : {
+                            "areacode" : {
+                              "title" : "areacode",
+                              "maxLength" : 6,
+                              "minLength" : 0,
+                              "type" : "string"
+                            },
+                            "phone" : {
+                              "title" : "phone",
+                              "maxLength" : 15,
+                              "minLength" : 0,
+                              "type" : "string"
+                            }
+                          }
+                        },
+                        "dept" : {
+                          "title" : "dept",
+                          "maxLength" : 6,
+                          "minLength" : 0,
+                          "type" : "string"
+                        },
+                        "job-title" : {
+                          "title" : "job-title",
+                          "maxLength" : 25,
+                          "minLength" : 0,
+                          "type" : "string"
+                        },
+                        "lang" : {
+                          "type" : "array",
+                          "items" : {
+                            "title" : "lang",
+                            "maxLength" : 3,
+                            "minLength" : 0,
+                            "type" : "string"
+                          }
+                        },
+                        "cars" : {
+                          "type" : "array",
+                          "items" : {
+                            "type" : "object",
+                            "properties" : {
+                              "reg-num" : {
+                                "title" : "reg-num",
+                                "maxLength" : 15,
+                                "minLength" : 0,
+                                "type" : "string"
+                              },
+                              "make" : {
+                                "title" : "make",
+                                "maxLength" : 20,
+                                "minLength" : 0,
+                                "type" : "string"
+                              },
+                              "model" : {
+                                "title" : "model",
+                                "maxLength" : 20,
+                                "minLength" : 0,
+                                "type" : "string"
+                              },
+                              "color" : {
+                                "title" : "color",
+                                "maxLength" : 10,
+                                "minLength" : 0,
+                                "type" : "string"
+                              },
+                              "year" : {
+                                "title" : "year",
+                                "maximum" : 9999,
+                                "minimum" : -9999,
+                                "type" : "number"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Success response for NATAPIV4/EMPL03N",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "title" : "message",
+                      "maxLength" : 250,
+                      "minLength" : 0,
+                      "type" : "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

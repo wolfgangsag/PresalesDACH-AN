@@ -1,0 +1,37 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP ISO_8859-1:1987
+* :LineIncrement 10
+* <Natural Source Header
+/** Program EMPL11P.
+/** Find list of employees by last-name using MASK
+/**
+/** :author sagapg
+/**
+/* 
+DEFINE DATA LOCAL
+  1 LASTNAME         (A20) INIT <'ischer'>   /* IN 
+  1 MESSAGE          (A) DYNAMIC            /* OUT
+  1 EMPLOYEES        (/1:*)                 /* OUT
+    2 PERSONNELID    (A8)
+    2 FIRSTNAME      (A20)
+    2 NAME           (A20)
+    2 BIRTH          (D)
+    2 MAR-STAT       (A1)
+    2 SEX            (A1)
+    2 CITY           (A20)
+    2 ZIP            (A10)
+    2 COUNTRY        (A3)
+    2 DEPT           (A6)
+    2 JOB-TITLE      (A25)
+  1 #CNT             (I4) 
+END-DEFINE
+*
+CALLNAT 'EMPL11N' LASTNAME MESSAGE EMPLOYEES(*)
+PRINT NOHDR MESSAGE / '/Only the first 5 records are listed:'
+FOR #CNT 1 TO *OCC(EMPLOYEES.PERSONNELID)
+   DISPLAY PERSONNELID(#CNT) NAME(#CNT) FIRSTNAME(#CNT) BIRTH(#CNT) /* (EM=YYYY-MM-DD)
+   IF #CNT > 5 ESCAPE BOTTOM END-IF
+END-FOR
+*
+END

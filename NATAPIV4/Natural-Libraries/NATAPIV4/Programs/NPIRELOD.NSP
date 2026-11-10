@@ -1,0 +1,35 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+*
+* Sample program to call the "Reload Services" function
+* on Natural OpenAPI Server via Natural Request Document
+*
+* !!! If this FAILS with NAT8304 and you are using HTTPS with a self-signed certificate !!! :
+* Try on bash: curl -X POST https://city311linux.eur.ad.sag:9000/actuator/reloadServices
+* Import trusted CA certificates into $SSL_CERT_FILE (/opt/softwareag/common/security/openssl/cert.pem)
+* > cat "/opt/data/ssl/Software AG CA 2.crt" > $SSL_CERT_FILE
+* > cat "/opt/data/ssl/Software AG Root CA 2020.crt" > $SSL_CERT_FILE
+*
+DEFINE DATA
+LOCAL
+1 #URL       (A) DYNAMIC
+1 #HEADER    (A) DYNAMIC
+1 #PAGE      (A) DYNAMIC
+1 #RESULT    (A) DYNAMIC
+1 #RC      (I4)
+END-DEFINE
+* Adapt the url to match your NOA Server Name and Management Port
+ASSIGN #URL = 'https://city311linux.eur.ad.sag:9000/actuator/reloadServices'
+*
+REQUEST DOCUMENT FROM #URL
+   WITH
+     HEADER 'REQUEST-METHOD' VALUE 'POST'
+            'Accept'   VALUE '*/*'
+   RETURN
+     PAGE #RESULT
+RESPONSE #RC
+
+PRINT '=' #RC / '=' #RESULT
+END

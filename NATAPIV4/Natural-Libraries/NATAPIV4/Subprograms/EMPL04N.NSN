@@ -1,0 +1,81 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP ISO_8859-1:1987
+* :LineIncrement 10
+* <Natural Source Header
+/** Program EMPL04N.
+/** Delete employee by personnel-id in Adabas
+/**
+/** :author sagapg
+/**
+/* 
+DEFINE DATA
+PARAMETER
+*  1 UDB        (A3)           /* in  oapi.n: UDB         */
+  1 PERSNUMBER (A8)           /* in   oapi.n: PERSNUMBER    */
+  1 MESSAGE    (A250)         /* out  oapi.n: MESSAGE       */
+LOCAL
+1 PERSON VIEW OF EMPLOYEES
+  2 PERSONNEL-ID
+1 CAR VIEW OF VEHICLES
+  2 REG-NUM
+  2 PERSONNEL-ID 
+01  ACB
+  02  ACB-TYPE                      (B1) INIT<H'30'>
+  02  ACB-FILL                      (B1)
+  02  ACB-COMMAND                   (A2) INIT<'RC'>
+  02  ACB-CID                       (A4) INIT<H'FFFFFFFF'>
+  02  ACB-FILEID                    (B2)
+  02  ACB-RSP                       (B2)
+  02  ACB-ISN                       (B4)
+  02  ACB-ISNL                      (B4)
+  02  ACB-ISNQ                      (B4)
+  02  ACB-FBL                       (B2)
+  02  ACB-RBL                       (B2)
+  02  ACB-SBL                       (B2)
+  02  ACB-VBL                       (B2)
+  02  ACB-IBL                       (B2)
+  02  ACB-COP1                      (A1)
+  02  ACB-COP2                      (A1)
+  02  ACB-ADD1                      (A8)
+  02  ACB-ADD2                      (A4)
+  02  ACB-ADD3                      (A8)
+  02  ACB-ADD4                      (A8)
+  02  ACB-ADD5                      (A8)
+  02  ACB-CMDT                      (B4)
+  02  ACB-USER                      (A4)
+01  REDEFINE  ACB
+  02 ACB-80                         (A80)
+1 UDB (A3) INIT <' '>
+END-DEFINE
+*
+IF UDB <> ' '
+    CALLNAT 'SETUDB-N' UDB
+ELSE
+    CALLNAT 'GETUDB-N' UDB
+END-IF
+*
+FIND1. FIND PERSON WITH PERSONNEL-ID = PERSNUMBER
+  IF NO RECORDS FOUND
+    COMPRESS 'SPECIFIED NUMBER DOES NOT EXIST; CHOOSE ANOTHER ONE.' ' (UDB:' UDB ')' INTO MESSAGE LEAVING NO
+    ESCAPE BOTTOM
+  END-NOREC
+  ON ERROR
+      IF *ERROR-NR = 3148                                   
+        COMPRESS 'ERROR ' *ERROR-NR ' (UDB:' UDB ')' INTO MESSAGE LEAVING NO
+      END-IF                                                
+      COMPRESS 'ERROR ' *ERROR-NR ' OCCURRED IN PROGRAM ' *PROGRAM ' AT LINE ' *ERROR-LINE ' (UDB:' UDB ')' INTO MESSAGE LEAVING NO
+  END-ERROR      
+  FIND2. FIND CAR WITH PERSONNEL-ID = PERSNUMBER
+    IF NO RECORDS FOUND
+      ESCAPE BOTTOM
+    END-NOREC
+    DELETE
+    COMPRESS MESSAGE 'CAR' REG-NUM 'and' TO MESSAGE
+  END-FIND
+  DELETE
+  COMPRESS MESSAGE 'SPECIFIED PERSONNEL-ID DELETED.' TO MESSAGE
+  END TRANSACTION
+END-FIND
+*
+END
