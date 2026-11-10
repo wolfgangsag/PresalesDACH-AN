@@ -1,0 +1,36 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP windows-1252
+* :LineIncrement 10
+* <Natural Source Header
+/************************************************************
+/* Program.: PDEPT
+/* Funktion: Statistik - Anzahl der Mitarbeiter je Abteilung (DEPARTMENT)
+/*           Aufruf Sub.PGM in dem via Histogramm die Daten 
+/*           ermittelt werden
+/* Autor...: A.Certa (11.2021)
+/************************************************************
+/*
+DEFINE DATA LOCAL
+1 #OUT                 (1:*)   /** :out
+  2 #OUT-JAHR    (A4)    /** :out
+  2 #OUT-GEHALTSSUMME (N12)
+  2 #OUT-COUNT         (N8)    /** :out
+ 
+1 #INDEX (N8) INIT <0>
+END-DEFINE
+FORMAT LS=132
+   
+CALLNAT 'SSTAT01'
+  #OUT-JAHR (*)
+  #OUT-GEHALTSSUMME (*)
+  #OUT-COUNT (*)
+  #INDEX   
+ EXPAND ARRAY #OUT TO (1:#INDEX) 
+/*  
+  DISPLAY  
+  #OUT-JAHR (1:#INDEX) 
+  #OUT-GEHALTSSUMME (1:#INDEX)
+  #OUT-COUNT (1:#INDEX)
+/*  
+END

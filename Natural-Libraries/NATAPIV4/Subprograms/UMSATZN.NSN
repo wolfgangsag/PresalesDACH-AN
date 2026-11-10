@@ -1,0 +1,102 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+************************************************************************
+* SUBPROGRAMM: UMSATZN
+* FUNKTION   : Liest Workfile 5 (vorher mit DEFINE WORK FILE zugewiesen)
+*              und liefert pro Datenzeile Monat, Wert 2023, Wert 2024.
+*              - Kopfzeile ("Monat 2023 2024") wird ueberlesen
+*              - Leerzeilen werden ueberlesen
+*              - Trennzeichen: Leerzeichen, ';' oder ','  -> funktioniert
+*                fuer die ausgerichtete Datei und fuer echtes CSV
+* AUFRUF     : CALLNAT 'UMSATZN' #ANZAHL #MONAT(*) #J2023(*) #J2024(*)
+*                                #RC #MSG
+* PARAMETER  : #P-ANZAHL (I4)       out  Anzahl gelesener Monate
+*              #P-MONAT  (N2/1:12)  out  Monat
+*              #P-J2023  (P9/1:12)  out  Wert 2023
+*              #P-J2024  (P9/1:12)  out  Wert 2024
+*              #P-RC     (I4)       out  0 = OK, sonst Fehler
+*              #P-MSG    (A70)      out  Fehlertext
+************************************************************************
+DEFINE DATA
+PARAMETER
+1 #P-ANZAHL  (I4)
+1 #P-MONAT   (N2/1:12)
+1 #P-J2023   (P9/1:12)
+1 #P-J2024   (P9/1:12)
+1 #P-RC      (I4)
+1 #P-MSG     (A70)
+LOCAL
+1 #DATEI     (A253) INIT <'/opt/data/data01.txt'>
+1 #ZEILE     (A80)
+1 #FELD      (A20/1:40)
+1 #WERT      (A20/1:3)
+1 #DELIM     (A3) INIT <' ;,'>
+1 #SATZ      (I4)
+1 #N         (I4)
+1 #I         (I4)
+END-DEFINE
+*
+DEFINE WORK FILE 5 #DATEI TYPE 'ASCII'
+*
+ON ERROR
+  #P-RC := *ERROR-NR
+  COMPRESS 'Natural-Fehler' *ERROR-NR 'in Zeile' *ERROR-LINE
+    'beim Lesen von Workfile 5' INTO #P-MSG
+  ESCAPE ROUTINE
+END-ERROR
+*
+RESET #P-ANZAHL #P-MONAT(*) #P-J2023(*) #P-J2024(*) #P-RC #P-MSG
+*
+READ WORK FILE 5 #ZEILE
+  ADD 1 TO #SATZ
+*
+  IF #ZEILE = ' '
+    ESCAPE TOP
+  END-IF
+*
+* Zeile zerlegen; mehrere Leerzeichen hintereinander ergeben leere
+* Felder, deshalb werden danach nur die nicht leeren Felder uebernommen
+  RESET #FELD(*) #WERT(*) #N
+  SEPARATE #ZEILE INTO #FELD(*) IGNORE WITH DELIMITERS #DELIM
+  FOR #I = 1 TO 40
+    IF #FELD(#I) NE ' '
+      ADD 1 TO #N
+      IF #N <= 3
+        #WERT(#N) := #FELD(#I)
+      END-IF
+    END-IF
+  END-FOR
+*
+* Kopfzeile oder sonstige nicht numerische Zeile ueberlesen
+  IF NOT (#WERT(1) IS (N2) AND #WERT(2) IS (N9) AND #WERT(3) IS (N9))
+    ESCAPE TOP
+  END-IF
+*
+  IF #P-ANZAHL >= 12
+    #P-RC := 2
+    COMPRESS 'Mehr als 12 Datenzeilen, Abbruch bei Satz' #SATZ
+      INTO #P-MSG
+    ESCAPE BOTTOM
+  END-IF
+*
+  ADD 1 TO #P-ANZAHL
+  #P-MONAT(#P-ANZAHL) := VAL(#WERT(1))
+  #P-J2023(#P-ANZAHL) := VAL(#WERT(2))
+  #P-J2024(#P-ANZAHL) := VAL(#WERT(3))
+*
+  IF #P-MONAT(#P-ANZAHL) < 1 OR #P-MONAT(#P-ANZAHL) > 12
+    #P-RC := 3
+    COMPRESS 'Ungueltiger Monat' #WERT(1) 'in Satz' #SATZ INTO #P-MSG
+    ESCAPE BOTTOM
+  END-IF
+END-WORK
+*
+IF #P-RC = 0 AND #P-ANZAHL = 0
+  #P-RC  := 1
+  #P-MSG := 'Keine Datenzeilen im Workfile gefunden'
+END-IF
+*
+END

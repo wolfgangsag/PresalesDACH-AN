@@ -1,0 +1,18 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+/** New Program USR1005P.
+/**
+/** :author sagapg
+/* TODO Enter your code here
+DEFINE DATA LOCAL
+01 UDB (A3)    INIT <'14'>
+END-DEFINE
+*
+CALLNAT 'SETUDB-N' UDB
+PRINT 'SET DBID:' UDB 
+CALLNAT 'GETUDB-N' UDB
+PRINT 'GET DBID:' UDB 
+*
+END

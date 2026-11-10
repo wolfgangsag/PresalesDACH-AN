@@ -1,0 +1,67 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP ISO-8859-15
+* :LineIncrement 10
+* <Natural Source Header
+/** Program EMPL03P.
+/** Insert/Update (multiple) employees in Adabas
+/**
+/** :author sagapg
+/**
+/* 
+DEFINE DATA LOCAL
+  1 EMPLOYEES(/1:1)
+      2 PERSONNELID    (A8)
+      2 FIRSTNAME      (A20)
+      2 NAME           (A20)
+      2 MAR-STAT       (A1)
+      2 SEX            (A1)
+      2 BIRTH          (D)
+      2 ADDRESS
+        3 COUNTRY      (A3)
+        3 ZIP          (A10)
+        3 CITY         (A20)
+        3 ADDRESSLINE  (A20/*)
+      2 TELEPHONE
+        3 AREACODE     (A6)
+        3 PHONE        (A15)
+      2 DEPT           (A6)
+      2 JOB-TITLE      (A25)
+      2 LANG           (A3/1:*)
+      2 CARS (/1:*)
+        3 REG-NUM      (A15)
+        3 MAKE         (A20)
+        3 MODEL        (A20)
+        3 COLOR        (A10)
+        3 YEAR         (N4.0)
+  1 MESSAGE          (A250) 
+  1 #CNT             (I2)
+END-DEFINE
+*
+PERSONNELID(1) := '99990000'
+BIRTH(1)       := *DATX
+FIRSTNAME(1)   := 'Paul'
+NAME(1)        := 'GRUENBOECK' 
+CITY(1)        := 'Vienna'
+ZIP(1)         := '1030'
+COUNTRY(1)     := 'AUT' 
+JOB-TITLE(1)   := 'äöüÄÖÜß~§$%&' 
+*
+EXPAND ARRAY CARS TO (*,1:2)
+*
+REG-NUM(1,1)       := 'MD-446NY'
+MAKE(1,1)          := 'Audi'
+MODEL(1,1)         := 'A4'
+COLOR(1,1)         := 'weiß'
+YEAR(1,1)          := 2020
+*
+REG-NUM(1,2)       := 'W-61043Y'
+MAKE(1,2)          := 'Audi'
+MODEL(1,2)         := 'A4'
+COLOR(1,2)         := 'weiß'
+YEAR(1,2)          := 2020
+*
+CALLNAT 'EMPL03N' EMPLOYEES(*) MESSAGE
+PRINT MESSAGE
+*
+END

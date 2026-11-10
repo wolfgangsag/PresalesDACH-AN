@@ -1,0 +1,84 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+************************************************************************
+* PROGRAMM  : UMSATZP
+* FUNKTION  : Weist das Workfile 5 dynamisch zu, ruft das Subprogramm
+*             UMSATZN zum Einlesen der Monatswerte 2023/2024 auf und
+*             gibt die Werte mit Differenz, Veraenderung in % und
+*             Summen aus.
+* PLATTFORM : Natural fuer Linux
+* WORKFILE  : /opt/data/data01.txt  (Felder: Monat  2023  2024)
+************************************************************************
+DEFINE DATA
+LOCAL
+1 #DATEI     (A253) INIT <'/opt/data/data01.txt'>
+*
+* Parameter fuer UMSATZN
+1 #ANZAHL    (I4)
+1 #MONAT     (N2/1:12)
+1 #J2023     (P9/1:12)
+1 #J2024     (P9/1:12)
+1 #RC        (I4)
+1 #MSG       (A70)
+*
+* Arbeitsfelder
+1 #I         (I4)
+1 #DIFF      (P10)
+1 #PROZ      (P4.1)
+1 #SUM2023   (P11)
+1 #SUM2024   (P11)
+1 #SUMDIFF   (P11)
+1 #SUMPROZ   (P4.1)
+END-DEFINE
+*
+* Dynamische Zuweisung des Workfiles
+* TYPE 'ASCII': die Datei ist mit Leerzeichen ausgerichtet (kein
+* echtes CSV). UMSATZN zerlegt jede Zeile selbst, siehe dort.
+DEFINE WORK FILE 5 #DATEI TYPE 'ASCII'
+*
+CALLNAT 'UMSATZN' #ANZAHL #MONAT(*) #J2023(*) #J2024(*) #RC #MSG
+*
+CLOSE WORK FILE 5
+*
+  WRITE TITLE LEFT 'Monatswerte 2023 / 2024 aus' #DATEI (AL=40)
+    / '-'(70)
+IF #RC NE 0
+  WRITE 'Fehler beim Lesen von' #DATEI (AL=60)
+      / 'RC =' #RC (AD=L) #MSG
+ELSE
+
+*
+  FOR #I = 1 TO #ANZAHL
+    #DIFF := #J2024(#I) - #J2023(#I)
+    RESET #PROZ
+    IF #J2023(#I) NE 0
+      COMPUTE ROUNDED #PROZ = #DIFF * 100 / #J2023(#I)
+    END-IF
+    ADD #J2023(#I) TO #SUM2023
+    ADD #J2024(#I) TO #SUM2024
+*
+    DISPLAY 'Monat'     #MONAT(#I)
+            '2023'      #J2023(#I) (EM=ZZZ,ZZZ,ZZ9)
+            '2024'      #J2024(#I) (EM=ZZZ,ZZZ,ZZ9)
+            'Differenz' #DIFF      (EM=-ZZZ,ZZZ,ZZ9)
+            'Diff %'    #PROZ      (EM=-ZZ9.9)
+  END-FOR
+*
+  #SUMDIFF := #SUM2024 - #SUM2023
+  RESET #SUMPROZ
+  IF #SUM2023 NE 0
+    COMPUTE ROUNDED #SUMPROZ = #SUMDIFF * 100 / #SUM2023
+  END-IF
+*
+  WRITE / '-'(70)
+      / 'Summe 2023 :' #SUM2023 (EM=Z,ZZZ,ZZZ,ZZ9)
+      / 'Summe 2024 :' #SUM2024 (EM=Z,ZZZ,ZZZ,ZZ9)
+      / 'Differenz  :' #SUMDIFF (EM=-Z,ZZZ,ZZZ,ZZ9)
+        '(' #SUMPROZ (EM=-ZZ9.9) '% )'
+      / 'Gelesene Monate:' #ANZAHL (AD=L)
+END-IF
+*
+END

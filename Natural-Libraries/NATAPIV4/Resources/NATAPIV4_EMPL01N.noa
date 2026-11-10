@@ -1,0 +1,252 @@
+{
+  "version" : "0.4",
+  "mappings" : [ {
+    "openapi_operationId" : "NATAPIV4_EMPL01N",
+    "backend_reference" : "NATAPIV4/EMPL01N",
+    "inputParameters" : [ {
+      "backend_parameter" : "LASTNAME",
+      "openapi_parameter" : "lastname",
+      "mapping_source" : "QUERY_PARAMETER"
+    } ],
+    "outputParameters" : [ {
+      "backend_parameter" : "EMPLOYEES/CITY",
+      "openapi_parameter" : "employees//city"
+    }, {
+      "backend_parameter" : "EMPLOYEES/PERSONNELID",
+      "openapi_parameter" : "employees//personnelid"
+    }, {
+      "backend_parameter" : "EMPLOYEES/FIRSTNAME",
+      "openapi_parameter" : "employees//firstname"
+    }, {
+      "backend_parameter" : "EMPLOYEES/SEX",
+      "openapi_parameter" : "employees//sex"
+    }, {
+      "backend_parameter" : "EMPLOYEES/JOB-TITLE",
+      "openapi_parameter" : "employees//job-title"
+    }, {
+      "backend_parameter" : "EMPLOYEES/NAME",
+      "openapi_parameter" : "employees//name"
+    }, {
+      "backend_parameter" : "EMPLOYEES/MAR-STAT",
+      "openapi_parameter" : "employees//mar-stat"
+    }, {
+      "backend_parameter" : "EMPLOYEES/COUNTRY",
+      "openapi_parameter" : "employees//country"
+    }, {
+      "backend_parameter" : "EMPLOYEES/ZIP",
+      "openapi_parameter" : "employees//zip"
+    }, {
+      "backend_parameter" : "EMPLOYEES/DEPT",
+      "openapi_parameter" : "employees//dept"
+    }, {
+      "backend_parameter" : "EMPLOYEES/BIRTH",
+      "openapi_parameter" : "employees//birth"
+    }, {
+      "backend_parameter" : "MESSAGE",
+      "openapi_parameter" : "message"
+    } ],
+    "overflowPolicy" : "Error"
+  } ],
+  "backend" : {
+    "library" : "NATAPIV4",
+    "program" : "EMPL01N",
+    "parameters" : [ {
+      "name" : "LASTNAME",
+      "type" : "A20,0",
+      "position" : 1,
+      "direction" : "O"
+    }, {
+      "name" : "MESSAGE",
+      "type" : "A0,0",
+      "position" : 2,
+      "direction" : "S",
+      "dataAttributeList" : "V"
+    }, {
+      "name" : "EMPLOYEES",
+      "type" : "G",
+      "position" : 3,
+      "arrayDimensions" : [ -1 ],
+      "direction" : "S",
+      "dataAttributeList" : "U",
+      "members" : [ {
+        "name" : "PERSONNELID",
+        "type" : "A8,0",
+        "position" : 1,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "FIRSTNAME",
+        "type" : "A20,0",
+        "position" : 2,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "NAME",
+        "type" : "A20,0",
+        "position" : 3,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "BIRTH",
+        "type" : "D0,0",
+        "position" : 4,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "MAR-STAT",
+        "type" : "A1,0",
+        "position" : 5,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "SEX",
+        "type" : "A1,0",
+        "position" : 6,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "CITY",
+        "type" : "A20,0",
+        "position" : 7,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "ZIP",
+        "type" : "A10,0",
+        "position" : 8,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "COUNTRY",
+        "type" : "A3,0",
+        "position" : 9,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "DEPT",
+        "type" : "A6,0",
+        "position" : 10,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      }, {
+        "name" : "JOB-TITLE",
+        "type" : "A25,0",
+        "position" : 11,
+        "arrayDimensions" : [ ],
+        "direction" : "M"
+      } ]
+    } ]
+  },
+  "openapi" : {
+    "/NATAPIV4/EMPL01N" : {
+      "get" : {
+        "tags" : [ "NATAPIV4" ],
+        "summary" : "findEmployees",
+        "description" : "Find employees by last-name in Adabas - NATAPIV4/EMPL01N",
+        "operationId" : "NATAPIV4_EMPL01N",
+        "parameters" : [ {
+          "name" : "lastname",
+          "in" : "query",
+          "description" : "lastname",
+          "required" : false,
+          "schema" : {
+            "maxLength" : 20,
+            "minLength" : 0,
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Success response for NATAPIV4/EMPL01N",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "properties" : {
+                    "message" : {
+                      "title" : "message",
+                      "type" : "string"
+                    },
+                    "employees" : {
+                      "type" : "array",
+                      "items" : {
+                        "type" : "object",
+                        "properties" : {
+                          "personnelid" : {
+                            "title" : "personnelid",
+                            "maxLength" : 8,
+                            "minLength" : 0,
+                            "type" : "string"
+                          },
+                          "firstname" : {
+                            "title" : "firstname",
+                            "maxLength" : 20,
+                            "minLength" : 0,
+                            "type" : "string"
+                          },
+                          "name" : {
+                            "title" : "name",
+                            "maxLength" : 20,
+                            "minLength" : 0,
+                            "type" : "string"
+                          },
+                          "birth" : {
+                            "title" : "birth",
+                            "type" : "string",
+                            "format" : "date"
+                          },
+                          "mar-stat" : {
+                            "title" : "mar-stat",
+                            "maxLength" : 1,
+                            "minLength" : 0,
+                            "type" : "string"
+                          },
+                          "sex" : {
+                            "title" : "sex",
+                            "maxLength" : 1,
+                            "minLength" : 0,
+                            "type" : "string"
+                          },
+                          "city" : {
+                            "title" : "city",
+                            "maxLength" : 20,
+                            "minLength" : 0,
+                            "type" : "string"
+                          },
+                          "zip" : {
+                            "title" : "zip",
+                            "maxLength" : 10,
+                            "minLength" : 0,
+                            "type" : "string"
+                          },
+                          "country" : {
+                            "title" : "country",
+                            "maxLength" : 3,
+                            "minLength" : 0,
+                            "type" : "string"
+                          },
+                          "dept" : {
+                            "title" : "dept",
+                            "maxLength" : 6,
+                            "minLength" : 0,
+                            "type" : "string"
+                          },
+                          "job-title" : {
+                            "title" : "job-title",
+                            "maxLength" : 25,
+                            "minLength" : 0,
+                            "type" : "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

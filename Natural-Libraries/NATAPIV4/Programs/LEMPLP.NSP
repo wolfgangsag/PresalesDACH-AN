@@ -1,0 +1,36 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* :LineIncrement 10
+* <Natural Source Header
+/** New Program LEMPLP.
+/**
+/** :author sag
+/* TODO: Enter your code here
+DEFINE DATA LOCAL
+/*( imported data fields from Data Definition Module EMPLOYEE
+1 EMPL-PG VIEW OF EMPLOYEES
+  2 PERSONNEL-ID (A8) /* CNNNNNNN
+  2 FULL-NAME /* NAME INFORMATION
+    3 FIRST-NAME (A20) /* FIRST/CHRISTIAN NAME
+    3 NAME (A20) /* SURNAME/FAMILY NAME
+/*) imported data fields from Data Definition Module EMPLOYEE
+1 EMP VIEW OF EMPLOYEES
+  2 NAME
+END-DEFINE
+*
+* FIND EMPL-PG WITH NAME = 'SMITH'
+*      DISPLAY PERSONNEL-ID NAME
+*  UPDATE
+* END-FIND
+*
+H. HISTOGRAM EMP FOR NAME
+*  DISPLAY *COUNTER NAME *NUMBER
+END-HISTOGRAM
+DISPLAY *COUNTER (H.)
+*
+* READ EMPL-PG
+*   DISPLAY PERSONNEL-ID FULL-NAME
+* END-READ
+*
+END

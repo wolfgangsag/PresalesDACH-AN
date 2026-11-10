@@ -1,0 +1,15 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP
+* <Natural Source Header
+* Subprogram that illustrates the secret parameter PM=I
+* and gives a super simple demo
+* SAGDFH
+DEFINE DATA PARAMETER
+1 IND (A10) /*in
+1 UD  (A10) /*out
+END-DEFINE
+
+MOVE IND (PM=I) TO UD
+
+END

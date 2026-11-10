@@ -1,0 +1,40 @@
+* >Natural Source Header 000000
+* :Mode S
+* :CP windows-1252
+* :LineIncrement 10
+* <Natural Source Header
+/************************************************************
+/* Program.: SSTAT01
+/* Funktion: Statistik - Anzahl der Mitarbeiter je Abteilung (DEPARTMENT)
+/*           Ermitteln der Daten via variable belegter Felader  
+/* Autor...: A.Certa (11.2021)
+/************************************************************
+/*
+DEFINE DATA PARAMETER
+1 #OUT                 (1:*)   /** :out
+  2 #OUT-JAHR    (A4)    /** :out
+  2 #OUT-GEHALTSSUMME (N12)
+  2 #OUT-COUNT         (N08.0) /** :out
+*  
+1 #INDEX               (N8)    /** :out 
+*
+ LOCAL
+ 1 #INDEX2 (N8)
+
+END-DEFINE
+* FOR #INDEX2 1 TO 5
+*   
+  ASSIGN #INDEX = #INDEX + 1
+   EXPAND ARRAY #OUT TO (1:#INDEX)
+*
+   ASSIGN #OUT-JAHR(#INDEX) := '2022'
+   ASSIGN  #OUT-GEHALTSSUMME(#INDEX) := 215000
+   ASSIGN #OUT-COUNT(#INDEX)      := #INDEX
+ 
+   ASSIGN #INDEX = #INDEX + 1
+      
+   ASSIGN #OUT-JAHR(#INDEX) := '2023'
+   ASSIGN  #OUT-GEHALTSSUMME(#INDEX) := 22000
+      ASSIGN #OUT-COUNT(#INDEX)      := #INDEX      
+* END-FOR
+END
